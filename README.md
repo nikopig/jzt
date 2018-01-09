@@ -1,2 +1,2 @@
 #运行方式
-npm run dev planImport
+npm run dev 模块名
