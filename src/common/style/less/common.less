@@ -1,0 +1,484 @@
+@import 'primary';
+body {
+ color: @font-normal-color;
+ font-size: 14px;
+}
+
+body, ul, li {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.common-input-box {
+    label {
+        display: inline-block;
+        *display: inline-block;
+        zoom: 1;
+        width: 120px;
+        padding-right: 10px;
+        text-align: right;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .el-input {
+        width: 180px;
+    }
+}
+.common-blank {
+    height: 8px;
+    background-color: @main-bg-color;
+}
+.common-condition-box {
+    padding-top: 22px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #EBEEF5;
+    .el-form-item__label, .el-checkbox__label, .el-select-dropdown__item, .el-radio__label, .el-select-dropdown__item {
+      font-size: 12px;
+    }
+}
+.el-form-item {
+  .el-form-item__label, .el-checkbox__label, .el-select-dropdown__item, .el-radio__label, .el-select-dropdown__item {
+    font-size: 12px;
+  }
+}
+.common-container {
+  font-size: @font-size-small;
+  background-color: #fff;
+  min-height: @min-height;
+  .el-table, .el-button {
+    font-size: 12px;
+  }
+  .el-input {
+    height: 24px;
+    line-height: 24px;
+    input.el-input__inner {
+      height: 100%;
+      height: 22px;
+      line-height: 22px;
+      font-size: @font-size-small;
+    }
+  }
+  .el-input-number__decrease, .el-input-number__increase {
+    line-height: 24px;
+  }
+}
+
+// 禁用输入框字体颜色调整
+.el-input.is-disabled input.el-input__inner {
+  color: #1f2d3d;
+}
+
+// 工具栏
+.toolbar {
+  height: 42px;
+  background-color: #EBEEF5;
+  position: relative;
+  margin-bottom: 15px;
+  .el-button--text {
+    color: #666;
+  }
+  .btn-box {
+    display: inline-block;
+    *display: inline-block;
+    zoom: 1;
+    padding: 5px 15px;
+    line-height: 30px;
+    .el-button--text.is-disabled {
+      color: #bfcbd9;
+    }
+  }
+  .text-box {
+    display: inline-block;
+    *display: inline-block;
+    zoom: 1;
+    padding-left: 150px;
+    zoom: 1;
+    color: @danger-color;
+    .text {
+      display: inline-block;
+      *display: inline-block;
+      zoom: 1;
+      padding: 0px 20px;
+    }
+  }
+  .text-box:first-child {
+    padding-left: 150px;
+  }
+}
+
+.foot-bar {
+  overflow: hidden;
+  padding: 18px 40px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  border-top: 2px solid #ddd;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 999;
+  .btns-content {
+    float: right;
+  }
+}
+
+.el-button--text {
+  color: #666;
+}
+
+// 主色调
+.primary {
+  color: @main-color;
+}
+
+// label加表单 （公用样式）
+.label-input {
+  label {
+    padding-right: 8px;
+  }
+  .el-input, el-select {
+    width: 160px;
+  }
+}
+
+// 下拉框选择面板字体大小
+.el-select-dropdown__item {
+  font-size: 12px;
+}
+// 表单label字体大小
+.el-form-item__label {
+  font-size: 12px
+}
+
+.el-radio-group .el-radio, .el-radio__label {
+  font-size: 12px;
+}
+
+// 仓+配头部固定
+.planImportHeader {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+}
+.planImportBody {
+  padding-bottom: 70px;
+  min-height: @min-height;
+}
+
+.padding-wraper {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: @main-bg-color;
+}
+
+.padding-wraper > div {
+  background-color: #fff;
+}
+
+// 表单内部清空按钮
+.el-input {
+  .el-icon-close {
+    font-size:12px;
+    opacity: 0;
+  }
+  .el-icon-close:hover {
+    opacity: 1;
+    -webkit-transition: display 0.3s;
+    transition: display 0.3s;
+  }
+}
+
+// 禁止文字选中
+.noselect {
+  input {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */ /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently */
+  }
+}
+
+// 消息提示调整为离顶部35%
+.el-message {
+  top: 35%;
+}
+
+// 头部面包屑容器
+.headbar {
+  padding-left: 15px;
+  margin-bottom: 15px;
+  label {
+    padding: 5px;
+  }
+}
+
+.common-step-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+// tab样式修改
+.common-tab-wraper {
+  .el-tabs{
+    background-color: #fff;
+    /*border-top: 3px solid #e7eaec;*/
+  }
+  .el-tabs__nav{
+    float: none;
+    text-align: center;
+    .el-tabs__item{
+      width: 20%;
+      &.is-disabled {
+        height: 0;
+      }
+    }
+    .el-tabs__active-bar{
+      left: 20%;
+    }
+  }
+  .el-tabs__content{
+    margin-top: 21px;
+  }
+}
+
+// 通用栅格
+.common-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  .common-col {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    .el-form-item {
+         display: flex;
+         .el-form-item__label {
+           width: 80px;
+           text-align: left;
+         }
+         .el-form-item__content {
+           flex: 1;
+           .el-date-editor.el-input, .common-select, .el-select {
+             width: 100%;
+           }
+           .el-radio {
+             text-align: left;
+           }
+         }
+    }
+    display: flex;
+    padding: 5px 0;
+    overflow: hidden;
+    & > .label, & > label{
+      width: 92px;
+      text-align: right;
+      line-height: 24px;
+    }
+    & > .content {
+      display: inline-block;
+      flex: 1;
+      padding-left: 5px;
+      line-height: 24px;
+      vertical-align: center;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      .el-date-editor.el-input, .common-select, .el-select {
+        width: 100%;
+      }
+      .el-form-item {
+        margin-bottom: 0;
+        .el-form-item__content {
+          line-height: 24px;
+        }
+      }
+    }
+    // small计数器
+    .el-input-number--small {
+      width: 100%;
+    }
+    .el-input-number--small .el-input-number__decrease, .el-input-number--small .el-input-number__increase {
+      line-height: 22px;
+    }
+  }
+}
+
+// 文字溢出隐藏
+.textOverflow {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.flex-wraper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+//密集表单布局
+.label-form {
+  display: flex;
+  padding: 2px 0;
+  line-height: 30px;
+  overflow: hidden;
+  .label {
+    width: 92px;
+    text-align: right;
+  }
+  .content {
+    display: inline-block;
+    flex: 1;
+    padding-left: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    .el-form-item {
+      margin-bottom: 0;
+      .el-form-item__content {
+        line-height: 30px;
+      }
+    }
+  }
+  // small计数器
+  .el-input-number--small {
+    width: 100%;
+  }
+  .el-input-number--small .el-input-number__decrease, .el-input-number--small .el-input-number__increase {
+    line-height: 22px;
+  }
+}
+
+// 必填
+.danger {
+  color: red;
+  padding-right: 5px;
+  line-height: 30px;
+}
+
+// 库存不够提示
+.dangerTip {
+  font-weight: 700;
+  color: red;
+}
+// 分页组件居中
+.el-pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+// 头部tab栏
+.head-tab .el-tabs__nav{
+  width: 100%;
+  display: flex;
+}
+.head-tab .el-tabs__nav .el-tabs__item {
+  flex: 1;
+  text-align: center;
+}
+
+// 可嵌套表格
+.common-table {
+  width: 100%;
+  border-top: 1px solid #d1dbe5;
+  border-left: 1px solid #d1dbe5;
+}
+.common-table .common-table {
+  border-top: none;
+}
+.check-cell {
+  width: 70px;
+}
+.common-table-head {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #d1dbe5;
+  background-color: #EAEEF4;
+  font-weight: 700;
+}
+.common-table-row {
+  display: flex;
+  border-bottom: 1px solid #d1dbe5;
+}
+
+.common-table-cell {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  a {
+    text-decoration: none;
+  }
+}
+.common-table-cell.check-cell {
+  width: 40px;
+  flex: none;
+}
+.grid-line {
+  border-right: 1px solid #d1dbe5;
+}
+
+// 弹框头部调整
+.el-dialog .el-dialog__header {
+  background-color: #eef6f6;
+  padding: 11px 13px;
+  border-radius: 4px 4px 0 0;
+}
+
+// 强制表格无滚动条
+.no-scroll-table .el-table__body-wrapper {
+  overflow-x: hidden;
+}
+
+/*隐藏滚动条*/
+.no-scroll::-webkit-scrollbar {
+  width: 0px;
+}
+.el-cascader-menu::-webkit-scrollbar {
+  width: 0px;
+}
+
+// 通用多选框组左右分栏布局
+.common-select-group-box {
+  .el-form-item {
+    display: flex;
+    .el-form-item__content {
+      flex: 1;
+    }
+  }
+}
+/*# sourceMappingURL=data:application/json;base64,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LHdCQUFBO0NBQ0Q7O0FBSUE7RUFDRSxxQkFKUTtFQUNULHFCQUFBO0VBS0MsY0FBYztDQUNmO0FBQ0Q7RUFDRSxvQkFBb0I7TUFDaEIsWUFBWTtVQUNSLFFBQVE7Q0FDakI7O0FBRUQ7O0VBRUU7SUFDRSxZQUFZO0dBQ2I7RUFDRDtJQUNFLGtCQUFrQjtHQUNuQjtDQUNGOztBQUVEOztFQUVFLFdBQVc7RUFDWCxtQkFBbUI7RUFDbkIsa0JBQWtCO0NBQ25CIiwiZmlsZSI6ImNvbW1vbi5sZXNzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCAncHJpbWFyeSc7XG5ib2R5IHtcbiBjb2xvcjogQGZvbnQtbm9ybWFsLWNvbG9yO1xuIGZvbnQtc2l6ZTogMTRweDtcbn1cblxuLmNvbW1vbi1pbnB1dC1ib3gge1xuICAgIGxhYmVsIHtcbiAgICAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgICAgICAqZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgICAgICB3aWR0aDogMTIwcHg7XG4gICAgICAgIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG4gICAgICAgIHRleHQtYWxpZ246IHJpZ2h0O1xuICAgICAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgICAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgICAgICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbiAgICB9XG4gICAgLmVsLWlucHV0IHtcbiAgICAgICAgd2lkdGg6IDE4MHB4O1xuICAgIH1cbn1cbi5jb21tb24tYmxhbmsge1xuICAgIGhlaWdodDogOHB4O1xuICAgIGJhY2tncm91bmQtY29sb3I6IEBtYWluLWJnLWNvbG9yO1xufVxuLmNvbW1vbi1jb25kaXRpb24tYm94IHtcbiAgICBwYWRkaW5nLXRvcDogMjJweDtcbiAgcGFkZGluZy1ib3R0b206IDEycHg7XG4gICAgcGFkZGluZy1sZWZ0OiAxNXB4O1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNFQkVFRjU7XG4gICAgLmVsLWZvcm0taXRlbSB7XG4gICAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICAgIH1cbiAgICAuZWwtZm9ybS1pdGVtX19sYWJlbCwgLmVsLXNlbGVjdC1kcm9wZG93bl9faXRlbSwgLmVsLXJhZGlvX19sYWJlbCB7XG4gICAgICBmb250LXNpemU6IDEycHg7XG4gICAgfVxuICAgIC5lbC1kYXRlLWVkaXRvciwgLmVsLWlucHV0IHtcbiAgICAgIHdpZHRoOiAxODVweDtcbiAgICB9XG59XG4uY29tbW9uLWNvbnRhaW5lciB7XG4gIGZvbnQtc2l6ZTogQGZvbnQtc2l6ZS1zbWFsbDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbiAgbWluLWhlaWdodDogQG1pbi1oZWlnaHQ7XG4gIC5lbC10YWJsZSwgLmVsLWJ1dHRvbiB7XG4gICAgZm9udC1zaXplOiAxMnB4O1xuICB9XG4gIC5lbC1pbnB1dCB7XG4gICAgaGVpZ2h0OiAyNHB4O1xuICAgIGxpbmUtaGVpZ2h0OiAyNHB4O1xuICAgIC5lbC1pbnB1dF9faW5uZXIge1xuICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgZm9udC1zaXplOiBAZm9udC1zaXplLXNtYWxsO1xuICAgIH1cbiAgfVxufVxuXG4uZm9vdC1iYXIge1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBwYWRkaW5nOiAxOHB4IDQwcHg7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgd2lkdGg6IDEwMCU7XG4gIGJvdHRvbTogMDtcbiAgbGVmdDogMDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbiAgYm9yZGVyLXRvcDogMnB4IHNvbGlkICNkZGQ7XG4gIC13ZWJraXQtYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgei1pbmRleDogOTk5O1xuICAuYnRucy1jb250ZW50IHtcbiAgICBmbG9hdDogcmlnaHQ7XG4gIH1cbn1cblxuLmVsLWJ1dHRvbi0tdGV4dCB7XG4gIGNvbG9yOiAjNjY2O1xufVxuXG4uY29tbW9uLXJvdyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIC5jb21tb24tY29sIHtcbiAgICBmbGV4OiAxO1xuICB9XG4gIC5idG4tY29sIHtcbiAgICB3aWR0aDogMTAwcHhcbiAgfVxufVxuXG4vLyDkuLvoibLosINcbi5wcmltYXJ5IHtcbiAgY29sb3I6IEBtYWluLWNvbG9yO1xufVxuXG4vLyBsYWJlbOWKoOihqOWNlSDvvIjlhaznlKjmoLflvI/vvIlcbi5sYWJlbC1pbnB1dCB7XG4gIGxhYmVsIHtcbiAgICBwYWRkaW5nLXJpZ2h0OiA4cHg7XG4gIH1cbiAgLmVsLWlucHV0LCBlbC1zZWxlY3Qge1xuICAgIHdpZHRoOiAxNjBweDtcbiAgfVxufVxuXG4vLyDkuIvmi4nmoYbpgInmi6npnaLmnb/lrZfkvZPlpKflsI9cbi5lbC1zZWxlY3QtZHJvcGRvd25fX2l0ZW0ge1xuICBmb250LXNpemU6IDEycHg7XG59XG4vLyDooajljZVsYWJlbOWtl+S9k+Wkp+Wwj1xuLmVsLWZvcm0taXRlbV9fbGFiZWwge1xuICBmb250LXNpemU6IDEycHhcbn1cblxuLy8g5LuTK+mFjeWktOmDqOWbuuWumlxuLnBsYW5JbXBvcnRIZWFkZXIge1xuICB3aWR0aDogMTAwJTtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDBweDtcbiAgbGVmdDogMHB4O1xuICB6LWluZGV4OiA5OTk7XG59XG4ucGxhbkltcG9ydEJvZHkge1xuICBwYWRkaW5nLWJvdHRvbTogNzBweDtcbiAgbWluLWhlaWdodDogQG1pbi1oZWlnaHQ7XG59XG5cbi5wYWRkaW5nLXdyYXBlciB7XG4gIC13ZWJraXQtYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgLW1vei1ib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IEBtYWluLWJnLWNvbG9yO1xufVxuXG4ucGFkZGluZy13cmFwZXIgPiBkaXYge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xufVxuXG4vLyDooajljZXlhoXpg6jmuIXnqbrmjInpkq5cbi5lbC1pbnB1dCB7XG4gIC5lbC1pY29uLWNsb3NlIHtcbiAgICBmb250LXNpemU6MTJweDtcbiAgICBvcGFjaXR5OiAwO1xuICB9XG4gIC5lbC1pY29uLWNsb3NlOmhvdmVyIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIC13ZWJraXQtdHJhbnNpdGlvbjogZGlzcGxheSAwLjNzO1xuICAgIC1tb3otdHJhbnNpdGlvbjogZGlzcGxheSAwLjNzO1xuICAgIC1tcy10cmFuc2l0aW9uOiBkaXNwbGF5IDAuM3M7XG4gICAgLW8tdHJhbnNpdGlvbjogZGlzcGxheSAwLjNzO1xuICAgIHRyYW5zaXRpb246IGRpc3BsYXkgMC4zcztcbiAgfVxufVxuXG4vLyDnpoHmraLmloflrZfpgInkuK1cbi5ub3NlbGVjdCB7XG4gIGlucHV0IHtcbiAgICAtd2Via2l0LXRvdWNoLWNhbGxvdXQ6IG5vbmU7IC8qIGlPUyBTYWZhcmkgKi9cbiAgICAtd2Via2l0LXVzZXItc2VsZWN0OiBub25lOyAvKiBDaHJvbWUvU2FmYXJpL09wZXJhICovXG4gICAgLWtodG1sLXVzZXItc2VsZWN0OiBub25lOyAvKiBLb25xdWVyb3IgKi9cbiAgICAtbW96LXVzZXItc2VsZWN0OiBub25lOyAvKiBGaXJlZm94ICovXG4gICAgLW1zLXVzZXItc2VsZWN0OiBub25lOyAvKiBJbnRlcm5ldCBFeHBsb3Jlci9FZGdlICovXG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7IC8qIE5vbi1wcmVmaXhlZCB2ZXJzaW9uLCBjdXJyZW50bHkgKi9cbiAgfVxufVxuXG4uY29uZGl0aW9uLWJveCB7XG4gIG1hcmdpbi10b3A6IDIwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNFQkVFRjU7XG4gIHBhZGRpbmc6IDIycHggMTVweCAwcHggMTVweDtcbn1cblxuLy8g5raI5oGv5o+Q56S66LCD5pW05Li656a76aG26YOoMzUlXG4uZWwtbWVzc2FnZSB7XG4gIHRvcDogMzUlO1xufVxuXG4vLyDlpLTpg6jpnaLljIXlsZHlrrnlmahcbi5oZWFkYmFyIHtcbiAgcGFkZGluZy1sZWZ0OiAxNXB4O1xuICBtYXJnaW4tYm90dG9tOiAxNXB4O1xufVxuXG4uY29tbW9uLXN0ZXAtY29udGFpbmVyIHtcbiAgcGFkZGluZy10b3A6IDEwcHg7XG4gIHBhZGRpbmctYm90dG9tOiAxMHB4O1xufVxuXG4vLyB0YWLmoLflvI/kv67mlLlcbi5jb21tb24tdGFiLXdyYXBlciB7XG4gIC5lbC10YWJze1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XG4gICAgLypib3JkZXItdG9wOiAzcHggc29saWQgI2U3ZWFlYzsqL1xuICB9XG4gIC5lbC10YWJzX19uYXZ7XG4gICAgZmxvYXQ6IG5vbmU7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIC5lbC10YWJzX19pdGVte1xuICAgICAgd2lkdGg6IDIwJTtcbiAgICB9XG4gICAgLmVsLXRhYnNfX2FjdGl2ZS1iYXJ7XG4gICAgICBsZWZ0OiAyMCU7XG4gICAgfVxuICB9XG4gIC5lbC10YWJzX19jb250ZW50e1xuICAgIG1hcmdpbi10b3A6IDIxcHg7XG4gIH1cbn1cblxuLmNvbW1vbi1yb3cge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuLmNvbW1vbi1jb2wge1xuICBmbGV4OiAxO1xufVxuXG5cblxuIl19 */

@@ -1,0 +1,1282 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?9rrpad');
+  src:  url('fonts/icomoon.eot?9rrpad#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?9rrpad') format('truetype'),
+    url('fonts/icomoon.woff?9rrpad') format('woff'),
+    url('fonts/icomoon.svg?9rrpad#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="el-icon-mo-"], [class*=" el-icon-mo-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-mo-acceptancebyCarrier:before {
+  content: "\e900";
+}
+.el-icon-mo-accessoriesFiles:before {
+  content: "\e901";
+  color: #555;
+}
+.el-icon-mo-accessoriesSupplierfile:before {
+  content: "\e902";
+  color: #555;
+}
+.el-icon-mo-accountsReceivablemanagement:before {
+  content: "\e903";
+}
+.el-icon-mo-accountsreceivableQueries:before {
+  content: "\e904";
+}
+.el-icon-mo-accountsReceivablereconciliation:before {
+  content: "\e905";
+}
+.el-icon-mo-accountsReceivablesettlement:before {
+  content: "\e906";
+}
+.el-icon-mo-accountsReceivablewater:before {
+  content: "\e907";
+}
+.el-icon-mo-activateCancel:before {
+  content: "\e908";
+}
+.el-icon-mo-activateSave:before {
+  content: "\e909";
+}
+.el-icon-mo-add:before {
+  content: "\e90a";
+}
+.el-icon-mo-addDetail:before {
+  content: "\e90b";
+}
+.el-icon-mo-addMessage:before {
+  content: "\e90c";
+}
+.el-icon-mo-addressAdd:before {
+  content: "\e90d";
+  color: #666;
+}
+.el-icon-mo-addSingle:before {
+  content: "\e90e";
+}
+.el-icon-mo-addSummary:before {
+  content: "\e90f";
+}
+.el-icon-mo-addTemperature:before {
+  content: "\e910";
+}
+.el-icon-mo-addTerminal:before {
+  content: "\e911";
+}
+.el-icon-mo-adjustingTime:before {
+  content: "\e912";
+}
+.el-icon-mo-arrow-down:before {
+  content: "\e913";
+}
+.el-icon-mo-arrow-up:before {
+  content: "\e914";
+}
+.el-icon-mo-assets:before {
+  content: "\e915";
+}
+.el-icon-mo-assignment:before {
+  content: "\e916";
+}
+.el-icon-mo-auditConfirmation:before {
+  content: "\e917";
+}
+.el-icon-mo-auditing:before {
+  content: "\e918";
+}
+.el-icon-mo-authorization:before {
+  content: "\e919";
+}
+.el-icon-mo-batchAdjustment:before {
+  content: "\e91a";
+}
+.el-icon-mo-batchMdyPsw:before {
+  content: "\e91b";
+}
+.el-icon-mo-bddtcljk:before {
+  content: "\e91c";
+}
+.el-icon-mo-beifen:before {
+  content: "\e91d";
+}
+.el-icon-mo-bigger:before {
+  content: "\e91e";
+}
+.el-icon-mo-box:before {
+  content: "\e91f";
+  color: #666;
+}
+.el-icon-mo-breakDocuments:before {
+  content: "\e920";
+}
+.el-icon-mo-browse:before {
+  content: "\e921";
+}
+.el-icon-mo-bsnsDelpt:before {
+  content: "\e922";
+}
+.el-icon-mo-buchong:before {
+  content: "\e923";
+  color: #666;
+}
+.el-icon-mo-businessAudit:before {
+  content: "\e924";
+}
+.el-icon-mo-businessCar:before {
+  content: "\e925";
+  color: #555;
+}
+.el-icon-mo-businessType1:before {
+  content: "\e926";
+  color: #516e8e;
+}
+.el-icon-mo-businessType2:before {
+  content: "\e927";
+  color: #747474;
+}
+.el-icon-mo-cancelDocuments:before {
+  content: "\e928";
+}
+.el-icon-mo-cancelSign:before {
+  content: "\e929";
+}
+.el-icon-mo-cancelTransfer:before {
+  content: "\e92a";
+}
+.el-icon-mo-cancle:before {
+  content: "\e92b";
+}
+.el-icon-mo-cancle2:before {
+  content: "\e92c";
+}
+.el-icon-mo-car:before {
+  content: "\e92d";
+}
+.el-icon-mo-car_add:before {
+  content: "\e92e";
+}
+.el-icon-mo-car_delete:before {
+  content: "\e92f";
+}
+.el-icon-mo-carrierMonitoring:before {
+  content: "\e930";
+}
+.el-icon-mo-changeUnavailable:before {
+  content: "\e931";
+}
+.el-icon-mo-chepai:before {
+  content: "\e932";
+}
+.el-icon-mo-circle:before {
+  content: "\e933";
+}
+.el-icon-mo-clear:before {
+  content: "\e934";
+}
+.el-icon-mo-client:before {
+  content: "\e935";
+}
+.el-icon-mo-clientInformation:before {
+  content: "\e936";
+}
+.el-icon-mo-clientMonitoring:before {
+  content: "\e937";
+}
+.el-icon-mo-close:before {
+  content: "\e938";
+}
+.el-icon-mo-close2:before {
+  content: "\e939";
+}
+.el-icon-mo-closePopup-box:before {
+  content: "\e93a";
+}
+.el-icon-mo-cloud:before {
+  content: "\e93b";
+}
+.el-icon-mo-cold-collection:before {
+  content: "\e93c";
+}
+.el-icon-mo-coldchainDisplay:before {
+  content: "\e93d";
+}
+.el-icon-mo-coldchainMonitoringcenter:before {
+  content: "\e93e";
+}
+.el-icon-mo-coldchainVehiclemonitoring:before {
+  content: "\e93f";
+}
+.el-icon-mo-coldStorage:before {
+  content: "\e940";
+}
+.el-icon-mo-coldstorageTemperaturemonitoring:before {
+  content: "\e941";
+}
+.el-icon-mo-coldStoragetypesupplement:before {
+  content: "\e942";
+}
+.el-icon-mo-commodityInformation:before {
+  content: "\e943";
+}
+.el-icon-mo-configWarning:before {
+  content: "\e944";
+}
+.el-icon-mo-contactNumber:before {
+  content: "\e945";
+  color: #516e8e;
+}
+.el-icon-mo-contactPerson:before {
+  content: "\e946";
+  color: #516e8e;
+}
+.el-icon-mo-copewithQuery:before {
+  content: "\e947";
+}
+.el-icon-mo-copewithSettlement:before {
+  content: "\e948";
+}
+.el-icon-mo-copewithWater:before {
+  content: "\e949";
+}
+.el-icon-mo-copy:before {
+  content: "\e94a";
+}
+.el-icon-mo-cube:before {
+  content: "\e94b";
+}
+.el-icon-mo-customerSign:before {
+  content: "\e94c";
+}
+.el-icon-mo-danshu:before {
+  content: "\e94d";
+  color: #666;
+}
+.el-icon-mo-dataDictionary:before {
+  content: "\e94e";
+}
+.el-icon-mo-dataIssued:before {
+  content: "\e94f";
+}
+.el-icon-mo-dataQuery:before {
+  content: "\e950";
+}
+.el-icon-mo-dbmConfig:before {
+  content: "\e951";
+  color: #464e55;
+}
+.el-icon-mo-dealwithManagement:before {
+  content: "\e952";
+}
+.el-icon-mo-dealwithReconciliation:before {
+  content: "\e953";
+}
+.el-icon-mo-delete:before {
+  content: "\e954";
+}
+.el-icon-mo-delete2:before {
+  content: "\e955";
+}
+.el-icon-mo-deleteData:before {
+  content: "\e956";
+}
+.el-icon-mo-deleteDetail:before {
+  content: "\e957";
+}
+.el-icon-mo-deleteDocuments:before {
+  content: "\e958";
+}
+.el-icon-mo-deleteDuplicate:before {
+  content: "\e959";
+}
+.el-icon-mo-deleteLoadinglist:before {
+  content: "\e95a";
+}
+.el-icon-mo-deleteMessages:before {
+  content: "\e95b";
+}
+.el-icon-mo-deleteSummary:before {
+  content: "\e95c";
+}
+.el-icon-mo-deleteTerminal:before {
+  content: "\e95d";
+}
+.el-icon-mo-deleteTheorder:before {
+  content: "\e95e";
+}
+.el-icon-mo-derivedExcel:before {
+  content: "\e95f";
+}
+.el-icon-mo-destinationAdd:before {
+  content: "\e960";
+  color: #666;
+}
+.el-icon-mo-detail:before {
+  content: "\e961";
+}
+.el-icon-mo-dictionarydataMaintenance:before {
+  content: "\e962";
+}
+.el-icon-mo-direction:before {
+  content: "\e963";
+}
+.el-icon-mo-displayHiddendata:before {
+  content: "\e964";
+}
+.el-icon-mo-displayUninsuredvehicles:before {
+  content: "\e965";
+}
+.el-icon-mo-distribution:before {
+  content: "\e966";
+}
+.el-icon-mo-distributionAudit:before {
+  content: "\e967";
+}
+.el-icon-mo-distributionLinedisplay:before {
+  content: "\e968";
+}
+.el-icon-mo-distributionOf-the-car:before {
+  content: "\e969";
+  color: #555;
+}
+.el-icon-mo-distributionTransportationcost:before {
+  content: "\e96a";
+}
+.el-icon-mo-document:before {
+  content: "\e96b";
+}
+.el-icon-mo-document2:before {
+  content: "\e96c";
+}
+.el-icon-mo-down:before {
+  content: "\e96d";
+}
+.el-icon-mo-down2:before {
+  content: "\e96e";
+}
+.el-icon-mo-down-arrow:before {
+  content: "\e96f";
+}
+.el-icon-mo-download:before {
+  content: "\e970";
+}
+.el-icon-mo-downloadData:before {
+  content: "\e971";
+}
+.el-icon-mo-drag:before {
+  content: "\e972";
+}
+.el-icon-mo-draw:before {
+  content: "\e973";
+}
+.el-icon-mo-driver:before {
+  content: "\e974";
+}
+.el-icon-mo-driverFiles:before {
+  content: "\e975";
+}
+.el-icon-mo-drugSpecifications:before {
+  content: "\e976";
+  color: #516e8e;
+}
+.el-icon-mo-dsConfig:before {
+  content: "\e977";
+  color: #464e55;
+}
+.el-icon-mo-dtznwl:before {
+  content: "\e978";
+}
+.el-icon-mo-edit:before {
+  content: "\e979";
+}
+.el-icon-mo-editInformation:before {
+  content: "\e97a";
+}
+.el-icon-mo-editingService:before {
+  content: "\e97b";
+}
+.el-icon-mo-editingTerminal:before {
+  content: "\e97c";
+}
+.el-icon-mo-editLine:before {
+  content: "\e97d";
+}
+.el-icon-mo-editMessage:before {
+  content: "\e97e";
+}
+.el-icon-mo-emergencyOrdernumber:before {
+  content: "\e97f";
+}
+.el-icon-mo-enterpriseOwnerinformation:before {
+  content: "\e980";
+}
+.el-icon-mo-entrustmentCancellation:before {
+  content: "\e981";
+  color: #888;
+}
+.el-icon-mo-entrustmentNew:before {
+  content: "\e982";
+  color: #888;
+}
+.el-icon-mo-equipmentData:before {
+  content: "\e983";
+}
+.el-icon-mo-equipmentSupplier:before {
+  content: "\e984";
+}
+.el-icon-mo-export:before {
+  content: "\e985";
+}
+.el-icon-mo-export2:before {
+  content: "\e986";
+  color: #888;
+}
+.el-icon-mo-exportClaimform:before {
+  content: "\e987";
+}
+.el-icon-mo-exportCurrent:before {
+  content: "\e988";
+}
+.el-icon-mo-exportData:before {
+  content: "\e989";
+}
+.el-icon-mo-extract:before {
+  content: "\e98a";
+}
+.el-icon-mo-fangxiang:before {
+  content: "\e98b";
+  color: #555;
+}
+.el-icon-mo-fengequyu:before {
+  content: "\e98c";
+}
+.el-icon-mo-fieldSettings:before {
+  content: "\e98d";
+}
+.el-icon-mo-financialExpensemanagement:before {
+  content: "\e98e";
+}
+.el-icon-mo-folding:before {
+  content: "\e98f";
+}
+.el-icon-mo-foldingMenu:before {
+  content: "\e990";
+}
+.el-icon-mo-fuelInput:before {
+  content: "\e991";
+}
+.el-icon-mo-gasStationsarchives:before {
+  content: "\e992";
+  color: #555;
+}
+.el-icon-mo-gdzczjb:before {
+  content: "\e993";
+}
+.el-icon-mo-guihualujing:before {
+  content: "\e994";
+  color: #747474;
+}
+.el-icon-mo-gytczwlsjb:before {
+  content: "\e995";
+}
+.el-icon-mo-handle:before {
+  content: "\e996";
+}
+.el-icon-mo-history:before {
+  content: "\e997";
+}
+.el-icon-mo-homePage:before {
+  content: "\e998";
+}
+.el-icon-mo-huifu:before {
+  content: "\e999";
+}
+.el-icon-mo-hwyj:before {
+  content: "\e99a";
+}
+.el-icon-mo-icon-carinfo:before {
+  content: "\e99b";
+}
+.el-icon-mo-icon-close:before {
+  content: "\e99c";
+}
+.el-icon-mo-icon-filter:before {
+  content: "\e99d";
+}
+.el-icon-mo-icon-lcck:before {
+  content: "\e99e";
+}
+.el-icon-mo-icon-location:before {
+  content: "\e99f";
+}
+.el-icon-mo-icon-reverse:before {
+  content: "\e9a0";
+}
+.el-icon-mo-icon-roadinfo:before {
+  content: "\e9a1";
+}
+.el-icon-mo-icon-roadline:before {
+  content: "\e9a2";
+}
+.el-icon-mo-icon-sure:before {
+  content: "\e9a3";
+}
+.el-icon-mo-icon-view1:before {
+  content: "\e9a4";
+}
+.el-icon-mo-icon-view2:before {
+  content: "\e9a5";
+}
+.el-icon-mo-icon-yt:before {
+  content: "\e9a6";
+}
+.el-icon-mo-icon-yyjk:before {
+  content: "\e9a7";
+}
+.el-icon-mo-icon-zxjk:before {
+  content: "\e9a8";
+}
+.el-icon-mo-illegalRegistration:before {
+  content: "\e9a9";
+  color: #515151;
+}
+.el-icon-mo-import:before {
+  content: "\e9aa";
+}
+.el-icon-mo-incomeAdditional:before {
+  content: "\e9ab";
+  color: #888;
+}
+.el-icon-mo-incomeEntry:before {
+  content: "\e9ac";
+  color: #515151;
+}
+.el-icon-mo-insuranceCompanyfile:before {
+  content: "\e9ad";
+  color: #515151;
+}
+.el-icon-mo-insuranceExpirationreminder:before {
+  content: "\e9ae";
+}
+.el-icon-mo-insuranceRegistration:before {
+  content: "\e9af";
+  color: #515151;
+}
+.el-icon-mo-insuranceTypemaintenance:before {
+  content: "\e9b0";
+  color: #515151;
+}
+.el-icon-mo-insuranceVehicle:before {
+  content: "\e9b1";
+}
+.el-icon-mo-interfaceSettings:before {
+  content: "\e9b2";
+  color: #464e55;
+}
+.el-icon-mo-inventoryAnalysis:before {
+  content: "\e9b3";
+}
+.el-icon-mo-inventoryContro:before {
+  content: "\e9b4";
+}
+.el-icon-mo-inventoryManagement:before {
+  content: "\e9b5";
+}
+.el-icon-mo-inventoryVisualization:before {
+  content: "\e9b6";
+}
+.el-icon-mo-jiazaikehu:before {
+  content: "\e9b7";
+}
+.el-icon-mo-kaishi:before {
+  content: "\e9b8";
+}
+.el-icon-mo-kehu:before {
+  content: "\e9b9";
+  color: #666;
+}
+.el-icon-mo-lclxzl:before {
+  content: "\e9ba";
+}
+.el-icon-mo-llgssz:before {
+  content: "\e9bb";
+}
+.el-icon-mo-llpcxs:before {
+  content: "\e9bc";
+}
+.el-icon-mo-llrqzl:before {
+  content: "\e9bd";
+}
+.el-icon-mo-llsbzl:before {
+  content: "\e9be";
+}
+.el-icon-mo-llyyzxjk:before {
+  content: "\e9bf";
+}
+.el-icon-mo-llzsdxyj:before {
+  content: "\e9c0";
+}
+.el-icon-mo-llzsecsh:before {
+  content: "\e9c1";
+}
+.el-icon-mo-llzspsjj:before {
+  content: "\e9c2";
+}
+.el-icon-mo-llzsrwhf:before {
+  content: "\e9c3";
+}
+.el-icon-mo-llzsrwxf:before {
+  content: "\e9c4";
+}
+.el-icon-mo-llzssjsh:before {
+  content: "\e9c5";
+}
+.el-icon-mo-llzssjtz:before {
+  content: "\e9c6";
+}
+.el-icon-mo-loadingConfirmation:before {
+  content: "\e9c7";
+}
+.el-icon-mo-location:before {
+  content: "\e9c8";
+  color: #516e8e;
+}
+.el-icon-mo-lock:before {
+  content: "\e9c9";
+}
+.el-icon-mo-logisticsCenter:before {
+  content: "\e9ca";
+}
+.el-icon-mo-logisticsMonitoring:before {
+  content: "\e9cb";
+}
+.el-icon-mo-logo:before {
+  content: "\e9cc";
+}
+.el-icon-mo-lukuang:before {
+  content: "\e9cd";
+}
+.el-icon-mo-maintain:before {
+  content: "\e9ce";
+}
+.el-icon-mo-Maintenance:before {
+  content: "\e9cf";
+}
+.el-icon-mo-maintenanceFactoryfile:before {
+  content: "\e9d0";
+  color: #545454;
+}
+.el-icon-mo-maintenanceReminder:before {
+  content: "\e9d1";
+}
+.el-icon-mo-managerAudit:before {
+  content: "\e9d2";
+}
+.el-icon-mo-manualWarehousingdetail:before {
+  content: "\e9d3";
+}
+.el-icon-mo-manufacturer:before {
+  content: "\e9d4";
+  color: #516e8e;
+}
+.el-icon-mo-map:before {
+  content: "\e9d5";
+}
+.el-icon-mo-mapPoint:before {
+  content: "\e9d6";
+}
+.el-icon-mo-maximizing:before {
+  content: "\e9d7";
+}
+.el-icon-mo-medicine:before {
+  content: "\e9d8";
+}
+.el-icon-mo-mental:before {
+  content: "\e9d9";
+}
+.el-icon-mo-menu:before {
+  content: "\e9da";
+}
+.el-icon-mo-menuAdd:before {
+  content: "\e9db";
+}
+.el-icon-mo-menuButton:before {
+  content: "\e9dc";
+}
+.el-icon-mo-menuDaohang:before {
+  content: "\e9dd";
+}
+.el-icon-mo-menu-yuetai:before {
+  content: "\e9de";
+}
+.el-icon-mo-merge:before {
+  content: "\e9df";
+  color: #888;
+}
+.el-icon-mo-mingxi:before {
+  content: "\e9e0";
+}
+.el-icon-mo-modifyCooler:before {
+  content: "\e9e1";
+}
+.el-icon-mo-modifyEquipmentserialnumber:before {
+  content: "\e9e2";
+}
+.el-icon-mo-modifyPsw:before {
+  content: "\e9e3";
+}
+.el-icon-mo-More:before {
+  content: "\e9e4";
+}
+.el-icon-mo-newCarlist:before {
+  content: "\e9e5";
+}
+.el-icon-mo-newlyAdded:before {
+  content: "\e9e6";
+}
+.el-icon-mo-newService:before {
+  content: "\e9e7";
+}
+.el-icon-mo-notPass:before {
+  content: "\e9e8";
+}
+.el-icon-mo-notshowUninsuredvehicles:before {
+  content: "\e9e9";
+}
+.el-icon-mo-Number-of-entries:before {
+  content: "\e9ea";
+}
+.el-icon-mo-Number:before {
+  content: "\e9eb";
+}
+.el-icon-mo-oilCardfile:before {
+  content: "\e9ec";
+  color: #555;
+}
+.el-icon-mo-oilPricesfile:before {
+  content: "\e9ed";
+  color: #555;
+}
+.el-icon-mo-operationMonitoring:before {
+  content: "\e9ee";
+}
+.el-icon-mo-operatorMonitoring .path1:before {
+  content: "\e9ef";
+  color: rgb(58, 64, 71);
+}
+.el-icon-mo-operatorMonitoring .path2:before {
+  content: "\e9f0";
+  margin-left: -1em;
+  color: rgb(58, 64, 71);
+}
+.el-icon-mo-operatorMonitoring .path3:before {
+  content: "\e9f1";
+  margin-left: -1em;
+  color: rgb(57, 64, 70);
+}
+.el-icon-mo-ordernodeVisualization:before {
+  content: "\e9f2";
+}
+.el-icon-mo-orderNumber:before {
+  content: "\e9f3";
+}
+.el-icon-mo-orderSummary:before {
+  content: "\e9f4";
+  color: #666;
+}
+.el-icon-mo-orderTracking:before {
+  content: "\e9f5";
+}
+.el-icon-mo-orderVisualization:before {
+  content: "\e9f6";
+}
+.el-icon-mo-org:before {
+  content: "\e9f7";
+}
+.el-icon-mo-Outbound-order:before {
+  content: "\e9f8";
+}
+.el-icon-mo-outbound:before {
+  content: "\e9f9";
+}
+.el-icon-mo-outboundPlanentry:before {
+  content: "\e9fa";
+}
+.el-icon-mo-outboundPlanningreview:before {
+  content: "\e9fb";
+}
+.el-icon-mo-outsideOfthecar:before {
+  content: "\e9fc";
+  color: #555;
+}
+.el-icon-mo-ov:before {
+  content: "\e9fd";
+}
+.el-icon-mo-packingCancellation:before {
+  content: "\e9fe";
+}
+.el-icon-mo-packingNumber:before {
+  content: "\e9ff";
+  color: #516e8e;
+}
+.el-icon-mo-packingRelation:before {
+  content: "\ea00";
+}
+.el-icon-mo-packingUnit:before {
+  content: "\ea01";
+  color: #516e8e;
+}
+.el-icon-mo-partsInventory:before {
+  content: "\ea02";
+  color: #555;
+}
+.el-icon-mo-path:before {
+  content: "\ea03";
+}
+.el-icon-mo-peisy:before {
+  content: "\ea04";
+  color: #666;
+}
+.el-icon-mo-personalData:before {
+  content: "\ea05";
+}
+.el-icon-mo-phone:before {
+  content: "\ea06";
+}
+.el-icon-mo-platformMonitoring:before {
+  content: "\ea07";
+}
+.el-icon-mo-prepareHandover:before {
+  content: "\ea08";
+}
+.el-icon-mo-preservation:before {
+  content: "\ea09";
+}
+.el-icon-mo-print:before {
+  content: "\ea0a";
+  color: #666;
+}
+.el-icon-mo-print2:before {
+  content: "\ea0b";
+}
+.el-icon-mo-printConfig:before {
+  content: "\ea0c";
+}
+.el-icon-mo-printRgtForm:before {
+  content: "\ea0d";
+}
+.el-icon-mo-psbystj:before {
+  content: "\ea0e";
+}
+.el-icon-mo-psrwtj:before {
+  content: "\ea0f";
+}
+.el-icon-mo-psssgz:before {
+  content: "\ea10";
+}
+.el-icon-mo-putInstorage:before {
+  content: "\ea11";
+}
+.el-icon-mo-query:before {
+  content: "\ea12";
+}
+.el-icon-mo-queryData:before {
+  content: "\ea13";
+}
+.el-icon-mo-realtimeDatadownload:before {
+  content: "\ea14";
+}
+.el-icon-mo-receiptDetails:before {
+  content: "\ea15";
+  color: #888;
+}
+.el-icon-mo-receiptSign:before {
+  content: "\ea16";
+  color: #888;
+}
+.el-icon-mo-receiptUpload:before {
+  content: "\ea17";
+  color: #888;
+}
+.el-icon-mo-recoverData:before {
+  content: "\ea18";
+}
+.el-icon-mo-refresh:before {
+  content: "\ea19";
+}
+.el-icon-mo-refreshData:before {
+  content: "\ea1a";
+}
+.el-icon-mo-RegistrationofVehiclemaintenanceandrepair:before {
+  content: "\ea1b";
+  color: #555;
+}
+.el-icon-mo-repair:before {
+  content: "\ea1c";
+}
+.el-icon-mo-replacement:before {
+  content: "\ea1d";
+}
+.el-icon-mo-replay:before {
+  content: "\ea1e";
+}
+.el-icon-mo-reset:before {
+  content: "\ea1f";
+}
+.el-icon-mo-retrospectivedataHistorydownload:before {
+  content: "\ea20";
+}
+.el-icon-mo-right:before {
+  content: "\ea21";
+}
+.el-icon-mo-role:before {
+  content: "\ea22";
+}
+.el-icon-mo-route:before {
+  content: "\ea23";
+}
+.el-icon-mo-rowConfirmation:before {
+  content: "\ea24";
+}
+.el-icon-mo-Sales-volume:before {
+  content: "\ea25";
+}
+.el-icon-mo-saveAudit:before {
+  content: "\ea26";
+}
+.el-icon-mo-saveData:before {
+  content: "\ea27";
+}
+.el-icon-mo-saveMessage:before {
+  content: "\ea28";
+}
+.el-icon-mo-saveTime:before {
+  content: "\ea29";
+}
+.el-icon-mo-scenarioSettings:before {
+  content: "\ea2a";
+}
+.el-icon-mo-scrapAlert:before {
+  content: "\ea2b";
+}
+.el-icon-mo-screen:before {
+  content: "\ea2c";
+}
+.el-icon-mo-secondAudit:before {
+  content: "\ea2d";
+}
+.el-icon-mo-select:before {
+  content: "\ea2e";
+}
+.el-icon-mo-setting:before {
+  content: "\ea2f";
+}
+.el-icon-mo-settings:before {
+  content: "\ea30";
+}
+.el-icon-mo-settlementEnquiries:before {
+  content: "\ea31";
+}
+.el-icon-mo-sfjk:before {
+  content: "\ea32";
+}
+.el-icon-mo-shanchu:before {
+  content: "\ea33";
+  color: #666;
+}
+.el-icon-mo-shippingBack:before {
+  content: "\ea34";
+}
+.el-icon-mo-showHiddendata:before {
+  content: "\ea35";
+}
+.el-icon-mo-shuaxin:before {
+  content: "\ea36";
+}
+.el-icon-mo-sparePartsinventoryfile:before {
+  content: "\ea37";
+  color: #555;
+}
+.el-icon-mo-spendingAdditional:before {
+  content: "\ea38";
+  color: #888;
+}
+.el-icon-mo-sqlSettings:before {
+  content: "\ea39";
+}
+.el-icon-mo-staffFile:before {
+  content: "\ea3a";
+}
+.el-icon-mo-starCar:before {
+  content: "\ea3b";
+}
+.el-icon-mo-statisticalMonitoring:before {
+  content: "\ea3c";
+}
+.el-icon-mo-step:before {
+  content: "\ea3d";
+}
+.el-icon-mo-stockAnalysis:before {
+  content: "\ea3e";
+}
+.el-icon-mo-storageareaStatistics:before {
+  content: "\ea3f";
+}
+.el-icon-mo-storagespaceStatistics:before {
+  content: "\ea40";
+}
+.el-icon-mo-submit:before {
+  content: "\ea41";
+}
+.el-icon-mo-sure:before {
+  content: "\ea42";
+}
+.el-icon-mo-sybgbmfymx:before {
+  content: "\ea43";
+}
+.el-icon-mo-sybrstjb:before {
+  content: "\ea44";
+}
+.el-icon-mo-system:before {
+  content: "\ea45";
+}
+.el-icon-mo-systemParameter:before {
+  content: "\ea46";
+}
+.el-icon-mo-systemParameterdata:before {
+  content: "\ea47";
+}
+.el-icon-mo-taskActivation:before {
+  content: "\ea48";
+}
+.el-icon-mo-temperature:before {
+  content: "\ea49";
+}
+.el-icon-mo-temperatureAdjustment:before {
+  content: "\ea4a";
+}
+.el-icon-mo-temperatureLayer:before {
+  content: "\ea4b";
+  color: #516e8e;
+}
+.el-icon-mo-tingzhi:before {
+  content: "\ea4c";
+}
+.el-icon-mo-tingzhijiankong:before {
+  content: "\ea4d";
+}
+.el-icon-mo-tiremaintenanceRecord:before {
+  content: "\ea4e";
+  color: #515151;
+}
+.el-icon-mo-tireModelfile:before {
+  content: "\ea4f";
+  color: #555;
+}
+.el-icon-mo-tj:before {
+  content: "\ea50";
+  color: #666;
+}
+.el-icon-mo-tool:before {
+  content: "\ea51";
+}
+.el-icon-mo-Total-inventory:before {
+  content: "\ea52";
+}
+.el-icon-mo-touch:before {
+  content: "\ea53";
+}
+.el-icon-mo-tracesExcess:before {
+  content: "\ea54";
+}
+.el-icon-mo-transportationAudit:before {
+  content: "\ea55";
+}
+.el-icon-mo-transportationAxismonitoring:before {
+  content: "\ea56";
+}
+.el-icon-mo-transportplanEntry:before {
+  content: "\ea57";
+}
+.el-icon-mo-transportplanningAudit:before {
+  content: "\ea58";
+}
+.el-icon-mo-tripartiteExpensemanagement:before {
+  content: "\ea59";
+}
+.el-icon-mo-turnDistribution:before {
+  content: "\ea5a";
+}
+.el-icon-mo-unfinishedOrdernumber:before {
+  content: "\ea5b";
+}
+.el-icon-mo-unit:before {
+  content: "\ea5c";
+}
+.el-icon-mo-unitAddress:before {
+  content: "\ea5d";
+}
+.el-icon-mo-uniteData:before {
+  content: "\ea5e";
+}
+.el-icon-mo-unlock:before {
+  content: "\ea5f";
+}
+.el-icon-mo-unscheduledOrdernumber:before {
+  content: "\ea60";
+}
+.el-icon-mo-up2:before {
+  content: "\ea61";
+}
+.el-icon-mo-up-arrow:before {
+  content: "\ea62";
+}
+.el-icon-mo-user:before {
+  content: "\ea63";
+}
+.el-icon-mo-userDetails:before {
+  content: "\ea64";
+}
+.el-icon-mo-userM:before {
+  content: "\ea65";
+}
+.el-icon-mo-userSettings:before {
+  content: "\ea66";
+  color: #464e55;
+}
+.el-icon-mo-vehicleBrandmodelfile:before {
+  content: "\ea67";
+}
+.el-icon-mo-vehicleCancel:before {
+  content: "\ea68";
+}
+.el-icon-mo-vehicleCancellation:before {
+  content: "\ea69";
+}
+.el-icon-mo-vehicleFile:before {
+  content: "\ea6a";
+}
+.el-icon-mo-vehicleFuelconsumptiontomaintain:before {
+  content: "\ea6b";
+  color: #555;
+}
+.el-icon-mo-vehicleMaintenanceplan:before {
+  content: "\ea6c";
+  color: #555;
+}
+.el-icon-mo-vehicleMileageallowancemaintenance:before {
+  content: "\ea6d";
+  color: #555;
+}
+.el-icon-mo-vehicleOperationmonitoring:before {
+  content: "\ea6e";
+}
+.el-icon-mo-vehicleRefuelingentry:before {
+  content: "\ea6f";
+  color: #555;
+}
+.el-icon-mo-vehicletireInformation:before {
+  content: "\ea70";
+  color: #515151;
+}
+.el-icon-mo-vehicleTireusage:before {
+  content: "\ea71";
+  color: #515151;
+}
+.el-icon-mo-volume:before {
+  content: "\ea72";
+  color: #516e8e;
+}
+.el-icon-mo-warehouseNumber:before {
+  content: "\ea73";
+}
+.el-icon-mo-warehousingCostrules:before {
+  content: "\ea74";
+}
+.el-icon-mo-warehousingPlanaudit:before {
+  content: "\ea75";
+}
+.el-icon-mo-warehousingPlanentry:before {
+  content: "\ea76";
+}
+.el-icon-mo-way:before {
+  content: "\ea77";
+}
+.el-icon-mo-wbcchz:before {
+  content: "\ea78";
+}
+.el-icon-mo-weight:before {
+  content: "\ea79";
+  color: #516e8e;
+}
+.el-icon-mo-weixuan:before {
+  content: "\ea7a";
+  color: #666;
+}
+.el-icon-mo-wljk:before {
+  content: "\ea7b";
+}
+.el-icon-mo-wlzgsgbmfymxb:before {
+  content: "\ea7c";
+}
+.el-icon-mo-wtcljzcx:before {
+  content: "\ea7d";
+}
+.el-icon-mo-wtdj:before {
+  content: "\ea7e";
+}
+.el-icon-mo-wtgj:before {
+  content: "\ea7f";
+}
+.el-icon-mo-wxzxkf:before {
+  content: "\ea80";
+}
+.el-icon-mo-xiangqing:before {
+  content: "\ea81";
+  color: #666;
+}
+.el-icon-mo-xiugai:before {
+  content: "\ea82";
+}
+.el-icon-mo-xuanzhong:before {
+  content: "\ea83";
+  color: #666;
+}
+.el-icon-mo-yccpzxxhz:before {
+  content: "\ea84";
+}
+.el-icon-mo-zanting:before {
+  content: "\ea85";
+}
+.el-icon-mo-zcd:before {
+  content: "\ea86";
+}
+.el-icon-mo-zcdztjk:before {
+  content: "\ea87";
+}
+.el-icon-mo-zgsfwbb:before {
+  content: "\ea88";
+}
+.el-icon-mo-zhjlcx:before {
+  content: "\ea89";
+}
+.el-icon-mo-zlgl:before {
+  content: "\ea8a";
+}

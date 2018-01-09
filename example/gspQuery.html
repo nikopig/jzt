@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="lib/element-ui/theme-chalk/index.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div id="app" class="common-container">
+  <div class="tool-box" ref="toolBox">
+    <div class="toolbar">
+      <div class="btn-box">
+        <el-button type="text"><i class="el-icon-plus"></i>新增</el-button>
+      </div>
+      <div class="btn-box">
+        <el-button type="text"><i class="el-icon-delete"></i>删除</el-button>
+      </div>
+    </div>
+    <div class="common-condition-box">
+      <el-form :inline="true">
+        <el-form-item label="关键字">
+          <el-input v-model="form.keyword"></el-input>
+        </el-form-item>
+        <el-form-item label="日期">
+          <el-date-picker v-model="form.date"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="选项">
+          <el-select v-model="form.selection">
+            <el-option v-for="(item, index) in form.options" :label="item.label" :value="item.value" :key="index"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+    </div>
+  </div>
+  <div class="table-box" ref="tableBox">
+    <div class="main-wrapper">
+      <div class="left">
+        <el-table :data="data1" height="500">
+          <el-table-column prop="Operator_Name" label="运营方"></el-table-column>
+        </el-table>
+      </div>
+      <div class="right">
+        <div class="top">
+          <el-table :data="data2" :max-height="250">
+            <el-table-column type="index"></el-table-column>
+            <el-table-column prop="a" label="运营商名称"></el-table-column>
+            <el-table-column prop="b" label="装车单号"></el-table-column>
+            <el-table-column prop="c" label="配送员"></el-table-column>
+            <el-table-column prop="d" label="配送员电话"></el-table-column>
+            <el-table-column prop="e" label="管理员"></el-table-column>
+            <el-table-column prop="f" label="管理员电话"></el-table-column>
+            <el-table-column prop="g" label="状态"></el-table-column>
+          </el-table>
+          <div class="page-box">
+            <el-pagination
+              layout="total, prev, pager, next"
+              @current-change="pageChange"
+              :current-page.sync="pages.currentIndex"
+              :page-size="pages.pageSize"
+              :total="100">
+            </el-pagination>
+          </div>
+        </div>
+        <div class="bottom">
+          <el-table :data="data3" :max-height="250" ref="table1">
+            <el-table-column prop="a" label="运营商名称"></el-table-column>
+            <el-table-column prop="b" label="装车单号"></el-table-column>
+            <el-table-column prop="c" label="配送员"></el-table-column>
+            <el-table-column prop="d" label="配送员电话"></el-table-column>
+            <el-table-column prop="e" label="管理员"></el-table-column>
+            <el-table-column prop="f" label="管理员电话"></el-table-column>
+            <el-table-column prop="g" label="状态"></el-table-column>
+          </el-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<!-- 先引入 Vue -->
+<script src="lib/vue/index.js"></script>
+<!-- 引入组件库 -->
+<script src="lib/element-ui/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function() {
+      return {
+        pages: {
+          currentIndex: 1,
+          pageSize: 10
+        },
+        form: {
+          keyword: '',
+          date: '',
+          selection: '',
+          options: [
+            {
+              label: '选项1',
+              value: '1'
+            },
+            {
+              label: '选项2',
+              value: '2'
+            }
+          ]
+        },
+        data1: [
+          {
+            Operator_Name: '重庆九州通'
+          },
+          {
+            Operator_Name: '湖北九州通'
+          },
+          {
+            Operator_Name: '广州九州通'
+          }
+        ],
+        data2: [
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          }
+        ],
+        data3: [
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          },
+          {
+            a: '重庆九州通',
+            b:'1111111',
+            c: '小王',
+            d: '12232331231',
+            e: 'admin',
+            f: '32321321',
+            g: '已配送'
+          }
+        ]
+      }
+    },
+    methods: {
+      setHeight: function () {
+        var h = window.innerHeight - this.$refs.toolBox.clientHeight - 20
+        this.$refs.tableBox.style.height = h + 'px'
+      },
+      pageChange () {
+        console.log(this.pages.currentIndex)
+      }
+    },
+    mounted: function () {
+      this.$refs.table1.setCurrentRow()
+      window.onload = this.setHeight
+      window.onresize = this.setHeight
+    }
+  })
+</script>
+<style>
+  .main-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  .main-wrapper .left {
+    width: 262px;
+    height: 100%;
+    padding-right: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .main-wrapper .right {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .main-wrapper .right .top, .main-wrapper .right .bottom {
+    flex: 1;
+    min-height: 270px;
+    overflow: hidden;
+  }
+  .page-box {
+    padding: 15px 0px;
+    text-align: center;
+    .el-pagination {
+      display: inline-block;
+      *display: inline-block;
+      zoom: 1;
+    }
+  }
+</style>
+</html>

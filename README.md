@@ -1,2 +1,2 @@
-# jzt
-jiuzhouyuncang
+#运行方式
+npm run dev planImport

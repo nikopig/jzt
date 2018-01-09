@@ -1,0 +1,122 @@
+body {
+  color: #409EFF;
+  font-size: 14px;
+}
+
+body,
+ul,
+li {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.common-condition-box {
+  padding-top: 22px;
+  padding-left: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #EBEEF5;
+}
+
+.common-condition-box .el-form-item__label,
+.common-condition-box .el-checkbox__label,
+.common-condition-box .el-select-dropdown__item,
+.common-condition-box .el-radio__label,
+.common-condition-box .el-select-dropdown__item {
+  font-size: 12px;
+}
+
+.el-form-item .el-form-item__label,
+.el-form-item .el-checkbox__label,
+.el-form-item .el-select-dropdown__item,
+.el-form-item .el-radio__label,
+.el-form-item .el-select-dropdown__item {
+  font-size: 12px;
+}
+
+.common-container {
+  font-size: 12px;
+  background-color: #fff;
+}
+
+/*.common-container .el-table table {*/
+  /*width: 100% !important;*/
+/*}*/
+
+.common-container .el-table,
+.common-container .el-button {
+  font-size: 12px;
+}
+
+.common-container .el-input {
+  height: 24px;
+  line-height: 24px;
+}
+
+.common-container .el-input__icon {
+  line-height: 28px;
+}
+
+.common-container .el-input input.el-input__inner {
+  height: 100%;
+  height: 22px;
+  line-height: 22px;
+  font-size: 12px;
+}
+
+.common-container .el-input-number__decrease,
+.common-container .el-input-number__increase {
+  line-height: 24px;
+}
+
+.toolbar {
+  height: 42px;
+  background-color: #EBEEF5;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.toolbar .el-button--text {
+  color: #666;
+}
+
+.toolbar .btn-box {
+  display: inline-block;
+  *display: inline-block;
+  zoom: 1;
+  padding: 5px 15px;
+  line-height: 30px;
+}
+
+.toolbar .btn-box .el-button--text.is-disabled {
+  color: #bfcbd9;
+}
+
+.toolbar .text-box {
+  display: inline-block;
+  *display: inline-block;
+  zoom: 1;
+  padding-left: 150px;
+  zoom: 1;
+  color: #F56C6C;
+}
+
+.toolbar .text-box .text {
+  display: inline-block;
+  *display: inline-block;
+  zoom: 1;
+  padding: 0px 20px;
+}
+
+.toolbar .text-box:first-child {
+  padding-left: 150px;
+}
