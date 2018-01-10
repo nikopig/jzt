@@ -112,6 +112,12 @@
               this.messageInfo('请先选择商品')
               return false
             }
+            for (let i = 0; i < this.goods.length; i++) {
+              if (this.goods[i].Stock_Quantity === 0) {
+                this.messageInfo('库存为0的商品不能加入订单车')
+                return false
+              }
+            }
             this.loadingWating = this.showLoading('正在提交...')
             this.StoreCartAdd()
               .then((resp) => {

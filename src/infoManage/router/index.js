@@ -19,6 +19,11 @@ export default new Router({
       path: '/feeRuleStorage',
       name: 'feeRuleStorage',
       component: resolve => require(['../pages/feeRuleStorage'], resolve)
+    },
+    {
+      path: '/rentStorage',
+      name: 'rentStorage',
+      component: resolve => require(['../pages/rentStorage'], resolve)
     }
   ]
 })

@@ -225,6 +225,9 @@
 							<el-form-item prop="Is_Documentary">
 								<el-checkbox v-model="form.Is_Documentary">是否跟单</el-checkbox>
 							</el-form-item>
+							<el-form-item prop="Is_Available">
+								<el-checkbox v-model="form.Is_Available">是否活动</el-checkbox>
+							</el-form-item>
 						</common-col>
 						<common-col :lot="3">
 							<span class="label">扩展字段</span>
@@ -237,11 +240,6 @@
 								  </el-select>
 								</el-form-item>
 							</div>
-						</common-col>
-						<common-col>
-							<el-form-item prop="Is_Available">
-								<el-checkbox v-model="form.Is_Available">是否活动</el-checkbox>
-							</el-form-item>
 						</common-col>
 						<common-col :lot="2">
 							<span class="label">扩展条件</span>
@@ -1011,7 +1009,7 @@
 					overflow: visible;
 					position: relative;
 					.content {
-						overflow: visible;
+						// overflow: visible;
 					}
 					.addRule, .deleteRule {
 						position: absolute;
@@ -1037,6 +1035,7 @@
 			}
 			.el-form-item__content{
 				line-height: 24px;
+				width: 100%;
 			}
 		}
 		.condition-item {
@@ -1063,6 +1062,9 @@
 		.el-select__tags {
 	    white-space: nowrap;
     	overflow: hidden;
+		}
+		.el-checkbox {
+			margin-right: 10px;
 		}
 	}
 </style>

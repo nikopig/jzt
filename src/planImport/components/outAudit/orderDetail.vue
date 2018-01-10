@@ -93,7 +93,8 @@
                     </div> -->
                     <div class="box-card-content-item">
                         <span>出库仓：</span>
-                        <span :title='o.Ldc_Name'>{{ o.Ldc_Name }}</span>
+                        <el-input :disabled="true" v-model="o.Ldc_Name" placeholder="双击选择出库仓" @dblclick.native="openDialog('ldc', o.Con_Id)"></el-input>
+                        <!-- <span :title='o.Ldc_Name'>{{ o.Ldc_Name }}</span> -->
                     </div>
                     <div class="box-card-content-item">
                         <span>联系人：</span>
@@ -130,6 +131,12 @@
                       </el-select>
                     </div>
                     <div class="box-card-content-item">
+                      <span>提货方式：</span>
+                      <el-select :disabled="o.isEdit" v-model="o.Takegoods_Mode">
+                        <el-option v-for="item in takegoodsModes" :key="item.Value_Data" :label="item.Value_Desc" :value="item.Value_Data"></el-option>
+                      </el-select>
+                    </div>
+                    <div class="box-card-content-item">
                         <span>备注：</span>
                         <el-input :disabled="true && o.isEdit" v-model="o.Remarks"></el-input>
                     </div>
@@ -149,8 +156,8 @@
         <div class="btns-contain">
             <div class="btns-content">
                 <!--<el-button type="primary" v-if="orderType != 1" @click="combineOrders">计划合并</el-button>-->
-                <el-button type="danger" @click="blankOut">作废</el-button>
-                <el-button type="info" @click="pend">审核</el-button>
+                <el-button type="danger" @click="blankOut">作&nbsp;废</el-button>
+                <el-button type="info" @click="pend">审&nbsp;核</el-button>
             </div>
         </div>
         <!-- 费用试算弹窗 -->
@@ -217,6 +224,7 @@
           </common-row>
         </div>
       </el-dialog>
+      <common-modal ref="LdcDialog" DialogTitle="物流中心" :isVisible.sync="dialogShow.ldc" :TableHeader="Ldc.TableHeader" :listData="Ldc.copyDatas" @confirm="selectLdc" @search="searchLdc" :isPages="false"></common-modal>
     </div>
 </template>
 
@@ -226,11 +234,13 @@
     import commonCol from '@/common/components/common-col'
     import Api from '@/common/js/api.js'
     import {someMeta, everySame} from '@/common/js/utils.js'
+    import commonModal from '@/common/components/common-modal'
     export default {
         components: {
             orderInfo,
             commonRow,
-            commonCol
+            commonCol,
+            commonModal
         },
         props: ['params'], // 由page/entryAudit.vue传过来
         data () {
@@ -279,14 +289,85 @@
                     Ssa_Name: ''
                 },
                 options: [],
+                takegoodsModes: [],
                 StorageType: '',
                 addDtlStor: [],
                 listData: [],
                 RpCate: [], // 退货类别
-                RpReasons: [] // 退货原因
+                RpReasons: [], // 退货原因
+                dialogShow: {
+                    ldc: false
+                },
+                Ldc: {
+                    TableHeader: [
+                        {
+                            field: 'Ldc_No',
+                            title: '物流中心编号'
+                        },
+                        {
+                            field: 'Mnemonic_Code',
+                            title: '助记码'
+                        },
+                        {
+                            field: 'Ldc_Name',
+                            title: '物流中心名称'
+                        },
+                        {
+                            field: 'Address',
+                            title: '物流中心地址'
+                        },
+                        {
+                            field: 'Contact_Name',
+                            title: '联系人'
+                        },
+                        {
+                            field: 'Contact_Phone',
+                            title: '联系电话'
+                        }
+                    ],
+                    datas: [],
+                    copyDatas: []
+                },
+                editRowConId: ''
             }
         },
         methods: {
+            // 2018-01-09 胡香利 增加
+            openDialog (val, conId) { // 打开弹框
+                this.dialogShow[val] = true
+                this.editRowConId = conId
+                this.getLdc()
+            },
+            getLdc () {
+                let params = {
+                    Con_Id: this.editRowConId,
+                    Ldc_Id: '%'
+                }
+                Api.get('GetLdcAddress', params, true).then((res) => {
+                    if (res.Flag) {
+                        this.Ldc.datas = res.MsgInfo
+                        this.Ldc.copyDatas = this.Ldc.datas
+                    } else {
+                        this.$alert(res.ErrInfo, '提示', {
+                            confirmButtonText: '确定'
+                        })
+                    }
+                })
+            },
+            selectLdc (row) {
+                this.listData[this.editRowIndex].Ldc_Name = row.Ldc_Name
+                this.listData[this.editRowIndex].Ldc_Id = row.Ldc_Id
+            },
+            searchLdc (keyword) {
+                let searchRegex = new RegExp(keyword, 'i')
+                this.Ldc.copyDatas = this.Ldc.datas.filter((item) => {
+                  for (let key in item) {
+                    if (searchRegex.test(item[key])) {
+                      return true
+                    }
+                  }
+                })
+            }, // end
             costTrial (row) {          // 费用试算弹窗
               let jsonArr = []
               jsonArr.push({Bill_hdr_Id: row.Bill_Hdr_Id})
@@ -411,6 +492,8 @@
                     Outbound_Mode: listItem.Outbound_Mode,
                     Businessbill_No: listItem.Businessbill_No,
                     OutbAddress_Id: listItem.OutbAddress_Id,
+                    Ldc_Id: listItem.Ldc_Id,
+                    Takegoods_Mode: listItem.Takegoods_Mode,
                     Delivery_Time: listItem.Delivery_Time,
                     Operater: Api.userInfo.USERID,
                     Aging: listItem.Aging,
@@ -503,6 +586,7 @@
                       })
                       this.listData[index].isAddDtl = false    // 保存后明细状态变为false
                       this.current = -1
+                      this.editRowConId = ''
                       this.init()
                     } else {
                       this.messageInfo(res.ErrInfo)
@@ -863,6 +947,14 @@
                 }
                 this.RpCate = res.MsgInfo
               })
+                // 提货方式
+                Api.get('FdGetFiledDtl', {Field_Name: 'Takegoods_Mode'}).then((res) => {
+                    if (res.Flag) {
+                        this.takegoodsModes = res.MsgInfo
+                    } else {
+                        this.messageInfo(res.ErrInfo)
+                    }
+                })
             },
             init () {
                 console.log(this.params)
@@ -1124,6 +1216,7 @@
                     line-height: 36px;
                     text-align: center;
                     color: #fff;
+                    font-size: 14px;
                 }
             }
         }
