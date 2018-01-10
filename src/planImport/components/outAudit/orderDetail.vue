@@ -194,8 +194,8 @@
               <el-table-column property="Goods_Name" label="商品名称" width="180" show-overflow-tooltip></el-table-column>
               <el-table-column property="Refrigeration_Type" label="温层"></el-table-column>
               <el-table-column property="Total_Pcs" label="件数"></el-table-column>
-              <el-table-column property="Total_Volume" label="体积"></el-table-column>
-              <el-table-column property="Total_Weight" label="重量"></el-table-column>
+              <el-table-column property="Total_Volume" label="体积(cm³)"></el-table-column>
+              <el-table-column property="Total_Weight" label="重量(KG)"></el-table-column>
               <el-table-column property="Service_Item" label="费用项目"></el-table-column>
               <el-table-column property="address" label="付款方式"></el-table-column>
               <!--<el-table-column property="address" label="计费方式"></el-table-column>-->
