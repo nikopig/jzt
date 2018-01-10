@@ -156,8 +156,8 @@
         <div class="btns-contain">
             <div class="btns-content">
                 <!--<el-button type="primary" v-if="orderType != 1" @click="combineOrders">计划合并</el-button>-->
-                <el-button type="danger" @click="blankOut">作废</el-button>
-                <el-button type="info" @click="pend">审核</el-button>
+                <el-button type="danger" @click="blankOut">作&nbsp;废</el-button>
+                <el-button type="info" @click="pend">审&nbsp;核</el-button>
             </div>
         </div>
       <!-- 费用试算弹窗 -->

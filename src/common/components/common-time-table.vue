@@ -21,7 +21,7 @@
           </div>
           <div class="data-detail">
             <div class="data-detail-item" v-for="dateItem in dateList">
-              <div class="data-box" v-for="dItem in item.dataList" v-if="dItem.date.substring(0, 10) === dateItem">
+              <div class="data-box" v-for="dItem in item.dataList" v-if="((typeof(dItem.date) === 'undefined') ? dItem.date : dItem.date.substring(0, 10)) === dateItem">
                 <slot name="body" :row="item" :detail="dItem"></slot>
               </div>
             </div>

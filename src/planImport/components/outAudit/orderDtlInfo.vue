@@ -320,6 +320,9 @@
         this.$emit('delete', this.index, i)
       },
       deleLoto (e) {
+        if (this.disable) {
+          return false
+        }
         this.dtlData.Goods_Lotno = ''
         this.dtlData.Production_Date = ''
         this.dtlData.Valid_Until = ''
