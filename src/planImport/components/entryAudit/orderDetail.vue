@@ -1041,6 +1041,7 @@
                     line-height: 36px;
                     text-align: center;
                     color: #fff;
+                    font-size: 14px;
                 }
             }
         }

@@ -93,7 +93,7 @@
                     </div> -->
                     <div class="box-card-content-item">
                         <span>出库仓：</span>
-                        <el-input :disabled="true" v-model="o.Ldc_Name" placeholder="双击选择出库仓" @dblclick.native="openDialog('ldc', o)"></el-input>
+                        <el-input :disabled="true" v-model="o.Ldc_Name" placeholder="双击选择出库仓" @dblclick.native="openDialog('ldc', index, o)"></el-input>
                         <!-- <span :title='o.Ldc_Name'>{{ o.Ldc_Name }}</span> -->
                     </div>
                     <div class="box-card-content-item">
@@ -328,16 +328,18 @@
                     datas: [],
                     copyDatas: []
                 },
-                editRowConId: ''
+                editRowConId: '',
+                editRowIndex: -1
             }
         },
         methods: {
             // 2018-01-09 胡香利 增加
-            openDialog (val, obj) { // 打开弹框
+            openDialog (val, i, obj) { // 打开弹框
                 if (obj.isEdit) {
                     return false
                 }
                 this.dialogShow[val] = true
+                this.editRowIndex = i
                 this.editRowConId = obj.Con_Id
                 this.getLdc()
             },
@@ -589,6 +591,7 @@
                       })
                       this.listData[index].isAddDtl = false    // 保存后明细状态变为false
                       this.current = -1
+                      this.editRowIndex = -1
                       this.editRowConId = ''
                       this.init()
                     } else {
