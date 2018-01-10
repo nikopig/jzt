@@ -947,6 +947,8 @@
             	Creator: Api.userInfo.Staff_Id,
             	changetype: this.form.changetype
             }]
+            console.log(obj)
+            debugger
             let params = {
           		list_fdfeerule: JSON.stringify(obj)
           	}
@@ -1036,6 +1038,9 @@
 			.el-form-item__content{
 				line-height: 24px;
 				width: 100%;
+			}
+			table {
+				width: 100%!important;
 			}
 		}
 		.condition-item {

@@ -352,6 +352,10 @@
       },
       // 显示弹出框
       showDialog (id, ref, item, HzItem) {
+        console.log(this.disable)
+        if (this.disable) {
+          return false
+        }
         this.$refs[ref].pihaoDialog = true
         this.$refs[ref].currentId = id
         this.loadingWating = this.showLoading()

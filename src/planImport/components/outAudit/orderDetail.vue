@@ -49,7 +49,7 @@
                     </div>
                     <div class="box-card-content-item">
                         <span>业务单据编号：</span>
-                        <span>{{ o.Businessbill_No }}</span>
+                        <span class="textOverflow" :title='o.Businessbill_No'>{{ o.Businessbill_No }}</span>
                     </div>
                     <!--<div class="box-card-content-item">-->
                         <!--<span>业务类型：</span>-->
@@ -93,7 +93,7 @@
                     </div> -->
                     <div class="box-card-content-item">
                         <span>出库仓：</span>
-                        <el-input :disabled="true" v-model="o.Ldc_Name" placeholder="双击选择出库仓" @dblclick.native="openDialog('ldc', o.Con_Id)"></el-input>
+                        <el-input :disabled="true" v-model="o.Ldc_Name" placeholder="双击选择出库仓" @dblclick.native="openDialog('ldc', o)"></el-input>
                         <!-- <span :title='o.Ldc_Name'>{{ o.Ldc_Name }}</span> -->
                     </div>
                     <div class="box-card-content-item">
@@ -333,9 +333,12 @@
         },
         methods: {
             // 2018-01-09 胡香利 增加
-            openDialog (val, conId) { // 打开弹框
+            openDialog (val, obj) { // 打开弹框
+                if (obj.isEdit) {
+                    return false
+                }
                 this.dialogShow[val] = true
-                this.editRowConId = conId
+                this.editRowConId = obj.Con_Id
                 this.getLdc()
             },
             getLdc () {

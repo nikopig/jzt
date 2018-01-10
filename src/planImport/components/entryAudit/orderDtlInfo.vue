@@ -38,8 +38,9 @@
       </div>
       <div class="box-card-content-item">
         <span>商品批号：</span>
-        <el-input v-if="operate === 'add'" :disabled="isDisabled" placeholder="双击选择批号"  @dblclick.native="showDialog('3', 'goodsLotno', dtlData, objData)" v-model="dtlData.Goods_Lotno"></el-input>
-        <span v-text="dtlData.Goods_Lotno" v-else></span>
+        <!-- <el-input v-if="operate === 'add'" :disabled="isDisabled" placeholder="双击选择批号"  @dblclick.native="showDialog('3', 'goodsLotno', dtlData, objData)" v-model="dtlData.Goods_Lotno"></el-input>
+        <span v-text="dtlData.Goods_Lotno" v-else></span> -->
+        <el-input :disabled="isDisabled" placeholder="双击选择批号"  @dblclick.native="showDialog('3', 'goodsLotno', dtlData, objData)" v-model="dtlData.Goods_Lotno" icon="close" :on-icon-click="deleLoto"></el-input>
         <!-- <el-input v-if="operate === 'add' && objData.Storage_Type === '1'" :disabled="isDisabled" placeholder="双击选择批号"  @dblclick.native="showDialog('3', 'goodsLotno', dtlData, objData)" v-model="dtlData.Goods_Lotno"></el-input> -->
         <!-- <el-input :disabled="isDisabled && disable" v-model="dtlData.Goods_Lotno" v-else></el-input> -->
       </div>
@@ -341,6 +342,11 @@
         console.log(this.index)
         this.$emit('delete', this.index, i)
       },
+      deleLoto (e) {
+        this.dtlData.Goods_Lotno = ''
+        this.dtlData.Production_Date = ''
+        this.dtlData.Valid_Until = ''
+      },
       splitDtl () {   // 拆分
         let _this = this
         if (_this.dtlData.Actual_Qty > 1) {
@@ -369,6 +375,10 @@
       },
       // 显示弹出框
       showDialog (id, ref, item, HzItem) {
+        console.log(this.disable)
+        if (this.disable) {
+          return false
+        }
         console.log(item)
         console.log(id)
         this.$refs[ref].pihaoDialog = true
