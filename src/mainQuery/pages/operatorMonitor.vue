@@ -240,7 +240,8 @@
 						stockCount: []
 					}, // 库存情况
 					vehicle: {
-						vehicleCount: []
+						vehicleCount: [],
+						vehicleAssistCount: []
 					}, // 车辆情况
 					cctsMonitor: {
 						firstOrder: [],
@@ -333,13 +334,27 @@
 		        type: 'value',
 		        axisLabel: {
 	            formatter: '{value}'
+		        },
+		        splitLine: {
+		        	show: false
+		        },
+		        axisLine: {
+		        	lineStyle: {
+		        		// color: '#999'
+		        	}
 		        }
 			    },
 			    yAxis: {
 			    	name: '车牌号',
 			    	nameGap: 10,
-			    	nameLocation: 'end',
+			    	nameLocation: 'start',
 		        type: 'category',
+		        inverse: true,
+		        axisLine: {
+		        	lineStyle: {
+		        		// color: '#999'
+		        	}
+		        },
 		        data: this.echartData.notReachStandard.notReachStandardName
 			    },
 			    series: [
@@ -530,6 +545,10 @@
 		        confine: true,
 		        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
 	            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+		        },
+		        formatter: function (params) {
+	            let tar = params[1]
+	            return tar.name + ' : ' + tar.value
 		        }
 			    },
 			    grid: {
@@ -541,7 +560,10 @@
 			    },
 			    xAxis: {
 			    	name: '数量',
-		        type: 'value'
+		        type: 'value',
+		        splitLine: {
+		        	show: false
+		        }
 			    },
 			    yAxis: {
 			    	name: '分类',
@@ -551,8 +573,25 @@
 		        data: ['空闲车辆', '排车', '在途', '总车辆']
 			    },
 			    series: [
+			    	{
+	            type: 'bar',
+	            stack: '数量',
+	            itemStyle: {
+	                normal: {
+	                    barBorderColor: 'rgba(0,0,0,0)',
+	                    color: 'rgba(0,0,0,0)'
+	                },
+	                emphasis: {
+	                    barBorderColor: 'rgba(0,0,0,0)',
+	                    color: 'rgba(0,0,0,0)'
+	                }
+	            },
+	            data: this.echartData.vehicle.vehicleAssistCount
+	            // data: [0, 87, 133, 0]
+		        },
 		        {
 	            type: 'bar',
+	            stack: '数量',
 	            label: {
                 normal: {
                   show: true,
@@ -764,7 +803,10 @@
 						this.echartData.vehicle.vehicleCount[1] = data[0].TransitCar_Num
 						this.echartData.vehicle.vehicleCount[2] = data[0].LineCar_Num
 						this.echartData.vehicle.vehicleCount[3] = data[0].TotalCar_Num
-						console.log(this.echartData.vehicle.vehicleCount)
+						this.echartData.vehicle.vehicleAssistCount[0] = 0
+						this.echartData.vehicle.vehicleAssistCount[1] = data[0].FreeCar_Num
+						this.echartData.vehicle.vehicleAssistCount[2] = data[0].FreeCar_Num + data[0].TransitCar_Num
+						this.echartData.vehicle.vehicleAssistCount[3] = 0
 						this.initVehicle()
 					} else {
 						this.$alert(res.ErrInfo, '提示', {
