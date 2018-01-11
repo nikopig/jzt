@@ -55,9 +55,9 @@
 	      :total="bigTotalItems">
 	    </el-pagination>
 	  </div>
-	  <common-modal ref="OperatorDialog" DialogTitle="运营方" :isVisible.sync="dialogShow.operator" :TableHeader="Operator.TableHeader" :listData="Operator.datas" @confirm="selectOperator" @search="searchOperator" :isPages="false"></common-modal>
-		<common-modal ref="ConDialog" DialogTitle="委托方" :isVisible.sync="dialogShow.consignor" :TableHeader="Consignor.TableHeader" :listData="Consignor.datas" @confirm="selectConsignor" @search="searchConsignor" :isPages="false"></common-modal>
-		<common-modal ref="LdcDialog" DialogTitle="物流中心" :isVisible.sync="dialogShow.ldc" :TableHeader="Ldc.TableHeader" :listData="Ldc.datas" @confirm="selectLdc" @search="searchLdc" :isPages="false"></common-modal>
+	  <common-modal ref="OperatorDialog" DialogTitle="运营方" :isVisible.sync="dialogShow.operator" :TableHeader="Operator.TableHeader" :listData="Operator.copyDatas" @confirm="selectOperator" @search="searchOperator" :isPages="false"></common-modal>
+		<common-modal ref="ConDialog" DialogTitle="委托方" :isVisible.sync="dialogShow.consignor" :TableHeader="Consignor.TableHeader" :listData="Consignor.copyDatas" @confirm="selectConsignor" @search="searchConsignor" :isPages="false"></common-modal>
+		<common-modal ref="LdcDialog" DialogTitle="物流中心" :isVisible.sync="dialogShow.ldc" :TableHeader="Ldc.TableHeader" :listData="Ldc.copyDatas" @confirm="selectLdc" @search="searchLdc" :isPages="false"></common-modal>
 	</div>
 </template>
 
@@ -99,7 +99,8 @@
 							title: '助记码'
 						}
 					],
-					datas: []
+					datas: [],
+					copyDatas: []
 				},
 				Consignor: {
 					TableHeader: [
@@ -116,7 +117,8 @@
 							title: '助记码'
 						}
 					],
-					datas: []
+					datas: [],
+					copyDatas: []
 				},
 				Ldc: {
 					TableHeader: [
@@ -153,7 +155,8 @@
 							title: '详细地址'
 						}
 					],
-					datas: []
+					datas: [],
+					copyDatas: []
 				},
 				refrigerationTypes: [],
 				multipleSelection: null, // 选中的行
@@ -178,16 +181,36 @@
 				this.filterCondition.Operator_Name = row.Operator_Name
 				this.changeOperator()
 			},
-			searchOperator (keyword) {},
+			searchOperator (keyword) {
+				let searchRegex = new RegExp(keyword, 'i')
+        this.Operator.copyDatas = this.Operator.datas.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
+        })
+			},
 			deleteOperator () {
 				this.filterCondition.Operator_Id = ''
 				this.filterCondition.Operator_Name = ''
+				this.Consignor.datas = []
+				this.Ldc.datas = []
 			},
 			selectConsignor (row) {
 				this.filterCondition.Con_Id = row.Con_Id
 				this.filterCondition.Con_Name = row.Con_Name
 			},
-			searchConsignor (keyword) {},
+			searchConsignor (keyword) {
+				let searchRegex = new RegExp(keyword, 'i')
+        this.Consignor.copyDatas = this.Consignor.datas.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
+        })
+			},
 			deleteConsignor () {
 				this.filterCondition.Con_Id = ''
 				this.filterCondition.Con_Name = ''
@@ -197,6 +220,14 @@
 				this.filterCondition.Ldc_Name = row.Ldc_Name
 			},
 			searchLdc (keyword) {
+				let searchRegex = new RegExp(keyword, 'i')
+        this.Ldc.copyDatas = this.Ldc.datas.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
+        })
 			},
 			deleteLdc () {
 				this.filterCondition.Ldc_Id = ''
@@ -276,6 +307,7 @@
       	Api.get('DS_FEERULE_FD_OPERATOR_ByuserId', params, true).then((res) => {
       		if (res.Flag) {
       			this.Operator.datas = res.MsgInfo
+      			this.Operator.copyDatas = this.Operator.datas
       		} else {
       			this.$alert(res.ErrInfo, '提示', {
       				confirmButtonText: '确定'
@@ -297,6 +329,7 @@
       	Api.get('DS_FEERULE_FD_CONSIGNOR_ByuserId', params, true).then((res) => {
       		if (res.Flag) {
       			this.Consignor.datas = res.MsgInfo
+      			this.Consignor.copyDatas = this.Consignor.datas
       		} else {
       			this.$alert(res.ErrInfo, '提示', {
       				confirmButtonText: '确定'
@@ -313,6 +346,7 @@
       					return true
       				}
       			})
+      			this.Ldc.copyDatas = this.Ldc.datas
       		} else {
       			this.$alert(res.ErrInfo, '提示', {
       				confirmButtonText: '确定'

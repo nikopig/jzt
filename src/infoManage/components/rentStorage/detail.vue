@@ -163,7 +163,8 @@
 							title: '助记码'
 						}
 					],
-					datas: []
+					datas: [],
+					copyDatas: []
 				},
 				Consignor: {
 					TableHeader: [
@@ -180,7 +181,8 @@
 							title: '助记码'
 						}
 					],
-					datas: []
+					datas: [],
+					copyDatas: []
 				},
 				Ldc: {
 					TableHeader: [
@@ -217,7 +219,8 @@
 							title: '详细地址'
 						}
 					],
-					datas: []
+					datas: [],
+					copyDatas: []
 				},
 				refrigerationTypes: [],
 				rules: {
@@ -241,7 +244,6 @@
 		watch: {
 			editRentStorageRow () {
 				if (typeof (this.editRentStorageRow.Lease_Id) !== 'undefined') {
-					console.log(this.editRentStorageRow)
 					this.setRentStorage(this.editRentStorageRow)
 				} else {
 					this.refreshDetail('form')
@@ -257,29 +259,43 @@
 				this.form.Operator_Name = row.Operator_Name
 				this.changeOperator()
 			},
-			searchOperator (keyword) {},
-			deleteOperator () {
-				this.form.Operator_Id = ''
-				this.form.Operator_Name = ''
+			searchOperator (keyword) {
+				let searchRegex = new RegExp(keyword, 'i')
+        this.Operator.copyDatas = this.Operator.datas.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
+        })
 			},
 			selectConsignor (row) {
 				this.form.Consignor_Id = row.Con_Id
 				this.form.Consignor_Name = row.Con_Name
 			},
-			searchConsignor (keyword) {},
-			deleteConsignor () {
-				this.form.Consignor_Id = ''
-				this.form.Consignor_Name = ''
+			searchConsignor (keyword) {
+				let searchRegex = new RegExp(keyword, 'i')
+        this.Consignor.copyDatas = this.Consignor.datas.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
+        })
 			},
 			selectLdc (row) {
 				this.form.Ldc_Id = row.Ldc_Id
 				this.form.Ldc_Name = row.Ldc_Name
 			},
 			searchLdc (keyword) {
-			},
-			deleteLdc () {
-				this.form.Ldc_Id = ''
-				this.form.Ldc_Name = ''
+				let searchRegex = new RegExp(keyword, 'i')
+        this.Ldc.copyDatas = this.Ldc.datas.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
+        })
 			},
 			getOperator () { // 运营商
       	let params = {
@@ -288,6 +304,12 @@
       	Api.get('DS_FEERULE_FD_OPERATOR_ByuserId', params, true).then((res) => {
       		if (res.Flag) {
       			this.Operator.datas = res.MsgInfo
+      			this.Operator.copyDatas = this.Operator.datas
+      			if (this.Operator.datas.length === 1) {
+      				this.form.Operator_Id = this.Operator.datas[0].Operator_Id
+      				this.form.Operator_Name = this.Operator.datas[0].Operator_Name
+      				this.changeOperator()
+      			}
       		} else {
       			this.$alert(res.ErrInfo, '提示', {
       				confirmButtonText: '确定'
@@ -309,6 +331,7 @@
       	Api.get('DS_FEERULE_FD_CONSIGNOR_ByuserId', params, true).then((res) => {
       		if (res.Flag) {
       			this.Consignor.datas = res.MsgInfo
+      			this.Consignor.copyDatas = this.Consignor.datas
       		} else {
       			this.$alert(res.ErrInfo, '提示', {
       				confirmButtonText: '确定'
@@ -325,6 +348,7 @@
       					return true
       				}
       			})
+      			this.Ldc.copyDatas = this.Ldc.datas
       		} else {
       			this.$alert(res.ErrInfo, '提示', {
       				confirmButtonText: '确定'
@@ -349,9 +373,19 @@
       },
       refreshDetail (formName) { // 刷新明细
       	this.$refs[formName].resetFields()
+      	if (this.Operator.datas.length === 1) {
+  				this.form.Operator_Id = this.Operator.datas[0].Operator_Id
+  				this.form.Operator_Name = this.Operator.datas[0].Operator_Name
+  				this.changeOperator()
+  			}
       },
 			addRentStorage (formName) {
 				this.$refs[formName].resetFields()
+				if (this.Operator.datas.length === 1) {
+  				this.form.Operator_Id = this.Operator.datas[0].Operator_Id
+  				this.form.Operator_Name = this.Operator.datas[0].Operator_Name
+  				this.changeOperator()
+  			}
 			},
 			setRentStorage (obj) { // 编辑仓储租赁规则
 				let isActive = true
