@@ -243,20 +243,8 @@
             field: 'Production_Date'
           },
           {
-            title: '有效期',
+            title: '有效期至',
             field: 'Valid_Until'
-          },
-          {
-            title: '库存数量',
-            field: 'stock_quantity'
-          },
-          {
-            title: '库存状态',
-            field: 'stock_status'
-          },
-          {
-            title: '所在物流中心',
-            field: 'f'
           }
         ],
         lotnoGridData: [
