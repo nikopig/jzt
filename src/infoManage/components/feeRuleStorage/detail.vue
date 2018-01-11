@@ -847,7 +847,6 @@
       	return flag
       },
       setFeeRuleStorage (obj) { // 编辑仓储费用规则
-      	console.log(obj)
       	let isAvailable = true
       	let isDocumentary = true
       	let calculationRules = []
@@ -865,7 +864,6 @@
 	      		calculationRules.push(calRuleObj)
 	      	})
       	}
-      	console.log(calculationRules)
       	this.form.Rec_Id = obj.Rec_Id
       	this.form.Operator_Id = obj.Operator_Id
       	this.form.Operator_Name = obj.Operator_Name
@@ -947,8 +945,6 @@
             	Creator: Api.userInfo.Staff_Id,
             	changetype: this.form.changetype
             }]
-            console.log(obj)
-            debugger
             let params = {
           		list_fdfeerule: JSON.stringify(obj)
           	}
@@ -990,8 +986,6 @@
 			}
 		},
 		mounted () {
-			console.log('editFeeRuleStorageRow')
-			console.log(this.editFeeRuleStorageRow)
 			this.init()
 		}
 	}
@@ -1010,9 +1004,6 @@
 					margin-bottom: 12px;
 					overflow: visible;
 					position: relative;
-					.content {
-						// overflow: visible;
-					}
 					.addRule, .deleteRule {
 						position: absolute;
 						left: 50px;

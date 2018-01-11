@@ -29,7 +29,7 @@
 							</div>
 						</common-col>
 						<common-col>
-							<span class="label">物流中心</span>
+							<span class="label required">物流中心</span>
 							<div class="content">
 								<el-form-item prop="Ldc_Name">
 									<el-input placeholder="双击选择物流中心" :disabled="true" icon="close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')" v-model="form.Ldc_Name"></el-input>
@@ -40,7 +40,7 @@
 							<span class="label">租赁面积</span>
 							<div class="content">
 								<el-form-item prop="Rental_Area">
-									<el-input placeholder="请输入租赁面积" v-model="form.Rental_Area"></el-input>
+									<el-input type="number" placeholder="请输入租赁面积" v-model="form.Rental_Area"></el-input>
 								</el-form-item>
 							</div>
 						</common-col>
@@ -48,9 +48,11 @@
 							<span class="label required">租赁仓库存储条件</span>
 							<div class="content">
 								<el-form-item prop="Refrigeration_Type">
-									<!-- <el-select v-model="value" placeholder="请选择">
-								    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
-								  </el-select> -->
+									<el-select v-model="form.Refrigeration_Type" clearable placeholder="请选择">
+								    <el-option
+								      v-for="item in refrigerationTypes" :key="item.Value_Data" :label="item.Value_Desc" :value="item.Value_Data">
+								    </el-option>
+								  </el-select>
 								</el-form-item>
 							</div>
 						</common-col>
@@ -58,7 +60,7 @@
 							<span class="label">租赁托盘货位数(立库)</span>
 							<div class="content">
 								<el-form-item prop="Rental_Location_A">
-									<el-input placeholder="请输入租赁托盘货位数" v-model="form.Rental_Location_A"></el-input>
+									<el-input type="number" placeholder="请输入租赁托盘货位数" v-model="form.Rental_Location_A"></el-input>
 								</el-form-item>
 							</div>
 						</common-col>
@@ -66,7 +68,7 @@
 							<span class="label">租赁楼库货位数(整件)</span>
 							<div class="content">
 								<el-form-item prop="Rental_Location_B">
-									<el-input placeholder="请输入租赁托盘货位数" v-model="form.Rental_Location_B"></el-input>
+									<el-input type="number" placeholder="请输入租赁托盘货位数" v-model="form.Rental_Location_B"></el-input>
 								</el-form-item>
 							</div>
 						</common-col>
@@ -74,7 +76,7 @@
 							<span class="label">租赁楼库货位(零货)</span>
 							<div class="content">
 								<el-form-item prop="Rental_Location_C">
-									<el-input placeholder="请输入租赁托盘货位数" v-model="form.Rental_Location_C"></el-input>
+									<el-input type="number" placeholder="请输入租赁托盘货位数" v-model="form.Rental_Location_C"></el-input>
 								</el-form-item>
 							</div>
 						</common-col>
@@ -103,13 +105,16 @@
 				</div>
 			</el-form>
 		</div>
-		<!-- <common-modal ref="OperatorDialog" DialogTitle="运营方" :isVisible.sync="dialogShow.operator" :TableHeader="Operator.TableHeader" :listData="Operator.copyDatas" @confirm="selectOperator" @search="searchOperator" :isPages="false"></common-modal>
-		<common-modal ref="ConDialog" DialogTitle="委托方" :isVisible.sync="dialogShow.consignor" :TableHeader="Consignor.TableHeader" :listData="Consignor.copyDatas" @confirm="selectConsignor" @search="searchConsignor" :isPages="false"></common-modal>
-		<common-modal ref="LdcDialog" DialogTitle="物流中心" :isVisible.sync="dialogShow.ldc" :TableHeader="Ldc.TableHeader" :listData="Ldc.copyDatas" @confirm="selectLdc" @search="searchLdc" :isPages="false"></common-modal> -->
+		<common-modal ref="OperatorDialog" DialogTitle="运营方" :isVisible.sync="dialogShow.operator" :TableHeader="Operator.TableHeader" :listData="Operator.datas" @confirm="selectOperator" @search="searchOperator" :isPages="false"></common-modal>
+		<common-modal ref="ConDialog" DialogTitle="委托方" :isVisible.sync="dialogShow.consignor" :TableHeader="Consignor.TableHeader" :listData="Consignor.datas" @confirm="selectConsignor" @search="searchConsignor" :isPages="false"></common-modal>
+		<common-modal ref="LdcDialog" DialogTitle="物流中心" :isVisible.sync="dialogShow.ldc" :TableHeader="Ldc.TableHeader" :listData="Ldc.datas" @confirm="selectLdc" @search="searchLdc" :isPages="false"></common-modal>
 	</div>
 </template>
 
 <script>
+	import Api from '@/common/js/api'
+	import {DateFtt, Created32Guid} from '@/common/js/utils'
+	import {Bus, Types} from '@/common/js/bus'
 	import commonRow from '@/common/components/common-row'
 	import commonCol from '@/common/components/common-col'
 	import commonModal from '@/common/components/common-modal'
@@ -118,6 +123,7 @@
 		data () {
 			return {
 				form: {
+					Lease_Id: Created32Guid(32),
 					Operator_Id: '',
 					Operator_Name: '',
 					Consignor_Id: '',
@@ -125,21 +131,122 @@
 					Ldc_Id: '',
 					Ldc_Name: '',
 					Refrigeration_Type: '',
-					Rental_Area: '',
-					Rental_Location_A: '',
-					Rental_Location_B: '',
-					Rental_Location_C: '',
+					Rental_Area: null,
+					Rental_Location_A: null,
+					Rental_Location_B: null,
+					Rental_Location_C: null,
 					Start_Time: '',
 					End_Time: '',
-					Is_Active: true
+					Is_Active: true,
+					Creator: Api.userInfo.Staff_Id,
+					Created_Time: DateFtt('yyyy-MM-dd hh:mm:ss', new Date(), false),
+					Updated_Time: DateFtt('yyyy-MM-dd hh:mm:ss', new Date(), false),
+					changetype: 'inserted'
 				},
-				rules: {}
+				dialogShow: {
+					operator: false,
+					consignor: false,
+					ldc: false
+				},
+				Operator: {
+					TableHeader: [
+						{
+							field: 'Operator_Name',
+							title: '运营方名称'
+						},
+						{
+							field: 'Operator_No',
+							title: '运营方编号'
+						},
+						{
+							field: 'Mnemonic_Code',
+							title: '助记码'
+						}
+					],
+					datas: []
+				},
+				Consignor: {
+					TableHeader: [
+						{
+							field: 'Con_Name',
+							title: '委托方名称'
+						},
+						{
+							field: 'Con_No',
+							title: '委托方编号'
+						},
+						{
+							field: 'Mnemonic_Code',
+							title: '助记码'
+						}
+					],
+					datas: []
+				},
+				Ldc: {
+					TableHeader: [
+						{
+							field: 'All_Name',
+							title: '物流中心'
+						},
+						{
+							field: 'Address_Shortname',
+							title: '地址简介'
+						},
+						{
+							field: 'Contact_Name',
+							title: '联系人'
+						},
+						{
+							field: 'Contact_Phone',
+							title: '联系人电话'
+						},
+						{
+							field: 'Province_Name',
+							title: '省'
+						},
+						{
+							field: 'City_Name',
+							title: '市'
+						},
+						{
+							field: 'Area_Name',
+							title: '县'
+						},
+						{
+							field: 'Address',
+							title: '详细地址'
+						}
+					],
+					datas: []
+				},
+				refrigerationTypes: [],
+				rules: {
+					Operator_Name: [{ required: true, message: '请选择运营方', trigger: 'blur' }],
+					Consignor_Name: [{ required: true, message: '请选择委托方', trigger: 'blur' }],
+					Ldc_Name: [{ required: true, message: '请选择物流中心', trigger: 'blur' }],
+					Refrigeration_Type: [{ required: true, message: '请选择租赁仓库存储条件', trigger: 'blur' }]
+				}
+			}
+		},
+		props: {
+			editRentStorageRow: {
+				type: Object
 			}
 		},
 		components: {
 			commonRow,
 			commonCol,
 			commonModal
+		},
+		watch: {
+			editRentStorageRow () {
+				if (typeof (this.editRentStorageRow.Lease_Id) !== 'undefined') {
+					console.log(this.editRentStorageRow)
+					this.setRentStorage(this.editRentStorageRow)
+				} else {
+					this.refreshDetail('form')
+				}
+			}
 		},
 		methods: {
 			openDialog (val) { // 打开弹框
@@ -148,6 +255,7 @@
       selectOperator (row) {
 				this.form.Operator_Id = row.Operator_Id
 				this.form.Operator_Name = row.Operator_Name
+				this.changeOperator()
 			},
 			searchOperator (keyword) {},
 			deleteOperator () {
@@ -155,13 +263,13 @@
 				this.form.Operator_Name = ''
 			},
 			selectConsignor (row) {
-				this.form.Con_Id = row.Con_Id
-				this.form.Con_Name = row.Con_Name
+				this.form.Consignor_Id = row.Con_Id
+				this.form.Consignor_Name = row.Con_Name
 			},
 			searchConsignor (keyword) {},
 			deleteConsignor () {
-				this.form.Con_Id = ''
-				this.form.Con_Name = ''
+				this.form.Consignor_Id = ''
+				this.form.Consignor_Name = ''
 			},
 			selectLdc (row) {
 				this.form.Ldc_Id = row.Ldc_Id
@@ -173,8 +281,173 @@
 				this.form.Ldc_Id = ''
 				this.form.Ldc_Name = ''
 			},
-			addRentStorage () {},
-			saveRentStorage () {}
+			getOperator () { // 运营商
+      	let params = {
+      		userId: Api.userInfo.Staff_Id
+      	}
+      	Api.get('DS_FEERULE_FD_OPERATOR_ByuserId', params, true).then((res) => {
+      		if (res.Flag) {
+      			this.Operator.datas = res.MsgInfo
+      		} else {
+      			this.$alert(res.ErrInfo, '提示', {
+      				confirmButtonText: '确定'
+      			})
+      		}
+      	})
+      },
+      getConsignor () { // 委托方
+      	if (this.form.Operator_Id === '') {
+      		this.$alert('请先选择运营商', '提示', {
+      			confirmButtonText: '确定'
+      		})
+      		return false
+      	}
+      	let params = {
+      		Operator_Id: this.form.Operator_Id,
+      		userId: Api.userInfo.Staff_Id
+      	}
+      	Api.get('DS_FEERULE_FD_CONSIGNOR_ByuserId', params, true).then((res) => {
+      		if (res.Flag) {
+      			this.Consignor.datas = res.MsgInfo
+      		} else {
+      			this.$alert(res.ErrInfo, '提示', {
+      				confirmButtonText: '确定'
+      			})
+      		}
+      	})
+      },
+      getLdc () { // 物流中心
+      	Api.get('TMP_TransportTaskScheding_Yd_GetWlzxAddr', {}, true).then((res) => {
+      		if (res.Flag) {
+      			let data = res.MsgInfo
+      			this.Ldc.datas = data.filter((item) => {
+      				if (item.Operator_Id === this.form.Operator_Id) {
+      					return true
+      				}
+      			})
+      		} else {
+      			this.$alert(res.ErrInfo, '提示', {
+      				confirmButtonText: '确定'
+      			})
+      		}
+      	})
+      },
+      changeOperator () { // 根据运营商带出委托方
+      	this.getConsignor()
+      	this.getLdc()
+      },
+      getRefrigerationType () { // 租赁温度
+      	Api.get('Fd_Field_Dtl', { Field_Name: 'Refrigeration_Type' }, true).then((res) => {
+					if (res.Flag) {
+						this.refrigerationTypes = res.MsgInfo
+					} else {
+						this.$alert(res.ErrInfo, '提示', {
+							confirmButtonText: '确定'
+						})
+					}
+				})
+      },
+      refreshDetail (formName) { // 刷新明细
+      	this.$refs[formName].resetFields()
+      },
+			addRentStorage (formName) {
+				this.$refs[formName].resetFields()
+			},
+			setRentStorage (obj) { // 编辑仓储租赁规则
+				let isActive = true
+				if (obj.Is_Active === 'N') {
+					isActive = false
+				}
+				this.form.Lease_Id = obj.Lease_Id
+				this.form.Operator_Id = obj.Operator_Id
+				this.form.Operator_Name = obj.Operator_Name
+				this.form.Consignor_Id = obj.Con_Id
+				this.form.Consignor_Name = obj.Con_Name
+				this.form.Ldc_Id = obj.Ldc_Id
+				this.form.Ldc_Name = obj.Ldc_Name
+				this.form.Refrigeration_Type = obj.Refrigeration_Type
+				this.form.Rental_Area = obj.Rental_Area
+				this.form.Rental_Location_A = obj.Rental_Location_A
+				this.form.Rental_Location_B = obj.Rental_Location_B
+				this.form.Rental_Location_C = obj.Rental_Location_C
+				this.form.Start_Time = obj.Start_Time
+      	this.form.End_Time = obj.End_Time
+      	this.form.Is_Active = isActive
+      	this.form.Creator = obj.Creator
+      	this.form.Created_Time = obj.Created_Time
+      	this.form.Updated_Time = DateFtt('yyyy-MM-dd hh:mm:ss', new Date(), false)
+      	this.form.changetype = 'updated'
+			},
+			saveRentStorage (formName) {
+				this.$refs[formName].validate((valid) => {
+					if (valid) {
+						let startTime
+						let endTime
+						if (typeof (this.form.Start_Time) === 'string') {
+							if (this.form.Start_Time === '%' || this.form.Start_Time === '') {
+								startTime = null
+							} else {
+								startTime = this.form.Start_Time
+							}
+						} else {
+							startTime = DateFtt('yyyy-MM-dd', this.form.Start_Time, false)
+						}
+						if (typeof (this.form.End_Time) === 'string') {
+							if (this.form.End_Time === '%' || this.form.End_Time === '') {
+								endTime = null
+							} else {
+								endTime = this.form.End_Time
+							}
+						} else {
+							endTime = DateFtt('yyyy-MM-dd', this.form.End_Time, false)
+						}
+						let params = [{
+							Lease_Id: this.form.Lease_Id,
+							Operator_Id: this.form.Operator_Id,
+							Con_Id: this.form.Consignor_Id,
+							Ldc_Id: this.form.Ldc_Id,
+							Refrigeration_Type: this.form.Refrigeration_Type,
+							Rental_Area: this.form.Rental_Area,
+							Rental_Location_A: this.form.Rental_Location_A,
+							Rental_Location_B: this.form.Rental_Location_B,
+							Rental_Location_C: this.form.Rental_Location_C,
+							Start_Time: startTime,
+							End_Time: endTime,
+							Is_Active: this.form.Is_Active ? 'Y' : 'N',
+							Creator: this.form.Creator,
+							Created_Time: this.form.Created_Time,
+							Updated_Time: this.form.Updated_Time,
+							changetype: this.form.changetype
+						}]
+						Api.basePost('DS_FD_WAREHOUSE_LEASING', params, true).then((res) => {
+							if (res.Flag) {
+								this.$alert('保存成功！', '提示', {
+            			confirmButtonText: '确定',
+            			callback: action => {
+            				this.refreshDetail('form')
+            				this.$emit('active-name-change', 'list')
+            				Bus.$emit(Types.refreshRentStorage)
+            			}
+            		})
+							} else {
+								this.$alert(res.ErrInfo, '提示', {
+									confirmButtonText: '确定'
+								})
+							}
+						})
+					} else {
+						return false
+					}
+				})
+			},
+			init () {
+				this.getOperator()
+				this.getRefrigerationType()
+				console.log(Api.userInfo.Staff_Id)
+			}
+		},
+		mounted () {
+			this.init()
 		}
 	}
 </script>
@@ -189,8 +462,12 @@
 				.common-col {
 					margin-bottom: 12px;
 					position: relative;
+					overflow: visible;
 					.label {
 						width: 116px;
+					}
+					.content {
+						overflow: visible;
 					}
 					.addRule, .deleteRule {
 						position: absolute;
