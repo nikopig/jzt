@@ -1023,6 +1023,9 @@
 		    color: #ff4949;
 		    margin-right: 4px;
 			}
+			.label.required + .content {
+				overflow: visible;
+			}
 			.el-form-item {
 				margin: 0;
 			}
