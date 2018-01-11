@@ -348,7 +348,7 @@
                     Con_Id: this.editRowConId,
                     Ldc_Id: '%'
                 }
-                Api.get('GetLdcAddress', params, true).then((res) => {
+                Api.get('GetLdcAddress', params).then((res) => {
                     if (res.Flag) {
                         this.Ldc.datas = res.MsgInfo
                         this.Ldc.copyDatas = this.Ldc.datas

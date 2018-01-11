@@ -106,9 +106,12 @@
     </div>
 
     <!-- 参数 commonDialog：公共弹出框的钩子 listData：传递到弹出框的表格数据  confirm事件：点击确定按钮事件,回掉函数的参数为当前选择的行数据-->
-    <common-dialog ref='compositionInfo' :DialogTitle='DialogTitle' :TableHeader='TableDH' :listData ='gridData' @confirm = 'confirm'></common-dialog>
+    <!-- <common-dialog ref='compositionInfo' :DialogTitle='DialogTitle' :TableHeader='TableDH' :listData ='gridData' @confirm = 'confirm'></common-dialog>
     <common-dialog ref='goodsInfo' :DialogTitle='goodsDialogTitle' :TableHeader='goodsTableDH' :listData ='goodsGridData' @confirm = 'confirm'></common-dialog>
-    <common-dialog ref='goodsLotno' :DialogTitle='goodsLotnoTitle' :TableHeader='lotnoTableDH' :listData ='lotnoGridData' @confirm = 'confirm'></common-dialog>
+    <common-dialog ref='goodsLotno' :DialogTitle='goodsLotnoTitle' :TableHeader='lotnoTableDH' :listData ='lotnoGridData' @confirm = 'confirm'></common-dialog> -->
+    <common-dialog ref='compositionInfo' :isPages="false" :DialogTitle='DialogTitle' :TableHeader='TableDH' :listData ='gridData' @confirm = 'confirm'></common-dialog>
+    <common-dialog ref='goodsInfo' :isPages="false" :DialogTitle='goodsDialogTitle' :TableHeader='goodsTableDH' :listData ='goodsGridData' @confirm = 'confirm'></common-dialog>
+    <common-dialog ref='goodsLotno' :isPages="false" :DialogTitle='goodsLotnoTitle' :TableHeader='lotnoTableDH' :listData ='lotnoGridData' @confirm = 'confirm'></common-dialog>
     <!-- <common-dialog ref='goodsLotno' :DialogTitle='goodsLotnoTitle' :TableHeader='lotnoCTableDH' :listData ='lotnoCGridData' @confirm = 'confirm' v-else></common-dialog> -->
   </div>
 </template>
