@@ -498,7 +498,7 @@
 					position: relative;
 					overflow: visible;
 					.label {
-						width: 116px;
+						width: 120px;
 					}
 					.content {
 						overflow: visible;
