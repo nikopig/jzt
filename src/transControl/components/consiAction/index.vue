@@ -459,6 +459,11 @@
                 <el-input v-model="scope.row.Actual_Gross_Weight"></el-input>
               </template>
             </el-table-column>
+            <el-table-column prop="Consign_No" label="托运单号" width="150" show-overflow-tooltip>
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.Consign_No"></el-input>
+              </template>
+            </el-table-column>
           </el-table>
           <el-row>
             <el-col :span="8">
@@ -1269,7 +1274,8 @@
             TransportEntrust_Dtl_Id: item.TransportEntrust_Dtl_Id,
             Actual_Gross_Pcs: item.Actual_Gross_Pcs,
             Actual_Gross_Volume: item.Actual_Gross_Volume,
-            Actual_Gross_Weight: item.Actual_Gross_Weight
+            Actual_Gross_Weight: item.Actual_Gross_Weight,
+            Consign_No: this.carryForm.Consign_No
           })
         })
         param.TransportEntrust_Dtls = JSON.stringify(TransportEntrustDtlsTemp)
@@ -1427,7 +1433,8 @@
             }
             let param = {
               TransportEntrust_Hdr: '',
-              TransportRoute_Ids: ''
+              TransportRoute_Ids: '',
+              TransportEntrust_Dtls: ''
             }
             param.TransportEntrust_Hdr = JSON.stringify(transportEntrustHdr)
             let TransportEntrustDtlsIDs = []
@@ -1437,6 +1444,19 @@
               })
             })
             param.TransportRoute_Ids = TransportEntrustDtlsIDs.join(',')
+            // 2018-01-12胡香利增加
+            let TransportEntrustDtlsTemp = []
+            this.detArr.forEach(item => {
+              TransportEntrustDtlsTemp.push({
+                TransportEntrust_Dtl_Id: item.TransportEntrust_Dtl_Id,
+                Actual_Gross_Pcs: item.Actual_Gross_Pcs,
+                Actual_Gross_Volume: item.Actual_Gross_Volume,
+                Actual_Gross_Weight: item.Actual_Gross_Weight,
+                Consign_No: this.carryForm.Consign_No
+              })
+            })
+            param.TransportEntrust_Dtls = JSON.stringify(TransportEntrustDtlsTemp)
+            // 2018-01-12 胡香利 end
             Api.post('TMP_TransportTaskDD_ConfirmOperator', param).then(res => {
               if (res.Flag) {
                 this.$alert('操作成功!', '提示').then(() => {
