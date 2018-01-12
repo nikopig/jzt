@@ -42,7 +42,7 @@
         <el-table-column prop="Ldc_Name" label="物流中心"></el-table-column>
         <el-table-column prop="RentTempData" label="租赁温度" width="120"></el-table-column>
         <el-table-column prop="Rental_Area" label="租赁面积" width="90"></el-table-column>
-        <el-table-column prop="Creator" label="创建人" width="90"></el-table-column>
+        <el-table-column prop="Staff_Name" label="创建人" width="90"></el-table-column>
         <el-table-column prop="Created_Time" label="创建时间" width="156"></el-table-column>
       </el-table>
 		</div>
@@ -88,11 +88,13 @@
 					TableHeader: [
 						{
 							field: 'Operator_Name',
-							title: '运营方名称'
+							title: '运营方名称',
+							width: 200
 						},
 						{
 							field: 'Operator_No',
-							title: '运营方编号'
+							title: '运营方编号',
+							width: 200
 						},
 						{
 							field: 'Mnemonic_Code',
@@ -106,11 +108,13 @@
 					TableHeader: [
 						{
 							field: 'Con_Name',
-							title: '委托方名称'
+							title: '委托方名称',
+							width: 200
 						},
 						{
 							field: 'Con_No',
-							title: '委托方编号'
+							title: '委托方编号',
+							width: 200
 						},
 						{
 							field: 'Mnemonic_Code',
@@ -124,11 +128,13 @@
 					TableHeader: [
 						{
 							field: 'All_Name',
-							title: '物流中心'
+							title: '物流中心',
+							width: 250
 						},
 						{
 							field: 'Address_Shortname',
-							title: '地址简介'
+							title: '地址简介',
+							width: 260
 						},
 						{
 							field: 'Contact_Name',
@@ -136,7 +142,8 @@
 						},
 						{
 							field: 'Contact_Phone',
-							title: '联系人电话'
+							title: '联系人电话',
+							width: 150
 						},
 						{
 							field: 'Province_Name',
@@ -152,7 +159,8 @@
 						},
 						{
 							field: 'Address',
-							title: '详细地址'
+							title: '详细地址',
+							width: 260
 						}
 					],
 					datas: [],

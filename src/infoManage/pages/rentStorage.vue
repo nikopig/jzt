@@ -1,6 +1,6 @@
 <template>
 	<div class="rentStorage common-tab-wraper common-container">
-		<el-tabs v-model="activeName">
+		<el-tabs v-model="activeName" @tab-click="handleClick">
 	    <el-tab-pane label="仓储租赁列表" name="list">
 	    	<rent-storage-list @active-name-change="activeNameChange" @rent-storage-edit="rentStorageEdit"></rent-storage-list>
 	    </el-tab-pane>
@@ -29,6 +29,9 @@
 			rentStorageDetail
 		},
 		methods: {
+			handleClick () {
+				window.scrollTo(0, 0)
+			},
 			activeNameChange (val, type) {
 				if (val === 'list' || (val === 'detail' && type === 'add')) {
 					this.editRentStorageRow = {}

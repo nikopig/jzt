@@ -35,7 +35,9 @@
 			feeRuleStorageDetail
 		},
 		methods: {
-			handleClick () {},
+			handleClick () {
+				window.scrollTo(0, 0)
+			},
 			loadField () {
 				Api.get('Fd_Field_Dtl', { Field_Name: 'Business_Model' }, true).then((res) => { // 业务模式
 					if (res.Flag) {
