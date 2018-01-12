@@ -16,7 +16,7 @@
 							<span class="label required">运营商</span>
 							<div class="content">
 								<el-form-item prop="Operator_Name">
-									<el-input placeholder="双击选择运营商" :disabled="true" @dblclick.native="openDialog('operator')" v-model="form.Operator_Name" @change.native="changeOperator"></el-input>
+									<el-input placeholder="双击选择运营商" :disabled="true" @dblclick.native="openDialog('operator')" v-model="form.Operator_Name"></el-input>
 								</el-form-item>
 							</div>
 						</common-col>
@@ -105,9 +105,9 @@
 				</div>
 			</el-form>
 		</div>
-		<common-modal ref="OperatorDialog" DialogTitle="运营方" :isVisible.sync="dialogShow.operator" :TableHeader="Operator.TableHeader" :listData="Operator.datas" @confirm="selectOperator" @search="searchOperator" :isPages="false"></common-modal>
-		<common-modal ref="ConDialog" DialogTitle="委托方" :isVisible.sync="dialogShow.consignor" :TableHeader="Consignor.TableHeader" :listData="Consignor.datas" @confirm="selectConsignor" @search="searchConsignor" :isPages="false"></common-modal>
-		<common-modal ref="LdcDialog" DialogTitle="物流中心" :isVisible.sync="dialogShow.ldc" :TableHeader="Ldc.TableHeader" :listData="Ldc.datas" @confirm="selectLdc" @search="searchLdc" :isPages="false"></common-modal>
+		<common-modal ref="OperatorDialog" DialogTitle="运营方" :isVisible.sync="dialogShow.operator" :TableHeader="operator.TableHeader" :listData="operator.copyDatas" @confirm="selectOperator" @search="searchOperator" :isPages="false"></common-modal>
+		<common-modal ref="ConDialog" DialogTitle="委托方" :isVisible.sync="dialogShow.consignor" :TableHeader="consignor.TableHeader" :listData="consignor.copyDatas" @confirm="selectConsignor" @search="searchConsignor" :isPages="false"></common-modal>
+		<common-modal ref="LdcDialog" DialogTitle="物流中心" :isVisible.sync="dialogShow.ldc" :TableHeader="ldc.TableHeader" :listData="ldc.copyDatas" @confirm="selectLdc" @search="searchLdc" :isPages="false"></common-modal>
 	</div>
 </template>
 
@@ -148,99 +148,30 @@
 					consignor: false,
 					ldc: false
 				},
-				Operator: {
-					TableHeader: [
-						{
-							field: 'Operator_Name',
-							title: '运营方名称',
-							width: 200
-						},
-						{
-							field: 'Operator_No',
-							title: '运营方编号',
-							width: 200
-						},
-						{
-							field: 'Mnemonic_Code',
-							title: '助记码'
-						}
-					],
-					datas: [],
-					copyDatas: []
-				},
-				Consignor: {
-					TableHeader: [
-						{
-							field: 'Con_Name',
-							title: '委托方名称',
-							width: 200
-						},
-						{
-							field: 'Con_No',
-							title: '委托方编号',
-							width: 200
-						},
-						{
-							field: 'Mnemonic_Code',
-							title: '助记码'
-						}
-					],
-					datas: [],
-					copyDatas: []
-				},
-				Ldc: {
-					TableHeader: [
-						{
-							field: 'All_Name',
-							title: '物流中心',
-							width: 250
-						},
-						{
-							field: 'Address_Shortname',
-							title: '地址简介',
-							width: 260
-						},
-						{
-							field: 'Contact_Name',
-							title: '联系人'
-						},
-						{
-							field: 'Contact_Phone',
-							title: '联系人电话',
-							width: 150
-						},
-						{
-							field: 'Province_Name',
-							title: '省'
-						},
-						{
-							field: 'City_Name',
-							title: '市'
-						},
-						{
-							field: 'Area_Name',
-							title: '县'
-						},
-						{
-							field: 'Address',
-							title: '详细地址',
-							width: 260
-						}
-					],
-					datas: [],
-					copyDatas: []
-				},
-				refrigerationTypes: [],
 				rules: {
 					Operator_Name: [{ required: true, message: '请选择运营方', trigger: 'blur' }],
 					Consignor_Name: [{ required: true, message: '请选择委托方', trigger: 'blur' }],
 					Ldc_Name: [{ required: true, message: '请选择物流中心', trigger: 'blur' }],
 					Refrigeration_Type: [{ required: true, message: '请选择租赁仓库存储条件', trigger: 'blur' }]
-				}
+				},
+				emitDetailConsignor: this.consignor,
+				emitDetailLdc: this.ldc
 			}
 		},
 		props: {
 			editRentStorageRow: {
+				type: Object
+			},
+			refrigerationTypes: {
+				type: Array
+			},
+			operator: {
+				type: Object
+			},
+			consignor: {
+				type: Object
+			},
+			ldc: {
 				type: Object
 			}
 		},
@@ -256,6 +187,13 @@
 				} else {
 					this.refreshDetail('form')
 				}
+			},
+			'operator.datas': function (val) {
+				if (val.length === 1) {
+  				this.form.Operator_Id = val[0].Operator_Id
+  				this.form.Operator_Name = val[0].Operator_Name
+  				this.$emit('operator-select', this.form.Operator_Id, 'detail')
+  			}
 			}
 		},
 		methods: {
@@ -265,11 +203,10 @@
       selectOperator (row) {
 				this.form.Operator_Id = row.Operator_Id
 				this.form.Operator_Name = row.Operator_Name
-				this.changeOperator()
 			},
 			searchOperator (keyword) {
 				let searchRegex = new RegExp(keyword, 'i')
-        this.Operator.copyDatas = this.Operator.datas.filter((item) => {
+        this.operator.copyDatas = this.operator.datas.filter((item) => {
           for (let key in item) {
             if (searchRegex.test(item[key])) {
               return true
@@ -283,7 +220,7 @@
 			},
 			searchConsignor (keyword) {
 				let searchRegex = new RegExp(keyword, 'i')
-        this.Consignor.copyDatas = this.Consignor.datas.filter((item) => {
+        this.emitDetailConsignor.copyDatas = this.emitDetailConsignor.datas.filter((item) => {
           for (let key in item) {
             if (searchRegex.test(item[key])) {
               return true
@@ -297,7 +234,7 @@
 			},
 			searchLdc (keyword) {
 				let searchRegex = new RegExp(keyword, 'i')
-        this.Ldc.copyDatas = this.Ldc.datas.filter((item) => {
+        this.emitDetailLdc.copyDatas = this.emitDetailLdc.datas.filter((item) => {
           for (let key in item) {
             if (searchRegex.test(item[key])) {
               return true
@@ -305,94 +242,18 @@
           }
         })
 			},
-			getOperator () { // 运营商
-      	let params = {
-      		userId: Api.userInfo.Staff_Id
-      	}
-      	Api.get('DS_FEERULE_FD_OPERATOR_ByuserId', params, true).then((res) => {
-      		if (res.Flag) {
-      			this.Operator.datas = res.MsgInfo
-      			this.Operator.copyDatas = this.Operator.datas
-      			if (this.Operator.datas.length === 1) {
-      				this.form.Operator_Id = this.Operator.datas[0].Operator_Id
-      				this.form.Operator_Name = this.Operator.datas[0].Operator_Name
-      				this.changeOperator()
-      			}
-      		} else {
-      			this.$alert(res.ErrInfo, '提示', {
-      				confirmButtonText: '确定'
-      			})
-      		}
-      	})
-      },
-      getConsignor () { // 委托方
-      	if (this.form.Operator_Id === '') {
-      		this.$alert('请先选择运营商', '提示', {
-      			confirmButtonText: '确定'
-      		})
-      		return false
-      	}
-      	let params = {
-      		Operator_Id: this.form.Operator_Id,
-      		userId: Api.userInfo.Staff_Id
-      	}
-      	Api.get('DS_FEERULE_FD_CONSIGNOR_ByuserId', params, true).then((res) => {
-      		if (res.Flag) {
-      			this.Consignor.datas = res.MsgInfo
-      			this.Consignor.copyDatas = this.Consignor.datas
-      		} else {
-      			this.$alert(res.ErrInfo, '提示', {
-      				confirmButtonText: '确定'
-      			})
-      		}
-      	})
-      },
-      getLdc () { // 物流中心
-      	Api.get('TMP_TransportTaskScheding_Yd_GetWlzxAddr', {}, true).then((res) => {
-      		if (res.Flag) {
-      			let data = res.MsgInfo
-      			this.Ldc.datas = data.filter((item) => {
-      				if (item.Operator_Id === this.form.Operator_Id) {
-      					return true
-      				}
-      			})
-      			this.Ldc.copyDatas = this.Ldc.datas
-      		} else {
-      			this.$alert(res.ErrInfo, '提示', {
-      				confirmButtonText: '确定'
-      			})
-      		}
-      	})
-      },
-      changeOperator () { // 根据运营商带出委托方
-      	this.getConsignor()
-      	this.getLdc()
-      },
-      getRefrigerationType () { // 租赁温度
-      	Api.get('Fd_Field_Dtl', { Field_Name: 'Refrigeration_Type' }, true).then((res) => {
-					if (res.Flag) {
-						this.refrigerationTypes = res.MsgInfo
-					} else {
-						this.$alert(res.ErrInfo, '提示', {
-							confirmButtonText: '确定'
-						})
-					}
-				})
-      },
       refreshDetail (formName) { // 刷新明细
       	this.$refs[formName].resetFields()
-      	if (this.Operator.datas.length === 1) {
-  				this.form.Operator_Id = this.Operator.datas[0].Operator_Id
-  				this.form.Operator_Name = this.Operator.datas[0].Operator_Name
-  				this.changeOperator()
+      	if (this.operator.datas.length === 1) {
+  				this.form.Operator_Id = this.operator.datas[0].Operator_Id
+  				this.form.Operator_Name = this.operator.datas[0].Operator_Name
   			}
       },
 			addRentStorage (formName) {
 				this.$refs[formName].resetFields()
-				if (this.Operator.datas.length === 1) {
-  				this.form.Operator_Id = this.Operator.datas[0].Operator_Id
-  				this.form.Operator_Name = this.Operator.datas[0].Operator_Name
-  				this.changeOperator()
+				if (this.operator.datas.length === 1) {
+  				this.form.Operator_Id = this.operator.datas[0].Operator_Id
+  				this.form.Operator_Name = this.operator.datas[0].Operator_Name
   			}
 			},
 			setRentStorage (obj) { // 编辑仓储租赁规则
@@ -481,16 +342,9 @@
 						return false
 					}
 				})
-			},
-			init () {
-				this.getOperator()
-				this.getRefrigerationType()
-				console.log(Api.userInfo.Staff_Id)
 			}
 		},
-		mounted () {
-			this.init()
-		}
+		mounted () {}
 	}
 </script>
 

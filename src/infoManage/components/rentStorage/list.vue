@@ -25,7 +25,7 @@
 				<el-form-item label="租赁温度">
 					<el-select v-model="filterCondition.Refrigeration_Type" clearable placeholder="请选择">
 				    <el-option
-				      v-for="item in refrigerationTypes" :key="item.Value_Data" :label="item.Value_Desc" :value="item.Value_Data">
+				      v-for="item in emitRefrigerationTypes" :key="item.Value_Data" :label="item.Value_Desc" :value="item.Value_Data">
 				    </el-option>
 				  </el-select>
 				</el-form-item>
@@ -55,9 +55,9 @@
 	      :total="bigTotalItems">
 	    </el-pagination>
 	  </div>
-	  <common-modal ref="OperatorDialog" DialogTitle="运营方" :isVisible.sync="dialogShow.operator" :TableHeader="Operator.TableHeader" :listData="Operator.copyDatas" @confirm="selectOperator" @search="searchOperator" :isPages="false"></common-modal>
-		<common-modal ref="ConDialog" DialogTitle="委托方" :isVisible.sync="dialogShow.consignor" :TableHeader="Consignor.TableHeader" :listData="Consignor.copyDatas" @confirm="selectConsignor" @search="searchConsignor" :isPages="false"></common-modal>
-		<common-modal ref="LdcDialog" DialogTitle="物流中心" :isVisible.sync="dialogShow.ldc" :TableHeader="Ldc.TableHeader" :listData="Ldc.copyDatas" @confirm="selectLdc" @search="searchLdc" :isPages="false"></common-modal>
+	  <common-modal ref="OperatorDialog" DialogTitle="运营方" :isVisible.sync="dialogShow.operator" :TableHeader="emitOperator.TableHeader" :listData="emitOperator.copyDatas" @confirm="selectOperator" @search="searchOperator" :isPages="false"></common-modal>
+		<common-modal ref="ConDialog" DialogTitle="委托方" :isVisible.sync="dialogShow.consignor" :TableHeader="emitConsignor.TableHeader" :listData="emitConsignor.copyDatas" @confirm="selectConsignor" @search="searchConsignor" :isPages="false"></common-modal>
+		<common-modal ref="LdcDialog" DialogTitle="物流中心" :isVisible.sync="dialogShow.ldc" :TableHeader="emitLdc.TableHeader" :listData="emitLdc.copyDatas" @confirm="selectLdc" @search="searchLdc" :isPages="false"></common-modal>
 	</div>
 </template>
 
@@ -84,96 +84,39 @@
 					consignor: false,
 					ldc: false
 				},
-				Operator: {
-					TableHeader: [
-						{
-							field: 'Operator_Name',
-							title: '运营方名称',
-							width: 200
-						},
-						{
-							field: 'Operator_No',
-							title: '运营方编号',
-							width: 200
-						},
-						{
-							field: 'Mnemonic_Code',
-							title: '助记码'
-						}
-					],
-					datas: [],
-					copyDatas: []
-				},
-				Consignor: {
-					TableHeader: [
-						{
-							field: 'Con_Name',
-							title: '委托方名称',
-							width: 200
-						},
-						{
-							field: 'Con_No',
-							title: '委托方编号',
-							width: 200
-						},
-						{
-							field: 'Mnemonic_Code',
-							title: '助记码'
-						}
-					],
-					datas: [],
-					copyDatas: []
-				},
-				Ldc: {
-					TableHeader: [
-						{
-							field: 'All_Name',
-							title: '物流中心',
-							width: 250
-						},
-						{
-							field: 'Address_Shortname',
-							title: '地址简介',
-							width: 260
-						},
-						{
-							field: 'Contact_Name',
-							title: '联系人'
-						},
-						{
-							field: 'Contact_Phone',
-							title: '联系人电话',
-							width: 150
-						},
-						{
-							field: 'Province_Name',
-							title: '省'
-						},
-						{
-							field: 'City_Name',
-							title: '市'
-						},
-						{
-							field: 'Area_Name',
-							title: '县'
-						},
-						{
-							field: 'Address',
-							title: '详细地址',
-							width: 260
-						}
-					],
-					datas: [],
-					copyDatas: []
-				},
-				refrigerationTypes: [],
+				emitRefrigerationTypes: [],
+				emitOperator: this.operator,
+				emitConsignor: this.consignor,
+				emitLdc: this.ldc,
 				multipleSelection: null, // 选中的行
 				currentPage: 1,
 				pageSize: 10,
 				bigTotalItems: 0
 			}
 		},
+		props: {
+			operator: {
+				type: Object
+			},
+			consignor: {
+				type: Object
+			},
+			ldc: {
+				type: Object
+			},
+			refrigerationTypes: {
+				type: Array
+			}
+		},
 		components: {commonModal},
+		watch: {
+			emitRefrigerationTypes (val) {
+				this.$emit('refrigeration-type-change', val)
+			},
+			emitOperator (val) {
+				this.$emit('operator-change', val)
+			}
+		},
 		methods: {
 			handleCurrentChange () {
 				this.getData()
@@ -187,11 +130,11 @@
 			selectOperator (row) {
 				this.filterCondition.Operator_Id = row.Operator_Id
 				this.filterCondition.Operator_Name = row.Operator_Name
-				this.changeOperator()
+				this.$emit('operator-select', this.filterCondition.Operator_Id, 'list')
 			},
 			searchOperator (keyword) {
 				let searchRegex = new RegExp(keyword, 'i')
-        this.Operator.copyDatas = this.Operator.datas.filter((item) => {
+        this.emitOperator.copyDatas = this.emitOperator.datas.filter((item) => {
           for (let key in item) {
             if (searchRegex.test(item[key])) {
               return true
@@ -202,8 +145,8 @@
 			deleteOperator () {
 				this.filterCondition.Operator_Id = ''
 				this.filterCondition.Operator_Name = ''
-				this.Consignor.datas = []
-				this.Ldc.datas = []
+				this.emitConsignor.datas = []
+				this.emitLdc.datas = []
 			},
 			selectConsignor (row) {
 				this.filterCondition.Con_Id = row.Con_Id
@@ -211,7 +154,7 @@
 			},
 			searchConsignor (keyword) {
 				let searchRegex = new RegExp(keyword, 'i')
-        this.Consignor.copyDatas = this.Consignor.datas.filter((item) => {
+        this.emitConsignor.copyDatas = this.emitConsignor.datas.filter((item) => {
           for (let key in item) {
             if (searchRegex.test(item[key])) {
               return true
@@ -229,7 +172,7 @@
 			},
 			searchLdc (keyword) {
 				let searchRegex = new RegExp(keyword, 'i')
-        this.Ldc.copyDatas = this.Ldc.datas.filter((item) => {
+        this.emitLdc.copyDatas = this.emitLdc.datas.filter((item) => {
           for (let key in item) {
             if (searchRegex.test(item[key])) {
               return true
@@ -314,62 +257,19 @@
       	}
       	Api.get('DS_FEERULE_FD_OPERATOR_ByuserId', params, true).then((res) => {
       		if (res.Flag) {
-      			this.Operator.datas = res.MsgInfo
-      			this.Operator.copyDatas = this.Operator.datas
+      			this.emitOperator.datas = res.MsgInfo
+      			this.emitOperator.copyDatas = this.emitOperator.datas
       		} else {
       			this.$alert(res.ErrInfo, '提示', {
       				confirmButtonText: '确定'
       			})
       		}
       	})
-      },
-      getConsignor () { // 委托方
-      	if (this.filterCondition.Operator_Id === '') {
-      		this.$alert('请先选择运营商', '提示', {
-      			confirmButtonText: '确定'
-      		})
-      		return false
-      	}
-      	let params = {
-      		Operator_Id: this.filterCondition.Operator_Id,
-      		userId: Api.userInfo.Staff_Id
-      	}
-      	Api.get('DS_FEERULE_FD_CONSIGNOR_ByuserId', params, true).then((res) => {
-      		if (res.Flag) {
-      			this.Consignor.datas = res.MsgInfo
-      			this.Consignor.copyDatas = this.Consignor.datas
-      		} else {
-      			this.$alert(res.ErrInfo, '提示', {
-      				confirmButtonText: '确定'
-      			})
-      		}
-      	})
-      },
-      getLdc () { // 物流中心
-      	Api.get('TMP_TransportTaskScheding_Yd_GetWlzxAddr', {}, true).then((res) => {
-      		if (res.Flag) {
-      			let data = res.MsgInfo
-      			this.Ldc.datas = data.filter((item) => {
-      				if (item.Operator_Id === this.filterCondition.Operator_Id) {
-      					return true
-      				}
-      			})
-      			this.Ldc.copyDatas = this.Ldc.datas
-      		} else {
-      			this.$alert(res.ErrInfo, '提示', {
-      				confirmButtonText: '确定'
-      			})
-      		}
-      	})
-      },
-      changeOperator () { // 根据运营商带出委托方
-      	this.getConsignor()
-      	this.getLdc()
       },
       getRefrigerationType () { // 租赁温度
       	Api.get('Fd_Field_Dtl', { Field_Name: 'Refrigeration_Type' }, true).then((res) => {
 					if (res.Flag) {
-						this.refrigerationTypes = res.MsgInfo
+						this.emitRefrigerationTypes = res.MsgInfo
 					} else {
 						this.$alert(res.ErrInfo, '提示', {
 							confirmButtonText: '确定'
@@ -417,6 +317,8 @@
 		},
 		mounted () {
 			this.init()
+			console.log(this.consignor)
+			console.log(this.ldc)
 		}
 	}
 </script>
