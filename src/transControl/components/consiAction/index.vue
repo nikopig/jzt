@@ -459,7 +459,7 @@
                 <el-input v-model="scope.row.Actual_Gross_Weight"></el-input>
               </template>
             </el-table-column>
-            <el-table-column prop="Consign_No" label="托运单号" width="150" show-overflow-tooltip>
+            <el-table-column label="托运单号" width="150" show-overflow-tooltip>
               <template slot-scope="scope">
                 <el-input v-model="scope.row.Consign_No"></el-input>
               </template>
@@ -1270,12 +1270,16 @@
         })
         let TransportEntrustDtlsTemp = []
         this.detArr.forEach(item => {
+          debugger
+          console.log('detArr item')
+          console.log(item)
+          console.log('end')
           TransportEntrustDtlsTemp.push({
             TransportEntrust_Dtl_Id: item.TransportEntrust_Dtl_Id,
             Actual_Gross_Pcs: item.Actual_Gross_Pcs,
             Actual_Gross_Volume: item.Actual_Gross_Volume,
             Actual_Gross_Weight: item.Actual_Gross_Weight,
-            Consign_No: this.carryForm.Consign_No
+            Consign_No: item.Consign_No
           })
         })
         param.TransportEntrust_Dtls = JSON.stringify(TransportEntrustDtlsTemp)
@@ -1452,7 +1456,7 @@
                 Actual_Gross_Pcs: item.Actual_Gross_Pcs,
                 Actual_Gross_Volume: item.Actual_Gross_Volume,
                 Actual_Gross_Weight: item.Actual_Gross_Weight,
-                Consign_No: this.carryForm.Consign_No
+                Consign_No: item.Consign_No
               })
             })
             param.TransportEntrust_Dtls = JSON.stringify(TransportEntrustDtlsTemp)
