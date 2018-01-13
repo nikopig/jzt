@@ -9,10 +9,13 @@
           <el-button type="text" icon="edit" @click="changeOrder">订单信息变更</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="warning" @click="stopDtl">停止明细</el-button>
+          <el-button type="text" icon="mo-tingzhi" @click="stopDtl">停止明细</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
           <el-button type="text" icon="mo-refresh" @click="getFirstOrder">刷新</el-button>
+        </div>
+        <div class="btn-box" v-show="!showRoute">
+          <el-button type="text" icon="warning" @click="getNotPointCompany">警告</el-button>
         </div>
         <div class="btn-box" v-show="showRoute">
           <el-button type="text" icon="mo-mapPoint" @click="checkHisRoute">历史路线</el-button>
@@ -567,6 +570,8 @@
       <fixcarr-modal :visible.sync="showFixCarr" @change="confirmFixCarr"></fixcarr-modal>
       <!--历史路线弹框-->
       <history-route-dialog :isVisible.sync="showHistoryRoute" @select="addHistoryRoute"></history-route-dialog>
+      <!-- 未描点单位信息 -->
+      <common-modal ref="notPointCompanyDialog" DialogTitle="未描点单位信息" :isVisible.sync="showNotPointCompany" :TableHeader="notPointCompany.TableHeader" :listData="notPointCompany.datas" @search="searchNotPointCompany" :total="notPointCompany.bigTotalItems"></common-modal>
     </div>
 </template>
 
@@ -585,10 +590,11 @@
     import goodsinfoModal from './goodsinfo-modal'
     import historyRouteDialog from './history-route-dialog'
     import draggable from 'vuedraggable'
+    import commonModal from '@/common/components/common-modal'
     export default {
         name: '',
         props: [],
-        components: {draggable, selectDictionary, commonRow, commonCol, commonGrideCard, addressModal, routeAddressModal, fixoperatorModal, fixcarrModal, goodsinfoModal, historyRouteDialog},
+        components: {draggable, selectDictionary, commonRow, commonCol, commonGrideCard, addressModal, routeAddressModal, fixoperatorModal, fixcarrModal, goodsinfoModal, historyRouteDialog, commonModal},
         data () {
             return {
               first: {
@@ -702,7 +708,46 @@
               showHistoryRoute: false, // 是否显示历史弹窗
               routeType: [], // 路线类型
               StopReason: '', // 停止明细原因
-              orderInfo: {} // 订单信息变更信息
+              orderInfo: {}, // 订单信息变更信息
+              notPointCompany: { // 未描点单位信息
+                TableHeader: [
+                  {
+                    field: 'Ssa_Name',
+                    title: '单位名称',
+                    width: 220
+                  },
+                  {
+                    field: 'Ssa_No',
+                    title: '单位编号',
+                    width: 160
+                  },
+                  {
+                    field: 'ConOrder_No',
+                    title: '委托方单号',
+                    width: 140
+                  },
+                  {
+                    field: 'Contact_Name',
+                    title: '联系人'
+                  },
+                  {
+                    field: 'Contact_Phone',
+                    title: '联系电话',
+                    width: 140
+                  },
+                  {
+                    field: 'Address',
+                    title: '地址',
+                    width: 300
+                  }
+                ],
+                datas: [],
+                currentPage: 1,
+                pageSize: 10,
+                bigTotalItems: 0,
+                keywords: ''
+              },
+              showNotPointCompany: false
             }
         },
         computed: {
@@ -1651,6 +1696,36 @@
             let startIndex = getIndexOfCollection('Address_Id', dtlRow.start_Address_Id, routeRow.Route_Dtls)
             return routeRow.Route_Dtls.slice(startIndex + 1)
           },
+          // 2018-01-13 胡香利 增加
+          getNotPointCompany () {
+            this.showNotPointCompany = true
+            let params = {
+              keyWords: this.notPointCompany.keywords,
+              Operator_Id: Api.userInfo.Operator_Id,
+              beginIndex: (this.notPointCompany.currentPage - 1) * this.notPointCompany.pageSize,
+              endIndex: this.notPointCompany.currentPage * this.notPointCompany.pageSize
+            }
+            // this.loadingWait = this.showLoading('请稍候...')
+            Api.get('TMP_TransportTaskScheding_Yd_Warnning', params, true).then((res) => {
+              if (res.Flag) {
+                this.notPointCompany.datas = res.MsgInfo
+                if (this.notPointCompany.datas.length === 0) {
+                  this.notPointCompany.bigTotalItems = 0
+                } else {
+                  this.notPointCompany.bigTotalItems = this.notPointCompany.datas[0].TOTAL
+                }
+              } else {
+                this.$alert(res.ErrInfo, '提示', {
+                  confirmButtonText: '确定'
+                })
+              }
+              // this.loadingWait.close()
+            })
+          },
+          searchNotPointCompany (keyword) {
+            this.notPointCompany.keywords = keyword
+            this.getNotPointCompany()
+          }, // end
           init () {
             this.getFirstOrder() // 获取一级数据
             this.getSeCondition() // 获取起点终点数据（运单tab）
