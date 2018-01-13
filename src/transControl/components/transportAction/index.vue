@@ -727,6 +727,11 @@
                     width: 140
                   },
                   {
+                    field: 'Mnemonic_Code',
+                    title: '助记码',
+                    width: 160
+                  },
+                  {
                     field: 'Contact_Name',
                     title: '联系人'
                   },
