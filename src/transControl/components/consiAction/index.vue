@@ -1390,7 +1390,8 @@
             }
             let param = {
               TransportEntrust_Hdr: '',
-              TransportRoute_Ids: ''
+              TransportRoute_Ids: '',
+              TransportEntrust_Dtls: ''
             }
             param.TransportEntrust_Hdr = JSON.stringify(transportEntrustHdr)
             let TransportEntrustDtlsIDs = []
@@ -1400,6 +1401,19 @@
               })
             })
             param.TransportRoute_Ids = TransportEntrustDtlsIDs.join(',')
+            // 2018-01-12胡香利增加
+            let TransportEntrustDtlsTemp = []
+            this.detArr.forEach(item => {
+              TransportEntrustDtlsTemp.push({
+                TransportEntrust_Dtl_Id: item.TransportEntrust_Dtl_Id,
+                Actual_Gross_Pcs: item.Actual_Gross_Pcs,
+                Actual_Gross_Volume: item.Actual_Gross_Volume,
+                Actual_Gross_Weight: item.Actual_Gross_Weight,
+                Consign_No: item.Consign_No
+              })
+            })
+            param.TransportEntrust_Dtls = JSON.stringify(TransportEntrustDtlsTemp)
+            // 2018-01-12 胡香利 end
             Api.post('TMP_TransportTaskDD_ConfirmCarrier', param).then(res => {
               if (res.Flag) {
                 this.$alert('操作成功!', '提示').then(() => {
@@ -1437,8 +1451,7 @@
             }
             let param = {
               TransportEntrust_Hdr: '',
-              TransportRoute_Ids: '',
-              TransportEntrust_Dtls: ''
+              TransportRoute_Ids: ''
             }
             param.TransportEntrust_Hdr = JSON.stringify(transportEntrustHdr)
             let TransportEntrustDtlsIDs = []
@@ -1448,19 +1461,6 @@
               })
             })
             param.TransportRoute_Ids = TransportEntrustDtlsIDs.join(',')
-            // 2018-01-12胡香利增加
-            let TransportEntrustDtlsTemp = []
-            this.detArr.forEach(item => {
-              TransportEntrustDtlsTemp.push({
-                TransportEntrust_Dtl_Id: item.TransportEntrust_Dtl_Id,
-                Actual_Gross_Pcs: item.Actual_Gross_Pcs,
-                Actual_Gross_Volume: item.Actual_Gross_Volume,
-                Actual_Gross_Weight: item.Actual_Gross_Weight,
-                Consign_No: item.Consign_No
-              })
-            })
-            param.TransportEntrust_Dtls = JSON.stringify(TransportEntrustDtlsTemp)
-            // 2018-01-12 胡香利 end
             Api.post('TMP_TransportTaskDD_ConfirmOperator', param).then(res => {
               if (res.Flag) {
                 this.$alert('操作成功!', '提示').then(() => {
