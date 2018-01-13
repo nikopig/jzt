@@ -15,7 +15,7 @@
           <el-button type="text" icon="mo-refresh" @click="getFirstOrder">刷新</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="warning" @click="getNotPointCompany">警告</el-button>
+          <el-button type="text" icon="warning" @click="showNotPointCompanyDialog" :class="{'warning': notPointCompany.datas.length > 0}">警告</el-button>
         </div>
         <div class="btn-box" v-show="showRoute">
           <el-button type="text" icon="mo-mapPoint" @click="checkHisRoute">历史路线</el-button>
@@ -571,7 +571,7 @@
       <!--历史路线弹框-->
       <history-route-dialog :isVisible.sync="showHistoryRoute" @select="addHistoryRoute"></history-route-dialog>
       <!-- 未描点单位信息 -->
-      <common-modal ref="notPointCompanyDialog" DialogTitle="未描点单位信息" :isVisible.sync="showNotPointCompany" :TableHeader="notPointCompany.TableHeader" :listData="notPointCompany.datas" @search="searchNotPointCompany" :total="notPointCompany.bigTotalItems"></common-modal>
+      <common-modal ref="notPointCompanyDialog" DialogTitle="未描点单位信息" :isVisible.sync="showNotPointCompany" :TableHeader="notPointCompany.TableHeader" :listData="notPointCompany.datas" @search="searchNotPointCompany" :total="notPointCompany.bigTotalItems" @pageChange="notPointCompanyPageChange"></common-modal>
     </div>
 </template>
 
@@ -1702,8 +1702,11 @@
             return routeRow.Route_Dtls.slice(startIndex + 1)
           },
           // 2018-01-13 胡香利 增加
-          getNotPointCompany () {
+          showNotPointCompanyDialog () {
             this.showNotPointCompany = true
+            this.notPointCompany.keywords = ''
+          },
+          getNotPointCompany () {
             let params = {
               keyWords: this.notPointCompany.keywords,
               Operator_Id: Api.userInfo.Operator_Id,
@@ -1727,6 +1730,10 @@
               // this.loadingWait.close()
             })
           },
+          notPointCompanyPageChange (num) {
+            this.notPointCompany.currentPage = num
+            this.getNotPointCompany()
+          },
           searchNotPointCompany (keyword) {
             this.notPointCompany.keywords = keyword
             this.getNotPointCompany()
@@ -1738,6 +1745,7 @@
             this.getAging() // 获取时效
             this.initRoute() // 初始化加载路线信息
             this.loadField() // 获取字典表字段
+            this.getNotPointCompany() // 获取未描点的单位信息
           }
         },
         created () {
@@ -1750,6 +1758,13 @@
 </script>
 <style lang="less">
   .transAction {
+    .el-button--text.warning {
+      color: red;
+      &:hover {
+        color: red;
+        opacity: 0.6;
+      }
+    }
     .toolbar {
       position: fixed;
       top: 67px;
