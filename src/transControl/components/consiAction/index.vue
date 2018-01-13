@@ -1395,9 +1395,11 @@
             param.TransportEntrust_Hdr = JSON.stringify(transportEntrustHdr)
             let TransportEntrustDtlsIDs = []
             this.wTDrightAddedArr.forEach(item => {
-              item.Route_Infos.forEach(route => {
-                TransportEntrustDtlsIDs.push(route.TransportRoute_Id)
-              })
+              if (item.checked) {
+                item.Route_Infos.forEach(route => {
+                  TransportEntrustDtlsIDs.push(route.TransportRoute_Id)
+                })
+              }
             })
             param.TransportRoute_Ids = TransportEntrustDtlsIDs.join(',')
             // 2018-01-12胡香利增加
@@ -1455,9 +1457,11 @@
             param.TransportEntrust_Hdr = JSON.stringify(transportEntrustHdr)
             let TransportEntrustDtlsIDs = []
             this.wTDrightAddedArr.forEach(item => {
-              item.Route_Infos.forEach(route => {
-                TransportEntrustDtlsIDs.push(route.TransportRoute_Id)
-              })
+              if (item.checked) {
+                item.Route_Infos.forEach(route => {
+                  TransportEntrustDtlsIDs.push(route.TransportRoute_Id)
+                })
+              }
             })
             param.TransportRoute_Ids = TransportEntrustDtlsIDs.join(',')
             Api.post('TMP_TransportTaskDD_ConfirmOperator', param).then(res => {
