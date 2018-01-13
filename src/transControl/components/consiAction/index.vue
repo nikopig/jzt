@@ -1270,7 +1270,6 @@
         })
         let TransportEntrustDtlsTemp = []
         this.detArr.forEach(item => {
-          debugger
           console.log('detArr item')
           console.log(item)
           console.log('end')
