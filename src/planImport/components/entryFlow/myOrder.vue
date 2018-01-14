@@ -31,14 +31,20 @@
                 <span class="label">供应商地址&nbsp;:</span>
                 <span class='content'>{{item.Address}}</span>
               </common-col>
-              <common-col>
+              <!-- <common-col>
                 <span class='label'>联系人&nbsp;:</span><span class='content'>{{item.Contact_Name}}</span>
               </common-col>
               <common-col>
                 <span class='label'>联系电话&nbsp;:</span><span class='content'>{{item.Contact_Phone}}</span>
-              </common-col>
+              </common-col> -->
               <common-col>
                 <span class='label'>商品名称&nbsp;:</span><span class='content'>{{item.Goods_Name}}</span>
+              </common-col>
+              <common-col>
+                <span class='label'>规格&nbsp;:</span><span class='content'>{{item.Drug_Spec}}</span>
+              </common-col>
+              <common-col>
+                <span class='label'>包装数&nbsp;:</span><span class='content'>{{item.Package_Qty}}</span>
               </common-col>
               <common-col>
                 <span class='label'>温层&nbsp;:</span><span class='content'>{{item.Refrigeration_Type}}</span>
