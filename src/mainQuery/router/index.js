@@ -99,7 +99,7 @@ export default new Router({
           component: resolve => require(['../components/stockQuery/mainList'], resolve)
         },
         {
-          path: 'itemList/:Ldc_Id',
+          path: 'itemList/:Ldc_Id/:Con_Id/:Con_Name/:TableHeader',
           name: 'stockItemList',
           component: resolve => require(['../components/stockQuery/itemList'], resolve)
         }

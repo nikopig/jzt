@@ -104,10 +104,10 @@
 					Con_Name: ''
 				},
 				rate: { // 环比上月百分比
-					kczjs: -8.35,
+					kczjs: 0,
 					kcpgs: 0,
-					hzwlzx: 8.35,
-					kczzts: -8.35
+					hzwlzx: 0,
+					kczzts: 0
 				},
 				KeyWords: '%', // 委托方弹框搜索关键字
 				TableHeader: [ // 委托方弹框
@@ -165,7 +165,7 @@
 				this.echartObj.mapChart = echarts.init(this.$refs.chinaMap)
 				let option = {
 					tooltip: {
-						show: true,
+						show: false,
             trigger: 'item',
             triggerOn: 'click',
             backgroundColor: 'rgba(120, 174, 255, 1)',
@@ -261,7 +261,10 @@
 		    	if (param.componentType === 'series') {
 		    		if (param.seriesType === 'scatter') {
 		    			let params = {
-						  	Ldc_Id: param.data.Ldc_Id
+						  	Ldc_Id: param.data.Ldc_Id,
+						  	Con_Id: this.filterCondition.Con_Id,
+						  	Con_Name: this.filterCondition.Con_Name,
+						  	TableHeader: JSON.stringify(this.TableHeader)
 						  }
 			    		this.$router.push({
 								name: 'stockItemList',
@@ -284,7 +287,11 @@
 					title: {
 				 		left: 10,
 				 		top: 7,
-		        text: (this.barLdcNames.length > 1) ? (this.filterCondition.Con_Name + '合作物流中心库存数') : (this.barLdcNames[0])
+		        text: (this.barLdcNames.length > 1) ? (this.filterCondition.Con_Name + '合作物流中心库存数') : (this.barLdcNames[0]),
+		        textStyle: {
+		        	color: '#999',
+		        	fontWeight: 'normal'
+		        }
 			    },
 			    tooltip: {
 		        trigger: 'axis',
@@ -341,6 +348,11 @@
                 }
 	            }
 		        },
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#aaa'
+		        	}
+		        },
 		        axisTick: {
 		        	length: 10
 		        }
@@ -348,8 +360,14 @@
 			    yAxis: {
 		        type: 'value',
 		        name: '库存数',
+		        nameGap: 10,
 		        axisLabel: {
 	            formatter: '{value}'
+		        },
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#aaa'
+		        	}
 		        }
 			    },
 		    	dataZoom: [
@@ -687,22 +705,22 @@
 				border-radius: 4px;
 				box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
 				margin: 0 10px;
+				position: relative;
+				flex: 2;
+			}
+			.china-map, .bar-graph{
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
 			}
 			.map-left{
-				flex: 2;
 				margin-left: 0;
 		    overflow: hidden;
-				.china-map{
-					height: 100%;
-				}
 			}
 			.map-right{
-				flex: 2;
 				margin-right: 0;
-				position: relative;
-				.bar-graph{
-					height: 100%;
-				}
 				p{
 					display: flex;
 					flex-direction: column;

@@ -33,6 +33,12 @@
             default () {
               return {}
             }
+          },
+          transFields: {
+            type: Array,
+            default () {
+              return []
+            }
           }
         },
         components: {
@@ -115,6 +121,10 @@
             this.getGoods()
           },
           init () {
+            debugger
+            if (this.transFields.length > 0) {
+              this.fields = this.transFields
+            }
             this.getGoods()
           }
         },

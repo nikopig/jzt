@@ -16,6 +16,9 @@
 				<el-form-item label="物流中心">
 					<el-input v-model="filterCondition.Ldc_Name" placeholder="双击选择" :disabled="true" icon="close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')"></el-input>
 				</el-form-item>
+				<el-form-item label="委托方">
+					<el-input v-model="filterCondition.Con_Name" placeholder="双击选择" :disabled="true" @dblclick.native="openDialog('consignor')"></el-input>
+				</el-form-item>
 				<el-form-item label="商品名称">
 					<el-input v-model="filterCondition.Goods_Name" placeholder="双击选择" :disabled="true" icon="close" :on-icon-click="deleteGood" @dblclick.native="openDialog('goods')"></el-input>
 				</el-form-item>
@@ -39,7 +42,7 @@
 				<el-table-column prop="Goods_No" label="商品编号"></el-table-column>
 				<el-table-column prop="Goods_Name" label="商品名称"></el-table-column>
 				<el-table-column prop="Stock_Status" label="库存状态" width="84"></el-table-column>
-				<el-table-column prop="Lot_Id" label="批号"></el-table-column>
+				<el-table-column prop="Lot_No" label="批号"></el-table-column>
 				<el-table-column prop="Production_Date" label="生产日期"></el-table-column>
 				<el-table-column prop="Valid_Until" label="有效期至"></el-table-column>
 				<el-table-column prop="Stock_Quantity" label="库存数量"></el-table-column>
@@ -58,7 +61,8 @@
 	    </el-pagination>
 	  </div>
 	  <ldc-modal :visible.sync="dialogShow.ldc" @change="selectLdc" :ldcId="ldcId"></ldc-modal>
-	  <goods-modal :visible.sync="dialogShow.goods" @change="selectGood"></goods-modal>
+	  <goods-modal :visible.sync="dialogShow.goods" @change="selectGood" :transFields="transFields"></goods-modal>
+	  <common-modal ref="staffCons" DialogTitle="委托方信息" :isVisible.sync="dialogShow.consignor" :TableHeader="consignor.TableHeader" :listData="consignor.cons" :total="consignor.bigTotalItems" @confirm="selectConsignor" @search="searchConsignor" @pageChange="consPageChange"></common-modal>
 	</div>
 </template>
 
@@ -66,6 +70,7 @@
 	import Api from '@/common/js/api'
 	import ldcModal from '@/common/service/modal/ldc-modal'
 	import goodsModal from '@/common/service/modal/goods-modal'
+	import commonModal from '@/common/components/common-modal'
 	export default {
 		name: 'stockItemList',
 		data () {
@@ -74,6 +79,8 @@
 				filterCondition: {
 					Ldc_Id: '%',
 					Ldc_Name: '',
+					Con_Id: this.$route.params.Con_Id,
+					Con_Name: this.$route.params.Con_Name,
 					Goods_Id: '%',
 					Goods_Name: '',
 					Stock_Status: ''
@@ -85,13 +92,56 @@
 				bigTotalItems: 0,
 				dialogShow: {
 					ldc: false,
-					goods: false
-				}
+					goods: false,
+					consignor: false
+				},
+				consignor: {
+					TableHeader: [],
+					cons: [],
+					KeyWords: '%',
+					bigTotalItems: 0,
+					currentPage: 1,
+					pageSize: 10
+				},
+				transFields: [
+					{
+            title: '商品名称',
+            field: 'Goods_Name',
+            width: 200
+          },
+          {
+            title: '商品编号',
+            field: 'Goods_No',
+            width: 140
+          },
+          {
+            title: '助记码',
+            field: 'Mnemonic_Code'
+          },
+					{
+						title: '药品规格',
+            field: 'Drug_Spec'
+					},
+					{
+						title: '厂家',
+            field: 'Manufacturer',
+            width: 200
+					},
+					{
+						title: '包装数',
+            field: 'Package_Qty'
+					},
+					{
+						title: '包装单位',
+            field: 'Package_Unit'
+					}
+				]
 			}
 		},
 		components: {
 			ldcModal,
-			goodsModal
+			goodsModal,
+			commonModal
 		},
 		methods: {
 			goBack (step) {
@@ -133,15 +183,53 @@
       		}
       	})
       },
+      selectConsignor (row) {
+      	this.filterCondition.Con_Id = row.Con_Id
+      	this.filterCondition.Con_Name = row.Con_Name
+      },
+      searchConsignor (keyword) {
+      	this.consignor.KeyWords = keyword
+      	this.getCons()
+      },
+      consPageChange (num) {
+      	this.consignor.currentPage = num
+      	this.getCons()
+      },
+      getCons () {
+      	let params = {
+      		KeyWords: this.consignor.KeyWords,
+      		StartPage: (this.consignor.currentPage - 1) * this.consignor.pageSize,
+      		EndPage: this.consignor.currentPage * this.consignor.pageSize
+      	}
+      	// this.loadingWait = this.showLoading('请稍候...')
+      	Api.get('DS_KC_GetConsByStaffId', params, false).then((res) => {
+      		// this.loadingWait.close()
+      		if (res.Flag) {
+      			this.consignor.cons = res.MsgInfo
+      			if (this.consignor.cons.length === 0) {
+      				this.consignor.bigTotalItems = 0
+      			} else {
+      				this.consignor.bigTotalItems = this.consignor.cons[0].TotalPage
+      			}
+      		} else {
+      			this.$alert(res.ErrInfo, '提示', {
+      				confirmButtonText: '确定'
+      			})
+      		}
+      	})
+      },
 			getData () {
 				let params = {
 					LDC_ID: this.filterCondition.Ldc_Id,
+					Con_Id: this.filterCondition.Con_Id,
 					Goods_Id: this.filterCondition.Goods_Id,
 					Stock_Status: (this.filterCondition.Stock_Status === '') ? '%' : this.filterCondition.Stock_Status,
 					StartPage: (this.currentPage - 1) * this.pageSize,
 					EndPage: this.currentPage * this.pageSize
 				}
+				this.loadingWait = this.showLoading('请稍候...')
 				Api.get('DS_KC_GetLdcStocksByLdcId', params, true).then((res) => {
+					this.loadingWait.close()
 					if (res.Flag) {
 						this.itemData = res.MsgInfo
 						if (this.itemData.length === 0) {
@@ -158,9 +246,16 @@
 			},
 			init () {
 				this.filterCondition.Ldc_Id = this.$route.params.Ldc_Id
+				this.filterCondition.Con_Id = this.$route.params.Con_Id
+				this.filterCondition.Con_Name = this.$route.params.Con_Name
+				this.consignor.TableHeader = JSON.parse(this.$route.params.TableHeader)
 				this.getStockStatus()
 				this.getData()
+				this.getCons()
 			}
+		},
+		activated () {
+			this.init()
 		},
 		mounted () {
 			this.init()

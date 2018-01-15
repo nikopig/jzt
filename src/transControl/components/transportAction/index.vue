@@ -170,7 +170,10 @@
                         <div class="common-table-cell check-cell">
                           <el-checkbox v-model="secondItem.select" @change="secondSelect(firstItem)"></el-checkbox>
                         </div>
-                        <div class="common-table-cell">{{secondItem.ConOrder_No}}</div>
+                        <!-- <div class="common-table-cell">{{secondItem.ConOrder_No}}</div> -->
+                        <el-tooltip placement="top" :content="secondItem.ConOrder_No" :disabled="!secondItem.ConOrder_No">
+                          <div class="common-table-cell">{{secondItem.ConOrder_No}}</div>
+                        </el-tooltip>
                         <el-tooltip placement="top" :content="secondItem.Ssa_Name" :disabled="!secondItem.Ssa_Name || secondItem.Ssa_Name.length < 13">
                           <div class="common-table-cell" style="width: 170px;flex: none;" :style="{color: secondItem.Start_Color}">{{secondItem.Ssa_Name}}</div>
                         </el-tooltip>
@@ -188,7 +191,7 @@
                         </el-tooltip>
                         <div class="common-table-cell">{{secondItem.Is_Receipt}}</div>
                         <div class="common-table-cell">{{secondItem.Is_ScenePrint}}</div>
-                        <el-tooltip :content="secondItem.Remarks" :disabled="!secondItem.Remarks || secondItem.Remarks.length < 10">
+                        <el-tooltip placement="top" :content="secondItem.Remarks" :disabled="!secondItem.Remarks">
                           <div class="common-table-cell">{{secondItem.Remarks}}</div>
                         </el-tooltip>
                       </div>
