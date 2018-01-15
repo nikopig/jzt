@@ -121,7 +121,6 @@
             this.getGoods()
           },
           init () {
-            debugger
             if (this.transFields.length > 0) {
               this.fields = this.transFields
             }

@@ -74,7 +74,9 @@
 				  <div slot="header" class="clearfix">
 				    <span>客服投诉TOP5</span>
 				  </div>
-				  <div ref="complaintCustomer" class="complaintCustomer"></div>
+				  <div class="graphContainer">
+				  	<div ref="complaintCustomer" class="complaintCustomer"></div>
+				  </div>
 				  <div class="text item">
 				  	<p v-for="item in echartData.complaintCustomer.outsideCircleData" :key="item.name"><span>{{ item.name }}</span><span>{{ item.value }}</span></p>
 				  </div>
@@ -85,7 +87,10 @@
 				  <div slot="header" class="clearfix">
 				    <span>配送未达标TOP10</span>
 				  </div>
-				  <div ref="notReachStandard" class="notReachStandard"></div>
+				  <div class="graphContainer">
+				  	<div ref="notReachStandard" class="notReachStandard"></div>
+				  	<p class="noDataStatus" v-if="echartData.notReachStandard.notReachStandardName.length === 0"><span>暂无配送未达标数据</span></p>
+				  </div>
 				</el-card>
 			</div>
 			<div class="item">
@@ -93,7 +98,11 @@
 				  <div slot="header" class="clearfix">
 				    <span>冷链温度监控</span>
 				  </div>
-				  <div ref="cctsMonitor" class="cctsMonitor"></div>
+				  <div class="graphContainer">
+				  	<div ref="cctsMonitor" class="cctsMonitor"></div>
+				  	<p class="noDataStatus" v-if="echartData.cctsMonitor.name.length === 0"><span>暂无冷链温度数据</span></p>
+				  </div>
+				  
 				</el-card>
 			</div>
 			<div class="item">
@@ -101,7 +110,10 @@
 				  <div slot="header" class="clearfix">
 				    <span>委托方订单数TOP5</span>
 				  </div>
-				  <div ref="consignorOrder" class="consignorOrder"></div>
+				  <div class="graphContainer">
+				  	<div ref="consignorOrder" class="consignorOrder"></div>
+				  	<p class="noDataStatus" v-if="echartData.consignorOrder.consignorName.length === 0"><span>暂无委托方订单数据</span></p>
+				  </div>
 				</el-card>
 			</div>
 		</div>
@@ -113,13 +125,22 @@
 				  </div>
 				  <div class="wrapper">
 						<div class="item">
-							<div ref="vehicle" class="vehicle"></div>
+							 <div class="graphContainer">
+						  	<div ref="vehicle" class="vehicle"></div>
+						  	<p class="noDataStatus" v-if="echartData.vehicle.vehicleCount.length === 0"><span>暂无车辆情况数据</span></p>
+						  </div>
 						</div>
 						<div class="item">
-							<div ref="goodsAllocation" class="goodsAllocation"></div>
+							<div class="graphContainer">
+						  	<div ref="goodsAllocation" class="goodsAllocation"></div>
+						  	<p class="noDataStatus" v-if="echartData.goodsAllocation.insideCircleData.length === 0"><span>暂无货位情况数据</span></p>
+						  </div>
 						</div>
 						<div class="item">
-							<div ref="stock" class="stock"></div>
+							<div class="graphContainer">
+						  	<div ref="stock" class="stock"></div>
+						  	<!-- <p class="noDataStatus"><span>暂无库存情况数据</span></p> -->
+						  </div>
 						</div>
 				  </div>
 				</el-card>
@@ -326,7 +347,7 @@
 		        }
 			    },
 					grid: {
-		        left: 80
+		        left: (this.echartData.notReachStandard.notReachStandardName.length > 0) ? 80 : 20
 			    },
 			    xAxis: {
 			    	name: '数量',
@@ -340,7 +361,7 @@
 		        },
 		        axisLine: {
 		        	lineStyle: {
-		        		// color: '#999'
+		        		color: '#aaa'
 		        	}
 		        }
 			    },
@@ -352,7 +373,7 @@
 		        inverse: true,
 		        axisLine: {
 		        	lineStyle: {
-		        		// color: '#999'
+		        		color: '#aaa'
 		        	}
 		        },
 		        data: this.echartData.notReachStandard.notReachStandardName
@@ -402,12 +423,22 @@
                 return params.substring(11)
               }
 		        },
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#aaa'
+		        	}
+		        },
 		        data: this.echartData.cctsMonitor.time
 			    },
 			    yAxis: {
 			    	name: '温度',
 			    	nameGap: 5,
-		        type: 'value'
+		        type: 'value',
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#aaa'
+		        	}
+		        }
 			    },
 			    series: [
 		        {
@@ -494,7 +525,7 @@
 		        }
 			    },
 					grid: {
-		        left: 60,
+		        left: (Math.max.apply(null, this.echartData.consignorOrder.ordersCount).toString().length > 2) ? (Math.max.apply(null, this.echartData.consignorOrder.ordersCount).toString().length * 6 + 20) : 25,
 		        right: 40
 			    },
 			    yAxis: {
@@ -503,6 +534,11 @@
 		        type: 'value',
 		        axisLabel: {
 	            formatter: '{value}'
+		        },
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#aaa'
+		        	}
 		        }
 			    },
 			    xAxis: {
@@ -514,6 +550,11 @@
                 // return params.substring(0, 2) + '\r\n' + params.substring(2, 4)
                 return params.substring(0, 2)
               }
+		        },
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#aaa'
+		        	}
 		        },
 		        data: this.echartData.consignorOrder.consignorName
 			    },
@@ -534,6 +575,7 @@
 					title: {
 		        text: '车辆情况',
 		        textStyle: {
+		        	color: '#666',
 							fontSize: 12,
 							fontWeight: 'normal'
 						},
@@ -563,6 +605,11 @@
 		        type: 'value',
 		        splitLine: {
 		        	show: false
+		        },
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#666'
+		        	}
 		        }
 			    },
 			    yAxis: {
@@ -570,6 +617,11 @@
 			    	nameGap: 0,
 		        type: 'category',
 		        splitLine: {show: false},
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#666'
+		        	}
+		        },
 		        data: ['空闲车辆', '排车', '在途', '总车辆']
 			    },
 			    series: [
@@ -615,6 +667,7 @@
 					title: {
 		        text: '货位情况',
 		        textStyle: {
+		        	color: '#666',
 							fontSize: 12,
 							fontWeight: 'normal'
 						},
@@ -679,6 +732,7 @@
 					title: {
 						text: '库存情况',
 						textStyle: {
+							color: '#666',
 							fontSize: 12,
 							fontWeight: 'normal'
 						},
@@ -705,12 +759,22 @@
 		        type: 'value',
 		        axisLabel: {
 	            formatter: '{value}'
+		        },
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#666'
+		        	}
 		        }
 			    },
 			    xAxis: {
 			    	name: '仓库',
 			    	nameGap: 5,
 		        type: 'category',
+		        axisLine: {
+		        	lineStyle: {
+		        		color: '#666'
+		        	}
+		        },
 		        data: this.echartData.totalStock.stockName
 			    },
 			    series: [
@@ -922,6 +986,7 @@
 							this.echartData.notReachStandard.notReachStandardName.push(item.Vehicle_No)
 							this.echartData.notReachStandard.notReachStandardCount.push(item.dif)
 						})
+						console.log(this.echartData.notReachStandard.notReachStandardName)
 						this.initNotReachStandard()
 					} else {
 						this.$alert(res.ErrInfo, '提示', {
@@ -969,8 +1034,6 @@
 <style lang="less" scoped>
 	.operatorMonitor {
 		padding: 10px 5px;
-		// display: flex;
-  //   flex-direction: column;
 		p {
 			margin: 0;
 			line-height: 22px;
@@ -1075,6 +1138,18 @@
 				margin-bottom: 0;
 			}
 		}
+		.graphContainer {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			& > div {
+				position: absolute!important;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+			}
+		}
 	}
 </style>
 
@@ -1103,8 +1178,14 @@
 				}
 				.el-card__body {
 					flex: 1;
-					.complaintCustomer {
-						height: 70%;
+					.graphContainer { 
+						.complaintCustomer {
+							position: absolute;
+							left: 0;
+							top: 0;
+							right: 0;
+							bottom: 0;
+						}
 						& + div {
 							p {
 								display: inline-block;
@@ -1114,10 +1195,10 @@
 								text-align: center;
 								span {
 									margin-right: 10px;
-									min-width: 48px;
 									display: inline-block;
 									&:nth-of-type(1) {
 										text-align: right;
+										min-width: 48px;
 									}
 								}
 							}
@@ -1125,6 +1206,11 @@
 					}
 					.notReachStandard, .consignorOrder, .cctsMonitor {
 						height: 100%;
+					}
+				}
+				& > .item:nth-of-type(1) {
+					.graphContainer {
+						height: 70%
 					}
 				}
 			}
@@ -1156,6 +1242,25 @@
 						}
 					}
 				}
+			}
+		}
+		.noDataStatus {
+			display: flex;
+			flex-direction: column;
+			margin: 0;
+			height: 100%;
+	    align-items: center;
+			justify-content: center;
+			font-size: 20px;
+			color: #ccc;
+			line-height: 40px;
+			position: absolute;
+			left: 20px;
+			right: 20px;
+			top: 0;
+			span {
+				display: block;
+				text-align: center;
 			}
 		}
 	}
