@@ -1049,6 +1049,8 @@
 <style lang="less" scoped>
 	.operatorMonitor {
 		padding: 10px 5px;
+		display: flex;
+		flex-direction: column;
 		p {
 			margin: 0;
 			line-height: 22px;
@@ -1249,7 +1251,8 @@
 				}
 			}
 			&:nth-of-type(3) {
-				height: 200px;
+				// height: 200px;
+				flex: 1;
 				.el-card {
 					display: flex;
 					flex-direction: column;
