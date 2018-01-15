@@ -347,7 +347,8 @@
 		        }
 			    },
 					grid: {
-		        left: (this.echartData.notReachStandard.notReachStandardName.length > 0) ? 80 : 20
+		        left: (this.echartData.notReachStandard.notReachStandardName.length > 0) ? 75 : 20,
+		        right: 30
 			    },
 			    xAxis: {
 			    	name: '数量',
@@ -1019,13 +1020,27 @@
 			// 窗口大小改变echarts重绘
 			let _this = this
 			window.onresize = function () {
-        _this.echartObj.complaintCustomer.resize()
-        _this.echartObj.notReachStandard.resize()
-        _this.echartObj.cctsMonitor.resize()
-        _this.echartObj.consignorOrder.resize()
-        _this.echartObj.vehicle.resize()
-        _this.echartObj.goodsAllocation.resize()
-        _this.echartObj.stock.resize()
+				if (_this.echartObj.complaintCustomer.id) {
+					_this.echartObj.complaintCustomer.resize()
+				}
+        if (_this.echartObj.notReachStandard.id) {
+        	_this.echartObj.notReachStandard.resize()
+        }
+        if (_this.echartObj.cctsMonitor.id) {
+        	_this.echartObj.cctsMonitor.resize()
+        }
+        if (_this.echartObj.consignorOrder.id) {
+        	_this.echartObj.consignorOrder.resize()
+        }
+        if (_this.echartObj.vehicle.id) {
+        	_this.echartObj.vehicle.resize()
+        }
+        if (_this.echartObj.goodsAllocation.id) {
+        	_this.echartObj.goodsAllocation.resize()
+        }
+        if (_this.echartObj.stock.id) {
+        	_this.echartObj.stock.resize()
+        }
       }
 		}
 	}
@@ -1167,6 +1182,7 @@
 		}
 		.el-card__body {
 			padding: 10px;
+			position: relative;
 		}
 		.section {
 			&:nth-of-type(2) {
@@ -1174,13 +1190,18 @@
 				height: 388px;
 				.el-card {
 					display: flex;
-					flex-direction: column
+					flex-direction: column;
+					position: absolute;
+					left: 0;
+					top: 0;
+					right: 0;
+					bottom: 0;
 				}
 				.el-card__body {
 					flex: 1;
 					.graphContainer { 
 						.complaintCustomer {
-							position: absolute;
+							position: absolute!important;
 							left: 0;
 							top: 0;
 							right: 0;
@@ -1206,11 +1227,24 @@
 					}
 					.notReachStandard, .consignorOrder, .cctsMonitor {
 						height: 100%;
+						position: absolute!important;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
 					}
 				}
 				& > .item:nth-of-type(1) {
 					.graphContainer {
-						height: 70%
+						height: 70%;
+						position: absolute!important;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+					}
+					.el-card__body > div:nth-of-type(2) {
+						top: 70%;
 					}
 				}
 			}
@@ -1218,7 +1252,12 @@
 				height: 200px;
 				.el-card {
 					display: flex;
-					flex-direction: column
+					flex-direction: column;
+					position: absolute!important;
+					left: 0;
+					top: 0;
+					right: 0;
+					bottom: 0;
 				}
 				.el-card__body {
 					flex: 1;
@@ -1227,6 +1266,11 @@
 				.wrapper {
 					display: flex;
 					height: 100%;
+					position: absolute!important;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
 					.item {
 						&:nth-of-type(1) {
 							flex: 3;
@@ -1239,6 +1283,11 @@
 						}
 						.vehicle, .goodsAllocation, .stock {
 							height: 100%;
+							position: absolute!important;
+							left: 0;
+							right: 0;
+							top: 0;
+							bottom: 0;
 						}
 					}
 				}

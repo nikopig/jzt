@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="outFlow">
     <common-step v-model="stepIndex" class="common-step-container padding-wraper"></common-step>
     <div class="padding-wraper">
       <keep-alive>
@@ -90,5 +90,12 @@
     }
   }
 </script>
-<style lang="less" scoped>
+<style lang="less">
+  .outFlow {
+    .el-row {
+      .el-col {
+        width: 20%;
+      }
+    }
+  }
 </style>

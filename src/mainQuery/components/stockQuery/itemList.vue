@@ -37,7 +37,7 @@
 		</div>
 		<div class="table-box">
 			<el-table :data="itemData">
-				<el-table-column prop="Ldc_No" label="物流中心编号"></el-table-column>
+				<!-- <el-table-column prop="Ldc_No" label="物流中心编号"></el-table-column> -->
 				<el-table-column prop="Ldc_Name" label="物流中心名称"></el-table-column>
 				<el-table-column prop="Goods_No" label="商品编号"></el-table-column>
 				<el-table-column prop="Goods_Name" label="商品名称"></el-table-column>

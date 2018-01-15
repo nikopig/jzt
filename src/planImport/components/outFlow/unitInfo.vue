@@ -270,7 +270,7 @@
 <style lang="less" scoped>
   .custom-box {
     .container {
-      padding: 30px 50px;
+      padding: 20px 30px;
       .card-item {
         float: left;
         margin-right: 20px;
