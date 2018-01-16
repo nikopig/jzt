@@ -300,7 +300,7 @@ import commonRow from '@/common/components/common-row'
 import commonCol from '@/common/components/common-col'
 import lotnoModal from '@/common/service/modal/lotno-modal'
 import outnoModal from '@/common/service/modal/outno-modal'
-import {copy} from '@/common/js/utils'
+import {copy, DateFtt} from '@/common/js/utils'
 import api from '@/common/js/api.js'
 import { mapState } from 'vuex'
   export default {
@@ -627,8 +627,8 @@ import { mapState } from 'vuex'
             Goods_Type: item.Goods_Type,
             Goods_Lotno: item.Goods_Lotno,
             Lotno_Id: item.Lotno_Id,
-            Production_Date: item.Production_Date,
-            Valid_Until: item.Valid_Until,
+            Production_Date: (typeof (item.Production_Date) === 'string') ? item.Production_Date : DateFtt('yyyy-MM-dd', item.Production_Date),
+            Valid_Until: (typeof (item.Valid_Until) === 'string') ? item.Valid_Until : DateFtt('yyyy-MM-dd', item.Valid_Until),
             Outbound_Quantity: item.Outbound_Quantity,
             Outbound_Pcs: item.Outbound_Pcs,
             Outbound_Sps: item.Outbound_Sps,
