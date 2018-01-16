@@ -162,7 +162,7 @@
             this.GetStorageGoods(keyWord)
           },
           init () {
-            this.goodName = ''
+            // this.goodName = ''
             this.GetStorageGoods()
           }
         },
