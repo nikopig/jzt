@@ -646,7 +646,6 @@ import { mapState } from 'vuex'
             Is_Receipt: item.Is_Receipt,
             Is_ScenePrint: item.Is_ScenePrint
           }
-          debugger
           paramData.push(row)
           allData.push(item)
         })
