@@ -627,8 +627,8 @@ import { mapState } from 'vuex'
             Goods_Type: item.Goods_Type,
             Goods_Lotno: item.Goods_Lotno,
             Lotno_Id: item.Lotno_Id,
-            Production_Date: (typeof (item.Production_Date) === 'string') ? item.Production_Date : DateFtt('yyyy-MM-dd', item.Production_Date),
-            Valid_Until: (typeof (item.Valid_Until) === 'string') ? item.Valid_Until : DateFtt('yyyy-MM-dd', item.Valid_Until),
+            Production_Date: (typeof (item.Production_Date) === 'object') ? DateFtt('yyyy-MM-dd', item.Production_Date) : item.Production_Date,
+            Valid_Until: (typeof (item.Valid_Until) === 'object') ? DateFtt('yyyy-MM-dd', item.Valid_Until) : item.Valid_Until,
             Outbound_Quantity: item.Outbound_Quantity,
             Outbound_Pcs: item.Outbound_Pcs,
             Outbound_Sps: item.Outbound_Sps,
@@ -646,6 +646,7 @@ import { mapState } from 'vuex'
             Is_Receipt: item.Is_Receipt,
             Is_ScenePrint: item.Is_ScenePrint
           }
+          debugger
           paramData.push(row)
           allData.push(item)
         })
