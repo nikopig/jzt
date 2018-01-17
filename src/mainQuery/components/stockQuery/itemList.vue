@@ -61,7 +61,7 @@
 	    </el-pagination>
 	  </div>
 	  <ldc-modal :visible.sync="dialogShow.ldc" @change="selectLdc" :ldcId="ldcId"></ldc-modal>
-	  <goods-modal :visible.sync="dialogShow.goods" @change="selectGood" :transFields="transFields"></goods-modal>
+	  <goods-modal :visible.sync="dialogShow.goods" @change="selectGood" :transFields="transFields" :conId="goodsModalCon_Id"></goods-modal>
 	  <common-modal ref="staffCons" DialogTitle="委托方信息" :isVisible.sync="dialogShow.consignor" :TableHeader="consignor.TableHeader" :listData="consignor.cons" :total="consignor.bigTotalItems" @confirm="selectConsignor" @search="searchConsignor" @pageChange="consPageChange"></common-modal>
 	</div>
 </template>
@@ -135,7 +135,8 @@
 						title: '包装单位',
             field: 'Package_Unit'
 					}
-				]
+				],
+				goodsModalCon_Id: this.$route.params.Con_Id
 			}
 		},
 		components: {
@@ -186,6 +187,7 @@
       selectConsignor (row) {
       	this.filterCondition.Con_Id = row.Con_Id
       	this.filterCondition.Con_Name = row.Con_Name
+      	this.goodsModalCon_Id = this.filterCondition.Con_Id
       },
       searchConsignor (keyword) {
       	this.consignor.KeyWords = keyword
@@ -248,6 +250,7 @@
 				this.filterCondition.Ldc_Id = this.$route.params.Ldc_Id
 				this.filterCondition.Con_Id = this.$route.params.Con_Id
 				this.filterCondition.Con_Name = this.$route.params.Con_Name
+				this.goodsModalCon_Id = this.filterCondition.Con_Id
 				this.consignor.TableHeader = JSON.parse(this.$route.params.TableHeader)
 				this.getStockStatus()
 				this.getData()

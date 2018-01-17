@@ -39,6 +39,10 @@
             default () {
               return []
             }
+          },
+          conId: {
+            type: String,
+            default: '%'
           }
         },
         components: {
@@ -47,6 +51,7 @@
         data () {
             return {
               keyword: '%',
+              Con_Id: this.conId,
               isLoaded: false,
               isVisible: this.visible,
               gridData: [],
@@ -78,6 +83,10 @@
           },
           params () {
             this.getGoods()
+          },
+          conId (val) {
+            this.Con_Id = val
+            this.getGoods()
           }
         },
        computed: {
@@ -92,7 +101,11 @@
               this.$emit('change', row)
           },
           onSearch (keyword) {
-            this.keyword = keyword
+            if (keyword !== '') {
+              this.keyword = keyword
+            } else {
+              this.keyword = '%'
+            }
             this.getGoods()
           },
           //获取对账单位
@@ -100,6 +113,7 @@
             this.gridData = []
             this.isLoaded = false
             let params = {
+              CON_ID: this.Con_Id,
               KeyWords: this.keyword,
               StartPage: (this.startPage - 1) * this.pageSize,
               EndPage: this.startPage * this.pageSize
@@ -124,15 +138,18 @@
             if (this.transFields.length > 0) {
               this.fields = this.transFields
             }
+            if (this.conId !== '') {
+              this.Con_Id = this.conId
+            }
             this.getGoods()
           }
         },
         created () {
           this.init()
         },
-        mounted () {
-        },
+        mounted () {},
         activated () {
+          this.getGoods()
         }
     }
 </script>
