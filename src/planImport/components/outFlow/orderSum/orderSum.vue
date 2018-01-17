@@ -94,7 +94,7 @@
         <el-row :gutter="15">
           <el-col :span="4">
             <el-form-item label="出库地址(双击可选择):">
-              <div class='content' @dblclick="showDialog('rk')">
+              <div class='content' @dblclick="openDialog('rk')">
                 <el-input v-model="dzxxform.OutbAddress" :disabled="true"></el-input>
               </div>
             </el-form-item>
@@ -231,15 +231,13 @@
         <el-button @click="orderCancel()">订单取消</el-button>
       </span>
     </div>
-    <common-dialog ref='sx' :DialogTitle='DialogTitles[1]' :TableHeader='Tables.sx' :listData='sxData'
-                   @confirm='confirmSX'></common-dialog>
-    <common-dialog ref='rk' :isPages="false" :DialogTitle='DialogTitles[0]' :TableHeader='Tables.rk' :listData='rkData'
-                   @confirm='confirmRK'></common-dialog>
+    <common-modal ref='sx' :DialogTitle='DialogTitles[1]' :TableHeader='Tables.sx' :listData='copySxData' :isVisible.sync="dialogShow.sx" :isPages="false" @confirm='confirmSX' @search="searchSX"></common-modal>
+    <common-modal ref='rk' :isPages="false" :DialogTitle='DialogTitles[0]' :TableHeader='Tables.rk' :listData='copyRkData' :isVisible.sync="dialogShow.rk" @confirm='confirmRK' @search="searchRK"></common-modal>
   </div>
 </template>
 
 <script>
-  import commonDialog from '@/common/components/common-dialog'
+  import commonModal from '@/common/components/common-modal'
   import commonRow from '@/common/components/common-row'
   import commonCol from '@/common/components/common-col'
   import Api from '@/common/js/api'
@@ -299,7 +297,9 @@
         orders: [],   //开票订单
         ordersInform: [],    //开票信息
         sxData: [],
+        copySxData: [],
         rkData: [],
+        copyRkData: [],
         outType: [
           {
             label: '出库待配',
@@ -321,15 +321,22 @@
             radioValue: '否'
           }
         ], // 是否打印 / 回单
-        deliveryType: '1' // 配送费计算方式
+        deliveryType: '1', // 配送费计算方式
+        dialogShow: {
+          sx: false,
+          rk: false
+        }
       }
     },
     components: {
-      commonDialog,
+      commonModal,
       commonRow,
       commonCol
     },
     methods: {
+      openDialog (val) {
+        this.dialogShow[val] = true
+      },
       confirmSX (row) {
         this.orders[this.currentIndex].Aging = row.Aging
       },
@@ -352,6 +359,7 @@
             return
           }
           this.sxData = res.MsgInfo
+          this.copySxData = this.sxData
         })
       },
       getLdcAddress (conId, ldcId) {
@@ -364,6 +372,7 @@
             return
           }
           this.rkData = res.MsgInfo
+          this.copyRkData = this.rkData
         })
       },
       getOrders () {
@@ -468,6 +477,26 @@
               this.$alert(res.ErrInfo)
             }
           })
+        })
+      },
+      searchSX (keyword) {
+        let searchRegex = new RegExp(keyword.trim(), 'i')
+        this.copyThData = this.sxData.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
+        })
+      },
+      searchRK (keyword) {
+        let searchRegex = new RegExp(keyword.trim(), 'i')
+        this.copyRkData = this.rkData.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
         })
       }
     },

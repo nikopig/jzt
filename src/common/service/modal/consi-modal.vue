@@ -33,6 +33,10 @@
             default () {
               return {}
             }
+          },
+          isSetDefaultValue: {
+            type: Boolean,
+            default: true
           }
         },
         components: {commonModal},
@@ -69,7 +73,7 @@
             this.isVisible = val
           },
           params () {
-            this.getCon()
+            this.getCon(false)
           }
         },
        computed: {
@@ -85,10 +89,10 @@
           },
           onSearch (keyword) {
             this.keyword = keyword
-            this.getCon()
+            this.getCon(false)
           },
           //获取对账单位
-          getCon () {
+          getCon (setDefaultValueFlag) {
             this.gridData = []
             this.isLoaded = false
             let startIndex = (this.startPage - 1) * this.pageSize
@@ -105,8 +109,10 @@
                   if (res.MsgInfo.length > 0) {
                     this.totalNum = res.MsgInfo[0].bigTotalItems
                     // 如果只有一条数据 则默认取这一条
-                    if (res.MsgInfo.length === 1) {
-                      this.selectCon(res.MsgInfo[0])
+                    if (setDefaultValueFlag) {
+                      if (res.MsgInfo.length === 1) {
+                        this.selectCon(res.MsgInfo[0])
+                      }
                     }
                   } else {
                     this.totalNum = 0
@@ -120,10 +126,10 @@
           },
           onPageChangeCon (num) {
             this.startPage = num
-            this.getCon()
+            this.getCon(false)
           },
           init () {
-            this.getCon()
+            this.getCon(this.isSetDefaultValue)
           }
         },
         created () {

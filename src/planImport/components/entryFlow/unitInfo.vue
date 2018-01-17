@@ -29,7 +29,7 @@
         </div>
       </div>
       <!--委托方弹框-->
-      <consi-modal @change="confirm" :visible.sync="consignor.isVisible"></consi-modal>
+      <consi-modal @change="confirm" :visible.sync="consignor.isVisible" :isSetDefaultValue="false"></consi-modal>
       <!--物流中心弹框-->
       <common-dialog ref='commonDialog2' :isPages="false" :DialogTitle='ldcTitle' :TableHeader='ldcDH' :listData ='ldcData' @confirm = 'confirm2'></common-dialog>
     </div>

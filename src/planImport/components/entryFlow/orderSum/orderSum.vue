@@ -33,7 +33,7 @@
           <el-col :span="4" v-if="kpxxform.Arrival_Mode === 'A2'">
             <el-form-item label="提货地:" :rules="[{ required: true, message: '请选择提货地', trigger: 'blur' }]"
                           prop="thAddress">
-              <div class='content' @dblclick="showDialog('th')">
+              <div class='content' @dblclick="openDialog('th')">
                 <el-input v-model="kpxxform.thAddress" :disabled="true" placeholder="双击选择"></el-input>
               </div>
             </el-form-item>
@@ -87,7 +87,7 @@
         <el-row :gutter="15">
           <el-col :span="4">
             <el-form-item label="入库地址(双击可选择):">
-              <div class='content' @dblclick="showDialog('rk')">
+              <div class='content' @dblclick="openDialog('rk')">
                 <el-input v-model="dzxxform.StorageAddress" :disabled="true"></el-input>
               </div>
             </el-form-item>
@@ -251,15 +251,13 @@
         <el-button @click="orderCancel()">订单取消</el-button>
       </span>
     </div>
-    <common-dialog ref='th' :DialogTitle='DialogTitles[1]' :TableHeader='Tables.th' :listData='thData'
-                   @confirm='confirmTH'></common-dialog>
-    <common-dialog ref='rk' :isPages="false" :DialogTitle='DialogTitles[0]' :TableHeader='Tables.rk' :listData='rkData'
-                   @confirm='confirmRK'></common-dialog>
+    <common-modal ref='th' :DialogTitle='DialogTitles[1]' :TableHeader='Tables.th' :listData='copyThData' :isVisible.sync="dialogShow.th" :isPages="false" @confirm='confirmTH' @search="searchTH"></common-modal>
+    <common-modal ref='rk' :isPages="false" :DialogTitle='DialogTitles[0]' :TableHeader='Tables.rk' :listData='copyRkData' :isVisible.sync="dialogShow.rk" @confirm='confirmRK' @search="searchRK"></common-modal>
   </div>
 </template>
 
 <script>
-  import commonDialog from '@/common/components/common-dialog'
+  import commonModal from '@/common/components/common-modal'
   import commonRow from '@/common/components/common-row'
   import commonCol from '@/common/components/common-col'
   import Api from '@/common/js/api'
@@ -305,7 +303,11 @@
         Tables: {
           th: [
             {
-              title: '提货地址',
+              title: '名称',
+              field: 'Address_Shortname'
+            },
+            {
+              title: '地址',
               field: 'Address_Shortname'
             },
             {
@@ -339,7 +341,9 @@
         orders: [],   //开票订单
         ordersInform: [],    //开票信息
         thData: [],
+        copyThData: [],
         rkData: [],
+        copyRkData: [],
         radio: [
           {
             radioKey: 'A1',
@@ -349,11 +353,15 @@
             radioKey: 'A2',
             radioValue: '提货入库'
           }
-        ]
+        ],
+        dialogShow: {
+          th: false,
+          rk: false
+        }
       }
     },
     components: {
-      commonDialog,
+      commonModal,
       commonRow,
       commonCol
     },
@@ -363,6 +371,9 @@
       }
     },
     methods: {
+      openDialog (val) {
+        this.dialogShow[val] = true
+      },
       confirmTH (row) {
         this.kpxxform.thAddress = row.Address_Shortname
         this.dzxxform.thAddress_Id = row.Address_Id
@@ -388,6 +399,7 @@
             return
           }
           this.thData = res.MsgInfo
+          this.copyThData = this.thData
         })
       },
       getLdcAddress (conId, ldcId) {
@@ -400,6 +412,7 @@
             return
           }
           this.rkData = res.MsgInfo
+          this.copyRkData = this.rkData
         })
       },
       getOrders () {
@@ -495,6 +508,26 @@
               this.messageInfo(res.ErrInfo)
             }
           })
+        })
+      },
+      searchTH (keyword) {
+        let searchRegex = new RegExp(keyword.trim(), 'i')
+        this.copyThData = this.thData.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
+        })
+      },
+      searchRK (keyword) {
+        let searchRegex = new RegExp(keyword.trim(), 'i')
+        this.copyRkData = this.rkData.filter((item) => {
+          for (let key in item) {
+            if (searchRegex.test(item[key])) {
+              return true
+            }
+          }
         })
       }
     },

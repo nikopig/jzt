@@ -200,7 +200,7 @@
                 <span class='label'>批号&nbsp;:</span>
                 <div class='content' @dblclick="showDialog(0, item, $index)">
                   <el-form-item>
-                    <el-input calss="noselect" v-model="item.Goods_Lotno" placeholder="双击选择或手工录入" @change="clearLotNo(row)"></el-input>
+                    <el-input calss="noselect" v-model="item.Goods_Lotno" placeholder="双击选择或手工录入" @change="clearLotNo(item)"></el-input>
                   </el-form-item>
                 </div>
               </common-col>
@@ -627,8 +627,8 @@ import { mapState } from 'vuex'
             Goods_Type: item.Goods_Type,
             Goods_Lotno: item.Goods_Lotno,
             Lotno_Id: item.Lotno_Id,
-            Production_Date: (typeof (item.Production_Date) === 'object') ? DateFtt('yyyy-MM-dd', item.Production_Date) : item.Production_Date,
-            Valid_Until: (typeof (item.Valid_Until) === 'object') ? DateFtt('yyyy-MM-dd', item.Valid_Until) : item.Valid_Until,
+            Production_Date: (typeof (item.Production_Date) === 'object') ? DateFtt('yyyy-MM-dd', item.Production_Date) : ((typeof (item.Production_Date) === 'undefined') ? '' : item.Production_Date),
+            Valid_Until: (typeof (item.Valid_Until) === 'object') ? DateFtt('yyyy-MM-dd', item.Valid_Until) : ((typeof (item.Valid_Until) === 'undefined') ? '' : item.Valid_Until),
             Outbound_Quantity: item.Outbound_Quantity,
             Outbound_Pcs: item.Outbound_Pcs,
             Outbound_Sps: item.Outbound_Sps,
