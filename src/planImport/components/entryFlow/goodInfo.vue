@@ -78,6 +78,10 @@
                 {
                   icon: 'el-icon-mo-manufacturer',
                   text: '生产厂家：' + item.Manufacturer
+                },
+                {
+                  icon: 'el-icon-mo-zlgl',
+                  text: '商品编码：' + item.Goods_No
                 }
               ]
               item.card = temp
@@ -183,5 +187,12 @@
     margin-bottom: 20px;
   }
   }
+  }
+</style>
+<style lang="less">
+  .entryFlow {
+    .el-icon-mo-zlgl:before {
+      color: #516e8e
+    }
   }
 </style>

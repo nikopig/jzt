@@ -79,6 +79,10 @@
                 {
                   icon: 'el-icon-mo-inventoryAnalysis',
                   text: '库存：' + item.Stock_Quantity
+                },
+                {
+                  icon: 'el-icon-mo-zlgl',
+                  text: '商品编码：' + item.Goods_No
                 }
               ]
               item.card = temp
@@ -188,5 +192,13 @@
     margin-bottom: 20px;
   }
   }
+  }
+</style>
+
+<style lang="less">
+  .outFlow {
+    .el-icon-mo-zlgl:before, .el-icon-mo-inventoryAnalysis:before {
+      color: #516e8e
+    }
   }
 </style>
