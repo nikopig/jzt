@@ -249,7 +249,7 @@
           Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%'
         }
         this.origData = []
-        Api.get('GetStorageSsa', params)
+        Api.get('GetOutboundSsa', params)
           .then((resp) => {
             if (resp.Flag) {
               this.origData = resp.MsgInfo
