@@ -350,9 +350,10 @@
         this.$refs[value].pihaoDialog = true
         if (this.currentIndex) this.currentIndex = index
       },
-      getAddress (ssaId) {
+      getAddress (obj) {
         Api.get('GetAddress', {
-          Ssa_Id: ssaId || '%'
+          Ssa_Id: obj.SSa_Id || '%',
+          Con_Id: obj.Con_Id || '%'
         }).then((res) => {
           if (!res.Flag) {
             this.$alert(res.ErrInfo)
@@ -386,7 +387,7 @@
           }
           that.ordersInform = res.MsgInfo
           if (that.ordersInform.length > 0) {
-            that.getAddress(that.ordersInform[0].Ssa_Id)
+            that.getAddress(that.ordersInform[0])
             that.getLdcAddress(that.ordersInform[0].Con_Id, that.ordersInform[0].Ldc_Id)
             for (let key in that.ordersInform[0]) {
               if (key in that.kpxxform) {

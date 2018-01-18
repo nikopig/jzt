@@ -304,11 +304,13 @@
           th: [
             {
               title: '名称',
-              field: 'Address_Shortname'
+              field: 'AddrName',
+              width: 250
             },
             {
               title: '地址',
-              field: 'Address_Shortname'
+              field: 'Address',
+              width: 300
             },
             {
               title: '联系人',
@@ -316,7 +318,8 @@
             },
             {
               title: '联系电话',
-              field: 'Contact_Phone'
+              field: 'Contact_Phone',
+              width: 140
             }
           ],
           rk: [
@@ -390,9 +393,10 @@
       showDialog (value) {
         this.$refs[value].pihaoDialog = true
       },
-      getAddress (ssaId) {
+      getAddress (obj) {
         Api.get('GetAddress', {
-          Ssa_Id: ssaId || '%'
+          Ssa_Id: obj.Ssa_Id || '%',
+          Con_Id: obj.Con_Id || '%'
         }).then((res) => {
           if (!res.Flag) {
             this.messageInfo(res.ErrInfo)
@@ -426,7 +430,7 @@
           }
           that.ordersInform = res.MsgInfo
           if (that.ordersInform.length > 0) {
-            that.getAddress(that.ordersInform[0].Ssa_Id)
+            that.getAddress(that.ordersInform[0])
             that.getLdcAddress(that.ordersInform[0].Con_Id, that.ordersInform[0].Ldc_Id)
             for (let key in that.ordersInform[0]) {
               if (key in that.kpxxform) {
