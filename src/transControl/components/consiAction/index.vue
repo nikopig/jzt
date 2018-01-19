@@ -1613,8 +1613,14 @@
         this.operatorForm.AssignLdc_Id = ''
         this.operatorForm.AssignLdc_Name = ''
         this.showSelectAssignOperatorDialog = false
+        // 2018-01-19 胡香利 增加 自动带出物流中心和物流中心地址
+        this.showSelectLdc(false)
+        // end
       }, // 双击选择运营商
-      showSelectLdc () {
+      showSelectLdc (flag) {
+        if (typeof (flag) !== 'boolean') {
+          flag = true
+        }
         if (!this.operatorForm.AssignOperator_Id) {
           this.$alert('请选择运营商', '提示')
         } else {
@@ -1625,7 +1631,13 @@
           Api.get('TMP_TransportTaskScheding_Wtd_GetLdc', param).then(res => {
             if (res.Flag) {
               this.ldc = res.MsgInfo
-              this.showSelectLdcDialog = true
+              if (flag) {
+                this.showSelectLdcDialog = true
+              } else {
+                if (this.ldc.length === 1) {
+                  this.selectLdc(this.ldc[0])
+                }
+              }
             }
           })
         }
@@ -1636,8 +1648,11 @@
         this.operatorForm.AssignLdc_Addr_Id = ''
         this.operatorForm.AssignLdc_Addr_Name = ''
         this.showSelectLdcDialog = false
+        // 2018-01-19 胡香利 增加 自动带出物流中心和物流中心地址
+        this.showSelectLdcAddress(false)
+        // end
       }, // 双击选择物流中心
-      showSelectLdcAddress () {
+      showSelectLdcAddress (flag) {
         if (!this.operatorForm.AssignLdc_Id) {
           this.$alert('选择物流中心', '提示')
         } else {
@@ -1647,7 +1662,13 @@
           Api.get('TMP_TransportTaskScheding_GetWlzxAddr', param).then(res => {
             if (res.Flag) {
               this.ldcAddress = res.MsgInfo
-              this.showSelectLdcAddrDialog = true
+              if (flag) {
+                this.showSelectLdcAddrDialog = true
+              } else {
+                if (this.ldcAddress.length === 1) {
+                  this.selectLdcAddr(this.ldcAddress[0])
+                }
+              }
             }
           })
         }

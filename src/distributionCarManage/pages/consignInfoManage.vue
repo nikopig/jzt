@@ -37,7 +37,7 @@
 	      <el-table-column prop="Invoice_Time" label="发货日期" width="110"></el-table-column>
 	      <el-table-column label="托运单号" width="160">
 	      	<template slot-scope="scope">
-		        <el-input v-model="scope.row.Consign_No" placeholder="请输入托运单号" @blur="save(scope.row)" :class="{'saveSuccess': scope.row.saveSuccess && (scope.row.Consign_No.trim() !== '')}" @focus="scope.row.saveSuccess = false"></el-input>
+		        <el-input v-model="scope.row.Consign_No" placeholder="请输入托运单号" @blur="save(scope.row)" :class="{'saveSuccess': scope.row.saveSuccess && (scope.row.Consign_No !== null) &&(scope.row.Consign_No.trim() !== '')}" @focus="scope.row.saveSuccess = false"></el-input>
 		      </template>
 	      </el-table-column>
 	      <el-table-column prop="Carrier_Name" label="承运商" :show-overflow-tooltip="true" width="200"></el-table-column>
