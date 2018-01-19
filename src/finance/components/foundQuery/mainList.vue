@@ -2,9 +2,7 @@
     <div>
       <div class="toolbar">
         <div class="btn-box">
-          <a id="export-btn">
-            <el-button type="text" icon="mo-download" @click="exportExcel">导出excel</el-button>
-          </a>
+          <el-button type="text" icon="mo-download" @click="exportExcel">导出excel</el-button>
         </div>
       </div>
       <div class="common-condition-box">

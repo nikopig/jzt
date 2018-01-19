@@ -1,5 +1,10 @@
 <template>
     <div>
+      <div class="toolbar">
+        <div class="btn-box">
+          <el-button type="text" icon="mo-download" @click="exportExcel">导出excel</el-button>
+        </div>
+      </div>
       <div class="headbar">
         <div class="common-row">
           <label>当前位置：</label>
@@ -39,6 +44,8 @@
 
 <script>
     import Api from '@/common/js/api'
+    import { formatJson } from '@/common/js/utils'
+    import {json2excel} from '@/common/js/excel.js'
     import commonRow from '@/common/components/common-row/index.js'
     import commonCol from '@/common/components/common-col'
     export default {
@@ -61,6 +68,33 @@
         computed: {
           accountLabel () {
             return this.$route.params.diecType === '20' ? '应付账款' : '应收账款'
+          },
+          tableOptions () {
+            let options = {}
+            let flag = this.params.flag
+            switch (flag) {
+              case 0:
+                options.titles = ['运营商', '月份', '对账单位', '费用项目', this.accountLabel, '未开票金额']
+                options.fields = ['Operator_Name', 'Mon', 'Sys_Name', 'Service_Item_Desc', 'Reconciliation_Amount', 'Invoice_Amount_Wcl']
+                break
+              case 1:
+                options.titles = ['运营商', '月份', '对账单位', '费用项目', this.accountLabel, '已开票金额']
+                options.fields = ['Operator_Name', 'Mon', 'Sys_Name', 'Service_Item_Desc', 'Reconciliation_Amount', 'Invoice_Amount_Ycl']
+                break
+              case 2:
+                options.titles = ['运营商', '月份', '对账单位', '费用项目', this.accountLabel, '未回款金额']
+                options.fields = ['Operator_Name', 'Mon', 'Sys_Name', 'Service_Item_Desc', 'Reconciliation_Amount', 'SettleUp_Amount_Wcl']
+                break
+              case 3:
+                options.titles = ['运营商', '月份', '对账单位', '费用项目', this.accountLabel, '已回款金额']
+                options.fields = ['Operator_Name', 'Mon', 'Sys_Name', 'Service_Item_Desc', 'Reconciliation_Amount', 'SettleUp_Amount_Ycl']
+                break
+              default:
+                options.titles = ['运营商', '月份', '对账单位', '费用项目', this.accountLabel, '未开票金额', '已开票金额', '未回款金额', '已回款金额']
+                options.fields = ['Operator_Name', 'Mon', 'Sys_Name', 'Service_Item_Desc', 'Reconciliation_Amount', 'Invoice_Amount_Wcl', 'Invoice_Amount_Ycl', 'SettleUp_Amount_Wcl', 'SettleUp_Amount_Ycl']
+                break
+            }
+            return options
           },
           crumbLabel () {
             if (this.params.Payment_Type === '10') {
@@ -86,6 +120,15 @@
           }
         },
         methods: {
+          // 导出excel表格
+          exportExcel () {
+            if (this.origData.length === 0) {
+              this.$alert('当前无数据，无法导出')
+              return false
+            }
+            let jsonData = formatJson(this.origData, this.tableOptions.fields)
+            json2excel(this.tableOptions.titles, jsonData)
+          },
           handleCurrentChange () {  // 分页
             this.page.StartIndex = (this.currentPage - 1) * this.page.PageSize
             this.getData()
