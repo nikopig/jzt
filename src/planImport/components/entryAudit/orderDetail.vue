@@ -119,7 +119,7 @@
                     </div>
                     <div class="box-card-content-item column2" v-if="o.Arrival_Mode === 'A2'">
                         <span>提货地址：</span>
-                        <el-select :disabled="true && o.isEdit" value-key="Address_Id" v-model="o.TdelAddressObj" @visible-change="getAddress(o)" @change="selectAdress($event, o)"  class="textOverflow" :title='o.Address_Shortname'>
+                        <el-select :disabled="true && o.isEdit" value-key="Address_Id" v-model="o.TdelAddressObj.Address_Shortname" @visible-change="getAddress(o)" @change="selectAdress($event, o)"  class="textOverflow" :title='o.Address_Shortname'>
                             <el-option
                                 v-for="(item, index) in optionsAdress"
                                 :key="index"
