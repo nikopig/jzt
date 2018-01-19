@@ -89,7 +89,7 @@
                 <span class='label'>批号&nbsp;:</span>
                 <div class='content' @dblclick="showDialog(0, item, $index)">
                   <el-form-item>
-                    <el-input calss="noselect" v-model="item.Goods_Lotno" placeholder="双击选择或手工录入" @change="clearLotNo(item)"></el-input>
+                    <el-input calss="noselect" v-model="item.Goods_Lotno" placeholder="双击选择" @change="clearLotNo(item)" :disabled="true"></el-input>
                   </el-form-item>
                 </div>
               </common-col>

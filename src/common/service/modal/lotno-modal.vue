@@ -61,6 +61,9 @@
                 }, {
                   title: '有效期至',
                   field: 'Valid_Until'
+                }, {
+                  title: '库存数量',
+                  field: 'Stock_Quantity'
                 }
               ]
             }
