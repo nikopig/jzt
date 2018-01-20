@@ -164,6 +164,7 @@
             postData.Payment_Type = this.$route.params.diecType
             postData.StartIndex = this.page.StartIndex
             postData.PageSize = this.page.PageSize
+            postData.Operator = Api.userInfo.Staff_Id
             param.list_params = postData
             param.list_params = JSON.stringify(param.list_params)
             Api.post('JlpFeeRecQueryHz', param).then(res => {
