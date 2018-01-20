@@ -58,7 +58,7 @@
       layout="total, prev, pager, next, jumper"
       :page-size="pages.pageSize"
       :total="pages.total"
-      :current-page="pages.currentPage"
+      :current-page.sync="pages.currentPage"
       @current-change="onPage"
     >
     </el-pagination>
