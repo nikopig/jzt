@@ -141,10 +141,18 @@
 					},
 					{
 						level_2: [
-							/*{
-								label: '委托方',
+							{
+								label: '委托方名称',
 								prop: 'Con_Name'
-							},*/
+							},
+							{
+								label: '委托方订单号',
+								prop: 'ConOrder_No'
+							},
+							{
+								label: '客户名称',
+								prop: 'Ssa_Name'
+							},
 							{
 								label: '运输任务类型',
 								prop: 'TransportPlan_Type_Desc',
@@ -166,16 +174,6 @@
 								width: 120
 							},
 							{
-								label: '车辆要求',
-								prop: 'Vehicle_Request_Desc',
-								width: 100
-							},
-							{
-								label: '车辆大小',
-								prop: 'Vehicle_Size',
-								width: 100
-							},
-							{
 								label: '总件数',
 								prop: 'Actual_Gross_Pcs',
 								width: 80
@@ -195,12 +193,14 @@
 								prop: 'Remarks'
 							},
 							{
-								label: '委托方订单号',
-								prop: 'ConOrder_No'
+								label: '车辆要求',
+								prop: 'Vehicle_Request_Desc',
+								width: 100
 							},
 							{
-								label: '客户名称',
-								prop: 'Ssa_Name'
+								label: '车辆大小',
+								prop: 'Vehicle_Size',
+								width: 100
 							}
 						]
 					}

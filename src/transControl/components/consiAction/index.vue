@@ -1628,7 +1628,7 @@
             AssignOperator_Id: this.operatorForm.AssignOperator_Id,
             Operator_Id: Api.userInfo.Operator_Id
           }
-          Api.get('TMP_TransportTaskScheding_Wtd_GetLdc', param).then(res => {
+          Api.get('TMP_TransportTaskScheding_Wtd_GetLdc', param, true).then(res => {
             if (res.Flag) {
               this.ldc = res.MsgInfo
               if (flag) {
@@ -1659,7 +1659,7 @@
           let param = {
             Ldc_Id: this.operatorForm.AssignLdc_Id
           }
-          Api.get('TMP_TransportTaskScheding_GetWlzxAddr', param).then(res => {
+          Api.get('TMP_TransportTaskScheding_GetWlzxAddr', param, true).then(res => {
             if (res.Flag) {
               this.ldcAddress = res.MsgInfo
               if (flag) {
