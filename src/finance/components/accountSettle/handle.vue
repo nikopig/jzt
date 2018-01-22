@@ -578,6 +578,16 @@
 
 <style lang="less">
   .handle {
+    .el-table__expanded-cell {
+      .el-form-item__label {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .el-form-item__content {
+        font-size: 12px;
+        line-height: 24px;
+      }
+    }
     .toolbar {
       width: 100%;
       height: 42px;
@@ -601,9 +611,9 @@
       padding: 22px 15px 0 15px;
       .form-search {
         border-bottom: 1px dashed #EBEEF5;
-        .el-form-item {
-          margin-bottom: 0;
-        }
+        /*.el-form-item {*/
+          /*margin-bottom: 0;*/
+        /*}*/
       }
       .open-bill {
         margin-top: 10px;
