@@ -164,6 +164,11 @@ confirm事件的方法的参数(Rows): 为选中的行数据,结构{currentId1�
     }
     .el-dialog{
       border-radius: 4px;
+      -webkit-transform: translateX(-50%);
+         -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+           -o-transform: translateX(-50%);
+              transform: translateX(-50%);
       .el-dialog__header{
         background-color: #eef6f6;
         padding: 11px 13px;
