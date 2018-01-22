@@ -131,7 +131,7 @@
             SettleUp_Company_Id: row.SettleUp_Company_Id,
             Service_Type: this.Service_Type,
             Mon: this.Mon,
-            PrintReconciliation_Record_Id: this.PrintReconciliation_Record_Id,
+            PrintReconciliation_Record_Id: this.PrintReconciliation_Record_Id + '',
             Service_Item: row.Service_Item,
             Begin_Date: this.Begin_Date,
             End_Date: this.End_Date,
