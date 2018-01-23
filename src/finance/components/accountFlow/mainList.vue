@@ -261,7 +261,7 @@
             Begin_Date: DateFtt('yyyy-MM-dd', this.filterCondition.Begin_Date),
             End_Date: DateFtt('yyyy-MM-dd', this.filterCondition.End_Date, true),
             Payment_Type: this.$route.params.diecType,
-            PrintReconciliation_Record_Id: row.PrintReconciliation_Record_Id
+            PrintReconciliation_Record_Id: row.PrintReconciliation_Record_Id + ''
           }
         })
       },
