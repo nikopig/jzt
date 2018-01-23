@@ -61,7 +61,7 @@
               <common-col>
                 <span class='label'>批号&nbsp;:</span>
                 <div class='content' @dblclick="showDialog(0, item, index)">
-                  <el-input v-model="item.Goods_Lotno" placeholder="双击选择" :disabled="true"></el-input>
+                  <el-input v-model="item.Goods_Lotno" placeholder="双击选择或手工录入"></el-input>
                 </div>
               </common-col>
               <common-col>
