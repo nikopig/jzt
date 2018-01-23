@@ -12,7 +12,7 @@
           <el-button type="text" icon="mo-tingzhi" @click="stopDtl">停止明细</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="mo-refresh" @click="getFirstOrder">刷新</el-button>
+          <el-button type="text" icon="mo-refresh" @click="refreshTransAction">刷新</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
           <el-button type="text" icon="warning" @click="showNotPointCompanyDialog" :class="{'warning': notPointCompany.datas.length > 0}">警告</el-button>
@@ -1740,6 +1740,11 @@
           searchNotPointCompany (keyword) {
             this.notPointCompany.keywords = keyword
             this.getNotPointCompany()
+          },
+          refreshTransAction () {
+            this.getFirstOrder() // 获取一级数据
+            this.getSeCondition() // 获取起点终点数据（运单tab）
+            this.getNotPointCompany() // 获取未描点的单位信息
           }, // end
           init () {
             this.getFirstOrder() // 获取一级数据
