@@ -9,6 +9,12 @@
           <el-form-item label="物流中心地址">
             <el-input v-model="Address" placeholder="双击选择或手工录入" @dblclick.native="showDialog('commonDialog2')"></el-input>
           </el-form-item>
+          <el-form-item label="入库类型">
+            <el-select v-model="Storage_Type">
+                <el-option value="2" label="销售出库"></el-option>
+                <el-option value="1" label="购进退出"></el-option>
+            </el-select>
+          </el-form-item>
           <el-form-item label="单位名称">
             <el-input v-model="unitName"></el-input>
           </el-form-item>
@@ -54,6 +60,7 @@
         Consignor: {},
         Ldc: {},
         Ssa: {},
+        Storage_Type: '1',
         consignorName: '',
         logisticsName: '',
         consignor: {
@@ -76,7 +83,7 @@
             title: '联系人电话',
             field: 'Contact_Phone',
             width: 140
-          }
+          },
           {
             title: '物流中心编号',
             field: 'Ldc_No',
@@ -167,7 +174,8 @@
           Ssa_Id: this.Ssa.Ssa_Id,
           Address_Id: this.Ssa.Address_Id,
           Ldc_Address_Id: this.Ldc.Address_Id,
-          Operator_Id: this.consignor.Operator_Id
+          Operator_Id: this.consignor.Operator_Id,
+          Storage_Type: this.Storage_Type
         })
         this.$router.push('/outFlow/goodInfo')
       },
@@ -259,7 +267,8 @@
         var params = {
           Ssa_Name: this.unitName ? '%' + this.unitName + '%' : '%',
           Con_Id: this.consignor.Con_Id ? this.consignor.Con_Id : '%',
-          Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%'
+          Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%',
+          Storage_Type: this.Storage_Type
         }
         this.origData = []
         Api.get('GetOutboundSsa', params)

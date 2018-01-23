@@ -1783,17 +1783,19 @@
     .order, .route {
       padding-top: 100px;
     }
-    .el-form--inline {
-      .el-form-item:nth-last-of-type(1) {
-        display: flex;
-        .el-form-item__label {
-          width: 48px;
-          min-width: 48px;
-        }
-        .el-checkbox {
-          margin: 0 15px 0 0;
-          & + .el-checkbox {
+    .order {
+      .el-form--inline {
+        .el-form-item:nth-last-of-type(1) {
+          display: flex;
+          .el-form-item__label {
+            width: 48px;
+            min-width: 48px;
+          }
+          .el-checkbox {
             margin: 0 15px 0 0;
+            & + .el-checkbox {
+              margin: 0 15px 0 0;
+            }
           }
         }
       }

@@ -4,7 +4,7 @@
         <div class="common-condition-box">
           <el-form :inline="true">
             <el-form-item label="关键字" label-width="60px">
-              <el-input v-model="form.keyWord"></el-input>
+              <el-input v-model="form.keyWord" placeholder="请输入承运方或者运营方名称"></el-input>
             </el-form-item>
             <el-form-item label="路线编号" label-width="60px">
               <el-input v-model="form.routeNo"></el-input>
@@ -41,7 +41,7 @@
                       <span>h</span>
                     </div>
                     <ul>
-                      <li>&nbsp;<span v-show="item.Address_Id !== '0' && item.Address_Id !== '1'">{{item.Address}}</span></li>
+                      <li>&nbsp;<span>{{item.Address}}</span></li>
                       <li>&nbsp;<span v-show="item.Address_Id !== '0' && item.Address_Id !== '1'">联系人：{{item.Contact_Name}}</span></li>
                       <li>&nbsp;<span v-show="item.Address_Id !== '0' && item.Address_Id !== '1'">联系电话：{{item.Contact_Phone}}</span></li>
                     </ul>

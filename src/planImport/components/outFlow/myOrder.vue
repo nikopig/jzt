@@ -9,9 +9,9 @@
           <div class='info'>生成时间&nbsp;:&nbsp;{{item.Create_Time}}</div>
           <div class='info'>
               <span class='label'>出库类型&nbsp;:</span>
-              <el-select class='content' v-model="item.Outbound_Type" @change = 'clearData(item)'>
-                  <el-option value="1" label="销售出库"></el-option>
-                  <el-option value="4" label="购进退出"></el-option>
+              <el-select class='content' v-model="item.Outbound_Type" :disabled="true">
+                  <el-option value="2" label="销售出库"></el-option>
+                  <el-option value="1" label="购进退出"></el-option>
               </el-select>
             </div>
           <div class='button-group'>

@@ -9,6 +9,12 @@
             <el-form-item label="物流中心地址">
               <el-input v-model="Address" placeholder="双击选择或手工录入" @dblclick.native="showDialog('commonDialog2')"></el-input>
             </el-form-item>
+            <el-form-item label="入库类型">
+              <el-select v-model="Storage_Type">
+                  <el-option value="1" label="购进入库"></el-option>
+                  <el-option value="2" label="销售退回"></el-option>
+              </el-select>
+            </el-form-item>
             <el-form-item label="单位名称">
               <el-input v-model="unitName"></el-input>
             </el-form-item>
@@ -50,6 +56,7 @@
               unitName: '',
               Con_Name: '',
               Address: '',
+              Storage_Type: '1',
               origData: [],
               Consignor: {},
               Ldc: {},
@@ -163,7 +170,8 @@
             // vuex中存入客户信息
             this.saveSelect({
               Ssa_Id: this.Ssa.Ssa_Id,
-              Address_Id: this.Ssa.Address_Id
+              Address_Id: this.Ssa.Address_Id,
+              Storage_Type: this.Storage_Type
             })
             this.$router.push('/goodInfo')
           },
@@ -266,7 +274,8 @@
             var params = {
               Ssa_Name: this.unitName ? '%' + this.unitName + '%' : '%',
               Con_Id: this.consignor.Con_Id ? this.consignor.Con_Id : '%',
-              Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%'
+              Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%',
+              Storage_Type: this.Storage_Type
             }
             this.origData = []
             Api.get('GetStorageSsa', params)
