@@ -65,19 +65,32 @@
               ldcDH: [
                 {
                   title: '物流中心名称',
-                  field: 'Ldc_Name'
+                  field: 'Ldc_Name',
+                  width: 240
                 },
                 {
                   title: '物流中心编号',
-                  field: 'Ldc_No'
+                  field: 'Ldc_No',
+                  width: 200
                 },
                 {
                   title: '助记码',
-                  field: 'Mnemonic_Code'
+                  field: 'Mnemonic_Code',
+                  width: 150
                 },
                 {
                   title: '地址',
-                  field: 'Address'
+                  field: 'Address',
+                  width: 260
+                },
+                {
+                  title: '联系人',
+                  field: 'Contact_Name'
+                },
+                {
+                  title: '联系人电话',
+                  field: 'Contact_Phone',
+                  width: 140
                 }
               ],
               ldcData: []

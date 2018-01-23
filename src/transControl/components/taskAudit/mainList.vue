@@ -482,7 +482,8 @@
 
 <style lang="less" scoped>
 	.taskAudit{
-		padding: 211px 10px 10px;
+		// padding: 211px 10px 10px;
+		padding: 187px 10px 10px;
 		.common-condition-box, .toolbar{
 			margin-bottom: 15px;
 	    position: fixed;
@@ -506,7 +507,8 @@
 		}
 		.toolbar{
 			width: auto;
-			top: 164px;
+			// top: 164px;
+			top: 140px;
 			&:after{
 	    	content: '';
 	    	position: absolute;
