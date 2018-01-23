@@ -69,6 +69,15 @@
             width: 240
           },
           {
+            title: '联系人',
+            field: 'Contact_Name'
+          },
+          {
+            title: '联系人电话',
+            field: 'Contact_Phone',
+            width: 140
+          }
+          {
             title: '物流中心编号',
             field: 'Ldc_No',
             width: 200
@@ -82,15 +91,6 @@
             title: '地址',
             field: 'Address',
             width: 260
-          },
-          {
-            title: '联系人',
-            field: 'Contact_Name'
-          },
-          {
-            title: '联系人电话',
-            field: 'Contact_Phone',
-            width: 140
           }
         ],
         ldcData: []
