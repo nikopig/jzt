@@ -60,7 +60,7 @@
         Consignor: {},
         Ldc: {},
         Ssa: {},
-        Storage_Type: '1',
+        Storage_Type: '2',
         consignorName: '',
         logisticsName: '',
         consignor: {
