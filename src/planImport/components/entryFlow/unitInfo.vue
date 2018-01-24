@@ -12,7 +12,7 @@
             <el-form-item label="入库类型">
               <el-select v-model="Storage_Type" @change="storageTypeChange">
                   <el-option value="1" label="购进入库"></el-option>
-                  <el-option value="2" label="销售退回"></el-option>
+                  <el-option value="4" label="销售退回"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item label="单位名称">
@@ -278,7 +278,7 @@
               Ssa_Name: this.unitName ? '%' + this.unitName + '%' : '%',
               Con_Id: this.consignor.Con_Id ? this.consignor.Con_Id : '%',
               Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%',
-              Storage_Type: this.Storage_Type
+              Storage_Type: (this.Storage_Type === '1') ? '1' : '2'
             }
             this.origData = []
             Api.get('GetStorageSsa', params)

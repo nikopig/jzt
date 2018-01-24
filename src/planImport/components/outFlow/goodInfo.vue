@@ -50,7 +50,7 @@
             }
         },
         computed: {
-          ...mapState(['Con_Id', 'Ldc_Id', 'Ssa_Id', 'Address_Id', 'Ldc_Address_Id', 'Operator_Id', 'Storage_Type']),
+          ...mapState(['Con_Id', 'Ldc_Id', 'Ssa_Id', 'Address_Id', 'Ldc_Address_Id', 'Operator_Id', 'Outbound_Type']),
           goodsData () {
             return this.origData.map((item, index) => {
               var temp = {}
@@ -100,7 +100,7 @@
               temp.Operator_Id = this.Operator_Id
               temp.Goods_Id = item.Goods_Id
               temp.Goods_Type = item.Goods_Type
-              temp.Storage_Type = this.Storage_Type
+              temp.Outbound_Type = this.Outbound_Type
               temp.Operator = Api.userInfo.USERID
               return temp
             })

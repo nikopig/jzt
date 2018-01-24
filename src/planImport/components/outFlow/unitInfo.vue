@@ -10,9 +10,9 @@
             <el-input v-model="Address" placeholder="双击选择或手工录入" @dblclick.native="showDialog('commonDialog2')"></el-input>
           </el-form-item>
           <el-form-item label="出库类型">
-            <el-select v-model="Storage_Type" @change="storageTypeChange">
-                <el-option value="2" label="销售出库"></el-option>
-                <el-option value="1" label="购进退出"></el-option>
+            <el-select v-model="Outbound_Type" @change="outBoundTypeChange">
+                <el-option value="1" label="销售出库"></el-option>
+                <el-option value="4" label="购进退出"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="单位名称">
@@ -60,7 +60,7 @@
         Consignor: {},
         Ldc: {},
         Ssa: {},
-        Storage_Type: '2',
+        Outbound_Type: '1',
         consignorName: '',
         logisticsName: '',
         consignor: {
@@ -175,7 +175,7 @@
           Address_Id: this.Ssa.Address_Id,
           Ldc_Address_Id: this.Ldc.Address_Id,
           Operator_Id: this.consignor.Operator_Id,
-          Storage_Type: this.Storage_Type
+          Outbound_Type: this.Outbound_Type
         })
         this.$router.push('/outFlow/goodInfo')
       },
@@ -252,7 +252,7 @@
             }
           })
       },
-      storageTypeChange () {
+      outBoundTypeChange () {
         this.getSsaData()
       },
       // 获取客户信息
@@ -271,7 +271,7 @@
           Ssa_Name: this.unitName ? '%' + this.unitName + '%' : '%',
           Con_Id: this.consignor.Con_Id ? this.consignor.Con_Id : '%',
           Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%',
-          Storage_Type: this.Storage_Type
+          Storage_Type: (this.Outbound_Type === '1') ? '2' : '1'
         }
         this.origData = []
         Api.get('GetOutboundSsa', params)

@@ -9,9 +9,9 @@
           <div class='info'>生成时间&nbsp;:&nbsp;{{item.Create_Time}}</div>
           <div class='info'>
               <span class='label'>出库类型&nbsp;:</span>
-              <el-select class='content' v-model="item.Outbound_Type" :disabled="true">
-                  <el-option value="2" label="销售出库"></el-option>
-                  <el-option value="1" label="购进退出"></el-option>
+              <el-select class='content' v-model="item.Outbound_Type">
+                <el-option value="4" label="购进退出"></el-option>
+                <el-option value="1" label="销售出库"></el-option>
               </el-select>
             </div>
           <div class='button-group'>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <!-- 入库类型：销售出库 -->
-        <div class='contentBox' v-if ='item.Outbound_Type === "2"'>
+        <div class='contentBox' v-if ='item.Outbound_Type === "1"'>
           <el-form :ref="'form' + $index" :model="item">
             <common-row>
               <common-col>
@@ -127,7 +127,7 @@
           </el-form>
         </div>
         <!-- 入库类型：销售退回 -->
-        <div class='contentBox' v-if ='item.Outbound_Type === "1"'>
+        <div class='contentBox' v-if ='item.Outbound_Type === "4"'>
           <el-form :ref="'form' + $index" :model="item">
             <common-row>
               <common-col>

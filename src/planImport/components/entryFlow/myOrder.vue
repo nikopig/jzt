@@ -9,9 +9,9 @@
           <div class='info'>生成时间&nbsp;:&nbsp;{{item.Create_Time}}</div>
           <div class='info'>
               <span class='label'>入库类型&nbsp;:</span>
-              <el-select class='content' v-model="item.Storage_Type" :disabled="true">
+              <el-select class='content' v-model="item.Storage_Type">
                   <el-option value="1" label="购进入库"></el-option>
-                  <el-option value="2" label="销售退回"></el-option>
+                  <el-option value="4" label="销售退回"></el-option>
               </el-select>
             </div>
           <div class='button-group'>
@@ -532,7 +532,7 @@ import { mapState } from 'vuex'
             status = false
             break
           }
-          if (secondItem.Storage_Type === '2' && (!secondItem.Goods_Lotno || !secondItem.Production_Date || !secondItem.Valid_Until)) {
+          if (secondItem.Storage_Type === '4' && (!secondItem.Goods_Lotno || !secondItem.Production_Date || !secondItem.Valid_Until)) {
             this.messageInfo('入库类型为购进退回的，批号、生产日期、有效期不能为空')
             status = false
             break
