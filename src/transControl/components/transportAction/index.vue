@@ -15,6 +15,9 @@
           <el-button type="text" icon="mo-refresh" @click="refreshTransAction">刷新</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
+          <el-button type="text" icon="mo-auditing" @click="auditDistributeCar">审核配送排车</el-button>
+        </div>
+        <div class="btn-box" v-show="!showRoute">
           <el-button type="text" icon="warning" @click="showNotPointCompanyDialog" :class="{'warning': notPointCompany.datas.length > 0}">警告</el-button>
         </div>
         <div class="btn-box" v-show="showRoute">
@@ -1745,6 +1748,34 @@
             this.getFirstOrder() // 获取一级数据
             this.getSeCondition() // 获取起点终点数据（运单tab）
             this.getNotPointCompany() // 获取未描点的单位信息
+          },
+          auditDistributeCar () { // 审核配送排车
+            if (!this.orderParams || !this.orderParams.Bill_Dtl_Ids) {
+              this.$alert('请先选择明细')
+              return false
+            }
+            let params = {
+              Bill_Hdr_Ids: this.orderParams.Bill_Hdr_Ids,
+              Bill_Dtl_Ids: this.orderParams.Bill_Dtl_Ids,
+              Auditor: Api.userInfo.Staff_Id
+            }
+            // console.log(JSON.stringify(params))
+            this.$confirm('是否确定审核配送排车?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() => {
+              Api.post('TMP_TransportTaskDD_AuditDistribute', params).then((res) => {
+                if (res.Flag) {
+                  this.$alert('审核配送排车成功')
+                  this.getFirstOrder()
+                } else {
+                  this.$alert(res.ErrInfo)
+                }
+              })
+            }).catch(() => {
+              // 取消
+            })
           }, // end
           init () {
             this.getFirstOrder() // 获取一级数据
