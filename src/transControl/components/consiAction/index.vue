@@ -746,6 +746,8 @@
         <el-table :data="searchLdcAddressValue" style="width: 100%" @row-dblclick="selectLdcAddr">
           <el-table-column prop="Address_Shortname" label="物流中心地址简称" show-overflow-tooltip></el-table-column>
           <el-table-column prop="Address" label="	物流中心详细地址" show-overflow-tooltip></el-table-column>
+           <el-table-column prop="Contact_Name" label="联系人" show-overflow-tooltip></el-table-column>
+          <el-table-column prop="Contact_Phone" label="联系人电话" show-overflow-tooltip></el-table-column>
         </el-table>
       </el-dialog>
     </div>
