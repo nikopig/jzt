@@ -532,7 +532,7 @@ import { mapState } from 'vuex'
             status = false
             break
           }
-          if (secondItem.Storage_Type === '4' && (!secondItem.Goods_Lotno || !secondItem.Production_Date || !secondItem.Valid_Until)) {
+          if (secondItem.Storage_Type === '2' && (!secondItem.Goods_Lotno || !secondItem.Production_Date || !secondItem.Valid_Until)) {
             this.messageInfo('入库类型为购进退回的，批号、生产日期、有效期不能为空')
             status = false
             break

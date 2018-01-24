@@ -173,6 +173,7 @@
             this.GetStorageGoods(keyWord)
           },
           init () {
+            this.goods = []
             this.GetStorageGoods()
           }
         },

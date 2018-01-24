@@ -169,6 +169,7 @@
           },
           init () {
             // this.goodName = ''
+            this.goodsId = []
             this.GetStorageGoods()
           }
         },

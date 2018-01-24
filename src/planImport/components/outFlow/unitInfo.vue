@@ -9,8 +9,8 @@
           <el-form-item label="物流中心地址">
             <el-input v-model="Address" placeholder="双击选择或手工录入" @dblclick.native="showDialog('commonDialog2')"></el-input>
           </el-form-item>
-          <el-form-item label="入库类型">
-            <el-select v-model="Storage_Type">
+          <el-form-item label="出库类型">
+            <el-select v-model="Storage_Type" @change="storageTypeChange">
                 <el-option value="2" label="销售出库"></el-option>
                 <el-option value="1" label="购进退出"></el-option>
             </el-select>
@@ -251,6 +251,9 @@
               this.messageInfo(resp.ErrInfo)
             }
           })
+      },
+      storageTypeChange () {
+        this.getSsaData()
       },
       // 获取客户信息
       getSsaData () {

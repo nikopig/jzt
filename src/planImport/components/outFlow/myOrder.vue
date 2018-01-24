@@ -20,7 +20,7 @@
           </div>
         </div>
         <!-- 入库类型：销售出库 -->
-        <div class='contentBox' v-if ='item.Outbound_Type === "1"'>
+        <div class='contentBox' v-if ='item.Outbound_Type === "2"'>
           <el-form :ref="'form' + $index" :model="item">
             <common-row>
               <common-col>
@@ -127,7 +127,7 @@
           </el-form>
         </div>
         <!-- 入库类型：销售退回 -->
-        <div class='contentBox' v-if ='item.Outbound_Type === "4"'>
+        <div class='contentBox' v-if ='item.Outbound_Type === "1"'>
           <el-form :ref="'form' + $index" :model="item">
             <common-row>
               <common-col>
