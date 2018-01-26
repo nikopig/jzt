@@ -73,21 +73,26 @@
                     </el-option>
                   </el-select>
                 </el-form-item>
-                <div v-if="filterOrders.start.data.length > 0">
-                  <el-form-item label="起点：">
-                    <el-checkbox-group v-model="filterOrders.start.selection">
-                      <el-checkbox v-for="(item, index) in filterOrders.start.data" :label="item.Start_City" :key="index"></el-checkbox>
-                    </el-checkbox-group>
-                  </el-form-item>
-                </div>
-                <div v-if="filterOrders.end.data.length > 0">
-                  <el-form-item label="终点：">
-                    <el-checkbox-group v-model="filterOrders.end.selection">
-                      <el-checkbox v-for="(item, index) in filterOrders.end.data" :label="item.End_City" :key="index"></el-checkbox>
-                    </el-checkbox-group>
-                  </el-form-item>
-                </div>
+                <transition>
+                  <div v-show="addressCondition">
+                    <div v-if="filterOrders.start.data.length > 0">
+                      <el-form-item label="起点：">
+                        <el-checkbox-group v-model="filterOrders.start.selection">
+                          <el-checkbox v-for="(item, index) in filterOrders.start.data" :label="item.Start_City" :key="index"></el-checkbox>
+                        </el-checkbox-group>
+                      </el-form-item>
+                    </div>
+                    <div v-if="filterOrders.end.data.length > 0">
+                      <el-form-item label="终点：">
+                        <el-checkbox-group v-model="filterOrders.end.selection">
+                          <el-checkbox v-for="(item, index) in filterOrders.end.data" :label="item.End_City" :key="index"></el-checkbox>
+                        </el-checkbox-group>
+                      </el-form-item>
+                    </div>
+                  </div>
+                </transition>
               </el-form>
+              <a href="javascript:;" class="strechControl" @click="addressCondition = !addressCondition">{{ addressCondition ? '收起' : '展开' }}<i :class="{'el-icon-mo-down-arrow': !addressCondition, 'el-icon-mo-up-arrow': addressCondition}"></i></a>
             </div>
           </div>
           <div class="filter-condition" v-show="showOrderFilter">
@@ -758,7 +763,8 @@
                 bigTotalItems: 0,
                 keywords: ''
               },
-              showNotPointCompany: false
+              showNotPointCompany: false, // 警告
+              addressCondition: false // 显示起点终点过滤
             }
         },
         computed: {
@@ -1903,6 +1909,25 @@
       }
       .common-condition-box {
         margin-top: 15px;
+        position: relative;
+        .strechControl {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          line-height: 36px;
+          color: #666;
+          padding-right: 24px;
+          .el-icon-mo-down-arrow, .el-icon-mo-up-arrow {
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            margin-top: -11px;
+            right: 0;
+          }
+          &:hover {
+            color: #999;
+          }
+        }
       }
     }
     .filter-condition {
