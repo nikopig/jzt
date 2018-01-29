@@ -645,7 +645,19 @@ import { mapState } from 'vuex'
       // 2018-01-29 胡香利 新增
       productionDateChange (obj) {
         let date = obj.Production_Date
-        let selectDateSeconds = date.getTime()
+        let selectDateSeconds = 0
+        if (typeof (date) === 'string') {
+          if (date !== '') {
+            date = new Date(date)
+            date.setHours(0)
+            date.setMinutes(0)
+            date.setSeconds(0)
+            date.setMilliseconds(0)
+            selectDateSeconds = date.getTime()
+          }
+        } else {
+          selectDateSeconds = date.getTime()
+        }
         let nowDate = new Date()
         nowDate.setHours(0)
         nowDate.setMinutes(0)
