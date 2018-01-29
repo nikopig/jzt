@@ -67,7 +67,7 @@
               <common-col>
                 <span class='label'>生产日期&nbsp;:</span>
                 <div class="content">
-                  <el-date-picker type="date" v-model="item.Production_Date"></el-date-picker>
+                  <el-date-picker type="date" v-model="item.Production_Date" @change="productionDateChange(item)"></el-date-picker>
                 </div>
               </common-col>
               <common-col>
@@ -185,8 +185,8 @@
               <common-col>
                 <span class='label'>生产日期&nbsp;:</span>
                 <div class="content">
-                  <el-date-picker type="date" v-model="item.Production_Date"></el-date-picker>
-                  <span>{{item.Production_Date}}</span>
+                  <el-date-picker type="date" v-model="item.Production_Date" @change="productionDateChange(item)"></el-date-picker>
+                  <!-- <span>{{item.Production_Date}}</span> -->
                 </div>
               </common-col>
               <common-col>
@@ -642,6 +642,26 @@ import { mapState } from 'vuex'
         }
         return obj
       },
+      // 2018-01-29 胡香利 新增
+      productionDateChange (obj) {
+        let date = obj.Production_Date
+        let selectDateSeconds = date.getTime()
+        let nowDate = new Date()
+        nowDate.setHours(0)
+        nowDate.setMinutes(0)
+        nowDate.setSeconds(0)
+        nowDate.setMilliseconds(0)
+        let nowDateSeconds = nowDate.getTime()
+        if (selectDateSeconds > nowDateSeconds) {
+          this.$alert('生产日期不能超过当前日期', '友情提示', {
+            confirmButtonText: '确定',
+            callback: action => {
+              // 回调
+              obj.Production_Date = ''
+            }
+          })
+        }
+      }, // end
       // 初始化函数
       init () {
         // 请求我的订单数据
