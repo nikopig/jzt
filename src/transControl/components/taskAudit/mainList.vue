@@ -354,6 +354,10 @@
 			          		Bus.$emit(Types.refreshTransport)
 			            }
 			          })
+							} else {
+								this.$alert(res.ErrInfo, '友情提示', {
+									confirmButtonText: '确定'
+								})
 							}
 						})
 				} else {
@@ -389,6 +393,10 @@
 			          		this.getData()
 			            }
 			          })
+							} else {
+								this.$alert(res.ErrInfo, '友情提示', {
+									confirmButtonText: '确定'
+								})
 							}
 						})
 	        })
@@ -409,13 +417,19 @@
 					}
 					Api.post('TMP_TransportTaskWTD_WtdAuditDistribute', params)
 						.then((res) => {
-							this.$alert('排车任务生成，请到配送排车界面进行排车！', '友情提示', {
-		            confirmButtonText: '确定',
-		            callback: action => {
-		            		this.fieldData = []
-			          		this.getData()
-			            }
-		          })
+							if (res.Flag) {
+								this.$alert('排车任务生成，请到配送排车界面进行排车！', '友情提示', {
+			            confirmButtonText: '确定',
+			            callback: action => {
+			            		this.fieldData = []
+				          		this.getData()
+				            }
+			          })
+							} else {
+								this.$alert(res.ErrInfo, '友情提示', {
+									confirmButtonText: '确定'
+								})
+							}
 						})
 				} else {
 					this.$alert('未选择数据，请选择后再执行！', '友情提示', {
