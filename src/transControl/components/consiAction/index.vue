@@ -769,6 +769,10 @@
         }).then(res => {
           if (res.Flag) {
             this.formSearch.transportRouteType = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取路线类型
@@ -779,6 +783,10 @@
         Api.get('TMP_TransportTaskScheding_Wtd_GetLeftFilter', param).then(res => {
           if (res.Flag) {
             this.formSearch.address = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取路线城市筛选
@@ -789,6 +797,10 @@
         Api.get('TMP_TransportTaskScheding_Wtd_GetRightFilter', param).then(res => {
           if (res.Flag) {
             this.wtdFormSearch.address = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取委托单城市筛选
@@ -804,6 +816,10 @@
               Vue.set(item, 'checked', false)
               Vue.set(item, '$index', index)
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取运单
@@ -821,6 +837,10 @@
               Vue.set(item, '$index', index)
               Vue.set(item, 'dataDetailList', [])
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取运单列表列表详细信息
@@ -843,6 +863,10 @@
                   }
                 }
               }
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }
@@ -892,6 +916,10 @@
                 this.init()
               }
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 路线加入委托单
@@ -929,6 +957,10 @@
                 this.init()
               }
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 从委托单中删除路线
@@ -953,6 +985,10 @@
                 })
               }
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
         this.checkedWTDrightAddedArr = {} // 初始化路线
@@ -965,6 +1001,10 @@
         Api.post('TMP_TransportTaskWTD_AddNewWtd', param).then(res => {
           if (res.Flag) {
             this.getWtdInfo()
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 新增委托单
@@ -990,6 +1030,10 @@
                   this.init()
                 }
               })
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }
@@ -1011,6 +1055,10 @@
         Api.get('TMP_TransportTaskScheding_Wtd_GetWtdDtl', param).then(res => {
           if (res.Flag) {
             this.wTDrightAddedArr[outIndex].Route_Infos[innerIndex].routeDetailInfos = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取委托单路线详细信息
@@ -1101,6 +1149,10 @@
               this.operatorForm.Actual_Gross_Weight = res.MsgInfo[0].Actual_Gross_Weight
               this.operatorForm.Amount = res.MsgInfo[0].Amount
             }
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 根据委托单汇总ID获取委托单汇总信息
@@ -1148,6 +1200,10 @@
               this.getCurWtdById(name)
             }
             this.getTransportMode()
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 承运商以及运营商明细表格
@@ -1158,6 +1214,10 @@
         Api.get('TMP_Fd_Field_Dtl', param).then(res => {
           if (res.Flag) {
             this.transportMode = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取运输方式
@@ -1170,6 +1230,10 @@
           if (res.Flag) {
             this.carries = res.MsgInfo
             this.showSelectCarryDialog = true
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取承运商
@@ -1195,6 +1259,10 @@
             if (res.Flag) {
               this.vehicleNos = res.MsgInfo
               this.showSelectVehicleNoDialog = true
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }
@@ -1226,6 +1294,10 @@
           if (res.Flag) {
             this.staffs = res.MsgInfo
             this.showSelectStaffDialog = true
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取司机
@@ -1243,6 +1315,10 @@
           if (res.Flag) {
             this.operators = res.MsgInfo
             this.showSelectOperatorDialog = true
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取操作联系人
@@ -1289,6 +1365,10 @@
             this.$alert('数据暂存成功!', '提示').then(() => {
               this.showCarry = false
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 暂存修改
@@ -1365,6 +1445,10 @@
                 })
               })
             }
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 试算费用-承运商
@@ -1424,6 +1508,10 @@
                   this.init()
                   this.$refs.carryForm.resetFields()
                 })
+              } else {
+                this.$alert(res.ErrInfo, '提示', {
+                  confirmButtonText: '确定'
+                })
               }
             })
           } else {
@@ -1472,6 +1560,10 @@
                   this.showOperator = false
                   this.init()
                   this.$refs.operatorForm.resetFields()
+                })
+              } else {
+                this.$alert(res.ErrInfo, '提示', {
+                  confirmButtonText: '确定'
                 })
               }
             })
@@ -1554,6 +1646,10 @@
                 })
               })
             }
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 试算费用-运营商
@@ -1595,6 +1691,10 @@
             this.$alert('数据暂存成功!', '提示').then(() => {
               this.showCarry = false
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 暂存修改-运营商
@@ -1606,6 +1706,10 @@
           if (res.Flag) {
             this.assignOperators = res.MsgInfo
             this.showSelectAssignOperatorDialog = true
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 选择运营商弹出框
@@ -1640,6 +1744,10 @@
                   this.selectLdc(this.ldc[0])
                 }
               }
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }
@@ -1671,6 +1779,10 @@
                   this.selectLdcAddr(this.ldcAddress[0])
                 }
               }
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }

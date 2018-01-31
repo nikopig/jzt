@@ -293,6 +293,10 @@
 						if (res.Flag) {
 							this.TableListData = res.MsgInfo
 							this.copyTableListData = this.TableListData
+						} else {
+							this.$alert(res.ErrInfo, '提示', {
+								confirmButtonText: '确定'
+							})
 						}
 					})
 			},
@@ -321,6 +325,10 @@
 	            } else {
 	            	this.bigTotalItems = res.MsgInfo[0].Total
 	            }
+						} else {
+							this.$alert(res.ErrInfo, '提示', {
+								confirmButtonText: '确定'
+							})
 						}
 					})
 			},

@@ -83,6 +83,10 @@
 									this.detailStatu = !this.detailStatu
 								}
 							}
+						} else {
+							this.$alert(res.ErrInfo, '提示', {
+								confirmButtonText: '确定'
+							})
 						}
 					})
 			}
