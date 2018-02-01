@@ -1133,6 +1133,9 @@
               this.carryForm.Actual_Gross_Volume = res.MsgInfo[0].Actual_Gross_Volume
               this.carryForm.Actual_Gross_Weight = res.MsgInfo[0].Actual_Gross_Weight
               this.carryForm.Amount = res.MsgInfo[0].Amount
+              // 2018-01-31 胡香利增加
+              this.carryForm.Consign_No = res.MsgInfo[0].Consign_No
+              // end
             }
             if (name === 'operator') {
               this.operatorForm.AssignOperator_Id = res.MsgInfo[0].AssignOperator_Id
@@ -1340,6 +1343,7 @@
           Vehicle_Id: this.carryForm.Vehicle_Id,
           Carrier_Id: this.carryForm.Carrier_Id,
           Transport_Mode: this.carryForm.Transport_Mode,
+          Consign_No: this.carryForm.Consign_No, // 2018-01-31 胡香利增加
           Amount: this.carryForm.Amount,
           Actual_Gross_Kilometers: parseFloat(this.carryForm.Actual_Gross_Kilometers),
           Actual_Gross_Pcs: parseFloat(this.carryForm.Actual_Gross_Pcs),
@@ -1464,6 +1468,7 @@
               Vehicle_Id: this.carryForm.Vehicle_Id,
               Carrier_Id: this.carryForm.Carrier_Id,
               Transport_Mode: this.carryForm.Transport_Mode,
+              Consign_No: this.carryForm.Consign_No, // 2018-01-31 胡香利增加
               Amount: this.carryForm.Amount,
               Operator_Id: OperatorId,
               Operate_Staff: OperatorStaff,
