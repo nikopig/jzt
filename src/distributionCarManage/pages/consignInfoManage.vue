@@ -69,7 +69,7 @@
 <script>
 	import Vue from 'vue'
 	import Api from '@/common/js/api'
-	import {DateFtt, formatJson} from '@/common/js/utils'
+	import {DateFtt, formatJson, GetBeforeDate} from '@/common/js/utils'
 	import {json2excel} from '@/common/js/excel.js'
 	import consiModal from '@/common/service/modal/consi-modal'
 	import commonModal from '@/common/components/common-modal'
@@ -280,7 +280,7 @@
         json2excel(this.tableOptions.titles, jsonData)
 			},
 			init () {
-				let startTime = DateFtt('yyyy-MM-dd', new Date()).substring(0, 8) + (new Date().getDate() - 5)
+				let startTime = GetBeforeDate(5)
 				let endTime = DateFtt('yyyy-MM-dd', new Date())
 				this.filterCondition.rangeDate.push(startTime)
 				this.filterCondition.rangeDate.push(endTime)
