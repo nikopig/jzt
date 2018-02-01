@@ -85,7 +85,7 @@
 				filterCondition: {
 					Super_Operator_Id: '%',
 					Super_Operator_Name: '',
-					Start_Time: DateFtt('yyyy-MM-dd', new Date(), false).substring(0, 8) + (new Date().getDate() - 5),
+					Start_Time: GetBeforeDate(5),
 					End_Time: DateFtt('yyyy-MM-dd', new Date(), false)
 				},
 				show: true,
