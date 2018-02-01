@@ -1698,7 +1698,7 @@
           changeAddress (dtlRow, routeRow) {
             let startIndex = getIndexOfCollection('Address_Id', dtlRow.start_Address_Id, routeRow.Route_Dtls)
 //            this.$set(dtlRow, 'end_Route_Dtls', routeRow.Route_Dtls.slice(startIndex + 1))
-            if (startIndex === routeRow.Route_Dtls.length - 1) {
+            if (startIndex === routeRow.Route_Dtls.length - 1 && startIndex !== -1) {
               this.$alert('最后一个地址不能作为起点地址')
               dtlRow.start_Address_Id = ''
               return false

@@ -75,7 +75,7 @@
 <script>
 	import Api from '@/common/js/api'
 	import {Bus, Types} from '@/common/js/bus'
-	import {DateFtt} from '@/common/js/utils'
+	import {DateFtt, GetBeforeDate} from '@/common/js/utils'
 	import commonPane from './pane'
 	import commonModal from '@/common/components/common-modal'
 	import Vue from 'vue'

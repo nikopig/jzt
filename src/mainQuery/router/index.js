@@ -138,7 +138,7 @@ export default new Router({
           component: resolve => require(['../components/temperatureDownload/mainList'], resolve)
         },
         {
-          path: 'detailList/:sid/:beginDate/:endDate/:High_Temp/:Low_Temp/:flag',
+          path: 'detailList/:HANGHAO/:DANJ_NO/:CHEPAI_NO/:sid/:beginDate/:endDate/:High_Temp/:Low_Temp/:flag',
           name: 'tempDetailList',
           component: resolve => require(['../components/temperatureDownload/detailList'], resolve)
         }
