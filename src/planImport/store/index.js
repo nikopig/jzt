@@ -9,7 +9,9 @@ const store = new Vuex.Store({
     Ssa_Id: '', // 选择的客户id
     Ldc_Address_Id: '', // 物流中心地址id
     Address_Id: '', // 客户地址id
-    Operator_Id: '' // 运营方id
+    Operator_Id: '', // 运营方id
+    Storage_Type: '1', // 入库类型
+    Outbound_Type: '1' // 出库类型
   },
   mutations: {
     [SAVE_SELECT] (state, payload) {

@@ -12,7 +12,10 @@
           <el-button type="text" icon="mo-tingzhi" @click="stopDtl">停止明细</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="mo-refresh" @click="getFirstOrder">刷新</el-button>
+          <el-button type="text" icon="mo-refresh" @click="refreshTransAction">刷新</el-button>
+        </div>
+        <div class="btn-box" v-show="!showRoute">
+          <el-button type="text" icon="mo-auditing" @click="auditDistributeCar">审核配送排车</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
           <el-button type="text" icon="warning" @click="showNotPointCompanyDialog" :class="{'warning': notPointCompany.datas.length > 0}">警告</el-button>
@@ -70,21 +73,26 @@
                     </el-option>
                   </el-select>
                 </el-form-item>
-                <div v-if="filterOrders.start.data.length > 0">
-                  <el-form-item label="起点：">
-                    <el-checkbox-group v-model="filterOrders.start.selection">
-                      <el-checkbox v-for="(item, index) in filterOrders.start.data" :label="item.Start_City" :key="index"></el-checkbox>
-                    </el-checkbox-group>
-                  </el-form-item>
-                </div>
-                <div v-if="filterOrders.end.data.length > 0">
-                  <el-form-item label="终点：">
-                    <el-checkbox-group v-model="filterOrders.end.selection">
-                      <el-checkbox v-for="(item, index) in filterOrders.end.data" :label="item.End_City" :key="index"></el-checkbox>
-                    </el-checkbox-group>
-                  </el-form-item>
-                </div>
+                <transition>
+                  <div v-show="addressCondition">
+                    <div v-if="filterOrders.start.data.length > 0">
+                      <el-form-item label="起点：">
+                        <el-checkbox-group v-model="filterOrders.start.selection">
+                          <el-checkbox v-for="(item, index) in filterOrders.start.data" :label="item.Start_City" :key="index"></el-checkbox>
+                        </el-checkbox-group>
+                      </el-form-item>
+                    </div>
+                    <div v-if="filterOrders.end.data.length > 0">
+                      <el-form-item label="终点：">
+                        <el-checkbox-group v-model="filterOrders.end.selection">
+                          <el-checkbox v-for="(item, index) in filterOrders.end.data" :label="item.End_City" :key="index"></el-checkbox>
+                        </el-checkbox-group>
+                      </el-form-item>
+                    </div>
+                  </div>
+                </transition>
               </el-form>
+              <a href="javascript:;" class="strechControl" @click="addressCondition = !addressCondition">{{ addressCondition ? '收起' : '展开' }}<i :class="{'el-icon-mo-down-arrow': !addressCondition, 'el-icon-mo-up-arrow': addressCondition}"></i></a>
             </div>
           </div>
           <div class="filter-condition" v-show="showOrderFilter">
@@ -755,7 +763,8 @@
                 bigTotalItems: 0,
                 keywords: ''
               },
-              showNotPointCompany: false
+              showNotPointCompany: false, // 警告
+              addressCondition: false // 显示起点终点过滤
             }
         },
         computed: {
@@ -1689,7 +1698,7 @@
           changeAddress (dtlRow, routeRow) {
             let startIndex = getIndexOfCollection('Address_Id', dtlRow.start_Address_Id, routeRow.Route_Dtls)
 //            this.$set(dtlRow, 'end_Route_Dtls', routeRow.Route_Dtls.slice(startIndex + 1))
-            if (startIndex === routeRow.Route_Dtls.length - 1) {
+            if (startIndex === routeRow.Route_Dtls.length - 1 && startIndex !== -1) {
               this.$alert('最后一个地址不能作为起点地址')
               dtlRow.start_Address_Id = ''
               return false
@@ -1740,6 +1749,39 @@
           searchNotPointCompany (keyword) {
             this.notPointCompany.keywords = keyword
             this.getNotPointCompany()
+          },
+          refreshTransAction () {
+            this.getFirstOrder() // 获取一级数据
+            this.getSeCondition() // 获取起点终点数据（运单tab）
+            this.getNotPointCompany() // 获取未描点的单位信息
+          },
+          auditDistributeCar () { // 审核配送排车
+            if (!this.orderParams || !this.orderParams.Bill_Dtl_Ids) {
+              this.$alert('请先选择明细')
+              return false
+            }
+            let params = {
+              Bill_Hdr_Ids: this.orderParams.Bill_Hdr_Ids,
+              Bill_Dtl_Ids: this.orderParams.Bill_Dtl_Ids,
+              Auditor: Api.userInfo.Staff_Id
+            }
+            // console.log(JSON.stringify(params))
+            this.$confirm('是否确定审核配送排车?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() => {
+              Api.post('TMP_TransportTaskDD_AuditDistribute', params).then((res) => {
+                if (res.Flag) {
+                  this.$alert('审核配送排车成功')
+                  this.getFirstOrder()
+                } else {
+                  this.$alert(res.ErrInfo)
+                }
+              })
+            }).catch(() => {
+              // 取消
+            })
           }, // end
           init () {
             this.getFirstOrder() // 获取一级数据
@@ -1777,6 +1819,23 @@
     }
     .order, .route {
       padding-top: 100px;
+    }
+    .order {
+      .el-form--inline {
+        .el-form-item:nth-last-of-type(1) {
+          display: flex;
+          .el-form-item__label {
+            width: 48px;
+            min-width: 48px;
+          }
+          .el-checkbox {
+            margin: 0 15px 0 0;
+            & + .el-checkbox {
+              margin: 0 15px 0 0;
+            }
+          }
+        }
+      }
     }
     /*.order .condition {*/
       /*position: fixed;*/
@@ -1850,6 +1909,25 @@
       }
       .common-condition-box {
         margin-top: 15px;
+        position: relative;
+        .strechControl {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          line-height: 36px;
+          color: #666;
+          padding-right: 24px;
+          .el-icon-mo-down-arrow, .el-icon-mo-up-arrow {
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            margin-top: -11px;
+            right: 0;
+          }
+          &:hover {
+            color: #999;
+          }
+        }
       }
     }
     .filter-condition {

@@ -14,7 +14,7 @@
       </div>
       <div class="toolbar">
         <div class="btn-box">
-          <el-button type="text" icon="mo-download">温度下载</el-button>
+          <el-button type="text" icon="mo-download" @click="print">温度下载</el-button>
         </div>
         <div class="text-box">
           <div class="text">
@@ -104,6 +104,10 @@
           }
         },
         methods: {
+          print () {
+            let queryStr = 'http://10.2.65.120:8080/test-yu/PrintTemperature.html?Hanghao=' + this.$router.params.HANGHAO + '&Ct_Start_Date=' + this.$router.params.beginDate + '&Ct_End_Date=' + this.$router.params.endDate + '&Danj_No=' + this.$router.params.DANJ_NO + '&Vehicle_No=' + this.$router.params.CHEPAI_NO + '&Sb_Id=' + this.$router.params.sid + '&TemTop=' + this.$router.params.High_Temp + '&TemLow=' + this.$router.params.Low_Temp
+            window.top.Myhome.addTabEx('温度打印', queryStr)
+          },
           getData () {
             let interFace = this.$route.params.flag === '0' ? 'DS_APP_JLP_ELECTRONICLOCK_TEMPATA_OLD' : 'DS_APP_JLP_ELECTRONICLOCK_TEMPATA'
             let params = {

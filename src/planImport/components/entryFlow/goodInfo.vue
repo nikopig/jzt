@@ -49,7 +49,7 @@
             }
         },
         computed: {
-          ...mapState(['Con_Id', 'Ldc_Id', 'Ssa_Id', 'Address_Id', 'Ldc_Address_Id', 'Operator_Id']),
+          ...mapState(['Con_Id', 'Ldc_Id', 'Ssa_Id', 'Address_Id', 'Ldc_Address_Id', 'Operator_Id', 'Storage_Type']),
           goodsData () {
             return this.origData.map((item, index) => {
               var temp = {}
@@ -78,6 +78,10 @@
                 {
                   icon: 'el-icon-mo-manufacturer',
                   text: '生产厂家：' + item.Manufacturer
+                },
+                {
+                  icon: 'el-icon-mo-zlgl',
+                  text: '商品编码：' + item.Goods_No
                 }
               ]
               item.card = temp
@@ -87,6 +91,7 @@
           selectData () {
             console.log(this.Ldc_Address_Id)
             console.log(this.Address_Id)
+            console.log(this.Storage_Type)
             return this.goodsId.map((item) => {
               var temp = {}
               temp.Con_Id = this.Con_Id
@@ -96,6 +101,7 @@
               temp.Ldc_Id = this.Ldc_Id
               temp.Operator_Id = this.Operator_Id
               temp.Goods_Id = item
+              temp.Storage_Type = this.Storage_Type
               temp.Operator = Api.userInfo.USERID
               return temp
             })
@@ -163,6 +169,7 @@
           },
           init () {
             // this.goodName = ''
+            this.goodsId = []
             this.GetStorageGoods()
           }
         },
@@ -183,5 +190,12 @@
     margin-bottom: 20px;
   }
   }
+  }
+</style>
+<style lang="less">
+  .entryFlow {
+    .el-icon-mo-zlgl:before {
+      color: #516e8e
+    }
   }
 </style>

@@ -9,7 +9,7 @@
           <div class='info'>生成时间&nbsp;:&nbsp;{{item.Create_Time}}</div>
           <div class='info'>
               <span class='label'>入库类型&nbsp;:</span>
-              <el-select class='content' v-model="item.Storage_Type" @change = 'clearData(item)'>
+              <el-select class='content' v-model="item.Storage_Type">
                   <el-option value="1" label="购进入库"></el-option>
                   <el-option value="4" label="销售退回"></el-option>
               </el-select>
@@ -67,7 +67,7 @@
               <common-col>
                 <span class='label'>生产日期&nbsp;:</span>
                 <div class="content">
-                  <el-date-picker type="date" v-model="item.Production_Date"></el-date-picker>
+                  <el-date-picker type="date" v-model="item.Production_Date" @change="productionDateChange(item)"></el-date-picker>
                 </div>
               </common-col>
               <common-col>
@@ -185,8 +185,8 @@
               <common-col>
                 <span class='label'>生产日期&nbsp;:</span>
                 <div class="content">
-                  <el-date-picker type="date" v-model="item.Production_Date"></el-date-picker>
-                  <span>{{item.Production_Date}}</span>
+                  <el-date-picker type="date" v-model="item.Production_Date" @change="productionDateChange(item)"></el-date-picker>
+                  <!-- <span>{{item.Production_Date}}</span> -->
                 </div>
               </common-col>
               <common-col>
@@ -293,7 +293,7 @@ import { mapState } from 'vuex'
       this.init()
     },
     computed: {
-      ...mapState(['Con_Id', 'Ldc_Id', 'Ssa_Id']),
+      ...mapState(['Con_Id', 'Ldc_Id', 'Ssa_Id', 'Storage_Type']),
       // 全选
       selectAll: {
         get () {
@@ -642,6 +642,38 @@ import { mapState } from 'vuex'
         }
         return obj
       },
+      // 2018-01-29 胡香利 新增
+      productionDateChange (obj) {
+        let date = obj.Production_Date
+        let selectDateSeconds = 0
+        if (typeof (date) === 'string') {
+          if (date !== '') {
+            date = new Date(date)
+            date.setHours(0)
+            date.setMinutes(0)
+            date.setSeconds(0)
+            date.setMilliseconds(0)
+            selectDateSeconds = date.getTime()
+          }
+        } else {
+          selectDateSeconds = date.getTime()
+        }
+        let nowDate = new Date()
+        nowDate.setHours(0)
+        nowDate.setMinutes(0)
+        nowDate.setSeconds(0)
+        nowDate.setMilliseconds(0)
+        let nowDateSeconds = nowDate.getTime()
+        if (selectDateSeconds > nowDateSeconds) {
+          this.$alert('生产日期不能超过当前日期', '友情提示', {
+            confirmButtonText: '确定',
+            callback: action => {
+              // 回调
+              obj.Production_Date = ''
+            }
+          })
+        }
+      }, // end
       // 初始化函数
       init () {
         // 请求我的订单数据

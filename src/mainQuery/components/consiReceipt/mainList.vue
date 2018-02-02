@@ -121,7 +121,7 @@
             Con_Id: '',
             Courier_Number: '',        // 返回单号
             Receipt_Name: '',   // 收件人
-            timeData: '',             // 日期
+            timeData: [new Date(new Date().setMonth(new Date().getMonth() - 1)), new Date()],             // 日期
             Start_Operate_Time: '',   // 起始时间
             End_Operate_Time: '',     // 截止时间
             Is_Receipt_Upload: ''  // 是否回单
@@ -305,7 +305,7 @@
         })
       },
       init () {
-        this.condition.timeData = [new Date(new Date().setMonth(new Date().getMonth() - 1)), new Date()]  // 设置默认下单签收日期
+        // this.condition.timeData = [new Date(new Date().setMonth(new Date().getMonth() - 1)), new Date()]  // 设置默认下单签收日期
         this.$nextTick(() => {
           this.getData()
         })

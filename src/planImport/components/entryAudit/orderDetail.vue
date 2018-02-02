@@ -86,14 +86,22 @@
                         <span>{{ o.Arrival_Mode_Desc }}</span>
                     </div>
                     <div class="box-card-content-item">
+                        <span>总件数：</span>
+                        <span>{{ o.Total_Pcs }}</span>
+                    </div>
+                    <div class="box-card-content-item">
+                        <span>时效：</span>
+                        <span>{{ o.Aging }}</span>
+                    </div>
+                    <!-- <div class="box-card-content-item">
                         <span>提货地址：</span>
                         <span class="textOverflow" :title='o.TdelAddress'>{{ o.TdelAddress }}</span>
                     </div>
                     <div class="box-card-content-item">
                         <span>入库地：</span>
                         <span class="textOverflow" :title='o.InAddress_Shortname'>{{ o.InAddress_Shortname }}</span>
-                    </div>
-                    <div class="box-card-content-item">
+                    </div> -->
+                    <div class="box-card-content-item column2">
                         <span>入库地址：</span>
                         <span class="textOverflow" :title='o.StorageAddress'>{{ o.StorageAddress }}</span>
                     </div>
@@ -106,21 +114,17 @@
                         <span class="textOverflow" :title='o.InContact_Phone'>{{ o.InContact_Phone }}</span>
                     </div>
                     <div class="box-card-content-item">
-                        <span>总件数：</span>
-                        <span>{{ o.Total_Pcs }}</span>
+                        <span>开票员：</span>
+                        <span>{{ o.Invoice_Staff }}</span>
                     </div>
-                    <div class="box-card-content-item">
-                        <span>时效：</span>
-                        <span>{{ o.Aging }}</span>
-                    </div>
-                    <div class="box-card-content-item" v-if="o.Arrival_Mode === 'A2'">
-                        <span>提货地：</span>
-                        <el-select :disabled="true && o.isEdit" value-key="Address_Id" v-model="o.TdelAddressObj" @visible-change="getAddress(o)" @change="selectAdress($event, o)"  class="textOverflow" :title='o.Address_Shortname'>
+                    <div class="box-card-content-item column2" v-if="o.Arrival_Mode === 'A2'">
+                        <span>提货地址：</span>
+                        <el-select :disabled="true && o.isEdit" value-key="Address_Id" v-model="o.TdelAddressObj.Address_Shortname" @visible-change="getAddress(o)" @change="selectAdress($event, o)"  class="textOverflow" :title='o.Address_Shortname'>
                             <el-option
                                 v-for="(item, index) in optionsAdress"
                                 :key="index"
                                 :value="item"
-                                :label="item.Address_Shortname">
+                                :label="item.Address">
                             </el-option>
                         </el-select>
                     </div>
@@ -131,10 +135,6 @@
                     <div class="box-card-content-item" v-if="o.Arrival_Mode === 'A2'">
                         <span>联系电话：</span>
                         <span>{{ o.Contact_Phone }}</span>
-                    </div>
-                    <div class="box-card-content-item">
-                        <span>开票员：</span>
-                        <span>{{ o.Invoice_Staff }}</span>
                     </div>
                     <div class="box-card-content-item">
                         <span>备注：</span>
@@ -306,7 +306,8 @@
             },
             getAddress (o) {         // 提货地检索
                 let param = {
-                    Ssa_Id: o.Ssa_Id
+                    Ssa_Id: o.Ssa_Id,
+                    Con_Id: o.Con_Id || '%'
                 }
                 Api.get('GetAddress', param).then((res) => {
                     this.optionsAdress = res.MsgInfo
@@ -970,6 +971,12 @@
                     text-align: right;
                     & + span, & + .el-input{
                         flex:1;
+                    }
+                }
+                &.column2 {
+                    width: 40%;
+                    .el-select {
+                        flex: 1;
                     }
                 }
             }

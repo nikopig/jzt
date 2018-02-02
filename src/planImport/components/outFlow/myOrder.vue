@@ -9,9 +9,9 @@
           <div class='info'>生成时间&nbsp;:&nbsp;{{item.Create_Time}}</div>
           <div class='info'>
               <span class='label'>出库类型&nbsp;:</span>
-              <el-select class='content' v-model="item.Outbound_Type" @change = 'clearData(item)'>
-                  <el-option value="1" label="销售出库"></el-option>
-                  <el-option value="4" label="购进退出"></el-option>
+              <el-select class='content' v-model="item.Outbound_Type">
+                <el-option value="4" label="购进退出"></el-option>
+                <el-option value="1" label="销售出库"></el-option>
               </el-select>
             </div>
           <div class='button-group'>
@@ -89,7 +89,7 @@
                 <span class='label'>批号&nbsp;:</span>
                 <div class='content' @dblclick="showDialog(0, item, $index)">
                   <el-form-item>
-                    <el-input calss="noselect" v-model="item.Goods_Lotno" placeholder="双击选择或手工录入" @change="clearLotNo(item)"></el-input>
+                    <el-input calss="noselect" v-model="item.Goods_Lotno" placeholder="双击选择" @change="clearLotNo(item)" :disabled="true"></el-input>
                   </el-form-item>
                 </div>
               </common-col>

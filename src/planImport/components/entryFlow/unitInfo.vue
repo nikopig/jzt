@@ -9,6 +9,12 @@
             <el-form-item label="物流中心地址">
               <el-input v-model="Address" placeholder="双击选择或手工录入" @dblclick.native="showDialog('commonDialog2')"></el-input>
             </el-form-item>
+            <el-form-item label="入库类型">
+              <el-select v-model="Storage_Type" @change="storageTypeChange">
+                  <el-option value="1" label="购进入库"></el-option>
+                  <el-option value="4" label="销售退回"></el-option>
+              </el-select>
+            </el-form-item>
             <el-form-item label="单位名称">
               <el-input v-model="unitName"></el-input>
             </el-form-item>
@@ -50,6 +56,7 @@
               unitName: '',
               Con_Name: '',
               Address: '',
+              Storage_Type: '1',
               origData: [],
               Consignor: {},
               Ldc: {},
@@ -65,19 +72,32 @@
               ldcDH: [
                 {
                   title: '物流中心名称',
-                  field: 'Ldc_Name'
+                  field: 'Ldc_Name',
+                  width: 240
+                },
+                {
+                  title: '联系人',
+                  field: 'Contact_Name'
+                },
+                {
+                  title: '联系人电话',
+                  field: 'Contact_Phone',
+                  width: 140
                 },
                 {
                   title: '物流中心编号',
-                  field: 'Ldc_No'
+                  field: 'Ldc_No',
+                  width: 200
                 },
                 {
                   title: '助记码',
-                  field: 'Mnemonic_Code'
+                  field: 'Mnemonic_Code',
+                  width: 150
                 },
                 {
                   title: '地址',
-                  field: 'Address'
+                  field: 'Address',
+                  width: 260
                 }
               ],
               ldcData: []
@@ -150,7 +170,8 @@
             // vuex中存入客户信息
             this.saveSelect({
               Ssa_Id: this.Ssa.Ssa_Id,
-              Address_Id: this.Ssa.Address_Id
+              Address_Id: this.Ssa.Address_Id,
+              Storage_Type: this.Storage_Type
             })
             this.$router.push('/goodInfo')
           },
@@ -237,6 +258,9 @@
                 }
               })
           },
+          storageTypeChange () {
+            this.getSsaData()
+          },
           // 获取客户信息
           getSsaData () {
             // 委托方id和物流中心id都存在的情况下才查数据
@@ -253,7 +277,8 @@
             var params = {
               Ssa_Name: this.unitName ? '%' + this.unitName + '%' : '%',
               Con_Id: this.consignor.Con_Id ? this.consignor.Con_Id : '%',
-              Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%'
+              Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%',
+              Storage_Type: (this.Storage_Type === '1') ? '1' : '2'
             }
             this.origData = []
             Api.get('GetStorageSsa', params)

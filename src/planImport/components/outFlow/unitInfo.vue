@@ -9,6 +9,12 @@
           <el-form-item label="物流中心地址">
             <el-input v-model="Address" placeholder="双击选择或手工录入" @dblclick.native="showDialog('commonDialog2')"></el-input>
           </el-form-item>
+          <el-form-item label="出库类型">
+            <el-select v-model="Outbound_Type" @change="outBoundTypeChange">
+                <el-option value="1" label="销售出库"></el-option>
+                <el-option value="4" label="购进退出"></el-option>
+            </el-select>
+          </el-form-item>
           <el-form-item label="单位名称">
             <el-input v-model="unitName"></el-input>
           </el-form-item>
@@ -54,6 +60,7 @@
         Consignor: {},
         Ldc: {},
         Ssa: {},
+        Outbound_Type: '1',
         consignorName: '',
         logisticsName: '',
         consignor: {
@@ -65,19 +72,32 @@
         ldcDH: [
           {
             title: '物流中心名称',
-            field: 'Ldc_Name'
+            field: 'Ldc_Name',
+            width: 240
+          },
+          {
+            title: '联系人',
+            field: 'Contact_Name'
+          },
+          {
+            title: '联系人电话',
+            field: 'Contact_Phone',
+            width: 140
           },
           {
             title: '物流中心编号',
-            field: 'Ldc_No'
+            field: 'Ldc_No',
+            width: 200
           },
           {
             title: '助记码',
-            field: 'Mnemonic_Code'
+            field: 'Mnemonic_Code',
+            width: 150
           },
           {
             title: '地址',
-            field: 'Address'
+            field: 'Address',
+            width: 260
           }
         ],
         ldcData: []
@@ -154,7 +174,8 @@
           Ssa_Id: this.Ssa.Ssa_Id,
           Address_Id: this.Ssa.Address_Id,
           Ldc_Address_Id: this.Ldc.Address_Id,
-          Operator_Id: this.consignor.Operator_Id
+          Operator_Id: this.consignor.Operator_Id,
+          Outbound_Type: this.Outbound_Type
         })
         this.$router.push('/outFlow/goodInfo')
       },
@@ -231,6 +252,9 @@
             }
           })
       },
+      outBoundTypeChange () {
+        this.getSsaData()
+      },
       // 获取客户信息
       getSsaData () {
         // 委托方id和物流中心id都存在的情况下才查数据
@@ -246,10 +270,11 @@
         var params = {
           Ssa_Name: this.unitName ? '%' + this.unitName + '%' : '%',
           Con_Id: this.consignor.Con_Id ? this.consignor.Con_Id : '%',
-          Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%'
+          Ldc_Id: this.Ldc.Ldc_Id ? this.Ldc.Ldc_Id : '%',
+          Storage_Type: (this.Outbound_Type === '1') ? '2' : '1'
         }
         this.origData = []
-        Api.get('GetStorageSsa', params)
+        Api.get('GetOutboundSsa', params)
           .then((resp) => {
             if (resp.Flag) {
               this.origData = resp.MsgInfo

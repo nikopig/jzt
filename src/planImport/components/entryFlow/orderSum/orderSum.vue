@@ -378,7 +378,7 @@
         this.dialogShow[val] = true
       },
       confirmTH (row) {
-        this.kpxxform.thAddress = row.Address_Shortname
+        this.kpxxform.thAddress = row.Address
         this.dzxxform.thAddress_Id = row.Address_Id
         this.dzxxform.thAddress = row.Address
         this.dzxxform.thInContact_Name = row.Contact_Name

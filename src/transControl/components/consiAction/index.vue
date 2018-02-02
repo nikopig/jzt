@@ -746,6 +746,8 @@
         <el-table :data="searchLdcAddressValue" style="width: 100%" @row-dblclick="selectLdcAddr">
           <el-table-column prop="Address_Shortname" label="物流中心地址简称" show-overflow-tooltip></el-table-column>
           <el-table-column prop="Address" label="	物流中心详细地址" show-overflow-tooltip></el-table-column>
+           <el-table-column prop="Contact_Name" label="联系人" show-overflow-tooltip></el-table-column>
+          <el-table-column prop="Contact_Phone" label="联系人电话" show-overflow-tooltip></el-table-column>
         </el-table>
       </el-dialog>
     </div>
@@ -767,6 +769,10 @@
         }).then(res => {
           if (res.Flag) {
             this.formSearch.transportRouteType = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取路线类型
@@ -777,6 +783,10 @@
         Api.get('TMP_TransportTaskScheding_Wtd_GetLeftFilter', param).then(res => {
           if (res.Flag) {
             this.formSearch.address = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取路线城市筛选
@@ -787,6 +797,10 @@
         Api.get('TMP_TransportTaskScheding_Wtd_GetRightFilter', param).then(res => {
           if (res.Flag) {
             this.wtdFormSearch.address = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取委托单城市筛选
@@ -802,6 +816,10 @@
               Vue.set(item, 'checked', false)
               Vue.set(item, '$index', index)
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取运单
@@ -819,6 +837,10 @@
               Vue.set(item, '$index', index)
               Vue.set(item, 'dataDetailList', [])
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取运单列表列表详细信息
@@ -841,6 +863,10 @@
                   }
                 }
               }
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }
@@ -890,6 +916,10 @@
                 this.init()
               }
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 路线加入委托单
@@ -927,6 +957,10 @@
                 this.init()
               }
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 从委托单中删除路线
@@ -951,6 +985,10 @@
                 })
               }
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
         this.checkedWTDrightAddedArr = {} // 初始化路线
@@ -963,6 +1001,10 @@
         Api.post('TMP_TransportTaskWTD_AddNewWtd', param).then(res => {
           if (res.Flag) {
             this.getWtdInfo()
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 新增委托单
@@ -988,6 +1030,10 @@
                   this.init()
                 }
               })
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }
@@ -1009,6 +1055,10 @@
         Api.get('TMP_TransportTaskScheding_Wtd_GetWtdDtl', param).then(res => {
           if (res.Flag) {
             this.wTDrightAddedArr[outIndex].Route_Infos[innerIndex].routeDetailInfos = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取委托单路线详细信息
@@ -1083,6 +1133,9 @@
               this.carryForm.Actual_Gross_Volume = res.MsgInfo[0].Actual_Gross_Volume
               this.carryForm.Actual_Gross_Weight = res.MsgInfo[0].Actual_Gross_Weight
               this.carryForm.Amount = res.MsgInfo[0].Amount
+              // 2018-01-31 胡香利增加
+              this.carryForm.Consign_No = res.MsgInfo[0].Consign_No
+              // end
             }
             if (name === 'operator') {
               this.operatorForm.AssignOperator_Id = res.MsgInfo[0].AssignOperator_Id
@@ -1099,6 +1152,10 @@
               this.operatorForm.Actual_Gross_Weight = res.MsgInfo[0].Actual_Gross_Weight
               this.operatorForm.Amount = res.MsgInfo[0].Amount
             }
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 根据委托单汇总ID获取委托单汇总信息
@@ -1146,6 +1203,10 @@
               this.getCurWtdById(name)
             }
             this.getTransportMode()
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 承运商以及运营商明细表格
@@ -1156,6 +1217,10 @@
         Api.get('TMP_Fd_Field_Dtl', param).then(res => {
           if (res.Flag) {
             this.transportMode = res.MsgInfo
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取运输方式
@@ -1168,6 +1233,10 @@
           if (res.Flag) {
             this.carries = res.MsgInfo
             this.showSelectCarryDialog = true
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取承运商
@@ -1193,6 +1262,10 @@
             if (res.Flag) {
               this.vehicleNos = res.MsgInfo
               this.showSelectVehicleNoDialog = true
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }
@@ -1224,6 +1297,10 @@
           if (res.Flag) {
             this.staffs = res.MsgInfo
             this.showSelectStaffDialog = true
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取司机
@@ -1241,6 +1318,10 @@
           if (res.Flag) {
             this.operators = res.MsgInfo
             this.showSelectOperatorDialog = true
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 获取操作联系人
@@ -1262,6 +1343,7 @@
           Vehicle_Id: this.carryForm.Vehicle_Id,
           Carrier_Id: this.carryForm.Carrier_Id,
           Transport_Mode: this.carryForm.Transport_Mode,
+          Consign_No: this.carryForm.Consign_No, // 2018-01-31 胡香利增加
           Amount: this.carryForm.Amount,
           Actual_Gross_Kilometers: parseFloat(this.carryForm.Actual_Gross_Kilometers),
           Actual_Gross_Pcs: parseFloat(this.carryForm.Actual_Gross_Pcs),
@@ -1287,6 +1369,10 @@
             this.$alert('数据暂存成功!', '提示').then(() => {
               this.showCarry = false
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 暂存修改
@@ -1363,6 +1449,10 @@
                 })
               })
             }
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 试算费用-承运商
@@ -1378,6 +1468,7 @@
               Vehicle_Id: this.carryForm.Vehicle_Id,
               Carrier_Id: this.carryForm.Carrier_Id,
               Transport_Mode: this.carryForm.Transport_Mode,
+              Consign_No: this.carryForm.Consign_No, // 2018-01-31 胡香利增加
               Amount: this.carryForm.Amount,
               Operator_Id: OperatorId,
               Operate_Staff: OperatorStaff,
@@ -1421,6 +1512,10 @@
                   this.showCarry = false
                   this.init()
                   this.$refs.carryForm.resetFields()
+                })
+              } else {
+                this.$alert(res.ErrInfo, '提示', {
+                  confirmButtonText: '确定'
                 })
               }
             })
@@ -1470,6 +1565,10 @@
                   this.showOperator = false
                   this.init()
                   this.$refs.operatorForm.resetFields()
+                })
+              } else {
+                this.$alert(res.ErrInfo, '提示', {
+                  confirmButtonText: '确定'
                 })
               }
             })
@@ -1552,6 +1651,10 @@
                 })
               })
             }
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 试算费用-运营商
@@ -1593,6 +1696,10 @@
             this.$alert('数据暂存成功!', '提示').then(() => {
               this.showCarry = false
             })
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 暂存修改-运营商
@@ -1604,6 +1711,10 @@
           if (res.Flag) {
             this.assignOperators = res.MsgInfo
             this.showSelectAssignOperatorDialog = true
+          } else {
+            this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
           }
         })
       }, // 选择运营商弹出框
@@ -1613,8 +1724,14 @@
         this.operatorForm.AssignLdc_Id = ''
         this.operatorForm.AssignLdc_Name = ''
         this.showSelectAssignOperatorDialog = false
+        // 2018-01-19 胡香利 增加 自动带出物流中心和物流中心地址
+        this.showSelectLdc(false)
+        // end
       }, // 双击选择运营商
-      showSelectLdc () {
+      showSelectLdc (flag) {
+        if (typeof (flag) !== 'boolean') {
+          flag = true
+        }
         if (!this.operatorForm.AssignOperator_Id) {
           this.$alert('请选择运营商', '提示')
         } else {
@@ -1622,10 +1739,20 @@
             AssignOperator_Id: this.operatorForm.AssignOperator_Id,
             Operator_Id: Api.userInfo.Operator_Id
           }
-          Api.get('TMP_TransportTaskScheding_Wtd_GetLdc', param).then(res => {
+          Api.get('TMP_TransportTaskScheding_Wtd_GetLdc', param, true).then(res => {
             if (res.Flag) {
               this.ldc = res.MsgInfo
-              this.showSelectLdcDialog = true
+              if (flag) {
+                this.showSelectLdcDialog = true
+              } else {
+                if (this.ldc.length === 1) {
+                  this.selectLdc(this.ldc[0])
+                }
+              }
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }
@@ -1636,18 +1763,31 @@
         this.operatorForm.AssignLdc_Addr_Id = ''
         this.operatorForm.AssignLdc_Addr_Name = ''
         this.showSelectLdcDialog = false
+        // 2018-01-19 胡香利 增加 自动带出物流中心和物流中心地址
+        this.showSelectLdcAddress(false)
+        // end
       }, // 双击选择物流中心
-      showSelectLdcAddress () {
+      showSelectLdcAddress (flag) {
         if (!this.operatorForm.AssignLdc_Id) {
           this.$alert('选择物流中心', '提示')
         } else {
           let param = {
             Ldc_Id: this.operatorForm.AssignLdc_Id
           }
-          Api.get('TMP_TransportTaskScheding_GetWlzxAddr', param).then(res => {
+          Api.get('TMP_TransportTaskScheding_GetWlzxAddr', param, true).then(res => {
             if (res.Flag) {
               this.ldcAddress = res.MsgInfo
-              this.showSelectLdcAddrDialog = true
+              if (flag) {
+                this.showSelectLdcAddrDialog = true
+              } else {
+                if (this.ldcAddress.length === 1) {
+                  this.selectLdcAddr(this.ldcAddress[0])
+                }
+              }
+            } else {
+              this.$alert(res.ErrInfo, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
         }

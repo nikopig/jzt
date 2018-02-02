@@ -75,7 +75,7 @@
 <script>
 	import Api from '@/common/js/api'
 	import {Bus, Types} from '@/common/js/bus'
-	import {DateFtt} from '@/common/js/utils'
+	import {DateFtt, GetBeforeDate} from '@/common/js/utils'
 	import commonPane from './pane'
 	import commonModal from '@/common/components/common-modal'
 	import Vue from 'vue'
@@ -85,8 +85,8 @@
 				filterCondition: {
 					Super_Operator_Id: '%',
 					Super_Operator_Name: '',
-					Start_Time: DateFtt('yyyy-MM-dd', new Date(), false),
-					End_Time: DateFtt('yyyy-MM-dd', new Date(), true)
+					Start_Time: GetBeforeDate(5),
+					End_Time: DateFtt('yyyy-MM-dd', new Date(), false)
 				},
 				show: true,
 				operatorId: '301748054417813',
@@ -141,10 +141,18 @@
 					},
 					{
 						level_2: [
-							/*{
-								label: '委托方',
+							{
+								label: '委托方名称',
 								prop: 'Con_Name'
-							},*/
+							},
+							{
+								label: '委托方订单号',
+								prop: 'ConOrder_No'
+							},
+							{
+								label: '客户名称',
+								prop: 'Ssa_Name'
+							},
 							{
 								label: '运输任务类型',
 								prop: 'TransportPlan_Type_Desc',
@@ -166,16 +174,6 @@
 								width: 120
 							},
 							{
-								label: '车辆要求',
-								prop: 'Vehicle_Request_Desc',
-								width: 100
-							},
-							{
-								label: '车辆大小',
-								prop: 'Vehicle_Size',
-								width: 100
-							},
-							{
 								label: '总件数',
 								prop: 'Actual_Gross_Pcs',
 								width: 80
@@ -195,12 +193,14 @@
 								prop: 'Remarks'
 							},
 							{
-								label: '委托方订单号',
-								prop: 'ConOrder_No'
+								label: '车辆要求',
+								prop: 'Vehicle_Request_Desc',
+								width: 100
 							},
 							{
-								label: '客户名称',
-								prop: 'Ssa_Name'
+								label: '车辆大小',
+								prop: 'Vehicle_Size',
+								width: 100
 							}
 						]
 					}
@@ -293,6 +293,10 @@
 						if (res.Flag) {
 							this.TableListData = res.MsgInfo
 							this.copyTableListData = this.TableListData
+						} else {
+							this.$alert(res.ErrInfo, '提示', {
+								confirmButtonText: '确定'
+							})
 						}
 					})
 			},
@@ -321,6 +325,10 @@
 	            } else {
 	            	this.bigTotalItems = res.MsgInfo[0].Total
 	            }
+						} else {
+							this.$alert(res.ErrInfo, '提示', {
+								confirmButtonText: '确定'
+							})
 						}
 					})
 			},
@@ -354,6 +362,10 @@
 			          		Bus.$emit(Types.refreshTransport)
 			            }
 			          })
+							} else {
+								this.$alert(res.ErrInfo, '友情提示', {
+									confirmButtonText: '确定'
+								})
 							}
 						})
 				} else {
@@ -389,6 +401,10 @@
 			          		this.getData()
 			            }
 			          })
+							} else {
+								this.$alert(res.ErrInfo, '友情提示', {
+									confirmButtonText: '确定'
+								})
 							}
 						})
 	        })
@@ -409,13 +425,19 @@
 					}
 					Api.post('TMP_TransportTaskWTD_WtdAuditDistribute', params)
 						.then((res) => {
-							this.$alert('排车任务生成，请到配送排车界面进行排车！', '友情提示', {
-		            confirmButtonText: '确定',
-		            callback: action => {
-		            		this.fieldData = []
-			          		this.getData()
-			            }
-		          })
+							if (res.Flag) {
+								this.$alert('排车任务生成，请到配送排车界面进行排车！', '友情提示', {
+			            confirmButtonText: '确定',
+			            callback: action => {
+			            		this.fieldData = []
+				          		this.getData()
+				            }
+			          })
+							} else {
+								this.$alert(res.ErrInfo, '友情提示', {
+									confirmButtonText: '确定'
+								})
+							}
 						})
 				} else {
 					this.$alert('未选择数据，请选择后再执行！', '友情提示', {
@@ -482,7 +504,8 @@
 
 <style lang="less" scoped>
 	.taskAudit{
-		padding: 211px 10px 10px;
+		// padding: 211px 10px 10px;
+		padding: 187px 10px 10px;
 		.common-condition-box, .toolbar{
 			margin-bottom: 15px;
 	    position: fixed;
@@ -506,7 +529,8 @@
 		}
 		.toolbar{
 			width: auto;
-			top: 164px;
+			// top: 164px;
+			top: 140px;
 			&:after{
 	    	content: '';
 	    	position: absolute;

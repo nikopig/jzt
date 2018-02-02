@@ -50,7 +50,7 @@
             }
         },
         computed: {
-          ...mapState(['Con_Id', 'Ldc_Id', 'Ssa_Id', 'Address_Id', 'Ldc_Address_Id', 'Operator_Id']),
+          ...mapState(['Con_Id', 'Ldc_Id', 'Ssa_Id', 'Address_Id', 'Ldc_Address_Id', 'Operator_Id', 'Outbound_Type']),
           goodsData () {
             return this.origData.map((item, index) => {
               var temp = {}
@@ -79,6 +79,10 @@
                 {
                   icon: 'el-icon-mo-inventoryAnalysis',
                   text: '库存：' + item.Stock_Quantity
+                },
+                {
+                  icon: 'el-icon-mo-zlgl',
+                  text: '商品编码：' + item.Goods_No
                 }
               ]
               item.card = temp
@@ -96,6 +100,7 @@
               temp.Operator_Id = this.Operator_Id
               temp.Goods_Id = item.Goods_Id
               temp.Goods_Type = item.Goods_Type
+              temp.Outbound_Type = this.Outbound_Type
               temp.Operator = Api.userInfo.USERID
               return temp
             })
@@ -168,6 +173,7 @@
             this.GetStorageGoods(keyWord)
           },
           init () {
+            this.goods = []
             this.GetStorageGoods()
           }
         },
@@ -188,5 +194,13 @@
     margin-bottom: 20px;
   }
   }
+  }
+</style>
+
+<style lang="less">
+  .outFlow {
+    .el-icon-mo-zlgl:before, .el-icon-mo-inventoryAnalysis:before {
+      color: #516e8e
+    }
   }
 </style>
