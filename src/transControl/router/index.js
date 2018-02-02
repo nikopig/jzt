@@ -9,6 +9,12 @@ export default new Router({
     {
       path: '/',
       component: resolve => require(['../pages/main'], resolve)
+    },
+    //装车单打印
+    {
+      path: '/loadinglistPrint',
+      name: 'loadinglistPrint',
+      component: resolve => require(['../pages/loadinglistPrint'], resolve)
     }
   ]
 })

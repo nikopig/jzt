@@ -70,7 +70,6 @@
                             <el-option label="已结算" value="J" ></el-option>
                             <el-option label="刚生成" value="1" ></el-option>
                     </el-select>
-                    {{filterCondition.Payment_Operate_State}}
                 </el-form-item>
                 <el-form-item label="计划单号">
                     <el-input  v-model="filterCondition.Biz_Bill_No"></el-input>
