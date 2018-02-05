@@ -1790,6 +1790,24 @@
             }).catch(() => {
               // 取消
             })
+          },
+          companyPoint (row) {
+            let params = {
+              Address_Id: row.Address_Id,
+              Address: row.Address
+            }
+            // this.showNotPointCompany = false
+            // this.init()
+            Api.post('TMP_TransportTaskDD_OneKeyMark', params).then((res) => {
+              this.showNotPointCompany = false
+              if (res.Flag) {
+                this.init()
+              } else {
+                this.$alert(res.ErrInfo, '提示', {
+                  confirmButtonText: '确定'
+                })
+              }
+            })
           }, // end
           init () {
             this.getFirstOrder() // 获取一级数据
