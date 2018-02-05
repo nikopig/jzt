@@ -582,7 +582,7 @@
       <!--历史路线弹框-->
       <history-route-dialog :isVisible.sync="showHistoryRoute" @select="addHistoryRoute"></history-route-dialog>
       <!-- 未描点单位信息 -->
-      <common-modal ref="notPointCompanyDialog" DialogTitle="未描点单位信息" :isVisible.sync="showNotPointCompany" :TableHeader="notPointCompany.TableHeader" :listData="notPointCompany.datas" @search="searchNotPointCompany" :total="notPointCompany.bigTotalItems" @pageChange="notPointCompanyPageChange"></common-modal>
+      <common-modal ref="notPointCompanyDialog" DialogTitle="未描点单位信息" :isVisible.sync="showNotPointCompany" :TableHeader="notPointCompany.TableHeader" :listData="notPointCompany.datas" @search="searchNotPointCompany" :total="notPointCompany.bigTotalItems" @pageChange="notPointCompanyPageChange" @dialog-operate="companyPoint"></common-modal>
     </div>
 </template>
 
@@ -602,6 +602,7 @@
     import historyRouteDialog from './history-route-dialog'
     import draggable from 'vuedraggable'
     import commonModal from '@/common/components/common-modal'
+    import Vue from 'vue'
     export default {
         name: '',
         props: [],
@@ -722,6 +723,10 @@
               orderInfo: {}, // 订单信息变更信息
               notPointCompany: { // 未描点单位信息
                 TableHeader: [
+                  {
+                    field: 'dialogOperate',
+                    title: '操作'
+                  },
                   {
                     field: 'Ssa_Name',
                     title: '单位名称',
@@ -1729,6 +1734,9 @@
             Api.get('TMP_TransportTaskScheding_Yd_Warnning', params, true).then((res) => {
               if (res.Flag) {
                 this.notPointCompany.datas = res.MsgInfo
+                this.notPointCompany.datas.forEach((item) => {
+                  Vue.set(item, 'dialogOperate', '描点')
+                })
                 if (this.notPointCompany.datas.length === 0) {
                   this.notPointCompany.bigTotalItems = 0
                 } else {

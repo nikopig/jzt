@@ -29,8 +29,9 @@ confirm事件的方法的参数(Rows): 为选中的行数据,结构{currentId1�
         <el-table stripe ref='singleTable' :data="listData" highlight-current-row @current-change='handleCurrentChange' height='300' @row-dblclick='_confirm'>
           <el-table-column v-for='(item, $index) in TableHeader' :property="item.field" :label="item.title" :key='$index' header-align="left" :width='item.width?item.width:110'>
             <template slot-scope="scope">
-              <div :title='scope.row[item.field]' slot="reference" class="name-wrapper">{{ scope.row[item.field] }}
+              <div :title='scope.row[item.field]' slot="reference" class="name-wrapper" v-if="item.field !== 'dialogOperate'">{{ scope.row[item.field] }}
               </div>
+              <el-button type="text" class="warning" size="small" v-if="item.field === 'dialogOperate'" @click.native="operate(scope.row)">{{ scope.row[item.field] }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -149,7 +150,11 @@ confirm事件的方法的参数(Rows): 为选中的行数据,结构{currentId1�
         }
         this.$emit('confirm', this.Rows)
         this.hide()
-      }
+      },
+      // 弹框操作 2018-02-02 胡香利增加
+      operate (row) {
+        this.$emit('dialog-operate', row)
+      } // end
     }
   }
 </script>
@@ -218,6 +223,9 @@ confirm事件的方法的参数(Rows): 为选中的行数据,结构{currentId1�
           margin-top:15px;
         }
       }
+    }
+    .warning {
+      color: red;
     }
   }
 </style>
