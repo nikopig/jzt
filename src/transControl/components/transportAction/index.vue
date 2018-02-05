@@ -582,7 +582,8 @@
       <!--历史路线弹框-->
       <history-route-dialog :isVisible.sync="showHistoryRoute" @select="addHistoryRoute"></history-route-dialog>
       <!-- 未描点单位信息 -->
-      <common-modal ref="notPointCompanyDialog" DialogTitle="未描点单位信息" :isVisible.sync="showNotPointCompany" :TableHeader="notPointCompany.TableHeader" :listData="notPointCompany.datas" @search="searchNotPointCompany" :total="notPointCompany.bigTotalItems" @pageChange="notPointCompanyPageChange" @dialog-operate="companyPoint"></common-modal>
+      <common-modal ref="notPointCompanyDialog" DialogTitle="未描点单位信息" :isVisible.sync="showNotPointCompany" :TableHeader="notPointCompany.TableHeader" :listData="notPointCompany.datas" @search="searchNotPointCompany" :total="notPointCompany.bigTotalItems" @pageChange="notPointCompanyPageChange"></common-modal>
+      <!-- <common-modal ref="notPointCompanyDialog" DialogTitle="未描点单位信息" :isVisible.sync="showNotPointCompany" :TableHeader="notPointCompany.TableHeader" :listData="notPointCompany.datas" @search="searchNotPointCompany" :total="notPointCompany.bigTotalItems" @pageChange="notPointCompanyPageChange" @dialog-operate="companyPoint"></common-modal> -->
     </div>
 </template>
 
@@ -723,10 +724,10 @@
               orderInfo: {}, // 订单信息变更信息
               notPointCompany: { // 未描点单位信息
                 TableHeader: [
-                  {
-                    field: 'dialogOperate',
-                    title: '操作'
-                  },
+                  // {
+                  //   field: 'dialogOperate',
+                  //   title: '操作'
+                  // },
                   {
                     field: 'Ssa_Name',
                     title: '单位名称',
