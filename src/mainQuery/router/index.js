@@ -72,7 +72,7 @@ export default new Router({
       component: resolve => require(['../pages/consiOrder'], resolve),
       children: [
         {
-          path: '',
+          path: '/:Con_Id/:Con_Name/:startDate/:endDate',
           name: 'orderList',
           component: resolve => require(['../components/consiOrder/orderList'], resolve)
         },
