@@ -151,8 +151,10 @@
             },
             consignor: {
               isVisible: false,
-              Con_Name: '珠海丽珠试剂股份有限公司', //委托名
-              Con_Id: 'edca5028b9afe711b639000c29d6c8f4' //委托方id
+              // Con_Name: '珠海丽珠试剂股份有限公司', //委托名
+              // Con_Id: 'edca5028b9afe711b639000c29d6c8f4' //委托方id
+              Con_Name: this.$route.params.Con_Name,
+              Con_Id: this.$route.params.Con_Id
             },
             currentPage: 1,
             page: {
@@ -273,8 +275,10 @@
             // window.location.href = url
           },
           init () {      // 设置起止时间默认值
-              this.condition.endDate = new Date()
-              this.condition.startDate = new Date(new Date().setMonth(new Date().getMonth() - 1))
+              // this.condition.endDate = new Date()
+              // this.condition.startDate = new Date(new Date().setMonth(new Date().getMonth() - 1))
+              this.condition.endDate = this.$route.params.endDate
+              this.condition.startDate = this.$route.params.startDate
           },
           clearBalance () {
             this.consignor.Con_Name = ''
