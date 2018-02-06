@@ -75,7 +75,7 @@
 	    </el-pagination>
 	  </div>
 
-		<carrier-modal :visible.sync="dialogShow.carrier" @change="selectCarri"></carrier-modal><!-- 承运商弹框 -->
+		<carrier-modal :visible.sync="dialogShow.carrier" @change="selectCarri" :isSetDefaultValue="false"></carrier-modal><!-- 承运商弹框 -->
 	</div>
 </template>
 
@@ -103,12 +103,12 @@
 					bigTotalItems: 0,          // 委托单汇总数据总数量
 					filterCondition: {         // 过滤条件
 						// Carrier_Id: '274cf35ecaace711b639000c29d6c8f4',
-						Carrier_Id: '',
-						Carrier_Name: '',
+						Carrier_Id: this.$route.params.Carrier_Id || '',
+						Carrier_Name: this.$route.params.Carrier_Name || '',
 						TransportEntrust_No: '',
 						Vehicle_No: '',
-						Start_Time: new Date().getFullYear() + '-01-01',
-						End_Time: new Date().getFullYear() + '-12-30'
+						Start_Time: this.$route.params.startDate || new Date().getFullYear() + '-01-01',
+						End_Time: this.$route.params.endDate || new Date().getFullYear() + '-12-30'
 					},
 					dialogShow: {
 						carrier: false

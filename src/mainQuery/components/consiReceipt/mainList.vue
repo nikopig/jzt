@@ -101,7 +101,7 @@
 <script>
   import Api from '@/common/js/api'
   import { DateFtt } from '@/common/js/utils'
-  import consiModal from '@/common/service/modal/consiNew-modal'
+  import consiModal from '@/common/service/modal/consi-modal'
   export default {
     name: 'consiMainList',
     props: [],
@@ -117,11 +117,11 @@
             isShow: false
           },
           condition: {
-            Con_Name: '',     // 委托方
-            Con_Id: '',
+            Con_Name: this.$route.params.Con_Name,     // 委托方
+            Con_Id: this.$route.params.Con_Id,
             Courier_Number: '',        // 返回单号
             Receipt_Name: '',   // 收件人
-            timeData: [new Date(new Date().setMonth(new Date().getMonth() - 1)), new Date()],             // 日期
+            timeData: [this.$route.params.startDate, this.$route.params.endDate],             // 日期
             Start_Operate_Time: '',   // 起始时间
             End_Operate_Time: '',     // 截止时间
             Is_Receipt_Upload: ''  // 是否回单
@@ -136,7 +136,7 @@
     methods: {
       timeData () {       // 起始日期
         this.condition.Start_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[0])
-        this.condition.End_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[1], true)
+        this.condition.End_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[1])
       },
       search () {       // 查询
         this.getData()
@@ -306,6 +306,8 @@
       },
       init () {
         // this.condition.timeData = [new Date(new Date().setMonth(new Date().getMonth() - 1)), new Date()]  // 设置默认下单签收日期
+        this.condition.Start_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[0])
+        this.condition.End_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[1])
         this.$nextTick(() => {
           this.getData()
         })

@@ -23,7 +23,7 @@ export default new Router({
       component: resolve => require(['../pages/consiReceipt'], resolve),
       children: [
         {
-          path: '',
+          path: '/:Con_Id/:Con_Name/:startDate/:endDate',
           name: 'consiMainList',
           component: resolve => require(['../components/consiReceipt/mainList'], resolve)
         },
@@ -45,7 +45,7 @@ export default new Router({
       component: resolve => require(['../pages/carriReceipt'], resolve),
       children: [
         {
-          path: '',
+          path: '/:Carrier_Id/:Carrier_Name/:startDate/:endDate',
           name: 'carriMainList',
           component: resolve => require(['../components/carriReceipt/mainList'], resolve)
         },
