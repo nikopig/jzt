@@ -362,7 +362,17 @@
             goReceipt () {
               switch (this.$route.params.type) {
                 case '1':
-                  this.$router.push('/consiReceipt')  //委托方回单
+                  let params = {
+                    Con_Id: this.condition.Con_Id,
+                    Con_Name: this.condition.Con_Name,
+                    startDate: DateFtt('yyyy-MM-dd', this.condition.startDate),
+                    endDate: DateFtt('yyyy-MM-dd', this.condition.endDate)
+                  }
+                  this.$router.push({
+                    name: 'consiMainList',
+                    params: params
+                  })
+                  // this.$router.push('/consiReceipt')  //委托方回单
                   break
                 case '2':
                   this.$router.push('/carriReceipt')   //承运方回单

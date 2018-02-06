@@ -14,7 +14,7 @@
         <div class="common-condition-box">
           <el-form :inline="true" size="small" label-width="px">
               <el-form-item label="委托方：">
-                <el-input v-model="condition.Con_Name" @dblclick.native="openDialog('consignor')" disabled placeholder="双击选择委托方"></el-input>
+                <el-input v-model="condition.Con_Name" @dblclick.native="openDialog('consignor')" disabled placeholder="双击选择委托方" icon="close" :on-icon-click="deleteCon"></el-input>
               </el-form-item>
               <el-form-item labelWidth="120px" label="下单或签收日期：">
                 <el-date-picker
@@ -94,14 +94,14 @@
             :total="page.bigTotalItems">
           </el-pagination>
         </div>
-        <consi-modal :visible.sync="dialogShow.consignor" @change="selectconsignor" :showDefault="true"></consi-modal>
+        <consi-modal :visible.sync="dialogShow.consignor" @change="selectconsignor" :isSetDefaultValue="true"></consi-modal>
       </div>
 </template>
 
 <script>
   import Api from '@/common/js/api'
   import { DateFtt } from '@/common/js/utils'
-  import consiModal from '@/common/service/modal/consiNew-modal'
+  import consiModal from '@/common/service/modal/consi-modal'
   export default {
     name: 'consiMainList',
     props: [],
@@ -117,11 +117,11 @@
             isShow: false
           },
           condition: {
-            Con_Name: '',     // 委托方
-            Con_Id: '',
+            Con_Name: this.$route.params.Con_Name,     // 委托方
+            Con_Id: this.$route.params.Con_Id,
             Courier_Number: '',        // 返回单号
             Receipt_Name: '',   // 收件人
-            timeData: [new Date(new Date().setMonth(new Date().getMonth() - 1)), new Date()],             // 日期
+            timeData: [(this.$route.params.startDate === '%') ? new Date(new Date().setMonth(new Date().getMonth() - 1)) : this.$route.params.startDate, (this.$route.params.endDate === '%') ? new Date() : this.$route.params.endDate],             // 日期
             Start_Operate_Time: '',   // 起始时间
             End_Operate_Time: '',     // 截止时间
             Is_Receipt_Upload: ''  // 是否回单
@@ -136,7 +136,7 @@
     methods: {
       timeData () {       // 起始日期
         this.condition.Start_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[0])
-        this.condition.End_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[1], true)
+        this.condition.End_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[1])
       },
       search () {       // 查询
         this.getData()
@@ -148,6 +148,10 @@
         this.condition.Con_Name = row.Con_Name
         this.condition.Con_Id = row.Con_Id
         this.getData()
+      },
+      deleteCon () {
+        this.condition.Con_Id = '%'
+        this.condition.Con_Name = ''
       },
       selectData (val) {     // 全选
         this.selectTableData = val
@@ -267,7 +271,12 @@
       },
       getHdNum () {       //  回单数量
         let param = {}
-        param.Con_Id = this.condition.Con_Id
+        param.Con_Id = (this.condition.Con_Id === '%') ? this.condition.Con_Id : (',' + this.condition.Con_Id + ',')
+        param.Courier_Number = this.condition.Courier_Number ? this.condition.Courier_Number : '%'
+        param.Receipt_Name = this.condition.Receipt_Name ? this.condition.Receipt_Name : '%'
+        param.Is_Receipt_Upload = this.condition.Is_Receipt_Upload ? this.condition.Is_Receipt_Upload : '%'
+        param.Start_Operate_Time = this.condition.Start_Operate_Time ? this.condition.Start_Operate_Time : '%'
+        param.End_Operate_Time = this.condition.End_Operate_Time ? this.condition.End_Operate_Time : '%'
         Api.get('TmpCSNGetBillReceiptRecordTB', param, true).then(res => {
           if (res.Flag) {
             this.HuiDan = res.MsgInfo[0]
@@ -284,7 +293,7 @@
           return
         }
         let param = {}
-        param.Con_Id = ',' + this.condition.Con_Id + ','
+        param.Con_Id = (this.condition.Con_Id === '%') ? this.condition.Con_Id : (',' + this.condition.Con_Id + ',')
         param.Courier_Number = this.condition.Courier_Number ? this.condition.Courier_Number : '%'
         param.Receipt_Name = this.condition.Receipt_Name ? this.condition.Receipt_Name : '%'
         param.Is_Receipt_Upload = this.condition.Is_Receipt_Upload ? this.condition.Is_Receipt_Upload : '%'
@@ -306,6 +315,8 @@
       },
       init () {
         // this.condition.timeData = [new Date(new Date().setMonth(new Date().getMonth() - 1)), new Date()]  // 设置默认下单签收日期
+        this.condition.Start_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[0])
+        this.condition.End_Operate_Time = DateFtt('yyyy-MM-dd', this.condition.timeData[1])
         this.$nextTick(() => {
           this.getData()
         })

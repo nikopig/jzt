@@ -15,7 +15,7 @@
 		<div class="common-condition-box">
 			<el-form :inline="true" label-width="60px">
 				<el-form-item label="承运商">
-					<el-input placeholder="双击选择" :disabled="true" v-model="filterCondition.Carrier_Name" @dblclick.native="openDialog('carrier')"></el-input>
+					<el-input placeholder="双击选择" :disabled="true" v-model="filterCondition.Carrier_Name" @dblclick.native="openDialog('carrier')" icon="close" :on-icon-click="deleteCarrier"></el-input>
 				</el-form-item>
 				<el-form-item label="开始日期">
 					<el-date-picker type="date" placeholder="选择日期" v-model="filterCondition.Start_Time"></el-date-picker>
@@ -30,13 +30,13 @@
 					<el-input placeholder="请输入车牌号" v-model="filterCondition.Vehicle_No"></el-input>
 				</el-form-item>
 				<el-form-item>
-					<el-button type="primary" size="small" @click="getData()">查询</el-button>
+					<el-button type="primary" size="small" @click="carrierSearch">查询</el-button>
 				</el-form-item>
 			</el-form>
 		</div>
 		<div class="table-box">
 			<div class="toolbar">
-				<div class="btn-box">承运商：{{ filterCondition.Carrier_Name }}</div>
+				<div class="btn-box" v-if="filterCondition.Carrier_Name !== ''">承运商：{{ filterCondition.Carrier_Name }}</div>
 				<div class="btn-box">总回单数：<span v-if="receiptSumm && receiptSumm.HuiDan_Num">{{ receiptSumm.HuiDan_Num }}</span><span v-else>0</span></div>
 				<div class="btn-box">已回回单数：<span v-if="receiptSumm && receiptSumm.Wei_HuiDan_Num">{{ receiptSumm.Wei_HuiDan_Num }}</span><span v-else>0</span></div>
 				<div class="btn-box">未回单数：<span v-if="receiptSumm && receiptSumm.Yi_HuiDan_Num">{{ receiptSumm.Yi_HuiDan_Num }}</span><span v-else>0</span></div>
@@ -75,7 +75,7 @@
 	    </el-pagination>
 	  </div>
 
-		<carrier-modal :visible.sync="dialogShow.carrier" @change="selectCarri"></carrier-modal><!-- 承运商弹框 -->
+		<carrier-modal :visible.sync="dialogShow.carrier" @change="selectCarri" :isSetDefaultValue="false"></carrier-modal><!-- 承运商弹框 -->
 	</div>
 </template>
 
@@ -103,12 +103,12 @@
 					bigTotalItems: 0,          // 委托单汇总数据总数量
 					filterCondition: {         // 过滤条件
 						// Carrier_Id: '274cf35ecaace711b639000c29d6c8f4',
-						Carrier_Id: '',
-						Carrier_Name: '',
+						Carrier_Id: this.$route.params.Carrier_Id || '%',
+						Carrier_Name: this.$route.params.Carrier_Name || '',
 						TransportEntrust_No: '',
 						Vehicle_No: '',
-						Start_Time: new Date().getFullYear() + '-01-01',
-						End_Time: new Date().getFullYear() + '-12-30'
+						Start_Time: (this.$route.params.startDate === '%') ? (new Date().getFullYear() + '-01-01') : this.$route.params.startDate,
+						End_Time: (this.$route.params.endDate === '%') ? (new Date().getFullYear() + '-12-30') : this.$route.params.endDate
 					},
 					dialogShow: {
 						carrier: false
@@ -126,9 +126,13 @@
 			selectCarri (Rows) {
 				if (Rows) {
 					this.filterCondition.Carrier_Name = Rows.Carrier_Name
-					this.filterCondition.Carrier_Id = Rows.Carrier_Id
+					this.filterCondition.Carrier_Id = Rows.Carrier_Id || '%'
 					this.init()
 				}
+			},
+			deleteCarrier () {
+				this.filterCondition.Carrier_Id = '%'
+				this.filterCondition.Carrier_Name = ''
 			},
 			goItem (row) {
 			  let params = {
@@ -144,7 +148,7 @@
 			getData () {
 				console.log(Api.userInfo)
 				let params = {
-					Carrier_Id: ',' + this.filterCondition.Carrier_Id + ',',
+					Carrier_Id: (this.filterCondition.Carrier_Id === '%') ? this.filterCondition.Carrier_Id : (',' + this.filterCondition.Carrier_Id + ','),
 					TransportEntrust_No: this.filterCondition.TransportEntrust_No,
 					Vehicle_No: this.filterCondition.Vehicle_No,
 					Start_Departure_Time: this.filterCondition.Start_Time,
@@ -164,9 +168,17 @@
             }
           })
 			},
+			carrierSearch () {
+				this.getData()
+				this.getReceiptSumm()
+			},
 			getReceiptSumm () {
 				let params = {
-					Carrier_Id: this.filterCondition.Carrier_Id
+					Carrier_Id: (this.filterCondition.Carrier_Id === '%') ? this.filterCondition.Carrier_Id : (',' + this.filterCondition.Carrier_Id + ','),
+					TransportEntrust_No: this.filterCondition.TransportEntrust_No,
+					Vehicle_No: this.filterCondition.Vehicle_No,
+					Start_Departure_Time: this.filterCondition.Start_Time,
+					End_Departure_Time: this.filterCondition.End_Time
 				}
 				this.loadingWait = this.showLoading('请稍后...')
 				Api.get('TmpCYSGetBillReceiptRecordTB', params)
