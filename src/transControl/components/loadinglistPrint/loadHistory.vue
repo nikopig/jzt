@@ -354,6 +354,9 @@
         .tabel-box {
           padding: 15px 0px;
         }
+        .el-form-item{
+            margin-bottom:22px;
+        }
         .el-dialog__header {
             padding: 10px;
             .el-dialog__title {

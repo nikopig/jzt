@@ -33,6 +33,10 @@
             default () {
               return {}
             }
+          },
+          isSetDefaultValue: {
+            type: Boolean,
+            default: true
           }
         },
         components: {
@@ -110,10 +114,14 @@
                 this.gridData = res.MsgInfo
                 if (this.gridData.length === 0) {
                   this.totalNum = 0
-                  this.selectCarrier({})
+                  if (this.isSetDefaultValue) {
+                    this.selectCarrier({})
+                  }
                 } else {
                   this.totalNum = res.MsgInfo[0].bigTotalItems
-                  this.selectCarrier(this.gridData[0])
+                  if (this.isSetDefaultValue) {
+                    this.selectCarrier(this.gridData[0])
+                  }
                 }
               })
           },

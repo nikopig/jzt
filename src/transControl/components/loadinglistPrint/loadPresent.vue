@@ -380,6 +380,7 @@
                 })
                 if (deliveryList.length > 0) {
                     console.log(deliveryList, '选中的数据')
+                    this.printPlan('loadingListPrint_1')
                 } else {
                     this.$alert('请勾选后在执行', '友情提示')
                 }
@@ -393,9 +394,27 @@
                 })
                 if (delivery.length > 0) {
                     console.log(delivery, '选中的数据')
+                    this.printPlan('loadingListPrint_2')
                 } else {
                     this.$alert('请勾选后在执行', '友情提示')
                 }
+            },
+            printPlan (type) {
+                let params = {
+                    PlanItem_Type: type,
+                    Operator_Id: '301748054417813',
+                    Ldc_Id: '199647602156719'
+                }
+                this.loadingWait = this.showLoading('请稍候...')
+                Api.get('INF_PRINT_PLAN', params).then(res => {
+                    this.loadingWait.close()
+                  if (res.Flag) {
+                    this.printName = res.MsgInfo
+                    console.log(this.printName, '打印方案的名称')
+                  } else {
+                    this.$alert('数据请求失败，请重试！', '提示')
+                  }
+                })
             },
             filterTransform (value) {  //转换是否激活
                 switch (value) {
@@ -434,6 +453,9 @@
     .orderDetail{
         .tabel-box {
           padding: 15px 0px;
+        }
+        .el-form-item{
+            margin-bottom:22px;
         }
         .el-dialog__header {
             padding: 10px;

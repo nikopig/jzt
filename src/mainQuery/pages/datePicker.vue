@@ -793,7 +793,8 @@
         watch: {
             conId (val) {
                 this.consignor = val
-                this.getDatePicker()
+                //this.getDatePicker()
+                this.init()
             }
         },
         methods: {
@@ -818,7 +819,7 @@
             getDatePicker (dataArry) {
                 console.log(dataArry, '何承熹')
                 let params = {
-                    Con_Id: this.conId ? this.conId : '%',
+                    Con_Id: this.consignor ? this.consignor : '%',
                      //Con_Id: '%',
                     StartTime: this.startTime,
                     EndTime: this.endTime

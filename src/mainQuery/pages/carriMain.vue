@@ -370,7 +370,17 @@
         this.$router.push('/carriSearch')
       },
       goReceipt () {
-        this.$router.push('/carriReceipt')   //承运方回单
+        let params = {
+          Carrier_Id: this.condition.Carrier_Id || '%',
+          Carrier_Name: this.condition.Carrier_Name || '',
+          startDate: DateFtt('yyyy-MM-dd', this.condition.startDate),
+          endDate: DateFtt('yyyy-MM-dd', this.condition.endDate)
+        }
+        this.$router.push({
+          name: 'carriMainList',
+          params: params
+        })
+        // this.$router.push('/carriReceipt')   //承运方回单
       },
       showConDialog (val) {  //双击打开委托方弹框
         this.dialogShow[val] = true
