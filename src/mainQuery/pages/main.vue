@@ -87,18 +87,18 @@
             <!-- 作业中订单 -->
             <div class="work_order">
                 <div class="paneltitle">
-                    <span v-if="condition.Business_Model !== 3">作业中订单</span>
+                    <span v-if="condition.Business_Model === 3">作业中订单</span>
                     <span v-if="condition.Business_Model !== 3">库存情况</span>
-                    <span class="ordertotal" v-if="condition.Business_Model !== 3">订单总数：{{workOrderTotal}}</span>
+                    <span class="ordertotal" v-if="condition.Business_Model === 3">订单总数：{{workOrderTotal}}</span>
                 </div>
                 <div class="ordertable">
                     <div style="height:470px;">
                         <!-- 当状态为3的时候显示日历 -->
-                        <div v-show="condition.Business_Model !== 3" style="overflow-x: auto;">
+                        <div v-show="condition.Business_Model === 3" style="overflow-x: auto;">
                             <date-picker :conId='condition.Con_Id' @grossData="pickerData"></date-picker>
                         </div>
                         <!-- 当状态不为3的时候显示地图 -->
-                        <div class="map" v-show="condition.Business_Model === 3" style="height:100%;">
+                        <div class="map" v-show="condition.Business_Model !== 3" style="height:100%;">
                             <div class="map-left" style="height:100%;">
                                 <div ref="chinaMap" class="china-map"></div>
                             </div>
