@@ -24,8 +24,8 @@
       <!--<el-card>-->
 
       <!--</el-card>-->
-      <div class="datahead" @click="goAmount">
-        <el-card>
+      <div class="datahead">
+        <el-card @click.native="goAmount">
           <p>总金额（元）</p>
           <p class="f1">{{TotalCustomer.Total_Amount}}</p>
           <div class="el-icon-mo-Sales-volume img f1"></div>
@@ -37,8 +37,8 @@
           </div>
         </el-card>
       </div>
-      <div class="datahead" @click="goConsiOrder">
-        <el-card>
+      <div class="datahead">
+        <el-card @click.native="goConsiOrder">
           <p>委托单数</p>
           <p class="f2">{{TotalOrder.WTD_Num}}</p>
           <div class="el-icon-mo-equipmentSupplier img f5"></div>
@@ -50,8 +50,8 @@
           </div>
         </el-card>
       </div>
-      <div class="datahead" @click="goReceipt">
-        <el-card>
+      <div class="datahead">
+        <el-card @click.native="goReceipt">
           <p>总回单数</p>
           <p class="f3">{{TotalReceipt.HuiDan_Num}}</p>
           <div class="el-icon-mo-Number-of-entries img f3"></div>
