@@ -15,6 +15,12 @@ export default new Router({
       path: '/loadinglistPrint',
       name: 'loadinglistPrint',
       component: resolve => require(['../pages/loadinglistPrint'], resolve)
+    },
+    //复核单打印
+    {
+      path: '/checkListPrint',
+      name: 'checkListPrint',
+      component: resolve => require(['../pages/checkListPrint'], resolve)
     }
   ]
 })

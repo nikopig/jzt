@@ -108,7 +108,11 @@
             Api.get('FDConsignor_Search_By_Operator_Id_List', params)
               .then((res) => {
                 this.isLoaded = true
-                this.totalNum = res.MsgInfo[0].bigTotalItems
+                if (res.MsgInfo.length > 0) {
+                  this.totalNum = res.MsgInfo[0].bigTotalItems
+                } else {
+                  this.totalNum = 0
+                }
                 this.gridData = res.MsgInfo
                 if (this.showDefault) {
                   this.$emit('change', res.MsgInfo[0])
