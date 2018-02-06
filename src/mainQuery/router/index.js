@@ -111,7 +111,7 @@ export default new Router({
       component: resolve => require(['../pages/consiFee'], resolve),
       children: [
         {
-          path: '',
+          path: ':Con_Id/:Con_Name/:StartTime/:EndTime',
           name: 'feeMainList',
           component: resolve => require(['../components/consiFee/mainList'], resolve)
         },

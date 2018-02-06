@@ -26,7 +26,7 @@
                     <el-date-picker type="date" v-model="condition.endDate" placeholder="选择日期"></el-date-picker>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" class="search_Btn"><i class='el-icon-mo-query'></i>查询</el-button>
+                    <el-button type="primary" class="search_Btn" @click="searchButtom"><i class='el-icon-mo-query'></i>查询</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -49,8 +49,8 @@
                 <div class="progressbar3 breathborder"></div>
                 <div class="refreshbar3"></div>
                 <div class="grantMsg">
-                    <div class="textOverflow"><span>已结算：</span><span>{{TotalOrder.YWCDD_Num}}</span></div>
-                    <div class="textOverflow"><span class="gN">未结算：</span><span>{{TotalOrder.WWCDD_Num}}</span></div>
+                    <div class="textOverflow"><span>已完成：</span><span>{{TotalOrder.YWCDD_Num}}</span></div>
+                    <div class="textOverflow"><span class="gN">未完成：</span><span>{{TotalOrder.WWCDD_Num}}</span></div>
                 </div>
             </div>
             <div class="datahead" @click="goReceipt">
@@ -60,8 +60,8 @@
                 <div class="progressbar3 breathborder"></div>
                 <div class="refreshbar3"></div>
                 <div class="grantMsg">
-                    <div class="textOverflow"><span>已结算：</span><span>{{TotalReceipt.Yi_HuiDan_Num}}</span></div>
-                    <div class="textOverflow"><span class="gN">未结算：</span><span>{{TotalReceipt.Wei_HuiDan_Num}}</span></div>
+                    <div class="textOverflow"><span>已回单：</span><span>{{TotalReceipt.Yi_HuiDan_Num}}</span></div>
+                    <div class="textOverflow"><span class="gN">未回单：</span><span>{{TotalReceipt.Wei_HuiDan_Num}}</span></div>
                 </div>
             </div>
             <div class="datahead">
@@ -72,8 +72,8 @@
                 <div class="progressbar3 breathborder"></div>
                 <div class="refreshbar3"></div>
                 <div class="grantMsg">
-                    <div class="textOverflow"><span>已结算：</span><span></span>{{AbnormalOrder.YYCDD_Num}}</div>
-                    <div class="textOverflow"><span class="gN">未结算：</span><span>{{AbnormalOrder.WYCDD_Num}}</span></div>
+                    <div class="textOverflow"><span>已审核：</span><span></span>{{AbnormalOrder.YYCDD_Num}}</div>
+                    <div class="textOverflow"><span class="gN">未审核：</span><span>{{AbnormalOrder.WYCDD_Num}}</span></div>
                 </div>
               </a>
             </div>
@@ -325,6 +325,9 @@
             }
         },
         methods: {
+            searchButtom () { //查询按钮
+                this.init()
+            },
             getDate (falge) {
                  var Nowdate = new Date()
                  var vYear = Nowdate.getFullYear()
@@ -337,10 +340,19 @@
                  }
                  return vYear + '-' + vMon + '-' + vDay
             },
-            goAmount () {
+            goAmount () {  //点击总金额跳转到委托方应付账款查询页面
                 switch (this.$route.params.type) {
                     case '1':
-                        this.$router.push('/consiFee')  //委托方应付账款查询
+                        //this.$router.push('/consiFee')  //委托方应付账款查询
+                        this.$router.push({
+                            name: 'feeMainList',
+                            params: {
+                                Con_Id: this.condition.Con_Id,
+                                Con_Name: this.condition.Con_Name,
+                                StartTime: this.condition.startDate,
+                                EndTime: this.condition.endDate
+                            }
+                        })
                         break
                     case '2':
                         //this.$router.push('/consiFee')  //委托方应付账款查询

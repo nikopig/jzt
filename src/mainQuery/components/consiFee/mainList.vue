@@ -181,7 +181,7 @@
             </el-pagination>
         </div>
         <!-- 委托方弹框组件 -->
-        <consignor-modal :visible.sync="dialogShow.Consignor" @change="selectCons" @loaded="loadedCons"></consignor-modal>
+        <consignor-modal :visible.sync="dialogShow.Consignor" @change="selectCons" ></consignor-modal><!-- @loaded="loadedCons" -->
         <!-- 详细费用弹框组件 -->
         <detail-pane ref="detailFee" DialogTitle="费用详情" :rowData="feehzRowData"></detail-pane>
         <!-- 汇总明细详情弹框组件 -->
@@ -209,10 +209,10 @@
             return {
                 showRoute: false, // 是否切换到汇总账单tab
                 filterCondition: {  //汇总账页查询条件初始化
-                    Con_Id: '',
-                    Con_Name: '',
-                    Start_Invoice_Time: new Date(),
-                    End_Invoice_Time: new Date(),
+                    Con_Id: this.$route.params.Con_Id,
+                    Con_Name: this.$route.params.Con_Name,
+                    Start_Invoice_Time: this.$route.params.StartTime ? this.$route.params.StartTime : new Date(new Date().valueOf() - 365 * 24 * 3600 * 1000),   //开始日期
+                    End_Invoice_Time: this.$route.params.EndTime ? this.$route.params.EndTime : new Date(),
                     Payment_Operate_State: '',
                     Biz_Bill_No: '',
                     ConOrder_No: '',
@@ -259,11 +259,11 @@
             showDialog (val) {  //双击带出委托方
                 this.dialogShow[val] = true
             },
-            loadedCons (row) {  //初始化委托方
+           /* loadedCons (row) {  //初始化委托方
                 console.log(row, '初始的委托方')
                 this.filterCondition.Con_Id = row.Con_Id
                 this.filterCondition.Con_Name = row.Con_Name
-            },
+            },*/
             selectCons (row) { //双击委托方中的数据带出委托方
                 this.filterCondition.Con_Id = row.Con_Id
                 this.filterCondition.Con_Name = row.Con_Name
