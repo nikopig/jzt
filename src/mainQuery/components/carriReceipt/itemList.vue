@@ -140,9 +140,13 @@
 	  </div>
 
 		<transfer-modal :visible.sync="dialogShow.transfer" @change="selectTransfer"></transfer-modal> <!-- 收件人弹框 -->
-
+		
 		<el-dialog title="回单上传" :visible.sync="dialogShow.receiptUpload" class="uploadDialog">
-			<el-upload class="upload-receipt" ref="upload" action="/upload/DataToHisService/web/IndexController/picupload" :on-success="uploadSuccess" :on-error="uploadFail" :auto-upload="false">
+			<!-- <el-upload class="upload-receipt" ref="upload" action="/upload/DataToHisService/web/IndexController/picupload" :on-success="uploadSuccess" :on-error="uploadFail" :auto-upload="false">
+			  <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+			  <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+			</el-upload> --><!-- 本地 -->
+			<el-upload class="upload-receipt" ref="upload" action="http://10.2.57.90:8099/DataToHisService/web/IndexController/picupload" :on-success="uploadSuccess" :on-error="uploadFail" :auto-upload="false">
 			  <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
 			  <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
 			</el-upload>
