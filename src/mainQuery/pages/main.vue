@@ -2,7 +2,7 @@
     <div class="main_wrapper">
         <div class="headerSearch_wrapper">
             <el-form :inline="true" size="small">
-                <el-form-item v-if="pageType === '1'" label="委托方名称：" label-width="85px">
+                <el-form-item  label="委托方名称：" label-width="85px"><!-- v-if="pageType === '1'" -->
                     <!-- <el-input v-model="condition.Con_Name" placeholder="双击带出委托方" disabled></el-input> -->
                     <el-input  class="noselect"  v-model="condition.Con_Name" placeholder="双击选择"
                     @dblclick.native="showConDialog('Consignor')"
@@ -95,11 +95,11 @@
                 <div class="ordertable">
                     <div style="height:470px;">
                         <!-- 当状态为3的时候显示日历 -->
-                        <div v-show="condition.Business_Model !== 3" style="overflow-x: auto;">
+                        <div v-show="condition.Business_Model === 3" style="overflow-x: auto;">
                             <date-picker :conId='condition.Con_Id' @grossData="pickerData"></date-picker>
                         </div>
                         <!-- 当状态不为3的时候显示地图 -->
-                        <div class="map" v-show="condition.Business_Model === 3" style="height:100%;">
+                        <div class="map" v-show="condition.Business_Model !== 3" style="height:100%;">
                             <div class="map-left" style="height:100%;">
                                 <div ref="chinaMap" class="china-map"></div>
                             </div>

@@ -433,6 +433,37 @@
                 this.getDeliveryState()
                 this.getRoute()
             }
+           /* AjaxReport (Report, ServiceName) {
+                var xmlhttp
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest() // code for IE7+, Firefox, Chrome, Opera, Safari
+                } else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP") // code for IE6, IE5
+                }
+                Api.get(ServiceName, {'hdrid': Id}).then((res) => {
+                    if(res.Flag){
+                        Report.LoadDataFromAjaxRequest(JSON.stringify(res.MsgInfo), xmlhttp.getAllResponseHeaders()) //加载报表数据
+                        var callback = RunFun.value.toString()
+                        switch (callback) {
+                            //打印预览
+                            case callback.indexOf('PrintPreview') > 0:
+                                Report.PrintPreview(true)
+                                break
+                                //直接打印
+                            case callback.indexOf('Print') > 0:
+                                Report.Print(true)
+                                break
+                                //导出报表
+                            case callback.indexOf('ExportDirect') > 0:
+                                Report.ExportDirect(1, "MyReport.xls", true, true)
+                                break
+                            default:
+                                Report.PrintPreview(true)
+                                break
+                        }
+                    }
+                })
+            }*/
         },
         watch: {
         },
