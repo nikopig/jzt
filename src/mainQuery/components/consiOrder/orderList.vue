@@ -13,50 +13,50 @@
             </div>
       </div>
       <div class="common-condition-box">
-        <el-form :inline="true" size="small" label-width="60px"> 
+        <el-form :inline="true" size="small" label-width="60px">
           <div class="common-select-group-box">
-            <el-form-item label="订单状态"> 
-              <select-order 
-              @change="orderStatus" 
+            <el-form-item label="订单状态">
+              <select-order
+              @change="orderStatus"
               @loaded="getMainHeight"
-              :field="serviceTypeOrders"></select-order> 
+              :field="serviceTypeOrders"></select-order>
             </el-form-item>
           </div>
           <div class="main-input">
-            <el-form-item label="委托方" > 
-              <el-input 
+            <el-form-item label="委托方" >
+              <el-input
               class="noselect"
-              v-model="consignor.Con_Name" 
-              placeholder="双击选择或手工录入" 
-              @dblclick.native="consignor.isVisible = true" 
-              :on-icon-click="clearBalance"></el-input> 
-            </el-form-item> 
-            <el-form-item label="起始日期"> 
+              v-model="consignor.Con_Name"
+              placeholder="双击选择或手工录入"
+              @dblclick.native="consignor.isVisible = true"
+              :on-icon-click="clearBalance"></el-input>
+            </el-form-item>
+            <el-form-item label="起始日期">
               <el-date-picker v-model="condition.startDate" type="date" placeholder="选择日期">
                 &gt;
-            </el-date-picker> 
-              </el-form-item> 
-            <el-form-item label="结束日期"> 
+            </el-date-picker>
+              </el-form-item>
+            <el-form-item label="结束日期">
               <el-date-picker v-model="condition.endDate" type="date" placeholder="选择日期" >
                 &gt;
-            </el-date-picker> 
-            </el-form-item> 
-            <el-form-item label="客户名称"> 
-              <el-input placeholder=" 助记码、名字、编号" v-model="Ssa_Name"></el-input> 
-            </el-form-item> 
-            <el-form-item label="单据编号"> 
-               <el-input v-model="ConOrder_No"></el-input> 
-              </el-form-item> 
-            <el-form-item label="订单管理"> 
-              <el-select v-model="condition.orderSelected" placeholder="请选择" @change="chooseOrder"> 
-                <el-option v-for="item in options" :key="item.label" :label="item.label" :value="item.label"> 
-                  </el-option> 
-              </el-select> 
-            </el-form-item> 
-            <el-form-item class="setButton-width"> 
+            </el-date-picker>
+            </el-form-item>
+            <el-form-item label="客户名称">
+              <el-input placeholder=" 助记码、名字、编号" v-model="Ssa_Name"></el-input>
+            </el-form-item>
+            <el-form-item label="单据编号">
+               <el-input v-model="ConOrder_No"></el-input>
+              </el-form-item>
+            <el-form-item label="订单管理">
+              <el-select v-model="condition.orderSelected" placeholder="请选择" @change="chooseOrder">
+                <el-option v-for="item in options" :key="item.label" :label="item.label" :value="item.label">
+                  </el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item class="setButton-width">
               <el-button size="small" type="primary" icon="search" @click="nextTo">
                   查询
-               </el-button> 
+               </el-button>
             </el-form-item>
           </div>
         </el-form>
@@ -69,43 +69,43 @@
           <li><span>已完成订单数：</span><span>{{hotData.YWCDD_Num}}</span></li>
           <li><span>未完成订单数：</span><span>{{hotData.WWCDD_Num}}</span></li>
           <li><span>总客户数：</span><span>{{hotData.Ssa_Num}}</span></li>
-          <li><span>总计数：</span><span>{{hotData.Actual_Pcs_Num}}</span></li>
+          <li><span>总件数：</span><span>{{hotData.Actual_Pcs_Num}}</span></li>
           <li><span>异常订单数：</span><span>{{hotData.YCDD_Nume}}</span></li>
           <li><span>超期订单数：</span><span>{{hotData.CQDD_Num}}</span></li>
           <li><span>超标单数：</span><span>{{hotData.CBDD_Num}}</span></li>
         </ul>
       </div>
-    </div> 
-    <div class="table-box"> 
-     <el-table :data="tableData"> 
-      <el-table-column prop="Invoice_Time" label="日期" width="160"></el-table-column> 
-      <el-table-column prop="Con_Name" label="委托方" show-overflow-tooltip></el-table-column> 
-      <el-table-column prop="ConOrder_No" label="业务单据号" show-overflow-tooltip></el-table-column> 
+    </div>
+    <div class="table-box">
+     <el-table :data="tableData">
+      <el-table-column prop="Invoice_Time" label="日期" width="160"></el-table-column>
+      <el-table-column prop="Con_Name" label="委托方" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="ConOrder_No" label="业务单据号" show-overflow-tooltip></el-table-column>
       <el-table-column prop="Ssa_Name" label="客户名称" show-overflow-tooltip></el-table-column>
-      <el-table-column prop="Bill_TransportA_Dtl_State_Name" label="订单状态" width="100"></el-table-column> 
-      <el-table-column prop="Actual_Pcs_Num" label="总件数" width="80"></el-table-column> 
-      <el-table-column prop="Planned_Volume_Num" label="总体积m³" width="90"></el-table-column> 
-      <el-table-column prop="Planned_Weight_Num" label="总重量kg" width="90"></el-table-column> 
-      <el-table-column label="操作"> 
-       <template slot-scope="scope"> 
+      <el-table-column prop="Bill_TransportA_Dtl_State_Name" label="订单状态" width="100"></el-table-column>
+      <el-table-column prop="Actual_Pcs_Num" label="总件数" width="80"></el-table-column>
+      <el-table-column prop="Planned_Volume_Num" label="总体积m³" width="90"></el-table-column>
+      <el-table-column prop="Planned_Weight_Num" label="总重量kg" width="90"></el-table-column>
+      <el-table-column label="操作">
+       <template slot-scope="scope">
         <el-button class="primary" type="text" size="small" @click="linkDetail(scope.$index, scope.row)">
-         订单详情 
-        </el-button> 
+         订单详情
+        </el-button>
         <el-button class="primary" type="text" size="small" @click="linkLoInfo(scope.$index, scope.row)">
-         物流详情 
-        </el-button> 
+         物流详情
+        </el-button>
         <el-button class="primary" type="text" size="small" @click="linkPosition(scope.$index, scope.row)">
-         位置查询 
-        </el-button> 
-       </template> 
-      </el-table-column> 
-     </el-table> 
-    </div> 
-    <div class="blockPage"> 
-     <el-pagination v-show="page.isShow" layout="total, prev, pager, next, jumper" :page-size="page.pageSize" :total="page.total" @current-change="handleCurrentChange"> 
-     </el-pagination> 
-    </div> 
-    <consi-modal :visible.sync="consignor.isVisible" @change="confirm"></consi-modal> 
+         位置查询
+        </el-button>
+       </template>
+      </el-table-column>
+     </el-table>
+    </div>
+    <div class="blockPage">
+     <el-pagination v-show="page.isShow" layout="total, prev, pager, next, jumper" :page-size="page.pageSize" :total="page.total" @current-change="handleCurrentChange">
+     </el-pagination>
+    </div>
+    <consi-modal :visible.sync="consignor.isVisible" @change="confirm"></consi-modal>
   </div>
 </template>
 
@@ -238,10 +238,11 @@
             })
           },
           getHotData () {
-              Api.get('TmpCSNGetBillTransportADtlTB', this.HzParam).then((res) => {
+            Api.get('TmpCSNGetBillTransportADtlTB', this.HzParam).then((res) => {
                   if (res.Flag) {
                       if (res.MsgInfo.length > 0) {
                         this.hotData = res.MsgInfo[0]
+                        console.log(this.hotData)
                       }
                   }
               })
@@ -336,7 +337,7 @@
         label {
             line-height: 23px;
         }
-      } 
+      }
       .common-condition-box {
           .el-checkbox {
             margin-left: 12px;
