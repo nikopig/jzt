@@ -8,6 +8,7 @@
                     @dblclick.native="showConDialog('Consignor')"
                     icon="close"
                     :on-icon-click="deleteCon"
+                    :disabled="true"
                     ></el-input>
                 </el-form-item>
                 <!-- <el-form-item label="九州通对接人：" label-width="85px">
