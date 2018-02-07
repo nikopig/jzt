@@ -68,7 +68,7 @@
                     <el-table-column prop="Lot_No" label="批号"></el-table-column>
                     <el-table-column prop="Production_Date" label="生产日期" width="150" show-overflow-tooltip ></el-table-column>
                     <el-table-column prop="Valid_Until" label="有效日期" width="150" show-overflow-tooltip></el-table-column>
-                    <el-table-column prop="Remarks" label="备注" show-overflow-tooltip></el-table-column> 
+                    <el-table-column prop="Remarks" label="备注" show-overflow-tooltip></el-table-column>
                 </el-table>
             </div>
             <div class="blockPage">
@@ -78,10 +78,10 @@
                 :page-size="page.pageSize"
                 :total="page.total"
                 @current-change="handleCurrentChange"
-                >   
+                >
                 </el-pagination>
-            </div>     
-        </div>  
+            </div>
+        </div>
     </div>
 </template>
 
@@ -121,7 +121,7 @@
                         total: 0, // 总条数
                         isShow: false // 是否显示分页组件
                         }
-                    }
+            }
         },
         methods: {
             handleCurrentChange (num) {
@@ -136,7 +136,6 @@
                 this.isHeight = false
             },
             init () {
-                console.log(1)
                 let params = JSON.parse(this.$route.params.row)
                 this.Customer.Con_Id = params.Con_Id
                 this.Customer.Ssa_Name = params.Ssa_Name
@@ -173,9 +172,8 @@
                this.tableData = this.listData
             },
             getMainHeight () {
-                if (this.isHeight) {
+              if (this.isHeight) {
                     let mainH = this.$refs.DetailMainFiexdH.offsetHeight
-                    console.log(mainH)
                     this.$refs.consiOrderDetailH.style.paddingTop = mainH + 'px'
                 }
             }
@@ -222,7 +220,7 @@
                         line-height: 24px;
                     }
                 }
-            } 
+            }
         }
         .table-box{
             .el-table {
