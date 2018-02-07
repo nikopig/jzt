@@ -953,7 +953,7 @@
                     that.maxWidth = that.$refs.datePickerLh.getBoundingClientRect().width
                 })()
             }
-            this.init()
+            //this.init()
         },
         computed: {
             gridWidth2 () {
@@ -1146,5 +1146,8 @@
                 }
             }
         }
+    }
+    .datePickerLh .main .gridMiddle .gray{
+        overflow: hidden;
     }
 </style>

@@ -95,11 +95,11 @@
                 <div class="ordertable">
                     <div style="height:470px;">
                         <!-- 当状态为3的时候显示日历 -->
-                        <div v-show="condition.Business_Model === 3" style="overflow-x: auto;">
+                        <div v-show="condition.Business_Model !== 3" style="overflow-x: auto;">
                             <date-picker :conId='condition.Con_Id' @grossData="pickerData"></date-picker>
                         </div>
                         <!-- 当状态不为3的时候显示地图 -->
-                        <div class="map" v-show="condition.Business_Model !== 3" style="height:100%;">
+                        <div class="map" v-show="condition.Business_Model === 3" style="height:100%;">
                             <div class="map-left" style="height:100%;">
                                 <div ref="chinaMap" class="china-map"></div>
                             </div>
@@ -409,6 +409,7 @@
                 this.condition.Con_Id = val.Con_Id
                 this.condition.Con_Name = val.Con_Name
                 this.condition.tellepone = val.Customer_Service_No
+                this.init()
             },
             showConDialog (val) {  //双击打开委托方弹框
                 this.dialogShow[val] = true
@@ -1019,7 +1020,7 @@
             this.colorstyle = ['yhk', 'whk', 'wkp', 'wdz']
         },
         mounted () {
-            this.init()
+            //this.init()
             let a = this
             window.onresize = function () {
                 a.chartData.myChart.resize()
