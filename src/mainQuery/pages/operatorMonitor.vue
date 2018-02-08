@@ -1171,7 +1171,16 @@
 </style>
 
 <style lang="less">
+	html, body, body > div#app{
+		height: 100%;
+	}
 	.operatorMonitor {
+		min-height: 100%;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		    -ms-box-sizing: border-box;
+		     -o-box-sizing: border-box;
+		        box-sizing: border-box;
 		.el-card {
 			height: 100%;
 		}
@@ -1253,6 +1262,7 @@
 			&:nth-of-type(3) {
 				// height: 200px;
 				flex: 1;
+				min-height: 170px;
 				.el-card {
 					display: flex;
 					flex-direction: column;
