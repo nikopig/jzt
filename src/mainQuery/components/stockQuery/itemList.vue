@@ -23,7 +23,7 @@
 					<el-input v-model="filterCondition.Goods_Name" placeholder="双击选择" :disabled="true" icon="close" :on-icon-click="deleteGood" @dblclick.native="openDialog('goods')"></el-input>
 				</el-form-item>
 				<el-form-item label="库存状态">
-					<el-select v-model="filterCondition.Stock_Status" placeholder="请选择">
+					<el-select v-model="filterCondition.Stock_Status" clearable placeholder="请选择">
 						<el-option v-for="item in stockStatus" :key="item.Value_Data" :label="item.Value_Desc" :value="item.Value_Data"></el-option>
 					</el-select>
 				</el-form-item>
