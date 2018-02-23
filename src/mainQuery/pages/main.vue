@@ -898,7 +898,11 @@
                 this.chartData.mapChart.on('click', (param) => {
                     console.log(param, '地图点击跳转')
                     this.$router.push({
-                        name: 'stockMainList'
+                        name: 'stockMainList',
+                        params: {
+                            Con_Id: this.condition.Con_Id,
+                            Con_Name: this.condition.Con_Name
+                        }
                     })
                 })
             },

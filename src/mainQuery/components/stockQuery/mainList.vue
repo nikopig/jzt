@@ -529,8 +529,8 @@
       				this.bigTotalItems = this.cons[0].TotalPage
       				if (isSetDefaultValue) {
       					this.consTotal = this.cons[0].TotalPage
-      					this.filterCondition.Con_Name = this.cons[0].Con_Name
-								this.filterCondition.Con_Id = this.cons[0].Con_Id
+      					this.filterCondition.Con_Name = this.$route.params.Con_Name
+								this.filterCondition.Con_Id = this.$route.params.Con_Id
       				}
       			}
       			this.getConStock() // 委托方件数统计
@@ -547,6 +547,7 @@
 			}
 		},
 		mounted () {
+			console.log(this.$route.params, '主界面传来的值')
 			// 初始化
 			this.init()
 			// 窗口大小改变echarts重绘

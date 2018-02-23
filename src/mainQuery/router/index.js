@@ -94,7 +94,7 @@ export default new Router({
       component: resolve => require(['../pages/stockQuery'], resolve),
       children: [
         {
-          path: '',
+          path: ':Con_Id/:Con_Name',
           name: 'stockMainList',
           component: resolve => require(['../components/stockQuery/mainList'], resolve)
         },
