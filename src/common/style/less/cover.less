@@ -1,0 +1,72 @@
+@import 'primary';
+
+// 覆盖原有element样式
+
+//1.文本框
+
+
+// 消息提示调整为离顶部35%
+.el-message {
+  top: 35%;
+}
+
+// 字体大小覆盖
+.el-form-item {
+  .el-form-item__label, .el-checkbox__label, .el-select-dropdown__item, .el-radio__label, .el-select-dropdown__item {
+    font-size: @font-size-small;
+  }
+}
+
+// 下拉框选择面板字体大小
+.el-select-dropdown__item {
+  font-size: @font-size-small;
+}
+// 表单label字体大小
+.el-form-item__label {
+  font-size: @font-size-small;
+}
+
+.el-radio-group .el-radio, .el-radio__label {
+  font-size: @font-size-small;
+}
+
+.el-breadcrumb {
+  font-size: @font-size-small;
+}
+
+.el-form-item__label, .el-checkbox__label, .el-select-dropdown__item, .el-radio__label, .el-select-dropdown__item, .el-dropdown-menu__item {
+  font-size: @font-size-small;
+}
+
+// 禁用输入框字体颜色调整
+.el-input.is-disabled input.el-input__inner {
+  color: #1f2d3d;
+}
+
+//表单
+.el-form-item {
+  margin-bottom: 0;
+}
+
+// 升级至2.2.0后样式调整
+.el-select .el-input .el-input__icon {
+  height: 24px;
+  line-height: 24px;
+  top: 0px;
+}
+
+.el-input__icon {
+  line-height: 24px;
+}
+
+.el-input__prefix {
+  left: 25px;
+}
+
+.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div {
+  background-color: inherit;
+}
+
+.el-dialog {
+  margin: 0px;
+}
