@@ -3,8 +3,10 @@ import Server from '@/common/js/server.js'
 import qs from 'qs'
 import config from './config'
 let isProd = config.Environment !== 'dev'
+let packgeType = config.packgeType === 'test'
 let apiUrl = !isProd ? '/api/DataSource/doPostApi' : '/DataSource/doPostApi'
 let yuyanUrl = !isProd ? '/yy/test-yu/servlet/' : 'http://10.3.87.48:8895/test-yu/servlet/'
+yuyanUrl = packgeType ? 'http://10.3.87.33:8080/test-yu/servlet/' : 'http://10.3.87.48:8895/test-yu/servlet/'
 // axios 配置
 axios.defaults.timeout = 30000
 axios.defaults.baseURL = '/'

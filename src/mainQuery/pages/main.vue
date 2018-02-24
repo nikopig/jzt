@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="datahead">
-              <a href="http://10.3.87.201:8890/HtmlPages/TMP/ExceptionAudit.html" target="_blank">
+              <a :href="excepSrc" target="_blank">
                 <p>异常订单</p>
                 <p style="color:#FD9D9B;">{{AbnormalOrder.YCDD_Num}}</p>
                 <div class="el-icon-mo-warehouseNumber img f4"></div>
@@ -163,6 +163,7 @@
 </template>
 
 <script>
+    import config from '@/common/js/config'
     import Vue from 'vue'
     import Api from '@/common/js/api'
     import commonRow from '@/common/components/common-row/index.js'
@@ -178,6 +179,7 @@
         components: {commonRow, commonCol, consignorModal, datePicker},
         data () {
             return {
+                excepSrc: config.packgeType === 'test' ? 'http://10.3.87.201:8890/HtmlPages/TMP/ExceptionAudit.html' : 'http://10.3.87.27:8896/HtmlPages/TMP/ExceptionAudit.html',
                 TableHeader: [],
                 condition: {
                     Business_Model: '',

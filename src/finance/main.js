@@ -36,7 +36,8 @@ import {
 } from 'element-ui'
 import 'normalize.css'
 // import '../../theme/index.css'
-import 'element-ui/lib/theme-default/index.css'
+// import 'element-ui/lib/theme-chalk/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 import '@/common/style/icon.css'
 import App from './App'
 
