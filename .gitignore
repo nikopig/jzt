@@ -11,3 +11,6 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+src/common/js/config.js
+src/finance/main.js
+src/finance/main.js

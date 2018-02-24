@@ -165,7 +165,7 @@
     components: {commonRow, commonCol, carriModal},
     data () {
       return {
-        excepSrc: config.packgeType === 'test' ? 'http://10.3.87.201:8890/HtmlPages/TMP/ExceptionAudit.html' : 'http://10.3.87.27:8896/HtmlPages/TMP/ExceptionAudit.html'
+        excepSrc: config.packgeType === 'test' ? 'http://10.3.87.201:8890/HtmlPages/TMP/ExceptionAudit.html' : 'http://10.3.87.27:8896/HtmlPages/TMP/ExceptionAudit.html',
         TableHeader: [],
         condition: {
           Carrier_Name: '',     // 委托方
