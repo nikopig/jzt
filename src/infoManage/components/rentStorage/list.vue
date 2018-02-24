@@ -335,7 +335,7 @@
     		background-color: #fff;
 			}
 			.table-box {
-				margin-top: 154px;
+				margin-top: 130px;
 			}
 		}
 	}
