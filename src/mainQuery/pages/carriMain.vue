@@ -65,7 +65,7 @@
       </div>
       <div class="datahead">
         <el-card>
-          <a href="http://10.3.87.201:8890/HtmlPages/TMP/ExceptionAudit.html" target="_blank">
+          <a :href="excepSrc" target="_blank">
             <p>异常订单</p>
             <p class="f4">{{AbnormalOrder.YCDD_Num}}</p>
             <div class="el-icon-mo-warehouseNumber img f4"></div>
@@ -150,6 +150,7 @@
 </template>
 
 <script>
+  import config from '@/common/js/config'
   import Vue from 'vue'
   import Api from '@/common/js/api'
   import {DateFtt} from '@/common/js/utils.js'
@@ -164,6 +165,7 @@
     components: {commonRow, commonCol, carriModal},
     data () {
       return {
+        excepSrc: config.packgeType === 'test' ? 'http://10.3.87.201:8890/HtmlPages/TMP/ExceptionAudit.html' : 'http://10.3.87.27:8896/HtmlPages/TMP/ExceptionAudit.html'
         TableHeader: [],
         condition: {
           Carrier_Name: '',     // 委托方
