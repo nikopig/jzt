@@ -148,6 +148,9 @@
         this.$router.push({
           name: 'tempDetailList',
           params: {
+            HANGHAO: row.HANGHAO,
+            DANJ_NO: row.DANJ_NO,
+            CHEPAI_NO: row.CHEPAI_NO,
             sid: row.Con_Sb_Id,
             beginDate: row.Start_Time,
             endDate: row.End_Time,
