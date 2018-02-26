@@ -2,9 +2,9 @@
 	<div class="main-list">
         <div class="toolbar" v-if="true">
           <div class="btn-box">
-            <el-button type="text" icon="mo-addDetail" @click="addData">新增</el-button>
-            <el-button type="text" icon="mo-delete2" @click="deleteData">删除</el-button>
-            <el-button type="text" icon="mo-refresh" @click="refreshData">刷新</el-button>
+            <el-button type="text" icon="el-icon-mo-addDetail" @click="addData">新增</el-button>
+            <el-button type="text" icon="el-icon-mo-delete2" @click="deleteData">删除</el-button>
+            <el-button type="text" icon="el-icon-mo-refresh" @click="refreshData">刷新</el-button>
           </div>
         </div>
         <div class="common-condition-box">
@@ -16,7 +16,7 @@
 		      <el-input v-model="filterCondition.KeyWords" placeholder="合同编号，委托方名称、助记码检索"></el-input>
 		  	</el-form-item>
             <el-form-item>
-              <el-button size="small" type="primary" icon="search" @click="searchData">查询</el-button>
+              <el-button size="small" type="primary" icon="el-icon-search" @click="searchData">查询</el-button>
             </el-form-item>
           </el-form>
         </div>

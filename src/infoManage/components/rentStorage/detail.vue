@@ -2,10 +2,10 @@
 	<div class="detail">
 		<div class="toolbar">
 			<div class="btn-box">
-				<el-button type="text" icon="mo-newlyAdded" @click.native="addRentStorage('form')">新增</el-button>
+				<el-button type="text" icon="el-icon-mo-newlyAdded" @click.native="addRentStorage('form')">新增</el-button>
 			</div>
 			<div class="btn-box">
-				<el-button type="text" icon="mo-activateSave" @click.native="saveRentStorage('form')">保存</el-button>
+				<el-button type="text" icon="el-icon-mo-activateSave" @click.native="saveRentStorage('form')">保存</el-button>
 			</div>
 		</div>
 		<div class="common-condition-box">

@@ -7,7 +7,7 @@
                     <el-input v-model="searchCost"></el-input>
                 </el-form-item> 
                 <el-form-item> 
-                    <el-button size="small" type="primary" icon="search" @click="costSearch" >查询</el-button> 
+                    <el-button size="small" type="primary" icon="el-icon-search" @click="costSearch" >查询</el-button> 
                 </el-form-item>
                 <el-form-item class="f-r">
                     <el-button type="text" @click="addCost"><i class="el-icon-plus"></i>&nbsp;新增费用类型</el-button>
