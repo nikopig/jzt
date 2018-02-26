@@ -27,7 +27,7 @@ confirm事件的方法的参数(Rows): 为选中的行数据,结构{currentId1�
       </el-form>
       <div class='tabel-wrapper'>
         <el-table stripe ref='singleTable' :data="listData" highlight-current-row @current-change='handleCurrentChange' height='300' @row-dblclick='_confirm' border>
-          <el-table-column v-for='(item, $index) in TableHeader' :property="item.field" :label="item.title" :key='$index' header-align="left" :width='item.width'>
+          <el-table-column v-for='(item, $index) in TableHeader' :property="item.field" :label="item.title" :key='$index' header-align="left" :width='item.width?item.width:110'>
             <template slot-scope="scope">
               <div :title='scope.row[item.field]' slot="reference" class="name-wrapper" v-if="item.field !== 'dialogOperate'">{{ scope.row[item.field] }}
               </div>
