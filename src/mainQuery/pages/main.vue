@@ -116,14 +116,14 @@
                 <div class="account_wrapper">
                     <div ref="histogram" class="histogram"></div>
                     <div class="accounttable">
-                        <el-table :data="accountData" border class="countable">
+                        <el-table :data="accountData" border class="countable" style="width: 100%">
                             <el-table-column prop="h" show-overflow-tooltip>
                                 <template slot-scope="scope">
                                     <span :class="colorstyle[scope.row.n]" style="display:inline-block;width:10px;height:10px;background:scope.row.n;"></span>
                                     <span  style="margin-left: 3px">{{ scope.row.h }}</span>
                                 </template>
                             </el-table-column>
-                            <el-table-column width="110" v-for='(item, $index) in TableHeader' :property="item.field" :label="item.title" :key='$index' style="white-space:nowrap;">
+                            <el-table-column v-for='(item, $index) in TableHeader' :property="item.field" :label="item.title" :key='$index' style="white-space:nowrap;">
                             </el-table-column>
                         </el-table>
                     </div>

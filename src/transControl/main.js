@@ -43,7 +43,7 @@ import {
 } from 'element-ui'
 import ScrollBar from 'element-ui/lib/scrollbar.js'
 import 'normalize.css'
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 // import 'element-ui/lib/theme-default/scroll-bar.css'
 import '@/common/style/icon.css'
 Vue.use(Checkbox)

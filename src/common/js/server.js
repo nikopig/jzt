@@ -196,5 +196,30 @@ export default {
     //   'Carrier_Id': '%',
     //   'Ssa_Id': '%'
     // }
+    // return {
+    //   'AppId': '6',
+    //   'USERID': '534',
+    //   'USERCODE': 'GUOLH',
+    //   'USERNAME': 'é™¶ä½©',
+    //   'Staff_Id': '534',
+    //   'Staff_No': 'GUOLH',
+    //   'Staff_Name': 'é™¶ä½©',
+    //   'Mnemonic_Code': null,
+    //   'Staff_Pwd': null,
+    //   'Is_Active': null,
+    //   'Mobilephone': null,
+    //   'Qq': null,
+    //   'Wechat': null,
+    //   'Remark': null,
+    //   'Creator': null,
+    //   'Created_Time': '0001-01-01 12:00:00',
+    //   'Updated_Time': '0001-01-01 12:00:00',
+    //   'Status': null,
+    //   'Operator_Id': '346820465830730',
+    //   'Ldc_Id': '%',
+    //   'Con_Id': '%',
+    //   'Carrier_Id': '%',
+    //   'Ssa_Id': '%'
+    // }
   }
 }

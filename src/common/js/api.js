@@ -83,10 +83,11 @@ export default {
     return fetch(apiUrl, {params: inparas}, 'get', operate)
   },
 // 基础数据接口post方法
-  basePost (operate, paras, noPower) {
+  basePost (operate, paras, noPower, type) {
+    if (!type) type = 'post'
     let param = {}
     if (paras) {
-      param = {requestType: 'post', jsonParas: JSON.stringify(paras)}
+      param = {requestType: type, jsonParas: JSON.stringify(paras)}
     }
     if (!noPower) param.userId = this.userInfo.USERID
     param = JSON.stringify(param)

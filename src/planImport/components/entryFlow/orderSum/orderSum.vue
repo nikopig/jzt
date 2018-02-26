@@ -569,6 +569,7 @@
         .el-form-item {
           .el-form-item__label {
             font-size: 12px;
+            line-height: 12px;
           }
           .el-form-item__content {
             .el-radio-group {

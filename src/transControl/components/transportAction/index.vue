@@ -1025,7 +1025,7 @@
 //          二级数据
           showSecond (row, refresh) {
             if (!row.children || row.children.length === 0 || refresh) {
-              Api.basePost('TMP_TransportTaskScheding_Yd_Dtl', {Bill_Dtl_Id: row.Bill_Dtl_Id})
+              Api.basePost('TMP_TransportTaskScheding_Yd_Dtl', {Bill_Dtl_Id: row.Bill_Dtl_Id}, false, 'get')
                 .then((resp) => {
                   if (resp.Flag) {
                     row.children = resp.MsgInfo.map((item) => {
