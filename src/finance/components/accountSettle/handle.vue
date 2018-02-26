@@ -134,7 +134,7 @@
         </template>
       </el-table-column>
       <el-table-column type="expand">
-        <template scope="props">
+        <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
             <el-form-item label="运营方">
               <span>{{ props.row.Operator_Name }}</span>
@@ -186,7 +186,7 @@
       <el-table-column label="对账金额(元)" show-overflow-tooltip prop="Reconciliation_Amount"></el-table-column>
       <el-table-column label="已结算金额(元)" show-overflow-tooltip prop="SettleUp_Amount_Ywc"></el-table-column>
       <el-table-column label="结算金额(元)" show-overflow-tooltip>
-        <template scope="scope">
+        <template slot-scope="scope">
           <span>
             <el-input v-model="scope.row.SettleUp_Amount" v-if="!scope.row.isDisabled"></el-input>
             <span v-if="scope.row.isDisabled">{{scope.row.SettleUp_Amount}}</span>
@@ -196,13 +196,13 @@
       <el-table-column label="费用类型" show-overflow-tooltip prop="Service_Type"></el-table-column>
       <el-table-column label="费用项目" show-overflow-tooltip prop="Service_Item"></el-table-column>
       <el-table-column fixed="right" label="操作" width="80">
-        <template scope="scope">
+        <template slot-scope="scope">
           <el-button @click.native.prevent="toDetail(scope.row.Payment_Record_Id)" type="text" size="small">详情
           </el-button>
         </template>
       </el-table-column>
       <el-table-column type="expand">
-        <template scope="props">
+        <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
             <el-form-item label="运营方">
               <span>{{ props.row.Operator_Name }}</span>
