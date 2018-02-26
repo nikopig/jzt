@@ -30,6 +30,7 @@ module.exports = {
     "no-unused-vars": 0,
     "no-multi-spaces": 0,
     "no-multiple-empty-lines": 0,
-    "no-useless-return": 0
+    "no-useless-return": 0,
+    'no-control-regex': 0
   }
 }

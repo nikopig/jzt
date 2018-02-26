@@ -2,12 +2,12 @@
 <div>
     <div class="costServices">
         <div class="common-container">
-            <el-form :inline="true" size="small" label-width="72px" class="clearfix "> 
-                <el-form-item label="费用类型："> 
+            <el-form :inline="true" size="small" label-width="72px" class="clearfix ">
+                <el-form-item label="费用类型：">
                     <el-input v-model="searchCost"></el-input>
-                </el-form-item> 
-                <el-form-item> 
-                    <el-button size="small" type="primary" icon="el-icon-search" @click="costSearch" >查询</el-button> 
+                </el-form-item>
+                <el-form-item>
+                    <el-button size="small" type="primary" icon="el-icon-search" @click="costSearch" >查询</el-button>
                 </el-form-item>
                 <el-form-item class="f-r">
                     <el-button type="text" @click="addCost"><i class="el-icon-plus"></i>&nbsp;新增费用类型</el-button>
@@ -15,12 +15,12 @@
                     <el-button type="text" @click="removeCost"><i class="el-icon-delete"></i>&nbsp;删除费用类型</el-button>
                     <el-button type="text" @click="removeSer"><i class="el-icon-delete"></i>&nbsp;删除服务项目</el-button>
                 </el-form-item>
-            </el-form> 
+            </el-form>
             <div class="table-box layout">
                 <div class="table-l" style="width:320px;">
-                    <el-table :data="listData" 
+                    <el-table :data="listData"
                     highlight-current-row
-                    style="width:100%;" 
+                    style="width:100%;"
                     ref= "mul"
                     @selection-change="selectCheckBoxsL"
                     @row-click="selectChangel" >
@@ -29,7 +29,7 @@
                         <el-table-column prop="Service_No" label="费用类型编号"></el-table-column>
                         <el-table-column prop="Service_Name" label="费用类型名称"></el-table-column>
                         <el-table-column label="操作" width="55">
-                            <template slot-scope="scope"> 
+                            <template slot-scope="scope">
                                 <el-button class="primary" type="text" size="small" @click="editCost(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
                             </template>
                         </el-table-column>
@@ -40,13 +40,13 @@
                             layout="total, prev, pager, next, jumper"
                             :page-size="pageL.pageSize"
                             :total="pageL.total"
-                            @current-change="handleCurrentChangeL" >   
+                            @current-change="handleCurrentChangeL" >
                         </el-pagination>
-                    </div>  
+                    </div>
                 </div>
                 <div class="table-r" style="width:100%;" v-show="isTableSer">
-                        <el-table :data="tableData" 
-                        @row-click="selectChanger" 
+                        <el-table :data="tableData"
+                        @row-click="selectChanger"
                         ref="multipleTable"
                         highlight-current-row
                         @selection-change="selectCheckBoxsR">
@@ -59,7 +59,7 @@
                         <el-table-column prop="Creator_Name" label="创建人" width="65"></el-table-column>
                         <el-table-column prop="Created_Time" label="创建时间" width="150"></el-table-column>
                         <el-table-column label="操作" width="55">
-                            <template slot-scope="scope"> 
+                            <template slot-scope="scope">
                                 <el-button class="primary" type="text" size="small" @click="editSer(scope.$index, scope.row)"><i class="el-icon-edit" v-show="isEdit"></i></el-button>
                             </template>
                         </el-table-column>
@@ -70,7 +70,7 @@
                             layout="total, prev, pager, next, jumper"
                             :page-size="pageR.pageSize"
                             :total="pageR.total"
-                            @current-change="handleCurrentChangeR" >   
+                            @current-change="handleCurrentChangeR" >
                         </el-pagination>
                     </div>
                 </div>
@@ -78,12 +78,12 @@
             <el-dialog :title="dialog.addEidetCost" :visible.sync="dialogFormCostVisible" >
                 <div class="formcost">
                     <el-form :inline="true" size="small" label-width="120px" class="clearfix" :rules="rules" :model="formCostData">
-                <el-form-item label="费用类型编号："  prop="Cost_number"> 
+                <el-form-item label="费用类型编号："  prop="Cost_number">
                     <el-input v-model="formCostData.Cost_number"></el-input>
-                </el-form-item> 
+                </el-form-item>
                 <el-form-item label="费用类型名称：" prop="Cost_name" >
                     <el-input v-model="formCostData.Cost_name"></el-input>
-                </el-form-item> 
+                </el-form-item>
                </el-form>
                 </div>
                 <div slot="footer" class="dialog-footer">
@@ -96,14 +96,14 @@
                 <el-form :inline="true" size="small" label-width="120px" class="clearfix" :model="formSerData" :rules="rules2">
                 <el-form-item label="服务项目编号：" prop="SerNumber">
                     <el-input v-model="formSerData.SerNumber"></el-input>
-                </el-form-item> 
+                </el-form-item>
                 <el-form-item label="服务项目名称：" prop="SerName">
                     <el-input v-model="formSerData.SerName"></el-input>
-                </el-form-item> 
-                <el-form-item label="计算规则（预）：" prop="SerCalculation"> 
+                </el-form-item>
+                <el-form-item label="计算规则（预）：" prop="SerCalculation">
                     <el-input v-model="formSerData.SerCalculation" ></el-input>
-                </el-form-item> 
-                <el-form-item label="备注；" prop="SerRemarks"> 
+                </el-form-item>
+                <el-form-item label="备注；" prop="SerRemarks">
                     <el-input v-model="formSerData.SerRemarks" type="textarea"></el-input>
                 </el-form-item>
                </el-form>
@@ -668,7 +668,7 @@
                 border:0;
                 box-sizing: border-box;
             }
-            .layout {   
+            .layout {
                 display: flex;
                 justify-content:space-between;
                 .el-table {
@@ -686,17 +686,17 @@
                     z-index: 99;
                     margin-top:0px;
                 }
-                .table-l {       
+                .table-l {
                     .el-pagination {
                         background-color:#fff;
                         width:30%;
                         z-index: 99;
                         left:15%;
                         transform: translate(-50%,0px)
-                    } 
+                    }
                 }
                 .table-r {
-                  
+
                     .el-pagination {
                         width:70%;
                         background-color:#fff;
@@ -724,7 +724,7 @@
                 }
                 .formservice {
                 }
-            }    
+            }
         }
-    } 
+    }
 </style>
