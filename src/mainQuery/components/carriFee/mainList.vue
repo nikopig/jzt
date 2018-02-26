@@ -23,10 +23,10 @@
           <common-select v-model="condition.Service_Type"></common-select>
         </el-form-item>
         <el-form-item label="对账单位">
-          <el-input :disabled="true" placeholder="双击带出对账单位" v-model="condition.SettleUp_Company_Name" @dblclick.native=" isVisible = true" icon="close" :on-icon-click="deleteCon"></el-input>
+          <el-input :disabled="true" placeholder="双击带出对账单位" v-model="condition.SettleUp_Company_Name" @dblclick.native=" isVisible = true" icon="el-icon-close" :on-icon-click="deleteCon"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button size="small" type="primary" icon="search" @click="searchData">查询</el-button>
+          <el-button size="small" type="primary" icon="el-icon-search" @click="searchData">查询</el-button>
         </el-form-item>
       </el-form>
     </div>

@@ -16,7 +16,7 @@
         <el-form-item label="承运商">
           <el-input placeholder="双击选择" v-model="searchForm.Carrier_Name"
                     :disabled="true"
-                    icon="close"
+                    icon="el-icon-close"
                     :on-icon-click="handleIconClick"
                     @dblclick.native="openDialog"></el-input>
         </el-form-item>

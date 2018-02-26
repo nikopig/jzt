@@ -52,7 +52,7 @@
 
                     <el-input class="noselect" v-model="filterCondition.Con_Name" placeholder="双击选择"
                     @dblclick.native="showDialog('Consignor')"
-                    icon="close"
+                    icon="el-icon-close"
                     :on-icon-click="deleteCon"
                     :disabled="true"></el-input>
                 </el-form-item>
@@ -81,7 +81,7 @@
                     <el-input  v-model="filterCondition.Ssa_Name"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button size="small" type="primary" icon="search" @click="searchData">查询</el-button>
+                    <el-button size="small" type="primary" icon="el-icon-search" @click="searchData">查询</el-button>
                 </el-form-item>
             </el-form>
             <!-- 订单账页查询 -->
@@ -89,7 +89,7 @@
                 <el-form-item label="对账单位">
                     <el-input class="noselect" v-model="searchCondition.MINGCHENG" placeholder="双击选择"
                     @dblclick.native="isVisible = true"
-                    icon="close"
+                    icon="el-icon-close"
                     :on-icon-click="deleteBalance"
                     :disabled="true"></el-input>
                 </el-form-item>
@@ -103,7 +103,7 @@
                     <el-date-picker v-model="searchCondition.End_Date" placeholder="选择结束日期"></el-date-picker>
                 </el-form-item>
                 <el-form-item>
-                    <el-button size="small" type="primary" icon="search" @click="searchOrderData">查询</el-button>
+                    <el-button size="small" type="primary" icon="el-icon-search" @click="searchOrderData">查询</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -120,7 +120,7 @@
                         <li style="flex:1"><el-button type="text"  @click.native="DetailedFee(o, 'detailFee')" style=" color:#20A0FF;">查看详细费用</el-button></li>
                         <li style="flex:1"><el-button type="text"  @click.native="Derivation" style=" color:#20A0FF;">导出明细</el-button></li>
                     </ul>
-                    <el-button type="text" :icon="o.iconName" class="icon"  @click.native="showDetail(o,index)"></el-button>
+                    <el-button type="text" :icon="'el-icon-' + o.iconName" class="icon"  @click.native="showDetail(o,index)"></el-button>
                 </div>
                 <div class="detail" v-if="o.detailChildren && o.detailChildren.length>0"  v-show="o.detailShow">
                     <el-table :data="o.detailChildren" style="width: 100%">

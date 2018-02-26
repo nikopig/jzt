@@ -13,7 +13,7 @@
     </div>
     <div class="toolbar">
       <div class="btn-box">
-        <el-button type="text" icon="mo-displayUninsuredvehicles" @click="goLocation">位置查询</el-button>
+        <el-button type="text" icon="el-icon-mo-displayUninsuredvehicles" @click="goLocation">位置查询</el-button>
       </div>
     </div>
     <div class="common-condition-box">

@@ -14,13 +14,13 @@
 		<div class="common-condition-box">
 			<el-form :inline="true">
 				<el-form-item label="物流中心">
-					<el-input v-model="filterCondition.Ldc_Name" placeholder="双击选择" :disabled="true" icon="close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')"></el-input>
+					<el-input v-model="filterCondition.Ldc_Name" placeholder="双击选择" :disabled="true" icon="el-icon-close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')"></el-input>
 				</el-form-item>
 				<el-form-item label="委托方">
 					<el-input v-model="filterCondition.Con_Name" placeholder="双击选择" :disabled="true" @dblclick.native="openDialog('consignor')"></el-input>
 				</el-form-item>
 				<el-form-item label="商品名称">
-					<el-input v-model="filterCondition.Goods_Name" placeholder="双击选择" :disabled="true" icon="close" :on-icon-click="deleteGood" @dblclick.native="openDialog('goods')"></el-input>
+					<el-input v-model="filterCondition.Goods_Name" placeholder="双击选择" :disabled="true" icon="el-icon-close" :on-icon-click="deleteGood" @dblclick.native="openDialog('goods')"></el-input>
 				</el-form-item>
 				<el-form-item label="库存状态">
 					<el-select v-model="filterCondition.Stock_Status" clearable placeholder="请选择">
