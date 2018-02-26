@@ -5,7 +5,7 @@
 				<el-row :gutter="20">
 				  <el-col :span="7">
 				  	<el-form-item label="上级运营商">
-							<el-input placeholder="双击选择" :disabled="true" icon="close" :on-icon-click="deleteSuper" v-model="filterCondition.Super_Operator_Name" @dblclick.native="showDialog('1', 'superOperator')"></el-input>
+							<el-input placeholder="双击选择" :disabled="true" icon="el-icon-close" :on-icon-click="deleteSuper" v-model="filterCondition.Super_Operator_Name" @dblclick.native="showDialog('1', 'superOperator')"></el-input>
 						</el-form-item>
 				  </el-col>
 				  <el-col :span="5">
@@ -28,13 +28,13 @@
 		</div>
 		<div class="toolbar">
 			<div class="btn-box">
-				<el-button type="text" icon="mo-displayHiddendata" @click.native="crossAudit">审核进入调度</el-button>
+				<el-button type="text" icon="el-icon-mo-displayHiddendata" @click.native="crossAudit">审核进入调度</el-button>
 			</div>
 			<div class="btn-box">
-				<el-button type="text" icon="mo-submit" @click.native="rejectAudit">返回上级运营商</el-button>
+				<el-button type="text" icon="el-icon-mo-submit" @click.native="rejectAudit">返回上级运营商</el-button>
 			</div>
 			<div class="btn-box">
-				<el-button type="text" icon="mo-transportationAudit" @click.native="enterRowCar">审核进入排车</el-button>
+				<el-button type="text" icon="el-icon-mo-transportationAudit" @click.native="enterRowCar">审核进入排车</el-button>
 			</div>
 		</div>
 		<div class="table-box">

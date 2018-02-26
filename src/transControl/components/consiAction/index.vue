@@ -2,19 +2,19 @@
   <div class="consi-action">
     <div style="background: #fff">
       <div class="box-btn">
-        <el-button icon="plus" type="text" @click="addToBillOrder" size="small" v-show="isRoute">加入委托单</el-button>
-        <el-button icon="mo-refresh" type="text" @click="getTransportTaskWTDInitRoute('')" size="small" v-show="isRoute">刷新
+        <el-button icon="el-icon-plus" type="text" @click="addToBillOrder" size="small" v-show="isRoute">加入委托单</el-button>
+        <el-button icon="el-icon-mo-refresh" type="text" @click="getTransportTaskWTDInitRoute('')" size="small" v-show="isRoute">刷新
         </el-button>
-        <el-button icon="mo-entrustmentNew" type="text" size="small" @click="addWtdInfo" v-show="!isRoute">新委托单
+        <el-button icon="el-icon-mo-entrustmentNew" type="text" size="small" @click="addWtdInfo" v-show="!isRoute">新委托单
         </el-button>
-        <el-button icon="minus" type="text" size="small" @click="deleteFromBillOrder" v-show="!isRoute">删除路线</el-button>
-        <el-button icon="mo-entrustmentCancellation" type="text" size="small" @click="deleteWtdInfo" v-show="!isRoute">
+        <el-button icon="el-icon-minus" type="text" size="small" @click="deleteFromBillOrder" v-show="!isRoute">删除路线</el-button>
+        <el-button icon="el-icon-mo-entrustmentCancellation" type="text" size="small" @click="deleteWtdInfo" v-show="!isRoute">
           取消委托单
         </el-button>
-        <el-button icon="mo-contactPerson" type="text" size="small" @click="showCarryInfoDialog" v-show="!isRoute">
+        <el-button icon="el-icon-mo-contactPerson" type="text" size="small" @click="showCarryInfoDialog" v-show="!isRoute">
           确认承运商
         </el-button>
-        <el-button icon="mo-contactPerson" type="text" size="small" v-show="!isRoute" @click="showOperatorInfoDialog">
+        <el-button icon="el-icon-mo-contactPerson" type="text" size="small" v-show="!isRoute" @click="showOperatorInfoDialog">
           确认运营商
         </el-button>
         <span v-if="isRoute" style="margin-left: 15px;font-size: 14px;font-weight: bold;">
@@ -651,7 +651,7 @@
       <el-dialog title="选择承运商" :visible.sync="showSelectCarryDialog" size="large">
         <el-input
           placeholder="请输入关键字"
-          icon="search"
+          icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchCarryKey">
         </el-input>
@@ -666,7 +666,7 @@
       <el-dialog title="选择车牌号" :visible.sync="showSelectVehicleNoDialog" size="large">
         <el-input
           placeholder="请输入关键字"
-          icon="search"
+          icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchvehicleNosKey">
         </el-input>
@@ -686,7 +686,7 @@
       <el-dialog title="选择司机" :visible.sync="showSelectStaffDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="search"
+          icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchStaffKey">
         </el-input>
@@ -699,7 +699,7 @@
       <el-dialog title="选择操作联系人" :visible.sync="showSelectOperatorDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="search"
+          icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchOperatorsKey">
         </el-input>
@@ -712,7 +712,7 @@
       <el-dialog title="选择运营商" size="large" :visible.sync="showSelectAssignOperatorDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="search"
+          icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchAssignOperatorsKey">
         </el-input>
@@ -727,7 +727,7 @@
       <el-dialog title="选择物流中心" :visible.sync="showSelectLdcDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="search"
+          icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchLdcKey">
         </el-input>
@@ -739,7 +739,7 @@
       <el-dialog title="选择物流中心地址" :visible.sync="showSelectLdcAddrDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="search"
+          icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchLdcAddressKey">
         </el-input>

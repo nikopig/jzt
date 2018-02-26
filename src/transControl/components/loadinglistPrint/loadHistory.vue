@@ -11,7 +11,7 @@
                 <el-form-item label="承运商：" label-width="85px">
                     <el-input placeholder="双击选择" v-model="condition.Carrier_Name" 
                         @dblclick.native="showCarriDialog('Carrier')"
-                        icon="close"
+                        icon="el-icon-close"
                         :on-icon-click="deleteCon">
                     </el-input>
                 </el-form-item>
@@ -19,7 +19,7 @@
                     <el-input placeholder="请输入装车单号" v-model="condition.zcdh"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="searchHisData" size="small" icon="search">查询</el-button>
+                    <el-button type="primary" @click="searchHisData" size="small" icon="el-icon-search">查询</el-button>
                 </el-form-item>
             </el-form>
             <!-- <el-row>
@@ -40,7 +40,7 @@
                         <label>承运商：</label>
                         <el-input placeholder="双击选择" v-model="condition.Carrier_Name" 
                         @dblclick.native="showCarriDialog('Carrier')"
-                        icon="close"
+                        icon="el-icon-close"
                         :on-icon-click="deleteCon">
                         </el-input>
                     </div>
