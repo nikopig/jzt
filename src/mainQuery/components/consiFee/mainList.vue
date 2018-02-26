@@ -52,7 +52,7 @@
 
                     <el-input class="noselect" v-model="filterCondition.Con_Name" placeholder="双击选择"
                     @dblclick.native="showDialog('Consignor')"
-                    icon="el-icon-close"
+                    suffix-icon="el-icon-close"
                     :on-icon-click="deleteCon"
                     :disabled="true"></el-input>
                 </el-form-item>
@@ -89,7 +89,7 @@
                 <el-form-item label="对账单位">
                     <el-input class="noselect" v-model="searchCondition.MINGCHENG" placeholder="双击选择"
                     @dblclick.native="isVisible = true"
-                    icon="el-icon-close"
+                    suffix-icon="el-icon-close"
                     :on-icon-click="deleteBalance"
                     :disabled="true"></el-input>
                 </el-form-item>

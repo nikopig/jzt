@@ -15,7 +15,7 @@
         <el-form-item label="对账单位">
           <el-input class="noselect" v-model="filterCondition.Con.MINGCHENG" placeholder="双击选择"
                     @dblclick.native="isVisible = true"
-                    icon="el-icon-close"
+                    suffix-icon="el-icon-close"
                     :on-icon-click="deleteCon"
                     :disabled="true"></el-input>
         </el-form-item>

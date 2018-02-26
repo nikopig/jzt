@@ -651,7 +651,7 @@
       <el-dialog title="选择承运商" :visible.sync="showSelectCarryDialog" size="large">
         <el-input
           placeholder="请输入关键字"
-          icon="el-icon-search"
+          suffix-icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchCarryKey">
         </el-input>
@@ -666,7 +666,7 @@
       <el-dialog title="选择车牌号" :visible.sync="showSelectVehicleNoDialog" size="large">
         <el-input
           placeholder="请输入关键字"
-          icon="el-icon-search"
+          suffix-icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchvehicleNosKey">
         </el-input>
@@ -686,7 +686,7 @@
       <el-dialog title="选择司机" :visible.sync="showSelectStaffDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="el-icon-search"
+          suffix-icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchStaffKey">
         </el-input>
@@ -699,7 +699,7 @@
       <el-dialog title="选择操作联系人" :visible.sync="showSelectOperatorDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="el-icon-search"
+          suffix-icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchOperatorsKey">
         </el-input>
@@ -712,7 +712,7 @@
       <el-dialog title="选择运营商" size="large" :visible.sync="showSelectAssignOperatorDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="el-icon-search"
+          suffix-icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchAssignOperatorsKey">
         </el-input>
@@ -727,7 +727,7 @@
       <el-dialog title="选择物流中心" :visible.sync="showSelectLdcDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="el-icon-search"
+          suffix-icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchLdcKey">
         </el-input>
@@ -739,7 +739,7 @@
       <el-dialog title="选择物流中心地址" :visible.sync="showSelectLdcAddrDialog">
         <el-input
           placeholder="请输入关键字"
-          icon="el-icon-search"
+          suffix-icon="el-icon-search"
           style="margin-bottom: 10px"
           v-model="searchLdcAddressKey">
         </el-input>

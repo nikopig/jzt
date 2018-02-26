@@ -13,7 +13,7 @@
                     <!-- <el-input v-model="condition.Operator_Name" @dblclick.native="showDialog('Operator')" disabled placeholder="双击选择委托方"></el-input> -->
                     <el-input class="noselect" v-model="condition.Operator_Name" placeholder="双击选择"
                     @dblclick.native="showDialog('Operator')"
-                    icon="el-icon-close"
+                    suffix-icon="el-icon-close"
                     :on-icon-click="deleteOper"
                     :disabled="true"></el-input>
                 </el-form-item>
@@ -21,7 +21,7 @@
                     <!-- <el-input v-model="condition.Con_Name" @dblclick.native="showDialog('Consignor')" disabled placeholder="双击选择委托方"></el-input> -->
                     <el-input class="noselect" v-model="condition.Con_Name" placeholder="双击选择"
                     @dblclick.native="showDialog('Consignor')"
-                    icon="el-icon-close"
+                    suffix-icon="el-icon-close"
                     :on-icon-click="deleteCon"
                     :disabled="true"></el-input>
                 </el-form-item>

@@ -28,7 +28,7 @@
 							<span class="label required">委托方</span>
 							<div class="content">
 								<el-form-item prop="Consignor_Name">
-									<el-input placeholder="双击选择委托方" :disabled="true" icon="el-icon-close" :on-icon-click="deleteConsignor" @dblclick.native="openDialog('consignor')" v-model="form.Consignor_Name"></el-input>
+									<el-input placeholder="双击选择委托方" :disabled="true" suffix-icon="el-icon-close" :on-icon-click="deleteConsignor" @dblclick.native="openDialog('consignor')" v-model="form.Consignor_Name"></el-input>
 								</el-form-item>
 							</div>
 						</common-col>
@@ -36,7 +36,7 @@
 							<span class="label required">物流中心</span>
 							<div class="content">
 								<el-form-item prop="Ldc_Name">
-									<el-input placeholder="双击选择物流中心" :disabled="true" icon="el-icon-close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')" v-model="form.Ldc_Name"></el-input>
+									<el-input placeholder="双击选择物流中心" :disabled="true" suffix-icon="el-icon-close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')" v-model="form.Ldc_Name"></el-input>
 								</el-form-item>
 							</div>
 						</common-col>

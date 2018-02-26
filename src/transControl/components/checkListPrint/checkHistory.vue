@@ -11,7 +11,7 @@
                 <el-form-item label="承运商：" label-width="85px">
                     <el-input placeholder="双击选择" v-model="condition.Carrier_Name" 
                         @dblclick.native="showCarriDialog('Carrier')"
-                        icon="el-icon-close"
+                        suffix-icon="el-icon-close"
                         :on-icon-click="deleteCon">
                     </el-input>
                 </el-form-item>
@@ -40,7 +40,7 @@
                         <label>承运商：</label>
                         <el-input placeholder="双击选择" v-model="condition.Carrier_Name" 
                         @dblclick.native="showCarriDialog('Carrier')"
-                        icon="el-icon-close"
+                        suffix-icon="el-icon-close"
                         :on-icon-click="deleteCon">
                         </el-input>
                     </div>

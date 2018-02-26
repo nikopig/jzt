@@ -5,7 +5,7 @@
 				<el-row :gutter="20">
 				  <el-col :span="7">
 				  	<el-form-item label="上级运营商">
-							<el-input placeholder="双击选择" :disabled="true" icon="el-icon-close" :on-icon-click="deleteSuper" v-model="filterCondition.Super_Operator_Name" @dblclick.native="showDialog('1', 'superOperator')"></el-input>
+							<el-input placeholder="双击选择" :disabled="true" suffix-icon="el-icon-close" :on-icon-click="deleteSuper" v-model="filterCondition.Super_Operator_Name" @dblclick.native="showDialog('1', 'superOperator')"></el-input>
 						</el-form-item>
 				  </el-col>
 				  <el-col :span="5">

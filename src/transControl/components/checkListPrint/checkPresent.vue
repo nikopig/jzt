@@ -4,7 +4,7 @@
             <el-form :inline="true" size="small">
                 <el-form-item label="委托方：" label-width="85px">
                     <el-input v-model="filterCondition.Con_Name" placeholder="双击选择"
-                              icon="el-icon-close" 
+                              suffix-icon="el-icon-close" 
                               :on-icon-click="deleteCon"
                               @dblclick.native="openDialog('Con_Id')"
                               :disabled="true"></el-input>

@@ -22,7 +22,7 @@ confirm事件的方法的参数(Rows): 为选中的行数据,结构{currentId1�
     <el-dialog class='Mydialog' :title="DialogTitle" :visible.sync="visible" @close="closeDialog" @open="openDialog">
       <el-form :model="form" ref="form" onsubmit="return false">
         <el-form-item prop="keyword" class='form-group'>
-          <el-input v-model="form.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="el-icon-search" :on-icon-click="onSearch" @keyup.native.enter="onSearch"></el-input>
+          <el-input v-model="form.keyword" auto-complete="off" placeholder='输入关键字搜索' suffix-icon="el-icon-search" :on-icon-click="onSearch" @keyup.native.enter="onSearch"></el-input>
         </el-form-item>
       </el-form>
       <div class='tabel-wrapper'>

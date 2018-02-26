@@ -11,7 +11,7 @@
             <el-input
               class="noselect"
               v-model="condition.SettleUp_Company_Name"
-              icon="el-icon-close"
+              suffix-icon="el-icon-close"
               :disabled="true"
               @dblclick.native="isVisible = true"
               placeholder="双击选择对账单位"

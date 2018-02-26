@@ -31,7 +31,7 @@
                     <el-form-item>
                         <el-button size="small" type="primary" icon="el-icon-search" @click="searchData">查询</el-button>
                     </el-form-item>
-                  <!-- <el-input v-model="form.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="el-icon-search" :on-icon-click="onSearch" @keyup.native.enter="onSearch"></el-input> -->
+                  <!-- <el-input v-model="form.keyword" auto-complete="off" placeholder='输入关键字搜索' suffix-icon="el-icon-search" :on-icon-click="onSearch" @keyup.native.enter="onSearch"></el-input> -->
                 <!-- </div> -->
             </el-form>
             <div class="feeNum">

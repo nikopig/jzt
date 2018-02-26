@@ -14,13 +14,13 @@
 		<div class="common-condition-box">
 			<el-form :inline="true" ref="filterForm">
 				<el-form-item label="运营方">
-					<el-input placeholder="双击选择运营方" v-model="filterCondition.Operator_Name" :disabled="true" icon="el-icon-close" :on-icon-click="deleteOperator" @dblclick.native="openDialog('operator')"></el-input>
+					<el-input placeholder="双击选择运营方" v-model="filterCondition.Operator_Name" :disabled="true" suffix-icon="el-icon-close" :on-icon-click="deleteOperator" @dblclick.native="openDialog('operator')"></el-input>
 				</el-form-item>
 				<el-form-item label="委托方">
-					<el-input placeholder="双击选择委托方" v-model="filterCondition.Con_Name" :disabled="true" icon="el-icon-close" :on-icon-click="deleteConsignor" @dblclick.native="openDialog('consignor')"></el-input>
+					<el-input placeholder="双击选择委托方" v-model="filterCondition.Con_Name" :disabled="true" suffix-icon="el-icon-close" :on-icon-click="deleteConsignor" @dblclick.native="openDialog('consignor')"></el-input>
 				</el-form-item>
 				<el-form-item label="物流中心">
-					<el-input placeholder="双击选择物流中心" v-model="filterCondition.Ldc_Name" :disabled="true" icon="el-icon-close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')"></el-input>
+					<el-input placeholder="双击选择物流中心" v-model="filterCondition.Ldc_Name" :disabled="true" suffix-icon="el-icon-close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')"></el-input>
 				</el-form-item>
 				<el-form-item label="租赁温度">
 					<el-select v-model="filterCondition.Refrigeration_Type" clearable placeholder="请选择">
