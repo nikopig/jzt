@@ -6,7 +6,7 @@
                     <!-- <el-input v-model="condition.Con_Name" placeholder="双击带出委托方" disabled></el-input> -->
                     <el-input  class="noselect"  v-model="condition.Con_Name" placeholder="双击选择"
                     @dblclick.native="showConDialog('Consignor')"
-                    icon="el-icon-close"
+                    suffix-icon="el-icon-close"
                     :on-icon-click="deleteCon"
                     :disabled="true"
                     ></el-input>

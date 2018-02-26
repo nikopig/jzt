@@ -15,7 +15,7 @@
 		<div class="common-condition-box">
 			<el-form :inline="true" label-width="60px">
 				<el-form-item label="承运商">
-					<el-input placeholder="双击选择" :disabled="true" v-model="filterCondition.Carrier_Name" @dblclick.native="openDialog('carrier')" icon="el-icon-close" :on-icon-click="deleteCarrier"></el-input>
+					<el-input placeholder="双击选择" :disabled="true" v-model="filterCondition.Carrier_Name" @dblclick.native="openDialog('carrier')" suffix-icon="el-icon-close" :on-icon-click="deleteCarrier"></el-input>
 				</el-form-item>
 				<el-form-item label="开始日期">
 					<el-date-picker type="date" placeholder="选择日期" v-model="filterCondition.Start_Time"></el-date-picker>

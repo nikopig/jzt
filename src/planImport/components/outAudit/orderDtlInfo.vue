@@ -28,7 +28,7 @@
         <span>商品批号：</span>
         <!-- <el-input v-if="operate === 'add' && objData.Outbound_Mode === '1'" :disabled="isDisabled" placeholder="双击选择批号"  @dblclick.native="showDialog('3', 'goodsLotno', dtlData, objData)" v-model="dtlData.Goods_Lotno"></el-input>
         <el-input :disabled="isDisabled && disable" v-model="dtlData.Goods_Lotno" v-else></el-input> -->
-        <el-input :disabled="isDisabled" placeholder="双击选择批号"  @dblclick.native="showDialog('3', 'goodsLotno', dtlData, objData)" v-model="dtlData.Goods_Lotno" icon="el-icon-close" :on-icon-click="deleLoto"></el-input>
+        <el-input :disabled="isDisabled" placeholder="双击选择批号"  @dblclick.native="showDialog('3', 'goodsLotno', dtlData, objData)" v-model="dtlData.Goods_Lotno" suffix-icon="el-icon-close" :on-icon-click="deleLoto"></el-input>
         <!-- <el-input :disabled="isDisabled && disable" v-model="dtlData.Goods_Lotno" v-else></el-input> -->
       </div>
       <div class="box-card-content-item">

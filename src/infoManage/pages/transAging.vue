@@ -65,7 +65,7 @@
                                 ]">
                         <el-tooltip class="item" effect="dark" :disabled="formData.Contract_Name ? isTooltipVisble : !isTooltipVisble" :content="formData.Contract_Name" placement="top-start">
                         <el-input v-model="formData.Contract_Name" placeholder="双击选择"
-                                  icon="el-icon-close" 
+                                  suffix-icon="el-icon-close" 
                                   @click="deleteSelect('Operator_Id')"
                                   @dblclick.native="openDialog('Operator_Id')"
                                   :disabled="true"></el-input>
@@ -76,7 +76,7 @@
                                 ]">
                         <el-tooltip class="item" effect="dark" :disabled="formData.Con_Name ? isTooltipVisble : !isTooltipVisble" :content="formData.Con_Name" placement="top-start">
                         <el-input v-model="formData.Con_Name" placeholder="双击选择"
-                                  icon="el-icon-close"
+                                  suffix-icon="el-icon-close"
                                   @click="deleteSelect('Con_Id')"
                                   @dblclick.native="openDialog('Con_Id')"
                                   :disabled="true"></el-input>
@@ -91,7 +91,7 @@
                                   { required: true, message: '请输入起点省份', trigger: 'blur' }
                                 ]">
                       <el-input v-model="formData.Start_Region_Name" placeholder="双击选择"
-                                  icon="el-icon-close"
+                                  suffix-icon="el-icon-close"
                                   @click="deleteSelect('Start_Region_No')"
                                   @dblclick.native="openDialog('Start_Region_No')"
                                   :disabled="true"></el-input>
@@ -100,7 +100,7 @@
                                   { required: true, message: '请输入起点城市', trigger: 'blur' }
                                 ]">
                       <el-input v-model="formData.Start_City_Name" placeholder="双击选择"
-                                  icon="el-icon-close"
+                                  suffix-icon="el-icon-close"
                                   @click="deleteSelect('Start_City_No')"
                                   @dblclick.native="openDialog('Start_City_No')"
                                   :disabled="true"></el-input>
@@ -109,7 +109,7 @@
                                   { required: true, message: '请输入收货省份', trigger: 'blur' }
                                 ]">
                       <el-input v-model="formData.End_Region_Name" placeholder="双击选择"
-                                  icon="el-icon-close"
+                                  suffix-icon="el-icon-close"
                                   @click="deleteSelect('End_Region_No')"
                                   @dblclick.native="openDialog('End_Region_No')"
                                   :disabled="true"></el-input>
@@ -118,7 +118,7 @@
                                   { required: true, message: '请输入收货城市', trigger: 'blur' }
                                 ]">
                       <el-input v-model="formData.End_City_Name" placeholder="双击选择"
-                                  icon="el-icon-close"
+                                  suffix-icon="el-icon-close"
                                   @click="deleteSelect('End_City_No')"
                                   @dblclick.native="openDialog('End_City_No')"
                                   :disabled="true"></el-input>

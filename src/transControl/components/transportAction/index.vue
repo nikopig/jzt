@@ -368,13 +368,13 @@
                 <common-col>
                   <span class="label">固定运营商</span>
                   <div class="content">
-                    <el-input placeholder="双击带出运营商" v-model="rt.Fixed_Operator_Name" :disabled="true" @dblclick.native="openFixOper(rt)" icon="el-icon-close" :on-icon-click="deleteFixOper"></el-input>
+                    <el-input placeholder="双击带出运营商" v-model="rt.Fixed_Operator_Name" :disabled="true" @dblclick.native="openFixOper(rt)" suffix-icon="el-icon-close" :on-icon-click="deleteFixOper"></el-input>
                   </div>
                 </common-col>
                 <common-col>
                   <span class="label">固定承运商</span>
                   <div class="content">
-                    <el-input placeholder="双击带出承运商" v-model="rt.Fixed_Carrier_Name" :disabled="true" @dblclick.native="openFixCarr(rt)" icon="el-icon-close" :on-icon-click="deleteFixCarr"></el-input>
+                    <el-input placeholder="双击带出承运商" v-model="rt.Fixed_Carrier_Name" :disabled="true" @dblclick.native="openFixCarr(rt)" suffix-icon="el-icon-close" :on-icon-click="deleteFixCarr"></el-input>
                   </div>
                 </common-col>
                 <common-col>

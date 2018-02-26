@@ -14,7 +14,7 @@
         <div class="common-condition-box">
           <el-form :inline="true" size="small" label-width="px">
               <el-form-item label="委托方：">
-                <el-input v-model="condition.Con_Name" @dblclick.native="openDialog('consignor')" disabled placeholder="双击选择委托方" icon="el-icon-close" :on-icon-click="deleteCon"></el-input>
+                <el-input v-model="condition.Con_Name" @dblclick.native="openDialog('consignor')" disabled placeholder="双击选择委托方" suffix-icon="el-icon-close" :on-icon-click="deleteCon"></el-input>
               </el-form-item>
               <el-form-item labelWidth="120px" label="下单或签收日期：">
                 <el-date-picker

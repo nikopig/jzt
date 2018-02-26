@@ -6,10 +6,10 @@
 					<el-date-picker v-model="filterCondition.rangeDate" type="daterange" placeholder="选择日期范围"></el-date-picker>
 				</el-form-item>
 				<el-form-item label="委托方">
-					<el-input :disabled="true" v-model="filterCondition.Con_Name" placeholder="双击选择委托方" @dblclick.native="openDialog('consignor')" icon="el-icon-close" :on-icon-click="deleteConsignor"></el-input>
+					<el-input :disabled="true" v-model="filterCondition.Con_Name" placeholder="双击选择委托方" @dblclick.native="openDialog('consignor')" suffix-icon="el-icon-close" :on-icon-click="deleteConsignor"></el-input>
 				</el-form-item>
 				<el-form-item label="承运方">
-					<el-input :disabled="true" v-model="filterCondition.Carrier_Name" placeholder="双击选择承运方" icon="el-icon-close" :on-icon-click="deleteCarrier" @dblclick.native="openDialog('carrier')"></el-input>
+					<el-input :disabled="true" v-model="filterCondition.Carrier_Name" placeholder="双击选择承运方" suffix-icon="el-icon-close" :on-icon-click="deleteCarrier" @dblclick.native="openDialog('carrier')"></el-input>
 				</el-form-item>
 				<el-form-item label="单位名称">
 					<el-input v-model="filterCondition.Ssa_Name" placeholder="请输入单位名称、助记码、联系人、联系电话或地址"></el-input>

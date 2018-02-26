@@ -16,7 +16,7 @@
         <el-form-item label="对账单位">
           <el-input class="noselect" v-model="filterCondition.Con.MINGCHENG" placeholder="双击选择"
                     @dblclick.native="isVisible = true"
-                    icon="el-icon-close"
+                    suffix-icon="el-icon-close"
                     :on-icon-click="deleteCon"
                     :disabled="true"></el-input>
         </el-form-item>
@@ -76,7 +76,7 @@
                           :rules="[{ required: true, message: '请选择对账单位', trigger: 'blur' }]">
               <el-input class="noselect" v-model="addDialog.form.MINGCHENG" placeholder="双击选择"
                         @dblclick.native="isVisible = true"
-                        icon="el-icon-close"
+                        suffix-icon="el-icon-close"
                         :on-icon-click="deleteAddCon"
                         :disabled="true"></el-input>
             </el-form-item>
@@ -100,7 +100,7 @@
             <el-form-item label="订单号" label-width="100px" prop="Biz_Bill_Hdr_Id">
               <el-input class="noselect" v-model="addDialog.form.Biz_Bill_Hdr_Id" placeholder="双击选择"
                         @dblclick.native="danIsVisible = true"
-                        icon="el-icon-close"
+                        suffix-icon="el-icon-close"
                         :on-icon-click="deleteAddOrder"
                         :disabled="true"></el-input>
             </el-form-item>

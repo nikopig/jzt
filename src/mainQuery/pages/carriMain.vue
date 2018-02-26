@@ -5,7 +5,7 @@
         <el-form-item label="承运方名称：" label-width="85px">
           <el-input class="noselect" v-model="condition.Carrier_Name" placeholder="双击选择"
                     @dblclick.native="showConDialog('Carrier')"
-                    icon="el-icon-close"
+                    suffix-icon="el-icon-close"
                     :on-icon-click="deleteCon"
           ></el-input>
         </el-form-item>
