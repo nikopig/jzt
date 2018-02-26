@@ -14,7 +14,7 @@
       </div>
       <div class="toolbar">
         <div class="btn-box">
-          <el-button type="text" icon="mo-download" @click="print">温度下载</el-button>
+          <el-button type="text" icon="el-icon-mo-download" @click="print">温度下载</el-button>
         </div>
         <div class="text-box">
           <div class="text">

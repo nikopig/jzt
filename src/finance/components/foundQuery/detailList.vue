@@ -2,7 +2,7 @@
     <div>
       <div class="toolbar">
         <div class="btn-box">
-          <el-button type="text" icon="mo-download" @click="exportExcel">导出excel</el-button>
+          <el-button type="text" icon="el-icon-mo-download" @click="exportExcel">导出excel</el-button>
         </div>
       </div>
       <div class="headbar">

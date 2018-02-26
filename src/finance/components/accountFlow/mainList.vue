@@ -2,10 +2,10 @@
   <div class="main-list">
     <div class="toolbar">
       <div class="btn-box">
-        <el-button type="text" icon="plus" @click="addInsert">{{btnText}}</el-button>
+        <el-button type="text" icon="el-icon-plus" @click="addInsert">{{btnText}}</el-button>
       </div>
       <div class="btn-box">
-        <el-button type="text" icon="check" @click="confirmData">对账确认</el-button>
+        <el-button type="text" icon="el-icon-check" @click="confirmData">对账确认</el-button>
       </div>
       <div class="btn-box" style="float: right;line-height: 30px;margin-right: 25px;">
         总金额：{{tolMoney}}
@@ -16,7 +16,7 @@
         <el-form-item label="对账单位">
           <el-input class="noselect" v-model="filterCondition.Con.MINGCHENG" placeholder="双击选择"
                     @dblclick.native="isVisible = true"
-                    icon="close"
+                    icon="el-icon-close"
                     :on-icon-click="deleteCon"
                     :disabled="true"></el-input>
         </el-form-item>
@@ -30,7 +30,7 @@
           <el-date-picker v-model="filterCondition.End_Date" placeholder="选择结束日期"></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button size="small" type="primary" icon="search" @click="searchData">查询</el-button>
+          <el-button size="small" type="primary" icon="el-icon-search" @click="searchData">查询</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -76,7 +76,7 @@
                           :rules="[{ required: true, message: '请选择对账单位', trigger: 'blur' }]">
               <el-input class="noselect" v-model="addDialog.form.MINGCHENG" placeholder="双击选择"
                         @dblclick.native="isVisible = true"
-                        icon="close"
+                        icon="el-icon-close"
                         :on-icon-click="deleteAddCon"
                         :disabled="true"></el-input>
             </el-form-item>
@@ -100,7 +100,7 @@
             <el-form-item label="订单号" label-width="100px" prop="Biz_Bill_Hdr_Id">
               <el-input class="noselect" v-model="addDialog.form.Biz_Bill_Hdr_Id" placeholder="双击选择"
                         @dblclick.native="danIsVisible = true"
-                        icon="close"
+                        icon="el-icon-close"
                         :on-icon-click="deleteAddOrder"
                         :disabled="true"></el-input>
             </el-form-item>

@@ -48,8 +48,8 @@
 				<div class="btn-box">委托单号：{{ params.TransportEntrust_No }}</div>
 				<div class="btn-box">承运方：{{ params.Carrier_Name }}</div>
 				<div class="btn-box">
-					<el-button type="text" icon="mo-submit" @click.native="showReceiptDialog">回单回传</el-button>
-					<el-button type="text" icon="mo-submit" @click.native="showUploadDialog">回单上传</el-button>
+					<el-button type="text" icon="el-icon-mo-submit" @click.native="showReceiptDialog">回单回传</el-button>
+					<el-button type="text" icon="el-icon-mo-submit" @click.native="showUploadDialog">回单上传</el-button>
 				</div>
 			</div>
 			<ul class="transEntrustInfo">

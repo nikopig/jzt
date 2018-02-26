@@ -54,7 +54,7 @@
               </el-select>
             </el-form-item>
             <el-form-item class="setButton-width">
-              <el-button size="small" type="primary" icon="search" @click="nextTo">
+              <el-button size="small" type="primary" icon="el-icon-search" @click="nextTo">
                   查询
                </el-button>
             </el-form-item>

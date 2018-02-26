@@ -2,16 +2,16 @@
 	<div class="list">
 		<div class="toolbar">
 			<div class="btn-box">
-				<el-button type="text" icon="mo-newlyAdded" @click.native="addFeeRuleStorage">新增</el-button>
+				<el-button type="text" icon="el-icon-mo-newlyAdded" @click.native="addFeeRuleStorage">新增</el-button>
 			</div>
 			<div class="btn-box">
-				<el-button type="text" icon="mo-delete2" @click.native="deleteFeeRuleStorage">删除</el-button>
+				<el-button type="text" icon="el-icon-mo-delete2" @click.native="deleteFeeRuleStorage">删除</el-button>
 			</div>
 			<div class="btn-box">
-				<el-button type="text" icon="mo-download">导出</el-button>
+				<el-button type="text" icon="el-icon-mo-download">导出</el-button>
 			</div>
 			<div class="btn-box">
-				<el-button type="text" icon="mo-refresh" @click.native="refreshList">刷新</el-button>
+				<el-button type="text" icon="el-icon-mo-refresh" @click.native="refreshList">刷新</el-button>
 			</div>
 		</div>
 		<div class="common-condition-box">

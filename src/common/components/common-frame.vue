@@ -2,7 +2,7 @@
     <div class="common-frame">
       <div class="toolbar">
         <div class="btn-box">
-          <el-button type="text" icon="caret-left" @click="go(-1)">返回</el-button>
+          <el-button type="text" icon="el-icon-caret-left" @click="go(-1)">返回</el-button>
         </div>
       </div>
       <iframe :src="src" frameborder="0" class="iframe" :style="{height: height}"></iframe>

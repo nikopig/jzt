@@ -6,9 +6,9 @@
                   <div class="main-list">
                     <div class="toolbar" v-if="true">
                       <div class="btn-box">
-                        <el-button type="text" icon="mo-beifen" @click="addData">新增</el-button>
-                        <el-button type="text" icon="check" @click="deleteData">删除</el-button>
-                        <el-button type="text" icon="mo-print" @click="refreshData">刷新</el-button>
+                        <el-button type="text" icon="el-icon-mo-beifen" @click="addData">新增</el-button>
+                        <el-button type="text" icon="el-icon-check" @click="deleteData">删除</el-button>
+                        <el-button type="text" icon="el-icon-mo-print" @click="refreshData">刷新</el-button>
                       </div>
                     </div>
                     <div class="common-condition-box">
@@ -18,7 +18,7 @@
                                   <common-select field="TimeLimit_Type" v-model="filterCondition.TimeLimit_Type"></common-select>
                                 </el-form-item>
                                 <el-form-item>
-                                  <el-button size="small" type="primary" icon="search" @click="searchData">查询</el-button>
+                                  <el-button size="small" type="primary" icon="el-icon-search" @click="searchData">查询</el-button>
                                 </el-form-item>
                           </common-row>
                       </el-form>
@@ -56,21 +56,21 @@
                   <div class="main-list">
                     <div class="toolbar" v-if="true">
                       <div class="btn-box">
-                        <el-button type="text" icon="mo-beifen" @click="addData">新增</el-button>
+                        <el-button type="text" icon="el-icon-mo-beifen" @click="addData">新增</el-button>
                       </div>
                     </div>
                     <div>
                         <el-form :inline="true" :model="formSearchData">
                           <el-form-item label="运营方">
                             <el-input v-model="formSearchData.Operator_Name" placeholder="双击选择"
-                                      icon="close"
+                                      icon="el-icon-close"
                                       @click="deleteSelect('Operator_Id')"
                                       @dblclick.native="openDialog('Operator_Id')"
                                       :disabled="true"></el-input>
                           </el-form-item>
                           <el-form-item label="结算单位">
                             <el-input v-model="formSearchData.Ssa_Name" placeholder="双击选择"
-                                      icon="close"
+                                      icon="el-icon-close"
                                       @click="deleteSelect('SettleUp_Company_Id')"
                                       @dblclick.native="openDialog('SettleUp_Company_Id')" :disabled="true"></el-input>
                           </el-form-item>

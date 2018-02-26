@@ -2,13 +2,13 @@
 	<div class="detail">
 		<div class="toolbar">
 			<div class="btn-box">
-				<el-button type="text" icon="mo-newlyAdded" @click.native="addFeeRuleStorage('form')">新增</el-button>
+				<el-button type="text" icon="el-icon-mo-newlyAdded" @click.native="addFeeRuleStorage('form')">新增</el-button>
 			</div>
 			<div class="btn-box">
-				<el-button type="text" icon="mo-activateSave" @click.native="saveFeeRuleStorage('form')">保存</el-button>
+				<el-button type="text" icon="el-icon-mo-activateSave" @click.native="saveFeeRuleStorage('form')">保存</el-button>
 			</div>
 			<!-- <div class="btn-box">
-				<el-button type="text" icon="mo-refresh" @click.native="refreshDetail('form')">刷新</el-button>
+				<el-button type="text" icon="el-icon-mo-refresh" @click.native="refreshDetail('form')">刷新</el-button>
 			</div> -->
 		</div>
 		<div class="common-condition-box">
@@ -28,7 +28,7 @@
 							<span class="label required">委托方</span>
 							<div class="content">
 								<el-form-item prop="Consignor_Name">
-									<el-input placeholder="双击选择委托方" :disabled="true" icon="close" :on-icon-click="deleteConsignor" @dblclick.native="openDialog('consignor')" v-model="form.Consignor_Name"></el-input>
+									<el-input placeholder="双击选择委托方" :disabled="true" icon="el-icon-close" :on-icon-click="deleteConsignor" @dblclick.native="openDialog('consignor')" v-model="form.Consignor_Name"></el-input>
 								</el-form-item>
 							</div>
 						</common-col>
@@ -36,7 +36,7 @@
 							<span class="label required">物流中心</span>
 							<div class="content">
 								<el-form-item prop="Ldc_Name">
-									<el-input placeholder="双击选择物流中心" :disabled="true" icon="close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')" v-model="form.Ldc_Name"></el-input>
+									<el-input placeholder="双击选择物流中心" :disabled="true" icon="el-icon-close" :on-icon-click="deleteLdc" @dblclick.native="openDialog('ldc')" v-model="form.Ldc_Name"></el-input>
 								</el-form-item>
 							</div>
 						</common-col>

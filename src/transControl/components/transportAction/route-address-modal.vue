@@ -5,7 +5,7 @@
         <el-tab-pane label="委托方地址" name="consi">
         <el-form>
           <div class='form-group'>
-            <el-input v-model="consi.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="search"></el-input>
+            <el-input v-model="consi.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="el-icon-search"></el-input>
           </div>
         </el-form>
         <div class='tabel-wrapper'>
@@ -24,7 +24,7 @@
         <el-tab-pane label="物流中心地址" name="logistics">
           <el-form>
             <div class='form-group'>
-              <el-input v-model="logistics.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="search"></el-input>
+              <el-input v-model="logistics.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="el-icon-search"></el-input>
             </div>
           </el-form>
           <div class='tabel-wrapper'>
@@ -43,7 +43,7 @@
         <el-tab-pane label="承运商地址" name="carri">
           <el-form>
             <div class='form-group'>
-              <el-input v-model="carri.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="search"></el-input>
+              <el-input v-model="carri.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="el-icon-search"></el-input>
             </div>
           </el-form>
           <div class='tabel-wrapper'>
@@ -62,7 +62,7 @@
         <el-tab-pane label="外部中转地址" name="outerTransfer">
           <el-form>
             <div class='form-group'>
-              <el-input v-model="outerTransfer.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="search"></el-input>
+              <el-input v-model="outerTransfer.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="el-icon-search"></el-input>
             </div>
           </el-form>
           <div class='tabel-wrapper'>

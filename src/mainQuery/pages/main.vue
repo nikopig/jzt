@@ -6,7 +6,7 @@
                     <!-- <el-input v-model="condition.Con_Name" placeholder="双击带出委托方" disabled></el-input> -->
                     <el-input  class="noselect"  v-model="condition.Con_Name" placeholder="双击选择"
                     @dblclick.native="showConDialog('Consignor')"
-                    icon="close"
+                    icon="el-icon-close"
                     :on-icon-click="deleteCon"
                     :disabled="true"
                     ></el-input>
@@ -1361,7 +1361,7 @@
         text-align: right;
     }
     col{
-        width:auto;
+        // width:auto;
     }
     .el-table td, .el-table th{
         height:35px !important;

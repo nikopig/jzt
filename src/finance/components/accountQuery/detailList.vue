@@ -32,7 +32,7 @@
               </common-col>
               <!-- <common-col>
                 <el-form-item>
-                  <el-button size="small" type="primary" icon="search" @click="searchData">查询</el-button>
+                  <el-button size="small" type="primary" icon="el-icon-search" @click="searchData">查询</el-button>
                 </el-form-item>
               </common-col> -->
           </common-row>

@@ -55,8 +55,8 @@
   top: 0px;
 }
 
-.el-input__icon {
-  line-height: 24px;
+.el-input__icon, .el-input--small .el-input__icon {
+  line-height: 24px!important;
 }
 
 .el-input__prefix {
@@ -67,10 +67,27 @@
   background-color: inherit;
 }
 
-.el-dialog {
-  margin: 0px;
+// 2018-02-26 huxiangli 增加
+.Mydialog .el-dialog {
+  // margin: 0px;
+  -webkit-transform: translateX(0)!important;
+     -moz-transform: translateX(0)!important;
+      -ms-transform: translateX(0)!important;
+       -o-transform: translateX(0)!important;
+          transform: translateX(0)!important;
 }
-
-.el-pager li.active {
-  background-color: transparent;
+.el-table .cell{
+  line-height: 16px;
+}
+.el-dialog__headerbtn {
+  font-size: 20px;
+  top: 12px;
+}
+.el-input__prefix {
+  left: 5px;
+  width: auto!important;
+  min-width: auto!important;
+}
+.el-input--mini .el-input__icon {
+  line-height: 22px;
 }

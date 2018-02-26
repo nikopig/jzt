@@ -13,9 +13,9 @@
     </div>
     <div class="toolbar" v-if="$route.params.isAudit == 2">
       <div class="btn-box">
-        <el-button type="text" icon="mo-beifen" @click="repulseData">打回</el-button>
-        <el-button type="text" icon="check" @click="confirmData">审核通过</el-button>
-        <el-button type="text" icon="mo-print" @click="printBill">打印对账单</el-button>
+        <el-button type="text" icon="el-icon-mo-beifen" @click="repulseData">打回</el-button>
+        <el-button type="text" icon="el-icon-check" @click="confirmData">审核通过</el-button>
+        <el-button type="text" icon="el-icon-mo-print" @click="printBill">打印对账单</el-button>
       </div>
     </div>
     <div class="common-condition-box">

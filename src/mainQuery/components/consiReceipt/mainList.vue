@@ -14,7 +14,7 @@
         <div class="common-condition-box">
           <el-form :inline="true" size="small" label-width="px">
               <el-form-item label="委托方：">
-                <el-input v-model="condition.Con_Name" @dblclick.native="openDialog('consignor')" disabled placeholder="双击选择委托方" icon="close" :on-icon-click="deleteCon"></el-input>
+                <el-input v-model="condition.Con_Name" @dblclick.native="openDialog('consignor')" disabled placeholder="双击选择委托方" icon="el-icon-close" :on-icon-click="deleteCon"></el-input>
               </el-form-item>
               <el-form-item labelWidth="120px" label="下单或签收日期：">
                 <el-date-picker
@@ -39,7 +39,7 @@
                 </el-radio-group>
               </el-form-item>
               <el-form-item>
-                <el-button size="small" type="primary" icon="search" @click="search">查询</el-button>
+                <el-button size="small" type="primary" icon="el-icon-search" @click="search">查询</el-button>
               </el-form-item>
           </el-form>
         </div>
@@ -54,9 +54,9 @@
             未回单数：<span>{{HuiDan.Wei_HuiDan_Num}}</span>
           </div>
           <div class="btn-box">
-            <el-button type="text" icon="mo-refresh" @click.native="init">刷新数据</el-button>
-            <el-button type="text" icon="check" @click.native="receiptConfirm ">回单确认</el-button>
-            <el-button type="text" icon="mo-download">导出明细</el-button>
+            <el-button type="text" icon="el-icon-mo-refresh" @click.native="init">刷新数据</el-button>
+            <el-button type="text" icon="el-icon-check" @click.native="receiptConfirm ">回单确认</el-button>
+            <el-button type="text" icon="el-icon-mo-download">导出明细</el-button>
           </div>
         </div>
         <div class="table-box">

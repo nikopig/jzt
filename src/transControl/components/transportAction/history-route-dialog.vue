@@ -15,7 +15,7 @@
               </el-checkbox-group>
             </el-form-item>
             <!--<el-form-item>-->
-              <!--<el-button type="primary" size="small" icon="search">查询</el-button>-->
+              <!--<el-button type="primary" size="small" icon="el-icon-search">查询</el-button>-->
             <!--</el-form-item>-->
           </el-form>
         </div>

@@ -14,19 +14,19 @@
     </div>
     <div class="toolbar">
       <!-- <div class="btn-box">
-         <el-button type="text" icon="plus" @click="addInsert">追加收入</el-button>
+         <el-button type="text" icon="el-icon-plus" @click="addInsert">追加收入</el-button>
        </div>-->
       <div class="btn-box">
-        <el-button type="text" icon="check" @click="confirmData">对账确认</el-button>
+        <el-button type="text" icon="el-icon-check" @click="confirmData">对账确认</el-button>
       </div>
       <div class="btn-box">
-        <el-button type="text" icon="edit" @click="editData">编辑</el-button>
+        <el-button type="text" icon="el-icon-edit" @click="editData">编辑</el-button>
       </div>
       <div class="btn-box">
         <el-button type="text" @click="saveData"><i class="el-icon-mo-activateSave"></i>&nbsp;保存</el-button>
       </div>
       <div class="btn-box">
-        <el-button type="text" icon="delete" @click="deleteData">删除</el-button>
+        <el-button type="text" icon="el-icon-delete" @click="deleteData">删除</el-button>
       </div>
     </div>
     <div class="table-box">

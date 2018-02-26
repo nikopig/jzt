@@ -1,6 +1,6 @@
 export default {
   Environment: 'dev',
   packgeType: 'test'
-  // Environment: 'build'
+  // Environment: 'build',
   // packgeType: 'pro'
 }

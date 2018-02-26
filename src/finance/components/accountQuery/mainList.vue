@@ -16,7 +16,7 @@
               <el-input
                 class="noselect"
                 v-model="condition.SettleUp_Company_Name"
-                icon="close"
+                icon="el-icon-close"
                 :disabled="true"
                 @dblclick.native="isVisible = true"
                 placeholder="双击选择对账单位"
@@ -28,7 +28,7 @@
               <select-service-type v-model="condition.selectType"></select-service-type>
             </el-form-item>
             <el-form-item>
-              <el-button size="small" type="primary" icon="search" @click="searchData">查询</el-button>
+              <el-button size="small" type="primary" icon="el-icon-search" @click="searchData">查询</el-button>
             </el-form-item>
           </div>
         </el-form>

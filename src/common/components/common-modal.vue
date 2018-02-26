@@ -22,12 +22,12 @@ confirm事件的方法的参数(Rows): 为选中的行数据,结构{currentId1�
     <el-dialog class='Mydialog' :title="DialogTitle" :visible.sync="visible" @close="closeDialog" @open="openDialog">
       <el-form :model="form" ref="form" onsubmit="return false">
         <el-form-item prop="keyword" class='form-group'>
-          <el-input v-model="form.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="search" :on-icon-click="onSearch" @keyup.native.enter="onSearch"></el-input>
+          <el-input v-model="form.keyword" auto-complete="off" placeholder='输入关键字搜索' icon="el-icon-search" :on-icon-click="onSearch" @keyup.native.enter="onSearch"></el-input>
         </el-form-item>
       </el-form>
       <div class='tabel-wrapper'>
-        <el-table stripe ref='singleTable' :data="listData" highlight-current-row @current-change='handleCurrentChange' height='300' @row-dblclick='_confirm'>
-          <el-table-column v-for='(item, $index) in TableHeader' :property="item.field" :label="item.title" :key='$index' header-align="left" :width='item.width?item.width:110'>
+        <el-table stripe ref='singleTable' :data="listData" highlight-current-row @current-change='handleCurrentChange' height='300' @row-dblclick='_confirm' border>
+          <el-table-column v-for='(item, $index) in TableHeader' :property="item.field" :label="item.title" :key='$index' header-align="left" :width='item.width'>
             <template slot-scope="scope">
               <div :title='scope.row[item.field]' slot="reference" class="name-wrapper" v-if="item.field !== 'dialogOperate'">{{ scope.row[item.field] }}
               </div>

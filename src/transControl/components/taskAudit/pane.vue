@@ -5,7 +5,7 @@
   			<span class="field-name">{{ fieldType == 'table' ? name.label : (name.label + '：') }}</span>
   			<span class="field-value" :title="copyPaneData[name.prop]">{{ copyPaneData[name.prop] }}</span>
   		</div>
-  		<el-button type="text" :icon="iconName" class="icon" v-if="showIcon" @click.native="showDetail"></el-button>
+  		<el-button type="text" :icon="'el-icon-' + iconName" class="icon" v-if="showIcon" @click.native="showDetail"></el-button>
 	  </div>
 	</div>
 </template>

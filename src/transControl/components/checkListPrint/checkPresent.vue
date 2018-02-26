@@ -4,7 +4,7 @@
             <el-form :inline="true" size="small">
                 <el-form-item label="委托方：" label-width="85px">
                     <el-input v-model="filterCondition.Con_Name" placeholder="双击选择"
-                              icon="close" 
+                              icon="el-icon-close" 
                               :on-icon-click="deleteCon"
                               @dblclick.native="openDialog('Con_Id')"
                               :disabled="true"></el-input>
@@ -19,7 +19,7 @@
                     <el-input placeholder="请输入单据号" v-model="filterCondition.billNo"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="searchData" size="small" icon="search">查询</el-button>
+                    <el-button type="primary" @click="searchData" size="small" icon="el-icon-search">查询</el-button>
                 </el-form-item>
             </el-form>
             <div class="state">

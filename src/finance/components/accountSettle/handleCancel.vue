@@ -2,12 +2,12 @@
   <div class="handle">
     <div class="toolbar">
       <div class="btn-box">
-        <el-button type="text" icon="plus" @click="billCancel" :disabled="formSearchData.Payment_Operate_State==='J'">
+        <el-button type="text" icon="el-icon-plus" @click="billCancel" :disabled="formSearchData.Payment_Operate_State==='J'">
           撤销开票
         </el-button>
       </div>
       <div class="btn-box">
-        <el-button type="text" icon="plus" @click="settleCancel"
+        <el-button type="text" icon="el-icon-plus" @click="settleCancel"
                    :disabled="formSearchData.Payment_Operate_State==='K'">撤销结算
         </el-button>
       </div>
@@ -17,14 +17,14 @@
         <el-form :inline="true" :model="formSearchData">
           <el-form-item label="运营方">
             <el-input v-model="formSearchData.Operator_Name" placeholder="双击选择"
-                      icon="close"
+                      icon="el-icon-close"
                       @click="deleteSelect('Operator_Id')"
                       @dblclick.native="openDialog('Operator_Id')"
                       :disabled="true"></el-input>
           </el-form-item>
           <el-form-item label="结算单位">
             <el-input v-model="formSearchData.Ssa_Name" placeholder="双击选择"
-                      icon="close"
+                      icon="el-icon-close"
                       @click="deleteSelect('SettleUp_Company_Id')"
                       @dblclick.native="openDialog('SettleUp_Company_Id')" :disabled="true"></el-input>
           </el-form-item>
@@ -53,7 +53,7 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="searchData" size="small" icon="search">查询</el-button>
+            <el-button type="primary" @click="searchData" size="small" icon="el-icon-search">查询</el-button>
           </el-form-item>
         </el-form>
       </div>

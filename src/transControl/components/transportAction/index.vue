@@ -3,31 +3,31 @@
       <!--头部工具栏-->
       <div class="toolbar">
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="plus" @click="beforeAddOrder">加单</el-button>
+          <el-button type="text" icon="el-icon-plus" @click="beforeAddOrder">加单</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="edit" @click="changeOrder">订单信息变更</el-button>
+          <el-button type="text" icon="el-icon-edit" @click="changeOrder">订单信息变更</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="mo-tingzhi" @click="stopDtl">停止明细</el-button>
+          <el-button type="text" icon="el-icon-mo-tingzhi" @click="stopDtl">停止明细</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="mo-refresh" @click="refreshTransAction">刷新</el-button>
+          <el-button type="text" icon="el-icon-mo-refresh" @click="refreshTransAction">刷新</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="mo-auditing" @click="auditDistributeCar">审核配送排车</el-button>
+          <el-button type="text" icon="el-icon-mo-auditing" @click="auditDistributeCar">审核配送排车</el-button>
         </div>
         <div class="btn-box" v-show="!showRoute">
-          <el-button type="text" icon="warning" @click="showNotPointCompanyDialog" :class="{'warning': notPointCompany.datas.length > 0}">警告</el-button>
+          <el-button type="text" icon="el-icon-warning" @click="showNotPointCompanyDialog" :class="{'warning': notPointCompany.datas.length > 0}">警告</el-button>
         </div>
         <div class="btn-box" v-show="showRoute">
-          <el-button type="text" icon="mo-mapPoint" @click="checkHisRoute">历史路线</el-button>
+          <el-button type="text" icon="el-icon-mo-mapPoint" @click="checkHisRoute">历史路线</el-button>
         </div>
         <div class="btn-box" v-show="showRoute">
-          <el-button type="text" icon="mo-newlyAdded" @click="addRoute">添加路线</el-button>
+          <el-button type="text" icon="el-icon-mo-newlyAdded" @click="addRoute">添加路线</el-button>
         </div>
         <div class="btn-box" v-show="showRoute">
-          <el-button type="text" icon="mo-cancle2" @click="delRoute">删除路线</el-button>
+          <el-button type="text" icon="el-icon-mo-cancle2" @click="delRoute">删除路线</el-button>
         </div>
         <div class="routeInfo" v-if="choiceId !== -1">
           <span>所选路线编号：</span><span>{{choiceRoute.TransportRoute_No}}</span>
@@ -249,12 +249,12 @@
               <div class="tx-box" :title="rt.Weight_Sum">总重量：{{rt.Weight_Sum}}kg</div>
               <div class="btn-box">
 
-                <el-button type="text" icon="mo-direction" @click="addStartAddress(rt)" v-if="!rt.isHistory">添加出发地</el-button>
-                <el-button type="text" icon="plus" @click="addAdress(rt, rIndex)" v-if="!rt.isHistory">添加地址</el-button>
-                <el-button type="text" icon="mo-destinationAdd" @click="addDestination(rt)" v-if="!rt.isHistory">添加目的地</el-button>
-                <el-button type="text" icon="delete" @click="delDtl(rt)">删单</el-button>
-                <el-button type="text" icon="mo-preservation" @click="saveRoute(rt)">保存</el-button>
-                <el-button type="text" icon="mo-sure" @click="beforeSubmitRoute(rt)">确定</el-button>
+                <el-button type="text" icon="el-icon-mo-direction" @click="addStartAddress(rt)" v-if="!rt.isHistory">添加出发地</el-button>
+                <el-button type="text" icon="el-icon-plus" @click="addAdress(rt, rIndex)" v-if="!rt.isHistory">添加地址</el-button>
+                <el-button type="text" icon="el-icon-mo-destinationAdd" @click="addDestination(rt)" v-if="!rt.isHistory">添加目的地</el-button>
+                <el-button type="text" icon="el-icon-delete" @click="delDtl(rt)">删单</el-button>
+                <el-button type="text" icon="el-icon-mo-preservation" @click="saveRoute(rt)">保存</el-button>
+                <el-button type="text" icon="el-icon-mo-sure" @click="beforeSubmitRoute(rt)">确定</el-button>
                 <el-button type="text" @click="getDtlByRouteId(rt)">{{!rt.expand ? '显示' : '隐藏'}}
                   <i class="el-icon-arrow-up el-icon--right" v-if="rt.expand"></i>
                   <i class="el-icon-arrow-down el-icon--right" v-if="!rt.expand"></i>
@@ -368,13 +368,13 @@
                 <common-col>
                   <span class="label">固定运营商</span>
                   <div class="content">
-                    <el-input placeholder="双击带出运营商" v-model="rt.Fixed_Operator_Name" :disabled="true" @dblclick.native="openFixOper(rt)" icon="close" :on-icon-click="deleteFixOper"></el-input>
+                    <el-input placeholder="双击带出运营商" v-model="rt.Fixed_Operator_Name" :disabled="true" @dblclick.native="openFixOper(rt)" icon="el-icon-close" :on-icon-click="deleteFixOper"></el-input>
                   </div>
                 </common-col>
                 <common-col>
                   <span class="label">固定承运商</span>
                   <div class="content">
-                    <el-input placeholder="双击带出承运商" v-model="rt.Fixed_Carrier_Name" :disabled="true" @dblclick.native="openFixCarr(rt)" icon="close" :on-icon-click="deleteFixCarr"></el-input>
+                    <el-input placeholder="双击带出承运商" v-model="rt.Fixed_Carrier_Name" :disabled="true" @dblclick.native="openFixCarr(rt)" icon="el-icon-close" :on-icon-click="deleteFixCarr"></el-input>
                   </div>
                 </common-col>
                 <common-col>
@@ -1025,7 +1025,7 @@
 //          二级数据
           showSecond (row, refresh) {
             if (!row.children || row.children.length === 0 || refresh) {
-              Api.get('TMP_TransportTaskScheding_Yd_Dtl', {Bill_Dtl_Id: row.Bill_Dtl_Id})
+              Api.basePost('TMP_TransportTaskScheding_Yd_Dtl', {Bill_Dtl_Id: row.Bill_Dtl_Id}, false, 'get')
                 .then((resp) => {
                   if (resp.Flag) {
                     row.children = resp.MsgInfo.map((item) => {

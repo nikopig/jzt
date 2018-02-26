@@ -13,7 +13,7 @@
     </div>
     <div class="toolbar">
       <div class="btn-box">
-        <el-button type="text" icon="check" @click="confirmData">对账确认</el-button>
+        <el-button type="text" icon="el-icon-check" @click="confirmData">对账确认</el-button>
       </div>
     </div>
     <div class="common-condition-box">

@@ -15,7 +15,7 @@
 		<div class="common-condition-box">
 			<el-form :inline="true" label-width="60px">
 				<el-form-item label="承运商">
-					<el-input placeholder="双击选择" :disabled="true" v-model="filterCondition.Carrier_Name" @dblclick.native="openDialog('carrier')" icon="close" :on-icon-click="deleteCarrier"></el-input>
+					<el-input placeholder="双击选择" :disabled="true" v-model="filterCondition.Carrier_Name" @dblclick.native="openDialog('carrier')" icon="el-icon-close" :on-icon-click="deleteCarrier"></el-input>
 				</el-form-item>
 				<el-form-item label="开始日期">
 					<el-date-picker type="date" placeholder="选择日期" v-model="filterCondition.Start_Time"></el-date-picker>
@@ -41,8 +41,8 @@
 				<div class="btn-box">已回回单数：<span v-if="receiptSumm && receiptSumm.Wei_HuiDan_Num">{{ receiptSumm.Wei_HuiDan_Num }}</span><span v-else>0</span></div>
 				<div class="btn-box">未回单数：<span v-if="receiptSumm && receiptSumm.Yi_HuiDan_Num">{{ receiptSumm.Yi_HuiDan_Num }}</span><span v-else>0</span></div>
 				<div class="btn-box">
-					<el-button type="text" icon="mo-refresh" @click="refresh">刷新</el-button>
-					<el-button type="text" icon="mo-download">导出数据</el-button>
+					<el-button type="text" icon="el-icon-mo-refresh" @click="refresh">刷新</el-button>
+					<el-button type="text" icon="el-icon-mo-download">导出数据</el-button>
 				</div>
 			</div>
       <el-table :data="summarizeData">
