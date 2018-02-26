@@ -2,11 +2,11 @@
   <div class="handle">
     <div class="toolbar">
       <div class="btn-box" v-if="isHandle!=='otherHandle'">
-        <el-button type="text" icon="plus" @click="openBill" :disabled="formSearchData.Payment_Operate_State==='K'">开票
+        <el-button type="text" icon="el-icon-plus" @click="openBill" :disabled="formSearchData.Payment_Operate_State==='K'">开票
         </el-button>
       </div>
       <div class="btn-box">
-        <el-button type="text" icon="plus" @click="settleConfirm"
+        <el-button type="text" icon="el-icon-plus" @click="settleConfirm"
                    :disabled="formSearchData.Payment_Operate_State==='3' && $route.name !== 'otherHandle'">结算
           <!--其他应付tab结算按钮放开，只有结算操作，没有开票操作-->
         </el-button>
@@ -17,14 +17,14 @@
         <el-form :inline="true" :model="formSearchData">
           <el-form-item label="运营方">
             <el-input v-model="formSearchData.Operator_Name" placeholder="双击选择"
-                      icon="close"
+                      icon="el-icon-close"
                       @click="deleteSelect('Operator_Id')"
                       @dblclick.native="openDialog('Operator_Id')"
                       :disabled="true"></el-input>
           </el-form-item>
           <el-form-item label="结算单位">
             <el-input v-model="formSearchData.Ssa_Name" placeholder="双击选择"
-                      icon="close"
+                      icon="el-icon-close"
                       @click="deleteSelect('SettleUp_Company_Id')"
                       @dblclick.native="openDialog('SettleUp_Company_Id')" :disabled="true"></el-input>
           </el-form-item>
@@ -57,7 +57,7 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="searchData" size="small" icon="search">查询</el-button>
+            <el-button type="primary" @click="searchData" size="small" icon="el-icon-search">查询</el-button>
           </el-form-item>
         </el-form>
       </div>

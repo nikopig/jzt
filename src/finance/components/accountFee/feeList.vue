@@ -3,7 +3,7 @@
         <!-- 按钮 -->
         <div class="toolbar">
             <div class="btn-box">
-                <el-button type="text" icon="plus" @click="freeBill">费用生成</el-button>
+                <el-button type="text" icon="el-icon-plus" @click="freeBill">费用生成</el-button>
             </div>
         </div>
         <!-- 查询表单 -->
@@ -13,7 +13,7 @@
                     <!-- <el-input v-model="condition.Operator_Name" @dblclick.native="showDialog('Operator')" disabled placeholder="双击选择委托方"></el-input> -->
                     <el-input class="noselect" v-model="condition.Operator_Name" placeholder="双击选择"
                     @dblclick.native="showDialog('Operator')"
-                    icon="close"
+                    icon="el-icon-close"
                     :on-icon-click="deleteOper"
                     :disabled="true"></el-input>
                 </el-form-item>
@@ -21,7 +21,7 @@
                     <!-- <el-input v-model="condition.Con_Name" @dblclick.native="showDialog('Consignor')" disabled placeholder="双击选择委托方"></el-input> -->
                     <el-input class="noselect" v-model="condition.Con_Name" placeholder="双击选择"
                     @dblclick.native="showDialog('Consignor')"
-                    icon="close"
+                    icon="el-icon-close"
                     :on-icon-click="deleteCon"
                     :disabled="true"></el-input>
                 </el-form-item>
@@ -32,7 +32,7 @@
                     </el-date-picker>
                 </el-form-item>
                 <el-form-item>
-                    <el-button size="small" type="primary" icon="search" @click="search">查询</el-button>
+                    <el-button size="small" type="primary" icon="el-icon-search" @click="search">查询</el-button>
               </el-form-item>
             </el-form>
         </div>

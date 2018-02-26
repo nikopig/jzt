@@ -2,7 +2,7 @@
     <div>
       <div class="toolbar">
         <div class="btn-box">
-          <el-button type="text" icon="mo-download" @click="exportExcel">导出excel</el-button>
+          <el-button type="text" icon="el-icon-mo-download" @click="exportExcel">导出excel</el-button>
         </div>
       </div>
       <div class="common-condition-box">
@@ -27,7 +27,7 @@
             <el-input
               class="noselect"
               v-model="condition.Operator_Name"
-              icon="close"
+              icon="el-icon-close"
               :disabled="true"
               @dblclick.native="operVisible = true"
               placeholder="双击选择运营商"
@@ -39,7 +39,7 @@
             <el-input
               class="noselect"
               v-model="condition.SettleUp_Company_Name"
-              icon="close"
+              icon="el-icon-close"
               :disabled="true"
               @dblclick.native="isVisible = true"
               placeholder="双击选择对账单位"
@@ -51,7 +51,7 @@
             <!--<select-service-type v-model="condition.selectType" @change="getData"></select-service-type>-->
           <!--</el-form-item>-->
           <el-form-item>
-            <el-button size="small" type="primary" icon="search" @click="searchData">查询</el-button>
+            <el-button size="small" type="primary" icon="el-icon-search" @click="searchData">查询</el-button>
           </el-form-item>
         </el-form>
       </div>

@@ -13,7 +13,7 @@
     </div>
     <div class="toolbar" v-if="routeName === 'handle'&&paymentOperateState==='3'">
       <div class="btn-box">
-        <el-button type="text" icon="plus" @click="openBill">开票</el-button>
+        <el-button type="text" icon="el-icon-plus" @click="openBill">开票</el-button>
       </div>
     </div>
     <div class="open-bill" v-if="routeName === 'handle'&&paymentOperateState==='3'">
