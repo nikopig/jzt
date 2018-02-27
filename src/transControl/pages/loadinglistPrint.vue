@@ -17,6 +17,7 @@
 </template>
 
 <script>
+    import GridReport from '@/common/js/GridReport'
     import loadPresent from '../components/loadinglistPrint/loadPresent'
     import loadHistory from '../components/loadinglistPrint/loadHistory'
     export default {
@@ -35,7 +36,20 @@
         },
         created () {
         },
-        computed: {}
+        computed: {},
+        mounted () {
+            try {
+                GridReport.Install_InsertReport()//插入一个报表对象，其实是在页面加入一个：<object></object>这样的对象标签，方便创建报表对象
+                //var isInstall = GridReport.Install_Detect();//用来判断插件是否已经安装，或是否需要安装更新版本。如果插件已经安装且也不要更新，则返回 true，反之为 false。
+                //if (isInstall) {
+                    //GridReport.CreateReport("Report");
+                    //console.log("report init success");
+                //}
+                GridReport.CreateReport('Report')
+            } catch (e) {
+                this.$alert('提示', '报表初始化错误，' + e.message, 'error')
+            }
+        }
     }
 </script>
 <style lang="less" scoped>
