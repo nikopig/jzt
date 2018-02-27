@@ -3,11 +3,11 @@
 import 'babel-polyfill'
 import Vue from 'vue'
 import router from './router'
+import store from './store'
 import {
   Button,
   Card,
   Checkbox,
-  CheckboxGroup,
   Col,
   DatePicker,
   Dialog,
@@ -27,17 +27,20 @@ import {
   Popover,
   Message,
   MessageBox,
-  Loading,
+  Menu,
+  MenuItem,
   Tooltip,
-  inputNumber
+  Breadcrumb,
+  BreadcrumbItem,
+  Loading
 } from 'element-ui'
 import 'normalize.css'
+// import '../../theme/index.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/common/style/icon.css'
 import App from './App'
 
 Vue.use(Checkbox)
-Vue.use(CheckboxGroup)
 Vue.use(Col)
 Vue.use(Input)
 Vue.use(Option)
@@ -57,9 +60,12 @@ Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(pagination)
 Vue.use(Popover)
-Vue.use(Loading)
+Vue.use(Menu)
+Vue.use(MenuItem)
 Vue.use(Tooltip)
-Vue.use(inputNumber)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Loading)
 
 Vue.component(Message.name, Message)
 Vue.component(MessageBox.name, MessageBox)
@@ -69,12 +75,17 @@ Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
-
-Vue.config.productionTip = false
-
 Vue.prototype.showLoading = function (text) {
   text = text || '正在加载...'
   return Loading.service({text: text})
+}
+
+Vue.prototype.go = function (arg) {
+  if (typeof arg === 'number') {
+    router.go(arg)
+  } else {
+    router.push(arg)
+  }
 }
 
 // 消息提示弹出框
@@ -86,10 +97,16 @@ Vue.prototype.messageInfo = function (text) {
   })
 }
 
+Vue.prototype.goBack = function (num) {
+  this.$router.go(num)
+}
+Vue.config.productionTip = false
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: {App}
 })
