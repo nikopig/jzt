@@ -27,24 +27,22 @@
             <el-input
               class="noselect"
               v-model="condition.Operator_Name"
-              suffix-icon="el-icon-close"
               :disabled="true"
               @dblclick.native="operVisible = true"
               placeholder="双击选择运营商"
-              :on-icon-click="clearOper"
             >
+              <i slot="suffix" class="el-icon-close" @click="clearOper"></i>
             </el-input>
           </el-form-item>
           <el-form-item label="对账单位">
             <el-input
               class="noselect"
               v-model="condition.SettleUp_Company_Name"
-              suffix-icon="el-icon-close"
               :disabled="true"
               @dblclick.native="isVisible = true"
               placeholder="双击选择对账单位"
-              :on-icon-click="clearBalance"
             >
+              <i slot="suffix" class="el-icon-close" @click="clearBalance"></i>
             </el-input>
           </el-form-item>
           <!--<el-form-item label="费用类型">-->

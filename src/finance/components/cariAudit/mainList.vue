@@ -15,9 +15,9 @@
         <el-form-item label="对账单位">
           <el-input class="noselect" v-model="filterCondition.Con.MINGCHENG" placeholder="双击选择"
                     @dblclick.native="isVisible = true"
-                    suffix-icon="el-icon-close"
-                    :on-icon-click="deleteCon"
-                    :disabled="true"></el-input>
+                    :disabled="true">
+                      <i slot="suffix" class="el-icon-close" @click="deleteCon"></i>
+                    </el-input>
         </el-form-item>
         <el-form-item  label="费用类型">
           <common-select field="Service_Type" v-model="filterCondition.Service_Type"></common-select>

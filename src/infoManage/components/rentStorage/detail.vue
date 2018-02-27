@@ -411,7 +411,7 @@
 			}
 		}
 		.el-input input.el-input__inner {
-			height: 100%!important;
+			// height: 100%!important;
 		}
 		.el-select__tags {
 	    white-space: nowrap;

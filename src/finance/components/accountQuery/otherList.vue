@@ -11,12 +11,11 @@
             <el-input
               class="noselect"
               v-model="condition.SettleUp_Company_Name"
-              suffix-icon="el-icon-close"
               :disabled="true"
               @dblclick.native="isVisible = true"
               placeholder="双击选择对账单位"
-              :on-icon-click="clearBalance"
             >
+              <i slot="suffix" class="el-icon-close" @click="clearBalance"></i>
             </el-input>
           </el-form-item>
           <el-form-item label="起始日期">
