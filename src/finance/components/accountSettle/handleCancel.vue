@@ -17,16 +17,16 @@
         <el-form :inline="true" :model="formSearchData">
           <el-form-item label="运营方">
             <el-input v-model="formSearchData.Operator_Name" placeholder="双击选择"
-                      suffix-icon="el-icon-close"
-                      @click="deleteSelect('Operator_Id')"
                       @dblclick.native="openDialog('Operator_Id')"
-                      :disabled="true"></el-input>
+                      :disabled="true">
+                        <i slot="suffix" class="el-icon-close" @click="deleteSelect('Operator_Id')"></i>
+                      </el-input>
           </el-form-item>
           <el-form-item label="结算单位">
             <el-input v-model="formSearchData.Ssa_Name" placeholder="双击选择"
-                      suffix-icon="el-icon-close"
-                      @click="deleteSelect('SettleUp_Company_Id')"
-                      @dblclick.native="openDialog('SettleUp_Company_Id')" :disabled="true"></el-input>
+                      @dblclick.native="openDialog('SettleUp_Company_Id')" :disabled="true">
+                        <i slot="suffix" class="el-icon-close" @click="deleteSelect('SettleUp_Company_Id')"></i>
+                      </el-input>
           </el-form-item>
           <el-form-item label="开始日期">
             <el-date-picker

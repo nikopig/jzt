@@ -11,19 +11,19 @@
                           { required: true, message: '请输入合同编号', trigger: 'change' }
                         ]">
 	            <el-input v-model="formData.Operator_Id" placeholder="双击选择"
-	                      suffix-icon="el-icon-close" 
-	                      @click="deleteSelect('Operator_Id')"
 	                      @dblclick.native="openDialog('Operator_Id')"
-	                      :disabled="true"></el-input>
+	                      :disabled="true">
+                          <i slot="suffix" class="el-icon-close" @click="deleteSelect('Operator_Id')"></i>
+                        </el-input>
 	          </el-form-item>
 	          <el-form-item label="委托方" :rules="[
                           { required: true, message: '请输入委托方', trigger: 'change' }
                         ]">
 	            <el-input v-model="formData.Con_Name" placeholder="双击选择"
-	                      suffix-icon="el-icon-close"
-	                      @click="deleteSelect('Con_Id')"
 	                      @dblclick.native="openDialog('Con_Id')"
-	                      :disabled="true"></el-input>
+	                      :disabled="true">
+                          <i slot="suffix" class="el-icon-close" @click="deleteSelect('Con_Id')"></i>
+                        </el-input>
 	          </el-form-item>
             <el-form-item  label="时效承诺方式" prop="AgingCommitWay" :rules="[
                           { required: true, message: '请输入时效承诺方式', trigger: 'blur' }
@@ -34,37 +34,37 @@
                           { required: true, message: '请输入起点省份', trigger: 'blur' }
                         ]">
               <el-input v-model="formData.Start_Region_Name" placeholder="双击选择"
-	                      suffix-icon="el-icon-close"
-	                      @click="deleteSelect('Start_Region_No')"
 	                      @dblclick.native="openDialog('Start_Region_No')"
-	                      :disabled="true"></el-input>
+	                      :disabled="true">
+                          <i slot="suffix" class="el-icon-close" @click="deleteSelect('Start_Region_No')"></i> 
+                        </el-input>
             </el-form-item>
             <el-form-item  label="起点城市" prop="Start_City_Name" :rules="[
                           { required: true, message: '请输入起点城市', trigger: 'blur' }
                         ]">
               <el-input v-model="formData.Start_City_Name" placeholder="双击选择"
-	                      suffix-icon="el-icon-close"
-	                      @click="deleteSelect('Start_City_No')"
 	                      @dblclick.native="openDialog('Start_City_No')"
-	                      :disabled="true"></el-input>
+	                      :disabled="true">
+                          <i slot="suffix" class="el-icon-close" @click="deleteSelect('Start_City_No')"></i>
+                        </el-input>
             </el-form-item>
             <el-form-item  label="收货省份" prop="End_Region_Name" :rules="[
                           { required: true, message: '请输入收货省份', trigger: 'blur' }
                         ]">
               <el-input v-model="formData.End_Region_Name" placeholder="双击选择"
-	                      suffix-icon="el-icon-close"
-	                      @click="deleteSelect('End_Region_No')"
 	                      @dblclick.native="openDialog('End_Region_No')"
-	                      :disabled="true"></el-input>
+	                      :disabled="true">
+                          <i slot="suffix" class="el-icon-close" @click="deleteSelect('End_Region_No')"></i>
+                        </el-input>
             </el-form-item>
             <el-form-item  label="收货城市" prop="End_City_Name" :rules="[
                           { required: true, message: '请输入收货城市', trigger: 'blur' }
                         ]">
               <el-input v-model="formData.End_City_Name" placeholder="双击选择"
-	                      suffix-icon="el-icon-close"
-	                      @click="deleteSelect('End_City_No')"
 	                      @dblclick.native="openDialog('End_City_No')"
-	                      :disabled="true"></el-input>
+	                      :disabled="true">
+                           <i slot="suffix" class="el-icon-close" @click="deleteSelect('End_City_No')"></i>
+                        </el-input>
             </el-form-item>
             <el-form-item  label="产品大类" :rules="[
                           { required: true, message: '请输入产品大类', trigger: 'blur' }

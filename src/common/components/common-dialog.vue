@@ -22,7 +22,9 @@ confirm事件的方法的参数(Rows): 为选中的行数据,结构{currentId1�
     <el-dialog class='Mydialog' :title="DialogTitle" :visible.sync="pihaoDialog" @close="closeDialog">
       <el-form :model="form">
         <div class='form-group'>
-          <el-input v-model="form.name" auto-complete="off" placeholder='输入关键字搜索' suffix-icon="el-icon-search" :on-icon-click="onSearch"></el-input>
+          <el-input v-model="form.name" auto-complete="off" placeholder='输入关键字搜索'>
+            <i slot="suffix" class="el-icon-search" @click="onSearch"></i>
+          </el-input>
         </div>
       </el-form>
       <div class='tabel-wrapper'>

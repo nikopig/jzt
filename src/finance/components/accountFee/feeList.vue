@@ -13,17 +13,17 @@
                     <!-- <el-input v-model="condition.Operator_Name" @dblclick.native="showDialog('Operator')" disabled placeholder="双击选择委托方"></el-input> -->
                     <el-input class="noselect" v-model="condition.Operator_Name" placeholder="双击选择"
                     @dblclick.native="showDialog('Operator')"
-                    suffix-icon="el-icon-close"
-                    :on-icon-click="deleteOper"
-                    :disabled="true"></el-input>
+                    :disabled="true">
+                        <i slot="suffix" class="el-icon-close" @click="deleteOper"></i>
+                    </el-input>
                 </el-form-item>
                 <el-form-item label="委托方：">
                     <!-- <el-input v-model="condition.Con_Name" @dblclick.native="showDialog('Consignor')" disabled placeholder="双击选择委托方"></el-input> -->
                     <el-input class="noselect" v-model="condition.Con_Name" placeholder="双击选择"
                     @dblclick.native="showDialog('Consignor')"
-                    suffix-icon="el-icon-close"
-                    :on-icon-click="deleteCon"
-                    :disabled="true"></el-input>
+                    :disabled="true">
+                        <i slot="suffix" class="el-icon-close" @click="deleteCon"></i>
+                    </el-input>
                 </el-form-item>
                 <el-form-item label="结算时间：">
                     <el-date-picker
